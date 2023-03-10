@@ -2,7 +2,7 @@ const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 
 canvas.width = window.innerWidth // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
-canvas.height = window.innerHeight
+canvas.height = 800
 
 const gravity = 0.4
 
@@ -38,16 +38,57 @@ class Player {
     } 
 }
 
+class Platform {
+  constructor() {
+    this.position = {
+      x: 500,
+      y: 600
+    }
+    this.width = 200
+    this.height= 40
+  }
+
+  draw() {
+    c.fillStyle = 'blue'
+    c.fillRect(this.position.x, this.position.y, this.width, this.height)
+  }
+}
+
 const Player1 = new Player()
-Player1.update()
+const Platform1 = new Platform()
+
+const keys = {
+  right: {
+    pressed: false
+  },
+  left: {
+    pressed: false
+  }
+
+}
+
 
 function animate() { //Actualiza cada segundo
   requestAnimationFrame(animate)
   c.clearRect(0, 0, canvas.width, canvas.height)//Cada segundo, limpiará el canvas 
   Player1.update() //update será llamado cada segundo, sumando la gravedad a la velocidad hasta que se cumpla la condicón del loop anterior
+  Platform1.draw()
+
+  if (keys.right.pressed) {
+    Player1.velocity.x = 7
+  } else if (keys.left.pressed) {
+    Player1.velocity.x = -7
+  } else Player1.velocity.x = 0
+
+  if (Player1.position.y + Player1.height <= Platform1.position.y && 
+    Player1.position.y + Player1.height + Player1.velocity.y >= Platform1.position.y &&
+    Player1.position.x + Player1.width >= Platform1.position.x
+    ) { 
+    Player1.velocity.y = 0
+  } 
 }
 
-animate()
+//---MOVIMIENTO DEL PERSONAJE---
 
 /*
 addEventListener('keydown', (event) => { //Cualquier método que venga del objeto window no necesita el "window."
@@ -59,13 +100,13 @@ addEventListener('keydown', ({ keyCode }) => { //De esta forma es más específi
 console.log( keyCode )
 if ( keyCode == 37) {
   console.log('left')
-  Player1.velocity.x = -6
+  keys.left.pressed = true
 } else if ( keyCode == 39) {
   console.log('right')
-  Player1.velocity.x = 6
+  keys.right.pressed = true
 } else if ( keyCode == 38  ) {
   console.log('up')
-  Player1.velocity.y -= 10
+  Player1.velocity.y -= 14
 }
 else if ( keyCode == 40) {
   console.log('down')
@@ -79,10 +120,10 @@ addEventListener('keyup', ({ keyCode }) => { //De esta forma es más específico
   console.log( keyCode )
   if ( keyCode == 37) {
     console.log('left')
-    Player1.velocity.x = 0
+    keys.left.pressed = false
   } else if ( keyCode == 39) {
     console.log('right')
-    Player1.velocity.x = 0
+    keys.right.pressed = false
   } else if ( keyCode == 38 ) {
     console.log('up')
   }
@@ -90,3 +131,6 @@ addEventListener('keyup', ({ keyCode }) => { //De esta forma es más específico
     console.log('down')
   }
   }) 
+
+Player1.update()
+animate()
