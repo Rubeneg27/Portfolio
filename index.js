@@ -29,7 +29,7 @@ class Player {
       this.draw()
       this.position.y += this.velocity.y // 100 + 0 = 100
       this.position.x += this.velocity.x
-
+      
       if (this.position.y + this.height + this.velocity.y < canvas.height) { //Este loop para la caída tomando la altura del canvas. 100 + 40 + 0 <= altura de la pantalla? 
         this.velocity.y += gravity // Si arriba = true -> 0 + 1.5
       } else {
@@ -42,7 +42,7 @@ class Platform {
   constructor() {
     this.position = {
       x: 500,
-      y: 600
+      y: 600 
     }
     this.width = 200
     this.height= 40
@@ -79,10 +79,11 @@ function animate() { //Actualiza cada segundo
   } else if (keys.left.pressed) {
     Player1.velocity.x = -7
   } else Player1.velocity.x = 0
-
+  //Platform colission
   if (Player1.position.y + Player1.height <= Platform1.position.y && 
     Player1.position.y + Player1.height + Player1.velocity.y >= Platform1.position.y &&
-    Player1.position.x + Player1.width >= Platform1.position.x
+    Player1.position.x + Player1.width >= Platform1.position.x && 
+    Player1.position.x <= Platform1.position.x + Platform1.width
     ) { 
     Player1.velocity.y = 0
   } 
