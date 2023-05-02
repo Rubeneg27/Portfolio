@@ -1,13 +1,14 @@
 body {
-  margin-left: 20vw;
-  margin-right: 20vw;
+  margin-left: 15vw;
+  margin-right: 15vw;
+  margin-top: 5vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(162, 139, 182);
-  color: rgb(27, 0, 77);
+  background-color: rgb(74, 69, 81);
+  color: rgb(245, 238, 234);
 }
 
 code {
@@ -15,6 +16,51 @@ code {
     monospace;
 }
 
-article {
-  background-color: rgb(252, 247, 241);
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5vh;
+}
+
+.cabecera .title {
+  font-size: 2.2rem;
+  border-left: medium solid rgb(248, 207, 130);
+  border-bottom: medium solid rgb(248, 207, 130);
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: start;
+  padding-left: 2%;
+  padding-bottom: 1%;
+  width: 30vw; 
+}
+.cabecera p {
+  border: hidden;
+  align-self: center;
+  padding-bottom: 1%;
+}
+
+.subCabecera {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 2vh;
+}
+
+.logos{
+  width: 30vw;
+  padding-left: 2%;
+  border: solid wheat;
+}
+.resumen {
+  border: solid wheat;
+}
+
+.Nav {
+  border: solid wheat;
+  list-style: none;
+  padding-left: 2%;
+  width: 30vw;
+}
+
+.Hero article {
+  border: solid wheat;
 }
