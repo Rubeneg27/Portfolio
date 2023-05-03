@@ -8,7 +8,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(74, 69, 81);
+  background-color: rgb(75, 68, 83);
   color: rgb(245, 238, 234);
 }
 
@@ -20,13 +20,12 @@ code {
 .cabecera {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 5vh;
 }
 
 .cabecera .title {
   font-size: 2.2rem;
-  border-left: medium solid rgb(248, 207, 130);
-  border-bottom: medium solid rgb(248, 207, 130);
+  border-left: medium solid rgb(240, 177, 118);
+  border-bottom: medium solid rgb(240, 177, 118);
   border-top: hidden;
   border-right: hidden;
   margin-top: 0;
@@ -36,11 +35,11 @@ code {
   padding-bottom: 1%;
   padding-top: 1%;
   padding-right: 0%;
-  width: 25vw; 
+  width: 17vw; 
 }
 .cabecera p {
-  border-top: medium solid rgb(248, 207, 130);
-  border-right: medium solid rgb(248, 207, 130);
+  border-top: medium solid rgb(240, 177, 118);
+  border-right: medium solid rgb(240, 177, 118);
   align-self: center;
   padding-bottom: 1%;
   padding-right: 2%;
@@ -50,36 +49,37 @@ code {
 .subCabecera {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 2vh;
+  margin-bottom: 3vh;
   height: 10vh;
 }
 
 .logos{
-  width: 25vw;
+  width: 17vw;
   padding-left: 2%;
-  border: solid wheat;
+  border: solid rgb(240, 177, 118);
 }
 
 .resumen {
-  border: solid wheat;
-  width: 40vw;
-  
+  border: solid rgb(240, 177, 118);
+  background-color: rgb(240, 177, 118);
+  color: black;
+  width: 48vw;
 }
 
 .Hero {
   display: flex;
   justify-content: space-between;
-  height: 50vh;
+  height: 40vh;
 }
 .Nav {
-  width: 25vw;
-  border: solid wheat;
+  width: 17vw;
+  border: solid rgb(240, 177, 118);
   list-style: none;
   padding-left: 2%;
   margin: 0; 
 }
 
 .Hero article {
-  width: 40vw;
-  border: solid wheat;
+  width: 48vw;
+  border: solid rgb(240, 177, 118);
 }
