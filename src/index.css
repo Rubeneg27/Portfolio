@@ -55,9 +55,11 @@ code {
 }
 
 .logos{
-  width: 17vw;
-  padding-left: 2vw;
+  width: 19vw;
   border: solid 1px rgb(235, 182, 133);
+  align-items: center;
+  text-align: center;
+  text-justify: center;
 }
 
 .resumen {
@@ -65,6 +67,7 @@ code {
   background-color: rgb(235, 182, 133);
   color: black;
   width: 48vw;
+  text-justify: c;
 }
 
 .Hero {
@@ -89,14 +92,15 @@ code {
 .Hero article {
   width: 48vw;
   border: solid 1px rgb(235, 182, 133);
+  text-align: center;
 }
 
 .Nav li {
   border: solid 1px rgb(235, 182, 133);
-  border-radius: 25%;
+  border-radius: 25PX;
   margin-bottom: 2vh;
-  height: 6vh;
-  width: 15vw;
-  display: list-item;
-  text-align: -webkit-match-parent;
+  text-align: center;
+  font-size: 30px;
+  align-self: center;
+  height: 5vh;
 }
