@@ -52,14 +52,16 @@ code {
   justify-content: space-between;
   margin-bottom: 3vh;
   height: 10vh;
+  
 }
 
 .logos{
   width: 19vw;
   border: solid 1px rgb(235, 182, 133);
-  align-items: center;
   text-align: center;
-  text-justify: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .resumen {
@@ -67,7 +69,10 @@ code {
   background-color: rgb(235, 182, 133);
   color: black;
   width: 48vw;
-  text-justify: c;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Hero {
@@ -93,14 +98,19 @@ code {
   width: 48vw;
   border: solid 1px rgb(235, 182, 133);
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Nav li {
   border: solid 1px rgb(235, 182, 133);
   border-radius: 25PX;
   margin-bottom: 2vh;
-  text-align: center;
   font-size: 30px;
   align-self: center;
   height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
