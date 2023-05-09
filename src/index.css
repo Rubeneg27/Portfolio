@@ -9,6 +9,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(54, 46, 54);
+  
   color: rgb(245, 238, 234);
 }
 
@@ -94,6 +95,23 @@ code {
   padding-inline-start: 0;
 }
 
+.Nav-collapsed {
+  width: 4vw;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  border: solid 1px rgb(235, 182, 133);
+  list-style: none;
+  padding-inline-start: 0;
+  margin: 0; 
+  justify-self: center;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0;
+}
+
+
 .Hero article {
   width: 48vw;
   border: solid 1px rgb(235, 182, 133);
@@ -105,6 +123,21 @@ code {
 
 .Nav li {
   border: solid 1px rgb(235, 182, 133);
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 25PX;
+  margin-bottom: 2vh;
+  font-size: 30px;
+  align-self: center;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.li-collapsed {
+  border: solid 1px rgb(235, 182, 133);
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
   border-radius: 25PX;
   margin-bottom: 2vh;
   font-size: 30px;
