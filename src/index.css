@@ -8,9 +8,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(54, 46, 54);
-  
-  color: rgb(245, 238, 234);
+  background-color: rgb(255, 214, 184);
+  color: rgb(100, 91, 85);
 }
 
 code {
@@ -26,8 +25,8 @@ code {
 
 .cabecera .title {
   font-size: 2.2rem;
-  border-left: solid 1px rgb(235, 182, 133);
-  border-bottom: solid 1px rgb(235, 182, 133);
+  border-left: solid 3px rgb(100, 91, 85);
+  border-bottom: solid 6px rgb(100, 91, 85);
   border-top: hidden;
   border-right: hidden;
   margin-top: 0;
@@ -40,8 +39,8 @@ code {
   width: 17vw; 
 }
 .cabecera p {
-  border-top: solid 1px rgb(235, 182, 133);
-  border-right: solid 1px rgb(235, 182, 133);
+  border-top: solid 3px rgb(100, 91, 85);
+  border-right: solid 3px rgb(100, 91, 85);
   align-self: center;
   padding-bottom: 1vw;
   padding-right: 2vw;
@@ -58,7 +57,9 @@ code {
 
 .logos{
   width: 19vw;
-  border: solid 1px rgb(235, 182, 133);
+  border: solid 3px rgb(100, 91, 85);
+  background-color: rgb(100, 91, 85);
+  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   text-align: center;
   display: flex;
   justify-content: center;
@@ -66,9 +67,10 @@ code {
 }
 
 .resumen {
-  border: solid 1px rgb(235, 182, 133);
-  background-color: rgb(235, 182, 133);
-  color: black;
+  border: solid 3px rgb(100, 91, 85);
+  background-color: rgb(100, 91, 85);
+  box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
+  color: rgb(255, 214, 184);
   width: 48vw;
   text-align: center;
   display: flex;
@@ -83,7 +85,6 @@ code {
 }
 .Nav {
   width: 19vw;
-  border: solid 1px rgb(235, 182, 133);
   list-style: none;
   padding-inline-start: 0;
   margin: 0; 
@@ -97,9 +98,11 @@ code {
 
 .Nav-collapsed {
   width: 4vw;
+  height: 4vw;
+  background-color: rgb(100, 91, 85);
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-  border: solid 1px rgb(235, 182, 133);
+  border: hidden;
   list-style: none;
   padding-inline-start: 0;
   margin: 0; 
@@ -122,20 +125,24 @@ code {
 }
 
 .Nav li {
-  border: solid 1px rgb(235, 182, 133);
+  border: solid 3px rgb(100, 91, 85);
+  background-color: rgb(100, 91, 85);
+  color: rgb(255, 214, 184);
+  box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
   transition: opacity 0.3s ease-in-out;
-  border-radius: 25PX;
+  border-radius: 10PX;
   margin-bottom: 2vh;
   font-size: 30px;
   align-self: center;
   height: 5vh;
+  width: 19vw;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .li-collapsed {
-  border: solid 1px rgb(235, 182, 133);
+  border: solid 1px rgb(100, 91, 85);
   transition: opacity 0.3s ease-in-out;
   opacity: 0;
   border-radius: 25PX;
