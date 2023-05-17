@@ -1,6 +1,6 @@
 body {
-  margin-left: 15vw;
-  margin-right: 15vw;
+  margin-left: 10vw;
+  margin-right: 10vw;
   margin-top: 5vh;
   font-size: 25px;
   font-family: 'chill', 'Droid Sans', 'Helvetica Neue',
@@ -71,7 +71,7 @@ code {
   background-color: rgb(100, 91, 85);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
   color: rgb(255, 214, 184);
-  width: 48vw;
+  width: 55vw;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -117,7 +117,7 @@ code {
 
 
 .Hero .article {
-  width: 48vw;
+  width: 55vw;
   border: solid 1px rgb(235, 182, 133);
   text-align: center;
   justify-content: center;
@@ -126,7 +126,7 @@ code {
 
 
 .Hero .article-expanded {
-  width: 65vw;
+  width: 71vw;
   border: solid 1px rgb(235, 182, 133);
   transition: all 0.3s ease-in-out;
   text-align: center;
