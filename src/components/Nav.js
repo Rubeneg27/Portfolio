@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function Nav (props) {
   const [isCollapsed, setIsCollapsed] = useState(false)
-  console.log(`is Nav collapsed?` + isCollapsed)
+
   const handleClick = () => {
     setIsCollapsed(!isCollapsed)
     props.onCollapseChange()
