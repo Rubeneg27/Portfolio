@@ -25,7 +25,7 @@ code {
 
 .cabecera .title {
   font-size: 2.2rem;
-  border-left: solid 3px rgb(100, 91, 85);
+  border-left: solid 0.2vw rgb(100, 91, 85);
   border-bottom: solid 6px rgb(100, 91, 85);
   border-top: hidden;
   border-right: hidden;
@@ -56,8 +56,7 @@ code {
 }
 
 .logos{
-  width: 19vw;
-  border: solid 3px rgb(100, 91, 85);
+  width: 19.2vw;
   background-color: rgb(100, 91, 85);
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   text-align: center;
@@ -119,6 +118,7 @@ code {
 .Hero .article {
   width: 55vw;
   border: solid 1px rgb(235, 182, 133);
+  transition: opacity 0.3s ease-in-out;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -128,38 +128,37 @@ code {
 .Hero .article-expanded {
   width: 71vw;
   border: solid 1px rgb(235, 182, 133);
-  transition: all 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   text-align: center;
   justify-content: center;
   align-items: center;
 }
 
 .Nav li {
-  border: solid 3px rgb(100, 91, 85);
   background-color: rgb(100, 91, 85);
   color: rgb(255, 214, 184);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
-  transition: opacity 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   border-radius: 10PX;
   margin-bottom: 2vh;
   font-size: 30px;
   align-self: center;
   height: 5vh;
-  width: 19vw;
+  width: 19.2vw;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .li-collapsed {
-  border: solid 1px rgb(100, 91, 85);
-  transition: opacity 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   opacity: 0;
   border-radius: 25PX;
   margin-bottom: 2vh;
   font-size: 30px;
   align-self: center;
   height: 5vh;
+  width: 0vh;
   display: flex;
   justify-content: center;
   align-items: center;
