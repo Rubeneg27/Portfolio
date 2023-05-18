@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-function Nav (props) {
+function Nav ({onCollapseChange}) {
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   const handleClick = () => {
     setIsCollapsed(!isCollapsed)
-    props.onCollapseChange()
+    onCollapseChange()
   }
   return (
     <div>

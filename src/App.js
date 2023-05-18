@@ -1,7 +1,7 @@
 import './index.css';
 import Nav from './components/Nav'
 import Header from './components/Header';
-import Hero from './components/Hero';
+import Section from './components/Section';
 import { useState } from "react";
 
 function App() {
@@ -17,9 +17,8 @@ function App() {
       <Header></Header>
       <div className="Hero">
       <Nav onCollapseChange={handleNavCollapseChange}></Nav>
-      <Hero isNavCollapsed={isNavCollapsed}></Hero>
+      <Section isNavCollapsed={isNavCollapsed}></Section>
       </div>
-      
     </div>
   );
 }
