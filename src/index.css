@@ -7,7 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(255, 214, 184);
+  background-color: rgb(236, 214, 173);
   color: rgb(100, 91, 85);
 }
 
@@ -56,6 +56,7 @@ code {
 }
 
 .logos{
+  transition: all 0.3s ease-in-out;
   width: 19.2vw;
   background-color: rgb(100, 91, 85);
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
@@ -65,12 +66,31 @@ code {
   align-items: center;
 }
 
+.logos-collapsed{
+  width: 0;
+  transition: all 0.3s ease-in-out;
+}
+
 .resumen {
+  transition: all 0.3s ease-in-out;
   border: solid 3px rgb(100, 91, 85);
   background-color: rgb(100, 91, 85);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
   color: rgb(255, 214, 184);
   width: 55vw;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resumen-expanded {
+  transition: all 0.3s ease-in-out;
+  border: solid 3px rgb(100, 91, 85);
+  background-color: rgb(100, 91, 85);
+  box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
+  color: rgb(255, 214, 184);
+  width: 100%;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -97,8 +117,8 @@ code {
 }
 
 .Nav-collapsed {
-  width: 4vw;
-  height: 4vw;
+  width: 40px;
+  height: 40px;
   background-color: rgb(100, 91, 85);
   overflow: hidden;
   transition: all 0.3s ease-in-out;
@@ -126,12 +146,10 @@ code {
 
 
 .Hero .article-expanded {
-  width: 71vw;
+  width: 75vw;
   border: solid 1px rgb(235, 182, 133);
   transition: opacity 0.3s ease-in-out;
   text-align: center;
-  justify-content: center;
-  align-items: center;
 }
 
 .Nav li {

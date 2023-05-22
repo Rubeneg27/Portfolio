@@ -1,4 +1,4 @@
-function Header () {
+function Header ({isNavCollapsed}) {
     return (
         <div className="Header">
             <div className="cabecera">
@@ -6,8 +6,8 @@ function Header () {
                 <p>rubeneg27@gmail.com</p>
             </div>
             <div className="subCabecera">
-                <div className="logos">Aquí van logos</div>
-                <div className="resumen">Indicación del lugar actual en la página</div>
+                <div className={isNavCollapsed? "logos-collapsed" : "logos"}></div>
+                <div className={isNavCollapsed? "resumen-expanded" : "resumen"}>Indicación del lugar actual en la página</div>
             </div>
         </div>
     )

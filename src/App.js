@@ -14,11 +14,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header></Header>
-      <div className="Hero">
-      <Nav onCollapseChange={handleNavCollapseChange}></Nav>
-      <Section isNavCollapsed={isNavCollapsed}></Section>
-      </div>
+      <Header isNavCollapsed={isNavCollapsed}></Header>
+        <Nav onCollapseChange={handleNavCollapseChange}></Nav>
     </div>
   );
 }
