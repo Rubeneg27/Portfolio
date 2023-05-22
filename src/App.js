@@ -7,14 +7,14 @@ function App() {
 
   const [isNavCollapsed, setIsNavCollapsed] = useState(false);
   const handleNavCollapseChange = () => {
-    setIsNavCollapsed(!isNavCollapsed);
+    setIsNavCollapsed(true);
   }
   
 
   return (
     <div className="App">
       <Header isNavCollapsed={isNavCollapsed}></Header>
-        <Hero onCollapseChange={handleNavCollapseChange}></Hero>
+      <Hero onCollapseChange={handleNavCollapseChange}></Hero>
     </div>
   );
 }
