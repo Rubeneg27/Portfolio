@@ -12,8 +12,11 @@ function App() {
   const [content, setContent] = useState(
     <Home></Home>
   )
-  const handleNavCollapseChange = () => { //Handle collapse on hero's section
-    setIsNavCollapsed(!isNavCollapsed);
+  const collapse = () => { //Collapses hero's section
+    setIsNavCollapsed(true);
+  }
+  const unCollapse = () => { //Uncollapses hero's section
+    setIsNavCollapsed(false)
   }
   
   const updateContent = () => { //Allows Hero's states to be managed from Header in order to propely collapse or uncollapse components
@@ -28,7 +31,8 @@ function App() {
     <div className="App">
       <Header isNavCollapsed={isNavCollapsed} updateContent={updateContent}></Header>
       <Hero 
-      onCollapseChange={handleNavCollapseChange} 
+      collapse={collapse}
+      unCollapse={unCollapse}
       setContent={setContent} 
       content={content} 
       isCollapsed={isCollapsed} 
