@@ -7,7 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(236, 214, 173);
+  background-color: rgb(236, 209, 173);
   color: rgb(100, 91, 85);
 }
 
@@ -37,6 +37,10 @@ code {
   padding-top: 1vw;
   padding-right: 0vw;
   width: 17vw; 
+}
+
+.cabecera .title:hover{
+  cursor: pointer;
 }
 .cabecera p {
   border-top: solid 3px rgb(100, 91, 85);
@@ -134,10 +138,13 @@ code {
   padding-inline-start: 0;
 }
 
+.Nav-collapsed:hover {
+  cursor: pointer;
+}
 
 .Hero .article {
   width: 55vw;
-  border: solid 1px rgb(236, 214, 173);
+  border: solid 1px rgb(144 134 116);
   transition: opacity 0.3s ease-in-out;
   text-align: center;
   justify-content: center;
@@ -147,7 +154,7 @@ code {
 
 .Hero .article-expanded {
   width: 75vw;
-  border: solid 1px rgb(236, 214, 173);
+  border: solid 1px rgb(144 134 116);
   transition: opacity 0.3s ease-in-out;
   text-align: center;
 }
@@ -168,6 +175,13 @@ code {
   align-items: center;
 }
 
+.Nav li:hover {
+  cursor: pointer;
+}
+
+.Nav-hidden {
+  opacity: 0;
+}
 .li-collapsed {
   transition: all 0.3s ease-in-out;
   opacity: 0;
@@ -180,4 +194,44 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.li-collapsed:hover {
+  cursor: pointer;
+}
+
+.li-hidden {
+  opacity: 0;
+}
+.burger:hover{
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  width: 120px;
+  height: 200px;
+  background-color: rgb(100, 91, 85);
+  color: rgb(236, 209, 173);
+  transition: all 0.3s ease-in-out;
+  list-style: none;
+  padding-inline-start: 0;
+  justify-self: center;
+  margin-block-start: 0;
+}
+.dropdown-menu li {
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 0.5vh;
+}
+.dropdown-menu-closed {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+  background-color: rgb(100, 91, 85);
+  color: rgb(236, 209, 173);
+  padding-inline-start: 0;
+  justify-self: center;
+  margin-block-start: 0;
 }
