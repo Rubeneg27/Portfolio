@@ -76,7 +76,7 @@ code {
   border: solid 3px rgb(100, 91, 85);
   background-color: rgb(100, 91, 85);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
-  color: rgb(255, 214, 184);
+  color: rgb(236, 214, 173);
   width: 55vw;
   text-align: center;
   display: flex;
@@ -89,7 +89,7 @@ code {
   border: solid 3px rgb(100, 91, 85);
   background-color: rgb(100, 91, 85);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
-  color: rgb(255, 214, 184);
+  color: rgb(236, 214, 173);
   width: 100%;
   text-align: center;
   display: flex;
@@ -137,7 +137,7 @@ code {
 
 .Hero .article {
   width: 55vw;
-  border: solid 1px rgb(235, 182, 133);
+  border: solid 1px rgb(236, 214, 173);
   transition: opacity 0.3s ease-in-out;
   text-align: center;
   justify-content: center;
@@ -147,14 +147,14 @@ code {
 
 .Hero .article-expanded {
   width: 75vw;
-  border: solid 1px rgb(235, 182, 133);
+  border: solid 1px rgb(236, 214, 173);
   transition: opacity 0.3s ease-in-out;
   text-align: center;
 }
 
 .Nav li {
   background-color: rgb(100, 91, 85);
-  color: rgb(255, 214, 184);
+  color: rgb(236, 214, 173);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
   transition: all 0.3s ease-in-out;
   border-radius: 10PX;
