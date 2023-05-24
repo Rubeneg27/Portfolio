@@ -26,9 +26,14 @@ function App() {
     setisMenuOpen(false)
   }
   
+  const handleClickBody = () => {
+    if (isMenuOpen) {
+      setisMenuOpen(false)
+    }
+  }
 
   return (
-    <div className="App">
+    <div className="App" onClick={handleClickBody}>
       <Header isNavCollapsed={isNavCollapsed} updateContent={updateContent}></Header>
       <Hero 
       collapse={collapse}
