@@ -84,7 +84,7 @@ code {
   border: solid 3px rgb(100, 91, 85);
   background-color: rgb(100, 91, 85);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
-  color: rgb(236, 214, 173);
+  color: rgb(236, 209, 173);
   width: 55vw;
   text-align: center;
   display: flex;
@@ -97,7 +97,7 @@ code {
   border: solid 3px rgb(100, 91, 85);
   background-color: rgb(100, 91, 85);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
-  color: rgb(236, 214, 173);
+  color: rgb(236, 209, 173);
   width: 100%;
   text-align: center;
   display: flex;
@@ -128,18 +128,7 @@ code {
 
 .Nav-collapsed {
   width: 0;
-  height: 60px;
-  background-color: rgb(100, 91, 85);
-  transition: all 0.3s ease-in-out;
-  border: hidden;
-  list-style: none;
-  padding-inline-start: 0;
-  margin: 0; 
-  justify-self: center;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  height: 0;
   padding-inline-start: 0;
 }
 
@@ -149,7 +138,6 @@ code {
 
 .Hero .article {
   width: 55vw;
-  border: solid 1px rgb(144 134 116);
   transition: all 0.3s ease-in-out;
   text-align: center;
   justify-content: center;
@@ -159,14 +147,14 @@ code {
 
 .Hero .article-expanded {
   width: 100%;
-  border: solid 1px rgb(144 134 116);
   transition: all 0.3s ease-in-out;
   text-align: center;
+  position: relative;
 }
 
 .Nav li {
   background-color: rgb(100, 91, 85);
-  color: rgb(236, 214, 173);
+  color: rgb(236, 209, 173);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
   transition: all 0.3s ease-in-out;
   border-radius: 10PX;
@@ -183,6 +171,8 @@ code {
 
 .Nav li:hover {
   cursor: pointer;
+  background-color: rgb(176, 226, 231);
+  color: rgb(105, 84, 64);
 }
 
 .Nav-hidden {
@@ -213,26 +203,18 @@ code {
   padding: 0;
   margin-top: 1%;
   margin-left: 1%;
-  position: relative;
+  position: absolute;
   background-color: rgb(100, 91, 85);
   height: 60px;
   width: 60px;
   border: none;
-
 }
 .burger:hover{
   cursor: pointer;
 }
 
 .burger-hidden{
-  padding: 0;
-  margin-top: 1%;
-  margin-left: 11%;
-  position: relative;
-  background-color: rgb(100, 91, 85);
-  height: 0;
-  width: 0;
-  border: none;
+  display: none;
 }
 
 svg {
@@ -245,7 +227,6 @@ svg rect {
   height: 6px;
 }
 .dropdown-menu {
-  transition: all 0.3s ease-in-out;
   margin-top: 1%;
   margin-left: 1%;
   width: 100px;
@@ -254,16 +235,18 @@ svg rect {
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
   color: rgb(236, 209, 173);
   list-style: none;
+  position: absolute;
 }
 .dropdown-menu li {
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
   margin-bottom: 10%;
+  background-color: rgb(100, 91, 85);
 }
 
 .dropdown-menu li:hover {
   cursor: pointer;
-  
+  background-color: rgb(181, 223, 228);
+  color: rgb(105, 84, 64);
 }
 
 .dropdown-menu-closed {
@@ -273,3 +256,22 @@ svg rect {
   margin-block-start: 0;
 }
 
+section {
+  font-size: 1.4rem;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.Home {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Home span {
+  text-align: left;
+  width: 50%;
+}
+.Home img {
+  width: 40%;
+}

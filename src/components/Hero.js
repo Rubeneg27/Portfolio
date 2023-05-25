@@ -42,8 +42,6 @@ function Hero ({unCollapse, collapse, setContent, content, setIsCollapsed, isCol
     console.log("Menu open")
   }
 
-  
-
   return (
     <div className="Hero">
       <ul className={ isCollapsed ? "Nav-collapsed" : "Nav" } >

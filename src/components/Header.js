@@ -7,7 +7,7 @@ function Header ({isNavCollapsed, updateContent}) {
             </div>
             <div className="subCabecera">
                 <div className={isNavCollapsed? "logos-collapsed" : "logos"}></div>
-                <div className={isNavCollapsed? "resumen-expanded" : "resumen"}>Indicación del lugar actual en la página</div>
+                <div className={isNavCollapsed? "resumen-expanded" : "resumen"}>HOME</div>
             </div>
         </div>
     )
