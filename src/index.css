@@ -257,6 +257,7 @@ svg rect {
 }
 
 section {
+  background-color: antiquewhite;
   font-size: 1.4rem;
   margin: 0;
   width: 100%;
@@ -274,4 +275,16 @@ section {
 }
 .Home img {
   width: 40%;
+}
+
+canvas {
+  background-color: rgb(255, 255, 255);
+}
+
+.about {
+  display: grid;
+}
+
+.projects {
+  display: grid;
 }
