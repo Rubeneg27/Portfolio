@@ -395,27 +395,33 @@ function Platformer() {
         }, 1000 / gameSpeed);
       }
     }
-    const handleKeyDown = ({ keyCode }) => {
+    const handleKeyDown = (event) => {
+      const {keyCode} = event
       if (keyCode === 37) {
         // console.log('left')
         keys.left.pressed = true;
       } else if (keyCode === 39) {
         // console.log('right')
+        event.preventDefault()
         keys.right.pressed = true;
       } else if (keyCode === 38 && !jumped) {
+        event.preventDefault()
         jumped = true;
         // console.log('up')
         Player1.velocity.y = -20;
       } else if (keyCode === 38 && jumped && fly) {
         // console.log('up')
+        event.preventDefault()
         Player1.velocity.y = -20;
       } else if (keyCode === 38 && jumped && doubleJump && !doubleJumped) {
         // console.log('up')
+        event.preventDefault()
         keys.up.pressed = true
         doubleJumped = true;
         Player1.velocity.y = -20;
       } else if (keyCode === 40) {
         // console.log('down')
+        event.preventDefault()
         keys.down.pressed = true
       } else if (keyCode === 27) {
         isPaused = !isPaused;
@@ -425,6 +431,7 @@ function Platformer() {
         c.fillStyle = 'black';
         c.fillRect(Player1.position.x + 50, Player1.position.y, 30, 30);
       } else {
+        event.preventDefault()
         Player1.velocity.x -= 0;
         Player1.velocity.x += 0;
       }
