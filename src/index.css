@@ -94,8 +94,8 @@ code {
 
 .resumen-expanded {
   transition: all 0.3s ease-in-out;
-  border: solid 3px rgb(100, 91, 85);
-  background-color: rgb(100, 91, 85);
+  border: solid 3px rgb(94, 113, 119);
+  background-color: rgb(94, 113, 119);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
   color: rgb(236, 209, 173);
   width: 100%;
