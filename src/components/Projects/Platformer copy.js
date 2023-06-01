@@ -7,7 +7,7 @@ function Platformer() {
     const canvas = canvasRef.current;
     const c = canvas.getContext('2d');
     let platformWidth = canvas.width / 9.7;
-    let platformHeight = canvas.width / 48;
+    let platformHeight = canvas.width / 9.7;
     //Canvas
     canvas.width = 800; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
     canvas.height = 600;
@@ -179,16 +179,9 @@ function Platformer() {
         left: {
           pressed: false,
         },
-        up: {
-          pressed: false,
-        },
-        down: {
-          pressed: false,
-        }
       };
-      
+
     function animate() {
-      
       const currentTime = performance.now();
       const deltaTime = (currentTime - lastFrameTime) / 1000;
       lastFrameTime = currentTime;
@@ -248,7 +241,6 @@ function Platformer() {
               doubleJumper.position.x += speed;
               flyer.position.x += speed;
             }
-            
           }
         
           /*
@@ -395,61 +387,7 @@ function Platformer() {
         }, 1000 / gameSpeed);
       }
     }
-    const handleKeyDown = ({ keyCode }) => {
-      if (keyCode === 37) {
-        // console.log('left')
-        keys.left.pressed = true;
-      } else if (keyCode === 39) {
-        // console.log('right')
-        keys.right.pressed = true;
-      } else if (keyCode === 38 && !jumped) {
-        jumped = true;
-        // console.log('up')
-        Player1.velocity.y = -20;
-      } else if (keyCode === 38 && jumped && fly) {
-        // console.log('up')
-        Player1.velocity.y = -20;
-      } else if (keyCode === 38 && jumped && doubleJump && !doubleJumped) {
-        // console.log('up')
-        keys.up.pressed = true
-        doubleJumped = true;
-        Player1.velocity.y = -20;
-      } else if (keyCode === 40) {
-        // console.log('down')
-        keys.down.pressed = true
-      } else if (keyCode === 27) {
-        isPaused = !isPaused;
-        // console.log('Paused = ' + isPaused);
-        animate();
-      } else if (keyCode === 32) {
-        c.fillStyle = 'black';
-        c.fillRect(Player1.position.x + 50, Player1.position.y, 30, 30);
-      } else {
-        Player1.velocity.x -= 0;
-        Player1.velocity.x += 0;
-      }
-    };
     
-    const handleKeyUp = ({ keyCode }) => {
-      if (keyCode === 37) {
-        // console.log('left')
-        keys.left.pressed = false;
-      } else if (keyCode === 39) {
-        // console.log('right')
-        keys.right.pressed = false;
-      } else if (keyCode === 38) {
-        keys.up.pressed = false
-        // console.log('up')
-      } else if (keyCode === 40) {
-        keys.down.pressed = false
-        // console.log('down')
-      }
-    };
-    
-    document.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('keyup', handleKeyUp);
-  
-    // Limpia los event listeners cuando el componente se desmonta
     //---MOVIMIENTO DEL PERSONAJE---
     /*
     addEventListener('keydown', (event) => { //Cualquier método que venga del objeto window no necesita el "window."
@@ -513,9 +451,7 @@ function Platformer() {
       }
     });
     */
-   
     //Player1.update()
-    
     animate();
   }, []);
   return <canvas ref={canvasRef} />;
