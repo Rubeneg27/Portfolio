@@ -6,13 +6,13 @@ function Platformer() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const c = canvas.getContext('2d');
+    //Canvas
+    canvas.width = 1024; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
+    canvas.height = 768;
     let platformWidth = canvas.width / 9.7;
     let platformHeight = canvas.width / 48;
-    //Canvas
-    canvas.width = 800; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
-    canvas.height = 600;
-    const gravity = 1;
-    let gameSpeed = 144;
+    const gravity = canvas.width/800;
+    let gameSpeed = 60;
     
     //Variables para el movimiento del personaje
     let steady = false; //Trackea si el personaje está quieto o no
@@ -23,7 +23,7 @@ function Platformer() {
     //Power Ups
     let fly = false;
     let doubleJump = false;
-    let speed = 6;
+    let speed = canvas.width/133.33;
     let isNearBat = false; // Poniendo la variable fuera, con que un sólo murciélago vea al player, todos le perseguirán
     let isPaused = false;
     let lastFrameTime = performance.now();
@@ -150,22 +150,12 @@ function Platformer() {
       platforms.push(new Platform(x, y));
     }
 
-    function init() {//Esta función se llamará más adelante para reiniciar el nivel cuando se pierda
-      Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis 
-      FloorGenerator(20);
-      platformGenerator(canvas.width / 6.4, canvas.width / 9.6);
-      bat = [
-        new Enemy(canvas.width / 2.4, canvas.width / 19.8),
-        new Enemy(canvas.width / 1.28, canvas.width / 9.6),
-      ];
-      doubleJumper = new powerUp(canvas.width/1.98, canvas.width/3.96);
-      flyer = new powerUp(canvas.width/1.1, canvas.width/6.6);
-      scrollOffSet = 0; //Para definir el límite máximo de píxeles que se desplazarán los elementos (y definir por ejemplo el final del escenario)
-    }
-      let Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis
+    //Variables para generar el escenario en la primera ejecución
+    let Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis
       // const Platform1 = new Platform()
       FloorGenerator(20);
-      platformGenerator(canvas.width / 6.4, canvas.width / 9.6); // const Platform1 = new Platform() Generaría una única plataforma
+      platformGenerator(canvas.width / 6.4, canvas.height / 1.6); // const Platform1 = new Platform() Generaría una única plataforma
+      platformGenerator(canvas.width / 2.5, canvas.height / 3.2);
       let bat = [
         new Enemy(canvas.width/2.4, canvas.width/19.8),
         new Enemy(canvas.width/1.28, canvas.width/9.6),
@@ -186,6 +176,19 @@ function Platformer() {
           pressed: false,
         }
       };
+
+    function init() {//Esta función se llamará más adelante para reiniciar el nivel cuando se pierda
+      Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis 
+      FloorGenerator(20);
+      platformGenerator(canvas.width / 6.4, canvas.height / 1.6);
+      bat = [
+        new Enemy(canvas.width / 2.4, canvas.width / 19.8),
+        new Enemy(canvas.width / 1.28, canvas.width / 9.6),
+      ];
+      doubleJumper = new powerUp(canvas.width/1.98, canvas.width/3.96);
+      flyer = new powerUp(canvas.width/1.1, canvas.width/6.6);
+      scrollOffSet = 0; //Para definir el límite máximo de píxeles que se desplazarán los elementos (y definir por ejemplo el final del escenario)
+    }
       
     function animate() {
       
@@ -193,7 +196,7 @@ function Platformer() {
       const deltaTime = (currentTime - lastFrameTime) / 1000;
       lastFrameTime = currentTime;
       const fps = 1 / deltaTime;
-      //console.log(`FPS: ${fps.toFixed(2)}`)
+      console.log(`FPS: ${fps.toFixed(0)}`)
       //console.log(`${scrollOffSet}`)
       if (isPaused == false) { //La animación solo ocurre cuando el juego NO está pausado
         setTimeout(function () {
@@ -326,29 +329,29 @@ function Platformer() {
               Player1.position.y > bat.position.y &&
               isNearBat == true
             ) {
-              bat.position.x -= 1.4;
-              bat.position.y += 1.4;
+              bat.position.x -= canvas.width/571.4285;
+              bat.position.y += canvas.width/571.4285;
             } else if (
               Player1.position.x < bat.position.x &&
               Player1.position.y < bat.position.y &&
               isNearBat == true
             ) {
-              bat.position.x -= 1.4;
-              bat.position.y -= 1.4;
+              bat.position.x -= canvas.width/571.4285;
+              bat.position.y -= canvas.width/571.4285;
             } else if (
               Player1.position.x > bat.position.x &&
               Player1.position.y < bat.position.y &&
               isNearBat == true
             ) {
-              bat.position.x += 1.4;
-              bat.position.y -= 1.4;
+              bat.position.x += canvas.width/571.4285;
+              bat.position.y -= canvas.width/571.4285;
             } else if (
               Player1.position.x > bat.position.x &&
               Player1.position.y > bat.position.y &&
               isNearBat == true
             ) {
-              bat.position.x += 1.4;
-              bat.position.y += 1.4;
+              bat.position.x += canvas.width/571.4285;
+              bat.position.y += canvas.width/571.4285;
             }
             //console.log(isNearBat)
           });
@@ -399,6 +402,7 @@ function Platformer() {
       const {keyCode} = event
       if (keyCode === 37) {
         // console.log('left')
+        event.preventDefault()
         keys.left.pressed = true;
       } else if (keyCode === 39) {
         // console.log('right')
@@ -408,22 +412,23 @@ function Platformer() {
         event.preventDefault()
         jumped = true;
         // console.log('up')
-        Player1.velocity.y = -20;
-      } else if (keyCode === 38 && jumped && fly) {
-        // console.log('up')
+        Player1.velocity.y = -canvas.width/40 ;
+      } else if (keyCode === 38 && jumped && !doubleJump && !fly) {
         event.preventDefault()
-        Player1.velocity.y = -20;
+      } else if (keyCode === 38 && fly) {
+        event.preventDefault()
+        Player1.velocity.y = -canvas.width/60;
       } else if (keyCode === 38 && jumped && doubleJump && !doubleJumped) {
-        // console.log('up')
         event.preventDefault()
         keys.up.pressed = true
+        Player1.velocity.y = -canvas.width/40;
         doubleJumped = true;
-        Player1.velocity.y = -20;
       } else if (keyCode === 40) {
         // console.log('down')
         event.preventDefault()
         keys.down.pressed = true
       } else if (keyCode === 27) {
+        event.preventDefault()
         isPaused = !isPaused;
         // console.log('Paused = ' + isPaused);
         animate();
@@ -431,23 +436,27 @@ function Platformer() {
         c.fillStyle = 'black';
         c.fillRect(Player1.position.x + 50, Player1.position.y, 30, 30);
       } else {
-        event.preventDefault()
         Player1.velocity.x -= 0;
         Player1.velocity.x += 0;
       }
     };
     
-    const handleKeyUp = ({ keyCode }) => {
+    const handleKeyUp = (event) => {
+      const {keyCode} = event
       if (keyCode === 37) {
+        event.preventDefault()
         // console.log('left')
         keys.left.pressed = false;
       } else if (keyCode === 39) {
+        event.preventDefault()
         // console.log('right')
         keys.right.pressed = false;
       } else if (keyCode === 38) {
+        event.preventDefault()
         keys.up.pressed = false
         // console.log('up')
       } else if (keyCode === 40) {
+        event.preventDefault()
         keys.down.pressed = false
         // console.log('down')
       }
