@@ -189,18 +189,16 @@ function Platformer() {
       flyer = new powerUp(canvas.width/1.1, canvas.width/6.6);
       scrollOffSet = 0; //Para definir el límite máximo de píxeles que se desplazarán los elementos (y definir por ejemplo el final del escenario)
     }
-      
+
+
     function animate() {
-      
       const currentTime = performance.now();
       const deltaTime = (currentTime - lastFrameTime) / 1000;
       lastFrameTime = currentTime;
       const fps = 1 / deltaTime;
-      console.log(`FPS: ${fps.toFixed(0)}`)
-      //console.log(`${scrollOffSet}`)
+      console.log(`FPS: ${fps.toFixed(0)}`);
+      // Realiza la lógica de la animación aquí
       if (isPaused == false) { //La animación solo ocurre cuando el juego NO está pausado
-        setTimeout(function () {
-          requestAnimationFrame(animate);
           c.fillStyle = 'white';
           c.fillRect(0, 0, canvas.width, canvas.height);
           bat.forEach((bat) => {
@@ -395,8 +393,8 @@ function Platformer() {
             //console.log('You lose')
             init();
           }
-        }, 1000 / gameSpeed);
       }
+      setTimeout(animate, 1000 / 60);
     }
     const handleKeyDown = (event) => {
       const {keyCode} = event
