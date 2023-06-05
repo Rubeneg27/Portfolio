@@ -1,3 +1,5 @@
+//ESTE CODIGO NO HACE EL MOVIMIENTO EXTRAÑO DE ELEMENTOS
+
 import React, { useEffect, useRef } from 'react';
 
 function Platformer() {
@@ -6,14 +8,11 @@ function Platformer() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const c = canvas.getContext('2d');
-    let platformWidth = canvas.width / 9.7;
-    let platformHeight = canvas.width / 9.7;
+    const gravity = 1;
+    let gameSpeed = 144;
     //Canvas
     canvas.width = 800; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
     canvas.height = 600;
-    const gravity = 1;
-    let gameSpeed = 144;
-    
     //Variables para el movimiento del personaje
     let steady = false; //Trackea si el personaje está quieto o no
     let onPlatform = false;
@@ -30,7 +29,8 @@ function Platformer() {
     //Variables para plataformas
     var platforms = [];
     //REVISAR.Estas variables están porque no he conseguido acceder al ancho de cada plataforma en el array
-    
+    let platformWidth = canvas.width / 9.7;
+    let platformHeight = canvas.width / 9.7;
 
     class Player {
       constructor() {
@@ -387,70 +387,64 @@ function Platformer() {
         }, 1000 / gameSpeed);
       }
     }
-    
+
     //---MOVIMIENTO DEL PERSONAJE---
     /*
     addEventListener('keydown', (event) => { //Cualquier método que venga del objeto window no necesita el "window."
      console.log(event) //Revisando la consola, podemos ver con esta línea qué "keycode" tiene asociado cada tecla que pulsamos
     }) 
     */
-    /*
-    addEventListener('keydown', ({ keyCode }) => {
-      //De esta forma es más específico que las líneas 52-54
-      //console.log( keyCode )
-      if (keyCode == 37) {
-        //console.log('left')
+
+    const handleKeyDown = ({ keyCode }) => {
+      if (keyCode === 37) {
+        // console.log('left')
         keys.left.pressed = true;
-      } else if (keyCode == 39) {
-        //console.log('right')
+      } else if (keyCode === 39) {
+        // console.log('right')
         keys.right.pressed = true;
-      } else if (keyCode == 38 && jumped == false) {
+      } else if (keyCode === 38 && !jumped) {
         jumped = true;
-        //console.log('up')
+        // console.log('up')
         Player1.velocity.y = -20;
-      } else if (keyCode == 38 && jumped == true && fly == true) {
-        //console.log('up')
+      } else if (keyCode === 38 && jumped && fly) {
+        // console.log('up')
         Player1.velocity.y = -20;
-      } else if (
-        keyCode == 38 &&
-        jumped == true &&
-        doubleJump == true &&
-        doubleJumped == false
-      ) {
-        //console.log('up')
+      } else if (keyCode === 38 && jumped && doubleJump && !doubleJumped) {
+        // console.log('up')
         doubleJumped = true;
         Player1.velocity.y = -20;
-      } else if (keyCode == 40) {
-        //console.log('down')
-      } else if (keyCode == 27) {
+      } else if (keyCode === 40) {
+        // console.log('down')
+      } else if (keyCode === 27) {
         isPaused = !isPaused;
-        //console.log('Paused = ' + isPaused);
+        // console.log('Paused = ' + isPaused);
         animate();
-      } else if (keyCode == 32) {
+      } else if (keyCode === 32) {
         c.fillStyle = 'black';
         c.fillRect(Player1.position.x + 50, Player1.position.y, 30, 30);
       } else {
         Player1.velocity.x -= 0;
         Player1.velocity.x += 0;
       }
-    });
-
-    addEventListener('keyup', ({ keyCode }) => {
-      //De esta forma es más específico que las líneas 52-54
-      //console.log( keyCode )
-      if (keyCode == 37) {
-        //console.log('left')
+    };
+    
+    const handleKeyUp = ({ keyCode }) => {
+      if (keyCode === 37) {
+        // console.log('left')
         keys.left.pressed = false;
-      } else if (keyCode == 39) {
-        //console.log('right')
+      } else if (keyCode === 39) {
+        // console.log('right')
         keys.right.pressed = false;
-      } else if (keyCode == 38) {
-        //console.log('up')
-      } else if (keyCode == 40) {
+      } else if (keyCode === 38) {
+        // console.log('up')
+      } else if (keyCode === 40) {
         // console.log('down')
       }
-    });
-    */
+    };
+    
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keyup', handleKeyUp);
+    
     //Player1.update()
     animate();
   }, []);

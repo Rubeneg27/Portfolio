@@ -7,7 +7,7 @@ function Platformer() {
     const canvas = canvasRef.current;
     const c = canvas.getContext('2d');
     //Canvas
-    canvas.width = 1024; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
+    canvas.width = 1024  ; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
     canvas.height = 768;
     let platformWidth = canvas.width / 9.7;
     let platformHeight = canvas.width / 48;
@@ -181,6 +181,7 @@ function Platformer() {
       Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis 
       FloorGenerator(20);
       platformGenerator(canvas.width / 6.4, canvas.height / 1.6);
+      platformGenerator(canvas.width / 2.5, canvas.height / 3.2);
       bat = [
         new Enemy(canvas.width / 2.4, canvas.width / 19.8),
         new Enemy(canvas.width / 1.28, canvas.width / 9.6),
@@ -197,8 +198,11 @@ function Platformer() {
       lastFrameTime = currentTime;
       const fps = 1 / deltaTime;
       console.log(`FPS: ${fps.toFixed(0)}`);
+      console.log(canvas.width)
+      console.log(Player1.position.x)
+      console.log(Player1.velocity.x)
       // Realiza la lógica de la animación aquí
-      if (isPaused == false) { //La animación solo ocurre cuando el juego NO está pausado
+      if (isPaused === false) { //La animación solo ocurre cuando el juego NO está pausado
           c.fillStyle = 'white';
           c.fillRect(0, 0, canvas.width, canvas.height);
           bat.forEach((bat) => {
@@ -213,10 +217,7 @@ function Platformer() {
             platform.draw();//Platform1.draw() Esto sirve para una única plataforma
           });
           //ACTUALIZARÁ LA POSICIÓN DE TODO EL ESCENARIO AL LLEGAR A UN BORDE
-          if (
-            keys.right.pressed &&
-            Player1.position.x + Player1.width < canvas.width - canvas.width/4.95
-          ) {
+          if (keys.right.pressed && Player1.position.x + Player1.width < canvas.width - canvas.width/4.95) {
             //Si presino derecha y el player no ha llegado al borde derecho...
             Player1.velocity.x = speed;
           } else if (keys.left.pressed && Player1.position.x > canvas.width/4.95) {
@@ -394,7 +395,8 @@ function Platformer() {
             init();
           }
       }
-      setTimeout(animate, 1000 / 60);
+      setTimeout(animate, 1000 / gameSpeed);
+      
     }
     const handleKeyDown = (event) => {
       const {keyCode} = event
@@ -428,8 +430,6 @@ function Platformer() {
       } else if (keyCode === 27) {
         event.preventDefault()
         isPaused = !isPaused;
-        // console.log('Paused = ' + isPaused);
-        animate();
       } else if (keyCode === 32) {
         c.fillStyle = 'black';
         c.fillRect(Player1.position.x + 50, Player1.position.y, 30, 30);
