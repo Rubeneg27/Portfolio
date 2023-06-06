@@ -2,17 +2,16 @@ import React, { useEffect, useRef } from 'react';
 
 function Platformer() {
   const canvasRef = useRef(null);
-
   useEffect(() => {
-    const canvas = canvasRef.current;
+    const canvas = document.querySelector('canvas')
     const c = canvas.getContext('2d');
     //Canvas
-    canvas.width = 1024  ; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
-    canvas.height = 768;
+    canvas.width = 800; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
+    canvas.height = 600;
     let platformWidth = canvas.width / 9.7;
     let platformHeight = canvas.width / 48;
-    const gravity = canvas.width/800;
-    let gameSpeed = 60;
+    const gravity = 0.7;
+    let gameSpeed = 200;
     
     //Variables para el movimiento del personaje
     let steady = false; //Trackea si el personaje está quieto o no
@@ -23,7 +22,7 @@ function Platformer() {
     //Power Ups
     let fly = false;
     let doubleJump = false;
-    let speed = canvas.width/133.33;
+    let speed = 6;
     let isNearBat = false; // Poniendo la variable fuera, con que un sólo murciélago vea al player, todos le perseguirán
     let isPaused = false;
     let lastFrameTime = performance.now();
@@ -186,8 +185,8 @@ function Platformer() {
         new Enemy(canvas.width / 2.4, canvas.width / 19.8),
         new Enemy(canvas.width / 1.28, canvas.width / 9.6),
       ];
-      doubleJumper = new powerUp(canvas.width/1.98, canvas.width/3.96);
-      flyer = new powerUp(canvas.width/1.1, canvas.width/6.6);
+      doubleJumper = new powerUp(canvas.width/1.98, canvas.width/6.6);
+      flyer = new powerUp(canvas.width/1.067, canvas.width/6.6);
       scrollOffSet = 0; //Para definir el límite máximo de píxeles que se desplazarán los elementos (y definir por ejemplo el final del escenario)
     }
 
@@ -197,13 +196,7 @@ function Platformer() {
       const deltaTime = (currentTime - lastFrameTime) / 1000;
       lastFrameTime = currentTime;
       const fps = 1 / deltaTime;
-      console.log(`FPS: ${fps.toFixed(0)}`);
-      console.log(canvas.width)
-      console.log(Player1.position.x)
-      console.log(Player1.velocity.x)
-      // Realiza la lógica de la animación aquí
-      if (isPaused === false) { //La animación solo ocurre cuando el juego NO está pausado
-          c.fillStyle = 'white';
+      c.fillStyle = 'white';
           c.fillRect(0, 0, canvas.width, canvas.height);
           bat.forEach((bat) => {
             bat.update();
@@ -217,7 +210,10 @@ function Platformer() {
             platform.draw();//Platform1.draw() Esto sirve para una única plataforma
           });
           //ACTUALIZARÁ LA POSICIÓN DE TODO EL ESCENARIO AL LLEGAR A UN BORDE
-          if (keys.right.pressed && Player1.position.x + Player1.width < canvas.width - canvas.width/4.95) {
+          if (
+            keys.right.pressed &&
+            Player1.position.x + Player1.width < canvas.width - canvas.width/4.95
+          ) {
             //Si presino derecha y el player no ha llegado al borde derecho...
             Player1.velocity.x = speed;
           } else if (keys.left.pressed && Player1.position.x > canvas.width/4.95) {
@@ -250,7 +246,6 @@ function Platformer() {
               doubleJumper.position.x += speed;
               flyer.position.x += speed;
             }
-            
           }
         
           /*
@@ -328,29 +323,29 @@ function Platformer() {
               Player1.position.y > bat.position.y &&
               isNearBat == true
             ) {
-              bat.position.x -= canvas.width/571.4285;
-              bat.position.y += canvas.width/571.4285;
+              bat.position.x -= 1.4;
+              bat.position.y += 1.4;
             } else if (
               Player1.position.x < bat.position.x &&
               Player1.position.y < bat.position.y &&
               isNearBat == true
             ) {
-              bat.position.x -= canvas.width/571.4285;
-              bat.position.y -= canvas.width/571.4285;
+              bat.position.x -= 1.4;
+              bat.position.y -= 1.4;
             } else if (
               Player1.position.x > bat.position.x &&
               Player1.position.y < bat.position.y &&
               isNearBat == true
             ) {
-              bat.position.x += canvas.width/571.4285;
-              bat.position.y -= canvas.width/571.4285;
+              bat.position.x += 1.4;
+              bat.position.y -= 1.4;
             } else if (
               Player1.position.x > bat.position.x &&
               Player1.position.y > bat.position.y &&
               isNearBat == true
             ) {
-              bat.position.x += canvas.width/571.4285;
-              bat.position.y += canvas.width/571.4285;
+              bat.position.x += 1.4;
+              bat.position.y += 1.4;
             }
             //console.log(isNearBat)
           });
@@ -394,10 +389,12 @@ function Platformer() {
             //console.log('You lose')
             init();
           }
-      }
-      setTimeout(animate, 1000 / gameSpeed);
-      
+
+          if (!isPaused) {
+            requestAnimationFrame(animate)
+          }
     }
+
     const handleKeyDown = (event) => {
       const {keyCode} = event
       if (keyCode === 37) {
@@ -412,16 +409,16 @@ function Platformer() {
         event.preventDefault()
         jumped = true;
         // console.log('up')
-        Player1.velocity.y = -canvas.width/40 ;
+        Player1.velocity.y = -25;
       } else if (keyCode === 38 && jumped && !doubleJump && !fly) {
         event.preventDefault()
       } else if (keyCode === 38 && fly) {
         event.preventDefault()
-        Player1.velocity.y = -canvas.width/60;
+        Player1.velocity.y = -15;
       } else if (keyCode === 38 && jumped && doubleJump && !doubleJumped) {
         event.preventDefault()
         keys.up.pressed = true
-        Player1.velocity.y = -canvas.width/40;
+        Player1.velocity.y = -25;
         doubleJumped = true;
       } else if (keyCode === 40) {
         // console.log('down')
@@ -430,6 +427,8 @@ function Platformer() {
       } else if (keyCode === 27) {
         event.preventDefault()
         isPaused = !isPaused;
+        // console.log('Paused = ' + isPaused);
+        animate();
       } else if (keyCode === 32) {
         c.fillStyle = 'black';
         c.fillRect(Player1.position.x + 50, Player1.position.y, 30, 30);

@@ -180,18 +180,12 @@ function Platformer() {
           pressed: false,
         },
       };
-
     function animate() {
       const currentTime = performance.now();
       const deltaTime = (currentTime - lastFrameTime) / 1000;
       lastFrameTime = currentTime;
       const fps = 1 / deltaTime;
-      //console.log(`FPS: ${fps.toFixed(2)}`)
-      //console.log(`${scrollOffSet}`)
-      if (isPaused == false) { //La animación solo ocurre cuando el juego NO está pausado
-        setTimeout(function () {
-          requestAnimationFrame(animate);
-          c.fillStyle = 'white';
+      c.fillStyle = 'white';
           c.fillRect(0, 0, canvas.width, canvas.height);
           bat.forEach((bat) => {
             bat.update();
@@ -384,10 +378,12 @@ function Platformer() {
             //console.log('You lose')
             init();
           }
-        }, 1000 / gameSpeed);
-      }
-    }
 
+          if (!isPaused) {
+            requestAnimationFrame(animate)
+          }
+    }
+    
     //---MOVIMIENTO DEL PERSONAJE---
     /*
     addEventListener('keydown', (event) => { //Cualquier método que venga del objeto window no necesita el "window."
