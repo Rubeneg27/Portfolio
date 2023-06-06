@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
+
 function Platformer() {
   const canvasRef = useRef(null);
   useEffect(() => {
@@ -196,7 +197,12 @@ function Platformer() {
       const deltaTime = (currentTime - lastFrameTime) / 1000;
       lastFrameTime = currentTime;
       const fps = 1 / deltaTime;
-      c.fillStyle = 'white';
+      const targetFPS = 60
+      const fixedDeltaTime = 1 / targetFPS
+      console.log(`FPS: ${fps.toFixed(0)}`);
+        const iterations = Math.floor((performance.now() - lastFrameTime) / fixedDeltaTime);
+
+          c.fillStyle = 'white';
           c.fillRect(0, 0, canvas.width, canvas.height);
           bat.forEach((bat) => {
             bat.update();
@@ -389,7 +395,6 @@ function Platformer() {
             //console.log('You lose')
             init();
           }
-
           if (!isPaused) {
             requestAnimationFrame(animate)
           }
