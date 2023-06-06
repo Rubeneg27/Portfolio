@@ -1,4 +1,6 @@
 import Platformer from "./Projects/Platformer.js"
+import TestFPS
+ from "./Projects/TestFPS.js";
 import { useState } from "react";
 
 function Projects () {
@@ -12,6 +14,9 @@ function Projects () {
       case "Platformer":
         setProject(<Platformer></Platformer>)
         break;
+      case "TestFPS":
+        setProject(<TestFPS></TestFPS>)
+        break;
       default:
         setProject("")
     }
@@ -19,6 +24,7 @@ function Projects () {
     return (
         <section className="projects">
           {pressed ? null : (<button onClick={()=>handleClick("Platformer")}>Platformer</button>)}
+          {pressed ? null : (<button onClick={()=>handleClick("TestFPS")}>TestFPS</button>)}
           {project}
         </section>
         
