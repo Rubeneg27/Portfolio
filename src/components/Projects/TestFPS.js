@@ -7,13 +7,14 @@ function Platformer() {
     const canvas = document.querySelector('canvas')
     const c = canvas.getContext('2d');
     //Canvas
-    canvas.width = 1024; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
-    canvas.height = 768;
+    canvas.width = 800; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
+    canvas.height = 600;
     let platformWidth = canvas.width / 9.7;
     let platformHeight = canvas.width / 48;
-    let gravity = 1.5;
+    let gravity = canvas.height/512;
     //Variables para el movimiento del personaje
     let steady = false;
+    console.log(steady)
     let onPlatform = false;
     let jumped = false;
     let doubleJumped = false;
@@ -21,7 +22,7 @@ function Platformer() {
     //Power Ups
     let fly = false;
     let doubleJump = false;
-    let speed = 10;
+    let speed = canvas.width/76.8;
     let isNearBat = false;
     let isPaused = false;
     //Variables para plataformas
@@ -29,7 +30,7 @@ function Platformer() {
     // Variables para el bucle del juego
     let lastFrameTime = performance.now();
     const targetFPS = 60;
-    const frameInterval = 1000 / targetFPS;
+    const frameInterval = 1000 / targetFPS; //los fps objetivo en milisegundos
 
     class Player {
       constructor() {
@@ -57,16 +58,14 @@ function Platformer() {
         this.position.x += this.velocity.x;
         if (
           this.position.y + this.height + this.velocity.y < canvas.height &&
-          onPlatform == false
+          onPlatform === false
         ) {
           this.velocity.y += gravity;
-          steady = false;
         } else if (
           this.position.y + this.height + this.velocity.y < canvas.height &&
-          onPlatform == true
+          onPlatform === true
         ) {
           this.velocity.y += gravity;
-          steady = true;
         }
       }
     }
@@ -145,8 +144,8 @@ function Platformer() {
     let Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis
       // const Platform1 = new Platform()
       FloorGenerator(20);
-      platformGenerator(canvas.width / 6.4, canvas.height / 1.6); // const Platform1 = new Platform() Generaría una única plataforma
-      platformGenerator(canvas.width / 2.5, canvas.height / 3.2);
+      platformGenerator(canvas.width / 6.4, 0.625*canvas.height); // const Platform1 = new Platform() Generaría una única plataforma
+      platformGenerator(canvas.width / 2.5, 0.3125*canvas.height);
       let bat = [
         new Enemy(canvas.width/2.4, canvas.width/19.8),
         new Enemy(canvas.width/1.28, canvas.width/9.6),
@@ -281,28 +280,28 @@ function Platformer() {
             if (
               Player1.position.x < bat.position.x &&
               Player1.position.y > bat.position.y &&
-              isNearBat == true
+              isNearBat === true
             ) {
               bat.position.x -= 1.4;
               bat.position.y += 1.4;
             } else if (
               Player1.position.x < bat.position.x &&
               Player1.position.y < bat.position.y &&
-              isNearBat == true
+              isNearBat === true
             ) {
               bat.position.x -= 1.4;
               bat.position.y -= 1.4;
             } else if (
               Player1.position.x > bat.position.x &&
               Player1.position.y < bat.position.y &&
-              isNearBat == true
+              isNearBat === true
             ) {
               bat.position.x += 1.4;
               bat.position.y -= 1.4;
             } else if (
               Player1.position.x > bat.position.x &&
               Player1.position.y > bat.position.y &&
-              isNearBat == true
+              isNearBat === true
             ) {
               bat.position.x += 1.4;
               bat.position.y += 1.4;
@@ -351,15 +350,17 @@ function Platformer() {
             init();
           }
     }
-
+    //Función recursiva para el Loop del juego y control de los FPS
     function gameLoop() {
         requestAnimationFrame(gameLoop);
         const currentTime = performance.now();
-        const deltaTime = currentTime - lastFrameTime;
-        if (deltaTime >= frameInterval) {
+        const deltaTime = currentTime - lastFrameTime; //El tiempo que tardó en darse el proceso desde que se llamó
+        if (deltaTime >= frameInterval && !isPaused) { //Si el tiempo que tardó el proceso es mayor o igual
           lastFrameTime = currentTime - (deltaTime % frameInterval);
+          let fps = 1/(deltaTime/1000)
+          console.log(`fps: ${fps}`)
           animate();
-        }
+        }     
       }
 
     const handleKeyDown = (event) => {
@@ -375,17 +376,18 @@ function Platformer() {
       } else if (keyCode === 38 && !jumped) {
         event.preventDefault()
         jumped = true;
+        steady = false
         // console.log('up')
-        Player1.velocity.y = -28;
+        Player1.velocity.y = -canvas.height/27.4285714;
       } else if (keyCode === 38 && jumped && !doubleJump && !fly) {
         event.preventDefault()
       } else if (keyCode === 38 && fly) {
         event.preventDefault()
-        Player1.velocity.y = -15;
+        Player1.velocity.y = -canvas.height/51.2;
       } else if (keyCode === 38 && jumped && doubleJump && !doubleJumped) {
         event.preventDefault()
         keys.up.pressed = true
-        Player1.velocity.y = -28;
+        Player1.velocity.y = -canvas.height/27.4285714;
         doubleJumped = true;
       } else if (keyCode === 40) {
         // console.log('down')
@@ -402,6 +404,7 @@ function Platformer() {
       } else {
         Player1.velocity.x -= 0;
         Player1.velocity.x += 0;
+        console.log(`Player is still standing ${steady}`)
       }
     };
     
