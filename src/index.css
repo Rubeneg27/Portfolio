@@ -1,7 +1,7 @@
 body {
   margin-top: 5vh;
   font-size: 25px;
-  font-family: 'public-pixel', 'Droid Sans', 'Helvetica Neue',
+  font-family: Retro Gaming, monospace, Quicksand
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -230,7 +230,7 @@ svg rect {
 .dropdown-menu {
   margin-top: 1%;
   margin-left: 1%;
-  width: 100px;
+  width: 120px;
   padding: 2%;
   background-color: rgb(100, 91, 85);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
@@ -239,6 +239,7 @@ svg rect {
   position: absolute;
 }
 .dropdown-menu li {
+  text-align: left;
   cursor: pointer;
   margin-bottom: 10%;
   background-color: rgb(100, 91, 85);

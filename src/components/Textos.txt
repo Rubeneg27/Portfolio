@@ -31,7 +31,7 @@ ABOUT --> IT
 
 ABOUT --> Mi historia con la informática
     
-    Toda mi vida me he sentido atraido por la informática. Desde la primera clase de ofimática a la que me apuntaron ya tenía interés por configurar mi propio orenador. 
+    Siempre me ha interesado la informática. Desde la primera clase de ofimática a la que me apuntaron ya tenía interés por configurar mi propio orenador. 
     Ahorraba para comprar piezas que yo mismo instalaba para tener más rendimiento, lo montaba desde cero y hasta me atrevía a llevar más allá el rendimiento haciendo 
     overclock (nada ha salido ardiendo de momento). 
 

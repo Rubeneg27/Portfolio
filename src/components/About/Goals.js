@@ -1,6 +1,7 @@
 function Goals() {
     return (
-        <section>Objetivos</section>
+        <section>
+				</section>
     )
 }
 
