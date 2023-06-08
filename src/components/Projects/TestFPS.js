@@ -7,8 +7,8 @@ function Platformer() {
     const canvas = document.querySelector('canvas')
     const c = canvas.getContext('2d');
     //Canvas
-    canvas.width = 800; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
-    canvas.height = 600;
+    canvas.width = 1280; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
+    canvas.height = 1024;
     let platformWidth = canvas.width / 9.7;
     let platformHeight = canvas.width / 48;
     let gravity = canvas.height/512;
@@ -176,6 +176,8 @@ function Platformer() {
         new Enemy(canvas.width / 2.4, canvas.width / 19.8),
         new Enemy(canvas.width / 1.28, canvas.width / 9.6),
       ];
+      gravity = canvas.height/512;
+      isNearBat = false;
       doubleJumper = new powerUp(canvas.width/1.98, canvas.width/6.6);
       flyer = new powerUp(canvas.width/1.067, canvas.width/6.6);
       scrollOffSet = 0; //Para definir el límite máximo de píxeles que se desplazarán los elementos (y definir por ejemplo el final del escenario)
@@ -318,7 +320,7 @@ function Platformer() {
           ) {
             fly = true;
             doubleJump = false;
-            gravity = 1
+            gravity = canvas.height/768
             flyer.position.y = -100000;
             flyer.position.x = 0;
             //console.log('touched')

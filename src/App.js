@@ -36,7 +36,6 @@ function App() {
 
   return (
     <div className="App" onClick={handleClickBody}>
-      <h1 style={{fontFamily: 'Retro Gaming'}}>Fuente</h1>
       <Header isNavCollapsed={isNavCollapsed} updateContent={updateContent}></Header>
       <Hero 
       collapse={collapse}
