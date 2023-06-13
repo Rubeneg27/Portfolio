@@ -1,5 +1,5 @@
 import './index.css';
-import Hero from './components/Hero'
+import Main from './components/Main'
 import Header from './components/Header';
 import Home from './components/Home'
 //import './fonts/Retro Gaming.ttf'
@@ -37,7 +37,7 @@ function App() {
   return (
     <div className="App" onClick={handleClickBody}>
       <Header isNavCollapsed={isNavCollapsed} updateContent={updateContent}></Header>
-      <Hero 
+      <Main 
       collapse={collapse}
       unCollapse={unCollapse}
       setContent={setContent} 
@@ -46,7 +46,7 @@ function App() {
       setIsCollapsed={setIsCollapsed}
       isMenuOpen={isMenuOpen}
       setisMenuOpen={setisMenuOpen}
-      ></Hero>
+      ></Main>
     </div>
   );
 }

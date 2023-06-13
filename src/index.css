@@ -105,7 +105,7 @@ code {
   align-items: center;
 }
 
-.Hero {
+main {
   margin-left: 10vw;
   margin-right: 10vw;
   display: flex;
@@ -136,7 +136,7 @@ code {
   cursor: pointer;
 }
 
-.Hero .article {
+main .article {
   width: 55vw;
   transition: all 0.3s ease-in-out;
   text-align: center;
@@ -145,7 +145,7 @@ code {
 }
 
 
-.Hero .article-expanded {
+main .article-expanded {
   width: 100%;
   height: 600px;
   transition: all 0.3s ease-in-out;
