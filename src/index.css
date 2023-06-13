@@ -107,8 +107,6 @@ code {
 
 .Hero {
   display: block;
-  margin-left: 10vw;
-  margin-right: 10vw;
   justify-content: space-between;
   height: 60vh;
 }
