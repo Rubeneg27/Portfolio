@@ -81,9 +81,9 @@ function Main () {
   }
 
   return (
-    <div className="Hero" onClick={handleClickBody}>
+    <main onClick={handleClickBody}>
       <Header isNavCollapsed={isNavCollapsed} updateContent={updateContent}></Header>
-      <div className="Hero-2">
+      <div className="main-section">
         <Nav 
         isCollapsed={isCollapsed} 
         handleClickHome={handleClickHome} 
@@ -111,7 +111,7 @@ function Main () {
           </div>
       </div>
       
-    </div>
+    </main>
     
   )
   
