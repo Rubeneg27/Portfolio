@@ -143,7 +143,7 @@ code {
   cursor: pointer;
 }
 
-.article {
+.Hero-2 .article {
   width: 55vw;
   transition: all 0.3s ease-in-out;
   text-align: center;
@@ -152,7 +152,7 @@ code {
 }
 
 
-.article-expanded {
+.Hero-2 .article-expanded {
   width: 100%;
   height: 600px;
   transition: all 0.3s ease-in-out;
