@@ -1,7 +1,7 @@
 body {
   margin-top: 5vh;
   font-size: 25px;
-  font-family: Retro Gaming, monospace, Quicksand
+  font-family: monospace, Retro Gaming, Quicksand
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -205,7 +205,7 @@ code {
   margin-top: 1%;
   margin-left: 1%;
   position: absolute;
-  background-color: rgb(100, 91, 85);
+  background-color: rgb(94, 113, 119);
   height: 60px;
   width: 60px;
   border: none;
@@ -232,7 +232,7 @@ svg rect {
   margin-left: 1%;
   width: 120px;
   padding: 2%;
-  background-color: rgb(100, 91, 85);
+  background-color: rgb(94, 113, 119);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
   color: rgb(236, 209, 173);
   list-style: none;
@@ -242,7 +242,7 @@ svg rect {
   text-align: left;
   cursor: pointer;
   margin-bottom: 10%;
-  background-color: rgb(100, 91, 85);
+  background-color: rgb(94, 113, 119);
 }
 
 .dropdown-menu li:hover {
@@ -290,4 +290,13 @@ canvas {
 
 .projects {
   display: grid;
+}
+
+.back-button {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  margin: 6% 1% 1% 1%;
+  background-color: rgb(94, 113, 119);
+  color: rgb(236, 209, 173);
 }

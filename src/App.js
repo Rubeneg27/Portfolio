@@ -2,8 +2,8 @@ import './index.css';
 import Hero from './components/Hero'
 import Header from './components/Header';
 import Home from './components/Home'
-import './fonts/Retro Gaming.ttf'
-import 'typeface-quicksand'
+//import './fonts/Retro Gaming.ttf'
+//import 'typeface-quicksand'
 import { useState } from "react";
 
 function App() {

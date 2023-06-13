@@ -1,11 +1,10 @@
 function Skills() {
     return (
         <section>
-					<h2>About</h2>
-					<h3>Currículum Vitae</h3>
-					<h3>Formación académica</h3>
+					<h2>Formación académica</h2>
 					<p>Graduado en Química por la Universidad de Sevilla</p>
-					<h3>Habilidades</h3>
+					<h2>Habilidades</h2>
+                    <h3>Programación</h3>
 					<p>META Front-end Developer.</p>
 					<p>
 					Certificado constituido por 9 cursos:<br></br>
@@ -18,6 +17,12 @@ function Skills() {
         React Basics<br></br>
         Principles of UX/UI Design<br></br>
         Advanced React<br></br>
+                    <h3>Idiomas</h3>
+                    Inglés - Certificado B2 - Nivel conversacional
+                    <h3>Sociales</h3>
+                    Bueno para el trabajo en equipo. No tengo problemas en aportar mi punto de vistar ni en escuchar el de los demás.<br></br> 
+                    Siempre dispuesto a aprender y sin miedo a reconocer si estoy equivocado.<br></br>
+                    Buena actitud ante la presión afrontándola con paciencia y la perseverancia.
 					</p>
 				</section>
     )

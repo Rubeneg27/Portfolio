@@ -2,8 +2,15 @@ import Home from "./Home";
 import About from "./About";
 import Projects from "./Projects";
 import Contact from "./Contact";
+import { useState } from "react";
 
 function Hero ({unCollapse, collapse, setContent, content, setIsCollapsed, isCollapsed, isMenuOpen, setisMenuOpen}) { //All states managed by parent component App.js
+  
+  const [backHome, setBackHome] = useState(false)
+
+  const updateHome = (value) => {
+    setBackHome(value)
+  }
 
   const handleClickHome = () => {
     setisMenuOpen(false)
@@ -18,7 +25,7 @@ function Hero ({unCollapse, collapse, setContent, content, setIsCollapsed, isCol
     setIsCollapsed(true)
     collapse()
     setContent(
-      <About></About>
+      <About backHome={backHome} updateHome={updateHome}></About>
     )
   }
   const handleClickProjects = () => {
@@ -26,7 +33,7 @@ function Hero ({unCollapse, collapse, setContent, content, setIsCollapsed, isCol
     setIsCollapsed(true)
     collapse()
     setContent(
-      <Projects></Projects>
+      <Projects ></Projects>
     )
   }
   const handleClickContact = () => {
@@ -36,6 +43,9 @@ function Hero ({unCollapse, collapse, setContent, content, setIsCollapsed, isCol
     setContent(
       <Contact></Contact>
     )
+  }
+  const handleClickAboutBurger = () => {
+    setBackHome(true)
   }
   const toggleMenu = () => {
     setisMenuOpen(!isMenuOpen)
@@ -61,7 +71,7 @@ function Hero ({unCollapse, collapse, setContent, content, setIsCollapsed, isCol
         </div> 
         : isMenuOpen ? <ul className="dropdown-menu">
         <li onClick={handleClickHome}>Home</li>
-        <li onClick={handleClickAbout}>About</li>
+        <li onClick={handleClickAboutBurger}>About</li>
         <li onClick={handleClickProjects}>Projects</li>
         <li onClick={handleClickContact}>Contact</li>
       </ul> : 

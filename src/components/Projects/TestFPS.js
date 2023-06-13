@@ -11,7 +11,7 @@ function Platformer() {
     canvas.height = 1024;
     let platformWidth = canvas.width / 9.7;
     let platformHeight = canvas.width / 48;
-    let gravity = canvas.height/512;
+    let gravity = canvas.height/350;
     //Variables para el movimiento del personaje
     let steady = false;
     console.log(steady)
@@ -176,7 +176,7 @@ function Platformer() {
         new Enemy(canvas.width / 2.4, canvas.width / 19.8),
         new Enemy(canvas.width / 1.28, canvas.width / 9.6),
       ];
-      gravity = canvas.height/512;
+      gravity = canvas.height/350;
       isNearBat = false;
       doubleJumper = new powerUp(canvas.width/1.98, canvas.width/6.6);
       flyer = new powerUp(canvas.width/1.067, canvas.width/6.6);
@@ -380,7 +380,7 @@ function Platformer() {
         jumped = true;
         steady = false
         // console.log('up')
-        Player1.velocity.y = -canvas.height/27.4285714;
+        Player1.velocity.y = -canvas.height/23;
       } else if (keyCode === 38 && jumped && !doubleJump && !fly) {
         event.preventDefault()
       } else if (keyCode === 38 && fly) {
@@ -389,7 +389,7 @@ function Platformer() {
       } else if (keyCode === 38 && jumped && doubleJump && !doubleJumped) {
         event.preventDefault()
         keys.up.pressed = true
-        Player1.velocity.y = -canvas.height/27.4285714;
+        Player1.velocity.y = -canvas.height/23;
         doubleJumped = true;
       } else if (keyCode === 40) {
         // console.log('down')

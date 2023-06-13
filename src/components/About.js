@@ -3,32 +3,45 @@ import Experience from "./About/Experience"
 import Goals from "./About/Goals"
 import { useState } from "react";
 
-function About () {
-  const [about, setAbout] = useState("");
-
+function About ({backHome, updateHome}) {
+  const [content, setContent] = useState("");
+  const [clicked, setClicked] = useState(false)
+  
   function handleClick (elemento) {
     switch (elemento) {
       case "Formación":
-        setAbout(<Skills></Skills>);
+        updateHome(false)
+        setContent(<Skills></Skills>);
+        setClicked(true)
         break;
       case "Experiencia":
-        setAbout(<Experience></Experience>);
+        updateHome(false)
+        setContent(<Experience></Experience>);
+        setClicked(true)
         break;
       case "Objetivos":
-        setAbout(<Goals></Goals>);
+        updateHome(false)
+        setContent(<Goals></Goals>);
+        setClicked(true)
+        break;
+      case "back":
+        updateHome(false)
+        setContent("")
+        setClicked(false)
         break;
       default:
-        setAbout("")
+        setContent("")
     }
   }
 
   return (
     
     <section className="about">
-      <button onClick={()=>handleClick("Formación")}>Formación</button>
-      <button onClick={()=>handleClick("Experiencia")}>Experiencia</button>
-      <button onClick={()=>handleClick("Objetivos")}>Objetivos</button>
-      {about}
+      {backHome? "true" : "false"}
+      <button hidden={backHome? false : clicked? true : false} onClick={()=>handleClick("Formación")}>Formación</button>
+      <button hidden={backHome? false : clicked? true : false} onClick={()=>handleClick("Experiencia")}>Experiencia</button>
+      <button hidden={backHome? false : clicked? true : false} onClick={()=>handleClick("Objetivos")}>Objetivos</button>
+      {backHome? null : content}
     </section>
   )
   
