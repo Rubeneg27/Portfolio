@@ -37,11 +37,10 @@ function About ({backHome, updateHome}) {
   return (
     
     <section className="about">
-      {backHome? "true" : "false"}
       <button hidden={backHome? false : clicked? true : false} onClick={()=>handleClick("Formación")}>Formación</button>
       <button hidden={backHome? false : clicked? true : false} onClick={()=>handleClick("Experiencia")}>Experiencia</button>
       <button hidden={backHome? false : clicked? true : false} onClick={()=>handleClick("Objetivos")}>Objetivos</button>
-      {backHome? null : content}
+      {content}
     </section>
   )
   

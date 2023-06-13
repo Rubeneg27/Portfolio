@@ -1,5 +1,5 @@
 import './index.css';
-import Hero from './components/Hero'
+import Main from './components/Main.js'
 
 function App() {
 
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App" >
-      <Hero />
+      <Main />
     </div>
   );
 }
