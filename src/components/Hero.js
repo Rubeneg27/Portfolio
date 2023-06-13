@@ -5,7 +5,7 @@ import Contact from "./Contact";
 import { useState } from "react";
 
 function Hero ({unCollapse, collapse, setContent, content, setIsCollapsed, isCollapsed, isMenuOpen, setisMenuOpen}) { //All states managed by parent component App.js
-  
+  const test = ""
   const [backHome, setBackHome] = useState(false)
 
   const updateHome = (value) => {
