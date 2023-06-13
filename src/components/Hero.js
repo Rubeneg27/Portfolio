@@ -2,12 +2,39 @@ import Home from "./Home";
 import About from "./About";
 import Projects from "./Projects";
 import Contact from "./Contact";
+import Header from './Header';
+
 import { useState } from "react";
 
-function Hero ({unCollapse, collapse, setContent, content, setIsCollapsed, isCollapsed, isMenuOpen, setisMenuOpen}) { //All states managed by parent component App.js
-  
-  const [backHome, setBackHome] = useState(false)
+function Hero () { //All states managed by parent component App.js
 
+  const [backHome, setBackHome] = useState(false)
+  const [isNavCollapsed, setIsNavCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [isMenuOpen, setisMenuOpen] = useState(false)
+  const [content, setContent] = useState(
+    <Home></Home>
+  )
+
+  const collapse = () => { //Collapses hero's section
+    setIsNavCollapsed(true);
+  }
+  const unCollapse = () => { //Uncollapses hero's section
+    setIsNavCollapsed(false)
+  }
+  
+  const updateContent = () => { //Allows Hero's states to be managed from Header in order to propely collapse or uncollapse components
+    setContent(<Home></Home>) // update heros's section content to "Home" when clicking on "Ruben's site" in the Header component
+    setIsCollapsed(false)
+    setIsNavCollapsed(false)
+    setisMenuOpen(false)
+  }
+  
+  const handleClickBody = () => {
+    if (isMenuOpen) {
+      setisMenuOpen(false)
+    }
+  }
   const updateHome = (value) => {
     setBackHome(value)
   }
@@ -53,7 +80,9 @@ function Hero ({unCollapse, collapse, setContent, content, setIsCollapsed, isCol
   }
 
   return (
-    <div className="Hero">
+    <div className="Hero" onClick={handleClickBody}>
+      <Header isNavCollapsed={isNavCollapsed} updateContent={updateContent}></Header>
+      <div className="Hero-2">
       <ul className={ isCollapsed ? "Nav-collapsed" : "Nav" } >
         <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={handleClickHome}>Home</li>
         <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={handleClickAbout}>About</li>
@@ -78,6 +107,8 @@ function Hero ({unCollapse, collapse, setContent, content, setIsCollapsed, isCol
         <button className="burger-hidden"></button>}
         {content}
         </div>
+      </div>
+      
     </div>
     
   )
