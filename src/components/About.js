@@ -5,15 +5,10 @@ import { useEffect, useState } from "react";
 
 const About = ({ hidden, handleAbout }) => {
   const [content, setContent] = useState("");
-  const [isHidden, setIsHidden] = useState("")
-  useEffect(() => {
-    setContent(content)
-    setIsHidden(hidden)
-  },[content, hidden])
-  
+
   function handleClick (elemento) {
-    console.log(`hidden: ${hidden}`)
-    handleAbout(true)
+    console.log(`hidden About: ${hidden}`)
+    handleAbout()
     switch (elemento) {
       case "Formación":
         setContent(<Skills></Skills>);
@@ -31,10 +26,10 @@ const About = ({ hidden, handleAbout }) => {
 
   return (
     <section className="about">
-      <button hidden={isHidden} onClick={()=>handleClick("Formación")}>Formación</button>
-      <button hidden={isHidden} onClick={()=>handleClick("Experiencia")}>Experiencia</button>
-      <button hidden={isHidden} onClick={()=>handleClick("Objetivos")}>Objetivos</button>
-      {isHidden? content : null}
+      <button hidden={hidden} onClick={()=>handleClick("Formación")}>Formación</button>
+      <button hidden={hidden} onClick={()=>handleClick("Experiencia")}>Experiencia</button>
+      <button hidden={hidden} onClick={()=>handleClick("Objetivos")}>Objetivos</button>
+      {hidden? content : null}
     </section>
   )
   

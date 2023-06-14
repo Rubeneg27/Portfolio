@@ -8,11 +8,13 @@ import Nav from './Nav';
 import { useEffect, useState } from "react";
 
 function Main () { 
-
+  
   const [isNavCollapsed, setIsNavCollapsed] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isMenuOpen, setisMenuOpen] = useState(false)
-  const [hidden, setHidden] = useState("")
+  const [hidden, setHidden] = useState(false)
+  const [aboutClicked, setAboutClicked] = useState(false)
+  console.log(`hidden in main: ${hidden}`)
   const [content, setContent] = useState(
     <Home></Home>
   )
@@ -27,6 +29,7 @@ function Main () {
   }
   
   const updateContent = () => { 
+    setHidden(false)
     setContent(<Home></Home>) // update heros's section content to "Home" when clicking on "Ruben's site" in the Header component
     setIsCollapsed(false)
     setIsNavCollapsed(false)
@@ -39,12 +42,13 @@ function Main () {
     }
   }
 
-  const handleAbout = (value) => {
-    setHidden(value)
-    console.log(`hidden: ${hidden}`)
+  const handleAbout = () => {
+    setHidden(true)
+    setAboutClicked(!aboutClicked)
   }
 
   const handleClickHome = () => {
+    setHidden(false)
     setisMenuOpen(false)
     setIsCollapsed(false)
     unCollapse()
@@ -53,15 +57,17 @@ function Main () {
     )
   }
   const handleClickAbout = () => {
+    setHidden(false)
     setisMenuOpen(false)
     setIsCollapsed(true)
-    setHidden(false)
     collapse()
     setContent(
       <About hidden={hidden} handleAbout={handleAbout}></About> //Se tiene que renderizar cuando cambie hidden
     )
   }
   const handleClickProjects = () => {
+    console.log(`hidden: ${hidden}`)
+    setHidden(false)
     setisMenuOpen(false)
     setIsCollapsed(true)
     collapse()
@@ -70,6 +76,7 @@ function Main () {
     )
   }
   const handleClickContact = () => {
+    setHidden(false)
     unCollapse()
     setisMenuOpen(false)
     setIsCollapsed(false)
@@ -84,12 +91,13 @@ function Main () {
 
   useEffect(()=>{
     if (hidden) {
+      setHidden(false)
       setContent(<About hidden={hidden} handleAbout={handleAbout}></About>)
     } else {
       setContent(content)
     }
     
-  },[content,hidden])
+  },[aboutClicked])
 
   return (
     <main onClick={handleClickBody}>
