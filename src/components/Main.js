@@ -1,21 +1,50 @@
 import Home from "./Home";
-import About from "./About";
 import Projects from "./Projects";
 import Contact from "./Contact";
 import Header from './Header';
 import Nav from './Nav';
-
-import { useState } from "react";
+import Skills from "./About/Skills"
+import Experience from "./About/Experience"
+import Goals from "./About/Goals"
+import { useEffect, useState } from "react";
 
 function Main () { 
-
   const [isNavCollapsed, setIsNavCollapsed] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isMenuOpen, setisMenuOpen] = useState(false)
-  const [hidden, setHidden] = useState("")
+  const [hidden, setHidden] = useState(false)
+  const [about, setAbout] = useState("");
   const [content, setContent] = useState(
     <Home></Home>
   )
+  useEffect(() => {
+    function handleClick (elemento) {
+      console.log(`hidden: ${hidden}`)
+      setHidden(true)
+      switch (elemento) {
+        case "Formación":
+          setAbout(<Skills></Skills>);
+          break;
+        case "Experiencia":
+          setAbout(<Experience></Experience>);
+          break;
+        case "Objetivos":
+          setAbout(<Goals></Goals>);
+          break;
+        default:
+          setAbout("")
+      }
+    }
+    setContent(
+      <section className="about">
+        <button hidden={hidden} onClick={()=>handleClick("Formación")}>Formación</button>
+        <button hidden={hidden} onClick={()=>handleClick("Experiencia")}>Experiencia</button>
+        <button hidden={hidden} onClick={()=>handleClick("Objetivos")}>Objetivos</button>
+        {hidden? about : null}
+      </section>
+    )
+  }, [hidden, about])
+  
 
   const collapse = () => { //Collapses hero's section
     setIsNavCollapsed(true);
@@ -37,11 +66,6 @@ function Main () {
     }
   }
 
-  const handleAbout = (value) => {
-    setHidden(value)
-    console.log(`hidden: ${hidden}`)
-  }
-
   const handleClickHome = () => {
     setisMenuOpen(false)
     setIsCollapsed(false)
@@ -50,13 +74,38 @@ function Main () {
       <Home></Home>
     )
   }
+  
+  
+  function handleClick (elemento) {
+    console.log(`hidden: ${hidden}`)
+    setHidden(true)
+    switch (elemento) {
+      case "Formación":
+        setAbout(<Skills></Skills>);
+        break;
+      case "Experiencia":
+        setAbout(<Experience></Experience>);
+        break;
+      case "Objetivos":
+        setAbout(<Goals></Goals>);
+        break;
+      default:
+        setAbout("")
+    }
+  }
+
   const handleClickAbout = () => {
     setisMenuOpen(false)
     setIsCollapsed(true)
     setHidden(false)
     collapse()
     setContent(
-      <About hidden={hidden} handleAbout={handleAbout}></About>
+      <section className="about">
+        <button hidden={hidden} onClick={()=>handleClick("Formación")}>Formación</button>
+        <button hidden={hidden} onClick={()=>handleClick("Experiencia")}>Experiencia</button>
+        <button hidden={hidden} onClick={()=>handleClick("Objetivos")}>Objetivos</button>
+        {hidden? about : null}
+      </section>
     )
   }
   const handleClickProjects = () => {
