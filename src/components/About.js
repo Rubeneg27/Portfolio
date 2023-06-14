@@ -1,33 +1,31 @@
 import Skills from "./About/Skills"
 import Experience from "./About/Experience"
 import Goals from "./About/Goals"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function About ({backHome, updateHome}) {
+function About ({clicked}) {
   const [content, setContent] = useState("");
-  const [clicked, setClicked] = useState(false)
-  
+  const [hide, setHide] = useState(true)
+  console.log(`hide:${hide}`)
+  useEffect(()=> {
+    setHide(clicked)
+  }, [clicked])
+
   function handleClick (elemento) {
     switch (elemento) {
       case "Formación":
-        updateHome(false)
+        setHide(true)
         setContent(<Skills></Skills>);
-        setClicked(true)
+        
         break;
       case "Experiencia":
-        updateHome(false)
+        setHide(true)
         setContent(<Experience></Experience>);
-        setClicked(true)
+
         break;
       case "Objetivos":
-        updateHome(false)
+        setHide(true)
         setContent(<Goals></Goals>);
-        setClicked(true)
-        break;
-      case "back":
-        updateHome(false)
-        setContent("")
-        setClicked(false)
         break;
       default:
         setContent("")
@@ -35,12 +33,11 @@ function About ({backHome, updateHome}) {
   }
 
   return (
-    
     <section className="about">
-      <button hidden={backHome? false : clicked? true : false} onClick={()=>handleClick("Formación")}>Formación</button>
-      <button hidden={backHome? false : clicked? true : false} onClick={()=>handleClick("Experiencia")}>Experiencia</button>
-      <button hidden={backHome? false : clicked? true : false} onClick={()=>handleClick("Objetivos")}>Objetivos</button>
-      {content}
+      <button hidden={hide} onClick={()=>handleClick("Formación")}>Formación</button>
+      <button hidden={hide} onClick={()=>handleClick("Experiencia")}>Experiencia</button>
+      <button hidden={hide} onClick={()=>handleClick("Objetivos")}>Objetivos</button>
+      {hide? content : null}
     </section>
   )
   

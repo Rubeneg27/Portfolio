@@ -9,10 +9,10 @@ import { useState } from "react";
 
 function Main () { 
 
-  const [backHome, setBackHome] = useState(false)
   const [isNavCollapsed, setIsNavCollapsed] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isMenuOpen, setisMenuOpen] = useState(false)
+  const [clicked, setClicked] = useState(false)
   const [content, setContent] = useState(
     <Home></Home>
   )
@@ -36,9 +36,7 @@ function Main () {
       setisMenuOpen(false)
     }
   }
-  const updateHome = (value) => {
-    setBackHome(value)
-  }
+
 
   const handleClickHome = () => {
     setisMenuOpen(false)
@@ -51,9 +49,11 @@ function Main () {
   const handleClickAbout = () => {
     setisMenuOpen(false)
     setIsCollapsed(true)
+    setClicked(false)
     collapse()
+    console.log(`clicked: ${clicked}`)
     setContent(
-      <About backHome={backHome} updateHome={updateHome}></About>
+      <About clicked={clicked}></About>
     )
   }
   const handleClickProjects = () => {
@@ -66,18 +66,16 @@ function Main () {
   }
   const handleClickContact = () => {
     unCollapse()
+    setClicked(true)
     setisMenuOpen(false)
     setIsCollapsed(false)
     setContent(
       <Contact></Contact>
     )
   }
-  const handleClickAboutBurger = () => {
-    setBackHome(true)
-  }
+
   const toggleMenu = () => {
     setisMenuOpen(!isMenuOpen)
-    console.log("Menu open")
   }
 
   return (
@@ -102,7 +100,7 @@ function Main () {
           </div> 
           : isMenuOpen ? <ul className="dropdown-menu">
           <li onClick={handleClickHome}>Home</li>
-          <li onClick={handleClickAboutBurger}>About</li>
+          <li onClick={handleClickAbout}>About</li>
           <li onClick={handleClickProjects}>Projects</li>
           <li onClick={handleClickContact}>Contact</li>
         </ul> : 
