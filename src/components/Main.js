@@ -12,7 +12,7 @@ function Main () {
   const [isNavCollapsed, setIsNavCollapsed] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isMenuOpen, setisMenuOpen] = useState(false)
-  const [clicked, setClicked] = useState(false)
+  const [hidden, setHidden] = useState("")
   const [content, setContent] = useState(
     <Home></Home>
   )
@@ -37,6 +37,10 @@ function Main () {
     }
   }
 
+  const handleAbout = (value) => {
+    setHidden(value)
+    console.log(`hidden: ${hidden}`)
+  }
 
   const handleClickHome = () => {
     setisMenuOpen(false)
@@ -49,11 +53,10 @@ function Main () {
   const handleClickAbout = () => {
     setisMenuOpen(false)
     setIsCollapsed(true)
-    setClicked(false)
+    setHidden(false)
     collapse()
-    console.log(`clicked: ${clicked}`)
     setContent(
-      <About clicked={clicked}></About>
+      <About hidden={hidden} handleAbout={handleAbout}></About>
     )
   }
   const handleClickProjects = () => {
@@ -66,7 +69,6 @@ function Main () {
   }
   const handleClickContact = () => {
     unCollapse()
-    setClicked(true)
     setisMenuOpen(false)
     setIsCollapsed(false)
     setContent(
