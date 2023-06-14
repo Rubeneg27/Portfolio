@@ -5,7 +5,7 @@ import Contact from "./Contact";
 import Header from './Header';
 import Nav from './Nav';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Main () { 
 
@@ -17,6 +17,8 @@ function Main () {
     <Home></Home>
   )
 
+  
+  
   const collapse = () => { //Collapses hero's section
     setIsNavCollapsed(true);
   }
@@ -56,7 +58,7 @@ function Main () {
     setHidden(false)
     collapse()
     setContent(
-      <About hidden={hidden} handleAbout={handleAbout}></About>
+      <About hidden={hidden} handleAbout={handleAbout}></About> //Se tiene que renderizar cuando cambie hidden
     )
   }
   const handleClickProjects = () => {
@@ -79,6 +81,15 @@ function Main () {
   const toggleMenu = () => {
     setisMenuOpen(!isMenuOpen)
   }
+
+  useEffect(()=>{
+    if (hidden) {
+      setContent(<About hidden={hidden} handleAbout={handleAbout}></About>)
+    } else {
+      setContent(content)
+    }
+    
+  },[content,hidden])
 
   return (
     <main onClick={handleClickBody}>
