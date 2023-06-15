@@ -1,5 +1,5 @@
 body {
-  margin-top: 5vh;
+  margin: 0;
   font-size: 25px;
   font-family: monospace, Retro Gaming, Quicksand
     sans-serif;
@@ -10,6 +10,9 @@ body {
   height: 100vh;
 }
 
+.App {
+  padding-top: 2vh;
+}
 .Header {
   margin-left: 10vw;
   margin-right: 10vw;
@@ -129,6 +132,7 @@ main {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   padding-inline-start: 0;
+  transition: all 0.3s ease-in-out
 }
 
 .Nav-collapsed {
@@ -143,6 +147,7 @@ main {
 
 .main-section .article {
   width: 55vw;
+  height: 60vh;
   transition: all 0.3s ease-in-out;
   text-align: center;
   justify-content: center;
@@ -152,10 +157,11 @@ main {
 
 .main-section .article-expanded {
   width: 100%;
-  height: 600px;
+  height: 65vh;
   transition: all 0.3s ease-in-out;
   text-align: center;
   position: relative;
+  overflow: scroll;
 }
 
 .Nav li {
@@ -235,8 +241,8 @@ svg rect {
 .dropdown-menu {
   margin-top: 1%;
   margin-left: 1%;
-  width: 120px;
-  padding: 2%;
+  width: 11vw;
+  padding: 2% 0% 2% 0%;
   background-color: rgb(94, 113, 119);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
   color: rgb(236, 209, 173);
@@ -244,10 +250,12 @@ svg rect {
   position: absolute;
 }
 .dropdown-menu li {
-  text-align: left;
-  cursor: pointer;
-  margin-bottom: 10%;
-  background-color: rgb(94, 113, 119);
+  border-bottom: 1px solid rgb(248, 211, 180);
+    margin: 2%;
+    text-align: left;
+    cursor: pointer;
+    margin-bottom: 2vh;
+    background-color: rgb(94, 113, 119);
 }
 
 .dropdown-menu li:hover {
