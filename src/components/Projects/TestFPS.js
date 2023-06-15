@@ -360,7 +360,7 @@ function Platformer() {
         if (deltaTime >= frameInterval && !isPaused) { //Si el tiempo que tardó el proceso es mayor o igual
           lastFrameTime = currentTime - (deltaTime % frameInterval);
           let fps = 1/(deltaTime/1000)
-          console.log(`fps: ${fps}`)
+          console.log(`FPS Loop: ${fps}`)
           animate();
         }     
       }
