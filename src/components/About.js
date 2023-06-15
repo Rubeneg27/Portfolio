@@ -16,9 +16,6 @@ const About = ({ hidden, handleAbout }) => {
       case "Experiencia":
         setContent(<Experience></Experience>);
         break;
-      case "Objetivos":
-        setContent(<Goals></Goals>);
-        break;
       default:
         setContent("")
     }
@@ -28,7 +25,6 @@ const About = ({ hidden, handleAbout }) => {
     <section className="about">
       <button hidden={hidden} onClick={()=>handleClick("Formación")}>Formación</button>
       <button hidden={hidden} onClick={()=>handleClick("Experiencia")}>Experiencia</button>
-      <button hidden={hidden} onClick={()=>handleClick("Objetivos")}>Objetivos</button>
       {hidden? content : null}
     </section>
   )

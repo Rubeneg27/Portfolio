@@ -3,7 +3,7 @@ function Header ({isNavCollapsed, updateContent}) {
         <div className="Header">
             <div className="cabecera">
                 <p className="title" onClick={updateContent}>Ruben's site</p>
-                <p>rubeneg27@gmail.com</p>
+                <p className="email">rubeneg27@gmail.com</p>
             </div>
             <div className="subCabecera">
                 <div className={isNavCollapsed? "logos-collapsed" : "logos"}></div>

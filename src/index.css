@@ -27,22 +27,16 @@ code {
 .cabecera {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 1vw;
+  padding-bottom: 3vh;
 }
 
 .cabecera .title {
-  font-size: 2.2rem;
+  font-size: 2em;
   border-left: solid 0.2vw rgb(100, 91, 85);
-  border-bottom: solid 6px rgb(100, 91, 85);
-  border-top: hidden;
-  border-right: hidden;
   margin-top: 0;
   margin-bottom: 0;
   text-align: start;
-  padding-left: 2vw;
-  padding-bottom: 1vw;
-  padding-top: 1vw;
-  padding-right: 0vw;
+  padding-left: 1vw;
   width: 17vw; 
 }
 
@@ -50,11 +44,18 @@ code {
   cursor: pointer;
 }
 .cabecera p {
-  border-top: solid 3px rgb(100, 91, 85);
-  border-right: solid 3px rgb(100, 91, 85);
   align-self: center;
-  padding-bottom: 1vw;
   padding-right: 2vw;
+  padding-top: 1vw;
+}
+
+.email {
+  font-size: 0.8em;
+  border: solid 0.2vw rgb(100, 91, 85);
+  border-left: hidden;
+  border-bottom: hidden;
+  padding-bottom: 1vh;
+  padding-right: 1vh;
   padding-top: 1vw;
 }
 
@@ -127,11 +128,6 @@ main {
   padding-inline-start: 0;
   margin: 0; 
   justify-self: center;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 0;
   transition: all 0.3s ease-in-out
 }
 
@@ -148,6 +144,7 @@ main {
 }
 
 .main-section .article {
+  border: solid 3px rgb(100, 91, 85);
   width: 55vw;
   height: 60vh;
   transition: all 0.3s ease-in-out;
@@ -163,12 +160,22 @@ main {
   transition: all 0.3s ease-in-out;
   text-align: center;
   position: relative;
-  overflow: scroll;
+}
+
+.contact {
+  display: flex;
+  justify-content: space-between;
+  background-color: antiquewhite;
+  padding: 0;
+  font-size: 1.4rem;
+  margin: 0;
+  height: 100%;
 }
 
 .Nav li {
-  background-color: rgb(100, 91, 85);
-  color: rgb(236, 209, 173);
+  padding-left: 1vw;
+  border: solid rgb(94, 113, 119);
+  color: rgb(94, 113, 119);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
   transition: all 0.3s ease-in-out;
   border-radius: 10PX;
@@ -176,9 +183,9 @@ main {
   font-size: 30px;
   align-self: center;
   height: 5vh;
-  width: 19.2vw;
+  width: 18.2vw;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   overflow: hidden;
 }
@@ -193,8 +200,8 @@ main {
   opacity: 0;
 }
 .li-collapsed {
-  background-color: rgb(100, 91, 85);
-  color: rgb(236, 209, 173);
+  border: solid rgb(94, 113, 119);
+  color: rgb(94, 113, 119);
   box-shadow: 0px 0px 0px rgba(60, 61, 63, 0.25);
   transition: all 0.3s ease-in-out;
   border-radius: 10PX;
@@ -221,8 +228,6 @@ main {
 .burger{
   opacity: 100%;
   padding: 0;
-  margin-top: 30vh;
-  margin-left: 11vw;
   position: absolute;
   background-color: rgb(94, 113, 119);
   height: 60px;
@@ -238,8 +243,6 @@ main {
 .burger-hidden{
   opacity: 0%;
   padding: 0;
-  margin-top: 30vh;
-  margin-left: 11vw;
   position: absolute;
   background-color: rgb(94, 113, 119);
   height: 60px;
@@ -258,8 +261,7 @@ svg rect {
   height: 6px;
 }
 .dropdown-menu {
-  margin-top: 30vh;
-  margin-left: 11vw;
+  margin: 0;
   width: 11vw;
   padding: 2% 0% 2% 0%;
   background-color: rgb(94, 113, 119);
@@ -286,8 +288,7 @@ svg rect {
 }
 
 .dropdown-menu-closed {
-  margin-top: 30vh;
-  margin-left: 11vw;
+  margin: 0;
   width: 0vw;
   padding: 2% 0% 2% 0%;
   background-color: rgb(94, 113, 119);
@@ -299,17 +300,16 @@ svg rect {
   transition: all 0.3s ease-in-out;
 }
 
-section {
-  background-color: antiquewhite;
-  font-size: 1.4rem;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-}
+
 
 .Home {
   display: flex;
   justify-content: space-between;
+  background-color: antiquewhite;
+  padding: 0;
+  font-size: 1.4rem;
+  margin: 0;
+  height: 100%;
 }
 
 .Home span {
@@ -317,7 +317,8 @@ section {
   width: 50%;
 }
 .Home img {
-  width: 40%;
+  width: 60%;
+  background: #b09e8d;
 }
 
 canvas {
@@ -326,11 +327,51 @@ canvas {
 }
 
 .about {
-  display: grid;
+  display: flex;
+  background-color: antiquewhite;
+  padding: 0% 7% 0% 7%;
+  font-size: 1.4rem;
+  margin: 0;
+  height: 100%;
+}
+
+.about button {
+  font-size: 50px;
+  border: 0;
+  color: aliceblue;
+  background-color: #968473;
+  width: 50%;
+}
+.about button:hover {
+  border: 0;
+  color: rgb(62, 70, 77);
+  background-color: #ecdbca;
+  width: 50%;
+}
+
+.projects button {
+  font-size: 50px;
+  border: 0;
+  color: aliceblue;
+  background-color: #968473;
+  width: 50%;
+}
+
+.projects button:hover {
+  border: 0;
+  color: rgb(62, 70, 77);
+  background-color: #ecdbca;
+  width: 50%;
 }
 
 .projects {
-  display: grid;
+  display: flex;
+  background-color: antiquewhite;
+  justify-content: center;
+  padding: 0%;
+  font-size: 1.4rem;
+  margin: 0;
+  height: 100%;
 }
 
 .back-button {

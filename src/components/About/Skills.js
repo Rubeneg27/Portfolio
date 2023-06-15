@@ -20,7 +20,7 @@ function Skills() {
                     <h3>Idiomas</h3>
                     Inglés - Certificado B2 - Nivel conversacional
                     <h3>Sociales</h3>
-                    Bueno para el trabajo en equipo. No tengo problemas en aportar mi punto de vistar ni en escuchar el de los demás.<br></br> 
+                    Habituado al trabajo en equipo. No tengo problemas para aportar mi punto de vistar ni escuchar el de los demás.<br></br> 
                     Siempre dispuesto a aprender y sin miedo a reconocer si estoy equivocado.<br></br>
                     Buena actitud ante la presión afrontándola con paciencia y la perseverancia.
 					</p>

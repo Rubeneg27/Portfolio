@@ -101,7 +101,19 @@ function Main () {
 
   return (
     <main onClick={handleClickBody}>
-      {isCollapsed&&!isMenuOpen ?
+      
+      <Header isNavCollapsed={isNavCollapsed} updateContent={updateContent}></Header>
+      <div className="main-section">
+        <Nav 
+        isCollapsed={isCollapsed} 
+        handleClickHome={handleClickHome} 
+        handleClickAbout={handleClickAbout} 
+        handleClickProjects={handleClickProjects} 
+        handleClickContact={handleClickContact} 
+        />
+        
+        <div className={isCollapsed? "article-expanded" : "article"}>
+          {isCollapsed&&!isMenuOpen ?
           <div className="burger" onClick={toggleMenu} >
             <svg width="60px" height="60px">
               <rect></rect>
@@ -117,18 +129,6 @@ function Main () {
             <li onClick={handleClickContact}>Contact</li>
           </ul> : 
           <div className="burger-hidden"></div>}
-      <Header isNavCollapsed={isNavCollapsed} updateContent={updateContent}></Header>
-      <div className="main-section">
-        <Nav 
-        isCollapsed={isCollapsed} 
-        handleClickHome={handleClickHome} 
-        handleClickAbout={handleClickAbout} 
-        handleClickProjects={handleClickProjects} 
-        handleClickContact={handleClickContact} 
-        />
-        
-        <div className={isCollapsed? "article-expanded" : "article"}>
-          
           {content}
           </div>
       </div>
