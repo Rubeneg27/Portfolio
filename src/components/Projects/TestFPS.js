@@ -11,7 +11,7 @@ function Platformer() {
     canvas.height = 1024;
     let platformWidth = canvas.width / 9.7;
     let platformHeight = canvas.width / 48;
-    let gravity = canvas.height/350;
+    let gravity = canvas.height/450;
     //Variables para el movimiento del personaje
     let steady = false;
     console.log(steady)
@@ -22,7 +22,7 @@ function Platformer() {
     //Power Ups
     let fly = false;
     let doubleJump = false;
-    let speed = canvas.width/76.8;
+    let speed = canvas.width/85;
     let isNearBat = false;
     let isPaused = false;
     //Variables para plataformas
@@ -176,7 +176,7 @@ function Platformer() {
         new Enemy(canvas.width / 2.4, canvas.width / 19.8),
         new Enemy(canvas.width / 1.28, canvas.width / 9.6),
       ];
-      gravity = canvas.height/350;
+      gravity = canvas.height/450;
       isNearBat = false;
       doubleJumper = new powerUp(canvas.width/1.98, canvas.width/6.6);
       flyer = new powerUp(canvas.width/1.067, canvas.width/6.6);
@@ -375,21 +375,21 @@ function Platformer() {
         // console.log('right')
         event.preventDefault()
         keys.right.pressed = true;
-      } else if (keyCode === 38 && !jumped) {
+      } else if (keyCode === 38 && !jumped && !fly) {
         event.preventDefault()
         jumped = true;
         steady = false
         // console.log('up')
-        Player1.velocity.y = -canvas.height/23;
+        Player1.velocity.y = -canvas.height/26;
       } else if (keyCode === 38 && jumped && !doubleJump && !fly) {
         event.preventDefault()
       } else if (keyCode === 38 && fly) {
         event.preventDefault()
-        Player1.velocity.y = -canvas.height/51.2;
+        Player1.velocity.y = -canvas.height/55;
       } else if (keyCode === 38 && jumped && doubleJump && !doubleJumped) {
         event.preventDefault()
         keys.up.pressed = true
-        Player1.velocity.y = -canvas.height/23;
+        Player1.velocity.y = -canvas.height/26;
         doubleJumped = true;
       } else if (keyCode === 40) {
         // console.log('down')
