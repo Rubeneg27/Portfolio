@@ -144,7 +144,9 @@ main {
 }
 
 .main-section .article {
-  border: solid 3px rgb(141, 171, 180);
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
   width: 55vw;
   height: 60vh;
   transition: all 0.3s ease-in-out;
@@ -225,7 +227,7 @@ main {
   width: 0;
 }
 
-.burger{
+.burger {
   opacity: 100%;
   padding: 0;
   position: absolute;
@@ -234,9 +236,13 @@ main {
   width: 60px;
   border: none;
   z-index: 9999;
-  transition: all 0.6s ease-in-out;
+  transition: opacity 0.6s ease-in-out;
 }
-.burger:hover{
+.burger:hover {
+  cursor: pointer;
+}
+.burger:active {
+  background-color: rgb(62, 86, 92);
   cursor: pointer;
 }
 
@@ -324,6 +330,9 @@ canvas {
 .about {
   display: flex;
   font-family: Retro Gaming;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
   background-color: antiquewhite;
   padding: 0% 7% 0% 7%;
   font-size: 1.1rem;
@@ -332,11 +341,12 @@ canvas {
 }
 
 .about button {
+  width: 50%;
+  height: 100%;
   font-size: 50px;
   border: 0;
   color: aliceblue;
   background-color: #968473;
-  width: 50%;
 }
 .about button:hover {
   border: 0;
@@ -362,6 +372,9 @@ canvas {
 
 .projects {
   display: flex;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
   background-color: antiquewhite;
   justify-content: center;
   padding: 0%;
@@ -380,39 +393,55 @@ canvas {
 }
 
 .skills {
+  width: 100%;
+  height: 100%;
   margin: 2px;
-  border: solid 1px rgb(100, 91, 85);
   display: flex;
   text-align: left;
   justify-content: space-evenly;
 }
 
 .skills-a{
+  align-items: center;
+  justify-content: center;
   margin: 2px;
-  border: solid 1px rgb(100, 91, 85);
   width: 49%;
-  
 }
 .skills-a div{
-  height: 31%;
-  margin: 2px;
-  border: solid 1px rgb(100, 91, 85);
+  height: 30%;
+  width: 30vw;
+  margin: 5px 0 0 0;
+  padding: 0 2% 0 2%;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
 }
 
 .skills-b{
+  align-items: center;
+  justify-content: center;
   margin: 2px;
-  border: solid 1px rgb(100, 91, 85);
   width: 49%;
 }
 
 .skills-b div{
-  height: 31%;
-  margin: 2px;
-  border: solid 1px rgb(100, 91, 85);
+  height: 30%;
+  width: 30vw;
+  margin: 5px 0 0 0;
+  padding: 0 2% 0 2%;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
 }
 
 .skills-img{
   margin: 2px;
-  border: solid 1px rgb(100, 91, 85);
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
   height: 30vh;
+}
+
+p {
+  margin: 0;
 }

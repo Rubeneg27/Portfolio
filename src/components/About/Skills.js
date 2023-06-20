@@ -10,7 +10,7 @@ function Skills() {
                     <h3>Conocimientos</h3>
 				    Certificado Meta Front-end Developer<br></br>
                     Lenguajes de programación: Javascript y HTML<br></br>
-                    Frameworks: React<br></br>
+                    Frameworks: React y Node.js<br></br>
                 </div>
                 <div>
                     <h3>Idiomas</h3>
@@ -27,7 +27,7 @@ function Skills() {
                     <p>Siempre dispuesto a aprender y sin miedo a reconocer si estoy equivocado.</p>
                 </div>
                 <div>
-                    <p>Buena actitud ante la presión afrontándola con paciencia y la perseverancia.</p>
+                    <p>Afronto los restos con paciencia y perseverancia.</p>
                 </div>
             </div>               
 				</section>
