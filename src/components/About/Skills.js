@@ -21,12 +21,11 @@ function Skills() {
                 <div className="skills-img">
 
                 </div>
-                <div>
+                <div className="div-a">
                     <h3>Habilidades sociales</h3>
+                    <p>Constante y resolutivo</p>
                     <p>Habituado al trabajo en equipo.</p>
                     <p>Siempre dispuesto a aprender y sin miedo a reconocer si estoy equivocado.</p>
-                </div>
-                <div>
                     <p>Afronto los restos con paciencia y perseverancia.</p>
                 </div>
             </div>               

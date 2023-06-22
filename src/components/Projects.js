@@ -1,6 +1,5 @@
 import Platformer from "./Projects/Platformer.js"
-import TestFPS
- from "./Projects/TestFPS.js";
+import TestFPS from "./Projects/Testing.js";
 import { useState } from "react";
 
 function Projects () {
@@ -24,7 +23,7 @@ function Projects () {
     return (
         <section className="projects">
           {pressed ? null : (<button onClick={()=>handleClick("Platformer")}>Platformer</button>)}
-          {pressed ? null : (<button onClick={()=>handleClick("TestFPS")}>TestFPS</button>)}
+          {pressed ? null : (<button onClick={()=>handleClick("TestFPS")}>Testing Place</button>)}
           {project}
         </section>
         

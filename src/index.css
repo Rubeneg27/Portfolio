@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   font-size: 25px;
@@ -63,7 +64,7 @@ code {
   display: flex;
   justify-content: space-between;
   margin-bottom: 3vh;
-  height: 10vh;
+  height: 7vh;
   
 }
 
@@ -79,8 +80,22 @@ code {
 }
 
 .logos-collapsed{
-  width: 0;
   transition: all 0.3s ease-in-out;
+  width: 0vw;
+  background-color: rgb(100, 91, 85);
+  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 4vh;
+  height: 4vh;
+  fill: rgb(248, 211, 180);
+  padding: 0;
+  margin: 0.5vw;
 }
 
 .resumen {
@@ -88,7 +103,7 @@ code {
   border: solid 3px rgb(100, 91, 85);
   background-color: rgb(100, 91, 85);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
-  color: rgb(236, 209, 173);
+  color: rgb(248, 211, 180);
   width: 55vw;
   text-align: center;
   display: flex;
@@ -101,7 +116,7 @@ code {
   border: solid 3px rgb(94, 113, 119);
   background-color: rgb(94, 113, 119);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
-  color: rgb(236, 209, 173);
+  color: rgb(248, 211, 180);
   width: 100%;
   text-align: center;
   display: flex;
@@ -177,7 +192,7 @@ main {
 .Nav li {
   padding-left: 1vw;
   background-color: rgb(94, 113, 119);
-  color: rgb(236, 209, 173);
+  color: rgb(248, 211, 180);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
   transition: all 0.3s ease-in-out;
   border-radius: 10PX;
@@ -203,7 +218,7 @@ main {
 }
 .li-collapsed {
   background-color: rgb(94, 113, 119);
-  color: rgb(236, 209, 173);
+  color: rgb(248, 211, 180);
   box-shadow: 0px 0px 0px rgba(60, 61, 63, 0.25);
   transition: all 0.3s ease-in-out;
   border-radius: 10PX;
@@ -272,7 +287,7 @@ svg rect {
   padding: 2% 0% 2% 0%;
   background-color: rgb(94, 113, 119);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
-  color: rgb(236, 209, 173);
+  color: rgb(248, 211, 180);
   list-style: none;
   position: absolute;
   z-index: 9999;
@@ -299,7 +314,7 @@ svg rect {
   padding: 2% 0% 2% 0%;
   background-color: rgb(94, 113, 119);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
-  color: rgb(236, 209, 173);
+  color: rgb(248, 211, 180);
   list-style: none;
   position: absolute;
   z-index: 9999;
@@ -329,7 +344,6 @@ canvas {
 
 .about {
   display: flex;
-  font-family: Retro Gaming;
   border-width: medium;
   border-color: #e0b995;
   border-style: dashed;
@@ -389,7 +403,7 @@ canvas {
   position: absolute;
   margin: 6% 1% 1% 1%;
   background-color: rgb(94, 113, 119);
-  color: rgb(236, 209, 173);
+  color: rgb(248, 211, 180);
 }
 
 .skills {
@@ -409,8 +423,7 @@ canvas {
 }
 .skills-a div{
   height: 30%;
-  width: 30vw;
-  margin: 5px 0 0 0;
+  margin: 2% 0 0 0;
   padding: 0 2% 0 2%;
   border-width: medium;
   border-color: #e0b995;
@@ -424,10 +437,19 @@ canvas {
   width: 49%;
 }
 
+
 .skills-b div{
   height: 30%;
-  width: 30vw;
-  margin: 5px 0 0 0;
+  margin: 2% 0 0 0;
+  padding: 0 2% 0 2%;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
+}
+
+.skills-b .div-a{
+  height: 62%;
+  margin: 2% 0 0 0;
   padding: 0 2% 0 2%;
   border-width: medium;
   border-color: #e0b995;
@@ -442,6 +464,22 @@ canvas {
   height: 30vh;
 }
 
-p {
-  margin: 0;
+.linkedIn {
+  position: relative;
 }
+
+.linkedIn:before {
+  content: "\f000";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: #000;
+    font-size: 18px;
+    padding-right: 0.5em;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+

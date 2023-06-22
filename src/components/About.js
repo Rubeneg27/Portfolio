@@ -1,7 +1,6 @@
 import Skills from "./About/Skills"
 import Experience from "./About/Experience"
-import Goals from "./About/Goals"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const About = ({ hidden, handleAbout }) => {
   const [content, setContent] = useState("");
