@@ -19,7 +19,7 @@ function Platformer() {
     let jumped = false;
     let doubleJumped = false;
     let scrollOffSet = 0;
-    let meleeAttack
+    let meleeAttack //Defino la variable vacía para usarla luego
     //Power Ups
     let fly = false;
     let doubleJump = false;
@@ -32,7 +32,10 @@ function Platformer() {
     let lastFrameTime = performance.now();
     const targetFPS = 60;
     const frameInterval = 1000 / targetFPS; //los fps objetivo en milisegundos
-    
+    let looking = {
+      right: true,
+      left: false
+    }
     class Player {
       constructor() {
         this.position = {
@@ -72,7 +75,28 @@ function Platformer() {
 
      meleeAttack() {
         c.fillStyle = 'orange'
-        c.fillRect(this.position.x + 60, this.position.y - 30, canvas.width / 30, canvas.width / 30);
+        if (looking.right) {
+          c.fillRect(this.position.x + 60, this.position.y - 30, canvas.width / 30, canvas.width / 30); // NO SE DIBUJA DONDE CABE ESPERAR
+          meleeAttack =  {
+            x: Player1.position.x + 60,
+            y: Player1.position.y - 30,
+            width: canvas.width / 30,
+            height: canvas.width / 30,
+            active: true,
+            }
+          console.log(meleeAttack.x)
+        } else if (looking.left) {
+          c.fillRect(this.position.x - 60, this.position.y - 30, canvas.width / 30, canvas.width / 30);
+          meleeAttack =  {
+            x: Player1.position.x - 60,
+            y: Player1.position.y - 30,
+            width: canvas.width / 30,
+            height: canvas.width / 30,
+            active: true,
+            }
+          console.log(meleeAttack.x)
+        }
+        
       }
     }
     
@@ -208,13 +232,6 @@ function Platformer() {
           
           if (keys.control.pressed) {
             Player1.meleeAttack()
-            meleeAttack = {
-              x: Player1.position.x + 60,
-              y: Player1.position.y - 30,
-              width: canvas.width / 30,
-              height: canvas.width / 30,
-              active: true,
-              }
           }
           
           Player1.update(); //update será llamado cada segundo, sumando la gravedad a la velocidad hasta que se cumpla la condicón del loop anterior
@@ -406,10 +423,16 @@ function Platformer() {
         // console.log('left')
         event.preventDefault()
         keys.left.pressed = true;
+        looking.left = true;
+        looking.right = false;
+        console.log(Player1.position.x)
       } else if (keyCode === 39) {
         // console.log('right')
         event.preventDefault()
         keys.right.pressed = true;
+        looking.right = true;
+        looking.left = false;
+        console.log(Player1.position.x)
       } else if (keyCode === 38 && !jumped && !fly) {
         event.preventDefault()
         jumped = true;
