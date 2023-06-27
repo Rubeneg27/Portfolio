@@ -76,7 +76,6 @@ function Platformer() {
      meleeAttack() {
         c.fillStyle = 'orange'
         if (looking.right) {
-          c.fillRect(this.position.x + 60, this.position.y - 30, canvas.width / 30, canvas.width / 30); // NO SE DIBUJA DONDE CABE ESPERAR
           meleeAttack =  {
             x: Player1.position.x + 60,
             y: Player1.position.y - 30,
@@ -84,6 +83,7 @@ function Platformer() {
             height: canvas.width / 30,
             active: true,
             }
+          c.fillRect(this.position.x + this.width - meleeAttack.width + 60, this.position.y - 30, canvas.width / 30, canvas.width / 30);
           console.log(meleeAttack.x)
         } else if (looking.left) {
           c.fillRect(this.position.x - 60, this.position.y - 30, canvas.width / 30, canvas.width / 30);
