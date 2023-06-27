@@ -77,24 +77,22 @@ function Platformer() {
         c.fillStyle = 'orange'
         if (looking.right) {
           meleeAttack =  {
-            x: Player1.position.x + 60,
-            y: Player1.position.y - 30,
+            active: true,
             width: canvas.width / 30,
             height: canvas.width / 30,
-            active: true,
+            x: this.position.x + this.width - canvas.width / 30 + 60, //SOLUCIÓN TEMPORAL para acceder al width the meleeAttack. Para que funcione hay que definir la posición a parte.
+            y: this.position.y - 30,   
             }
           c.fillRect(this.position.x + this.width - meleeAttack.width + 60, this.position.y - 30, canvas.width / 30, canvas.width / 30);
-          console.log(meleeAttack.x)
         } else if (looking.left) {
-          c.fillRect(this.position.x - 60, this.position.y - 30, canvas.width / 30, canvas.width / 30);
           meleeAttack =  {
-            x: Player1.position.x - 60,
-            y: Player1.position.y - 30,
+            active: true,
             width: canvas.width / 30,
             height: canvas.width / 30,
-            active: true,
+            x: this.position.x - 60,
+            y: this.position.y - 30,      
             }
-          console.log(meleeAttack.x)
+          c.fillRect(this.position.x - 60, this.position.y - 30, canvas.width / 30, canvas.width / 30);
         }
         
       }
