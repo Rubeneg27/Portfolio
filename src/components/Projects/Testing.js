@@ -19,7 +19,15 @@ function Platformer() {
     let jumped = false;
     let doubleJumped = false;
     let scrollOffSet = 0;
-    let meleeAttack //Defino la variable vacía para usarla luego
+    let meleeAttack =  {
+      active: false,
+      width: null,
+      height: null,
+      x: null,
+      y: null,   
+      }
+    let playerAttack
+    let cooldown 
     //Power Ups
     let fly = false;
     let doubleJump = false;
@@ -74,6 +82,16 @@ function Platformer() {
       }
 
      meleeAttack() {
+      setTimeout(function() {
+        meleeAttack =  {
+          active: false,
+          width: null,
+          height: null,
+          x: null,
+          y: null,   
+          }     
+      }, 600)
+       if (!cooldown && playerAttack) {
         c.fillStyle = 'orange'
         if (looking.right) {
           meleeAttack =  {
@@ -94,7 +112,7 @@ function Platformer() {
             }
           c.fillRect(this.position.x - 60, this.position.y - 30, canvas.width / 30, canvas.width / 30);
         }
-        
+       }
       }
     }
     
@@ -217,6 +235,7 @@ function Platformer() {
     }
 
     function animate() {
+          console.log(meleeAttack.x)
           c.fillStyle = 'white';
           c.fillRect(0, 0, canvas.width, canvas.height);
           bat.forEach((bat) => {
@@ -228,8 +247,16 @@ function Platformer() {
           //Es importante que Player sea lo último que se dibuje para que siempre esté por delante de las platformas
           //Importante actualizar primero meleeAttack para que se dibuje correctamente y no con retardo
           
-          if (keys.control.pressed) {
+          //Controlar el tiempo para volver atacar
+          if (playerAttack) {
             Player1.meleeAttack()
+            setTimeout(function() {
+              cooldown = true
+              playerAttack = false
+            }, 300)
+            setTimeout(function() {
+              cooldown = false     
+            }, 600)
           }
           
           Player1.update(); //update será llamado cada segundo, sumando la gravedad a la velocidad hasta que se cumpla la condicón del loop anterior
@@ -290,7 +317,7 @@ function Platformer() {
               Player1.position.y = platform.position.y - Player1.height;
             }
           });
-
+          //Código para bats
           bat.forEach((enemy, index) => {
             if (
               Player1.position.x + Player1.width >= enemy.position.x &&
@@ -306,7 +333,7 @@ function Platformer() {
             }
             //Colisión con ataque
             if(
-              meleeAttack &&
+              meleeAttack.active &&
               meleeAttack.x + meleeAttack.width >= enemy.position.x &&
               meleeAttack.x <= enemy.position.x + enemy.width &&
               meleeAttack.y + meleeAttack.height >= enemy.position.y &&
@@ -458,6 +485,7 @@ function Platformer() {
         animate();
       } else if (keyCode === 17) {
         keys.control.pressed = true
+        playerAttack = true
       } else {
         Player1.velocity.x -= 0;
         Player1.velocity.x += 0;
