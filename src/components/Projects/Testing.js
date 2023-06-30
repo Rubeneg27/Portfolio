@@ -48,7 +48,7 @@ function Platformer() {
       constructor() {
         this.position = {
           x: canvas.width / 19.2,
-          y: canvas.width / 3.2,
+          y: canvas.width / 1.5,
         };
         this.velocity = {
           x: 0,
@@ -264,6 +264,13 @@ function Platformer() {
             platform.draw();//Platform1.draw() Esto sirve para una única plataforma
           });
           //ACTUALIZARÁ LA POSICIÓN DE TODO EL ESCENARIO AL LLEGAR A UN BORDE
+
+          if (Player1.position.y <= 700) { //Detecta límite superior, Player1 deja de subir y vuelve a caer en el momento correcto.
+            Player1.position.y = 700;
+          } else if (Player1.velocity.y > 0) {
+            Player1.velocity.y += gravity
+          }
+
           if (
             keys.right.pressed &&
             Player1.position.x + Player1.width < canvas.width - canvas.width/4.95
@@ -299,7 +306,11 @@ function Platformer() {
               });
               doubleJumper.position.x += speed;
               flyer.position.x += speed;
-            }
+            } /*else if (Player1.position.y === 700) { //Actualiza posición del escenario al llegar al borde superior
+              platforms.forEach((platform) => {
+                platform.position.y -= Player1.velocity.y;
+              });
+            }*/
           }
           //Platform colission
           platforms.forEach((platform) => {
@@ -458,18 +469,17 @@ function Platformer() {
         looking.right = true;
         looking.left = false;
         console.log(Player1.position.x)
-      } else if (keyCode === 38 && !jumped && !fly) {
+      } else if (keyCode === 38 && !jumped && !fly) { //Salto normal
         event.preventDefault()
         jumped = true;
         steady = false
-        // console.log('up')
         Player1.velocity.y = -canvas.height/26;
-      } else if (keyCode === 38 && jumped && !doubleJump && !fly) {
+      } else if (keyCode === 38 && jumped && !doubleJump && !fly) { //Salto normal si esá en el aire
         event.preventDefault()
-      } else if (keyCode === 38 && fly) {
+      } else if (keyCode === 38 && fly) { //Salto con vuelo
         event.preventDefault()
         Player1.velocity.y = -canvas.height/55;
-      } else if (keyCode === 38 && jumped && doubleJump && !doubleJumped) {
+      } else if (keyCode === 38 && jumped && doubleJump && !doubleJumped) { //Salto normal con doble salto
         event.preventDefault()
         keys.up.pressed = true
         Player1.velocity.y = -canvas.height/26;
