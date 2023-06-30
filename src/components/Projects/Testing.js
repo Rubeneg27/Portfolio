@@ -26,8 +26,8 @@ function Platformer() {
       x: null,
       y: null,   
       }
-    let playerAttack
-    let cooldown 
+    let playerAttack = false
+    let cooldown = false
     //Power Ups
     let fly = false;
     let doubleJump = false;
@@ -91,7 +91,7 @@ function Platformer() {
           y: null,   
           }     
       }, 600)
-       if (!cooldown && playerAttack) {
+       if (playerAttack) {
         c.fillStyle = 'orange'
         if (looking.right) {
           meleeAttack =  {
@@ -483,8 +483,9 @@ function Platformer() {
         isPaused = !isPaused;
         // console.log('Paused = ' + isPaused);
         animate();
-      } else if (keyCode === 17) {
+      } else if (keyCode === 17 && !cooldown) {
         keys.control.pressed = true
+        cooldown = true
         playerAttack = true
       } else {
         Player1.velocity.x -= 0;
