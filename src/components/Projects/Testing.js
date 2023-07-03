@@ -19,6 +19,7 @@ function Platformer() {
     let jumped = false;
     let doubleJumped = false;
     let scrollOffSet = 0;
+    let scrollOffSetY = 0;
     let meleeAttack =  {
       active: false,
       width: null,
@@ -79,6 +80,16 @@ function Platformer() {
         ) {
           this.velocity.y += gravity;
         }
+        //Aumentar scrollOffSetY cuando sube y disminuir cuando baje
+        scrollOffSetY = this.position.y
+        console.log(`scroll off set Y: ${scrollOffSetY}`)
+        if (scrollOffSetY > canvas.height) {
+          onPlatform = false;
+          doubleJump = false;
+          fly = false;
+          init()
+        }
+        
       }
 
      meleeAttack() {
@@ -232,6 +243,7 @@ function Platformer() {
       doubleJumper = new powerUp(canvas.width/1.98, canvas.width/6.6);
       flyer = new powerUp(canvas.width/1.067, canvas.width/6.6);
       scrollOffSet = 0; //Para definir el límite máximo de píxeles que se desplazarán los elementos (y definir por ejemplo el final del escenario)
+      scrollOffSetY = 0;
     }
 
     function animate() {
@@ -296,7 +308,7 @@ function Platformer() {
               doubleJumper.position.x -= speed;
               flyer.position.x -= speed;
             } else if (keys.left.pressed) {
-              //si estoy en un borde y pulso izquierda...
+              //Actualiza posición del escenario si Player está en un borde y pulso dirección
               scrollOffSet -= speed; //Disminuye el scrollOfSet si las plataformas se mueven a la izquierda (es decir, se retrocede o lo que es lo mismo te alejas del final)
               platforms.forEach((platform) => {
                 platform.position.x += speed;
@@ -306,11 +318,19 @@ function Platformer() {
               });
               doubleJumper.position.x += speed;
               flyer.position.x += speed;
-            } /*else if (Player1.position.y === 700) { //Actualiza posición del escenario al llegar al borde superior
+            } 
+
+            //Actualiza posición del escenario al llegar al borde superior
+            if (Player1.position.y === 700) { 
               platforms.forEach((platform) => {
                 platform.position.y -= Player1.velocity.y;
               });
-            }*/
+            } else if (Player1.position.y < 700) {
+              platforms.forEach((platform) => {
+                platform.position.y += Player1.velocity.y;
+              });
+            }
+            
           }
           //Platform colission
           platforms.forEach((platform) => {
@@ -429,14 +449,6 @@ function Platformer() {
           if (scrollOffSet > 2000) {
             //console.log('You win!')
           }
-          //LOSE CONDITION
-          if (Player1.position.y > canvas.height) {
-            onPlatform = false;
-            doubleJump = false;
-            fly = false;
-            //console.log('You lose')
-            init();
-          }
           
     }
     //Función recursiva para el Loop del juego y control de los FPS
@@ -473,7 +485,7 @@ function Platformer() {
         event.preventDefault()
         jumped = true;
         steady = false
-        Player1.velocity.y = -canvas.height/26;
+        Player1.velocity.y = -canvas.height/25;
       } else if (keyCode === 38 && jumped && !doubleJump && !fly) { //Salto normal si esá en el aire
         event.preventDefault()
       } else if (keyCode === 38 && fly) { //Salto con vuelo
@@ -482,7 +494,7 @@ function Platformer() {
       } else if (keyCode === 38 && jumped && doubleJump && !doubleJumped) { //Salto normal con doble salto
         event.preventDefault()
         keys.up.pressed = true
-        Player1.velocity.y = -canvas.height/26;
+        Player1.velocity.y = -canvas.height/25;
         doubleJumped = true;
       } else if (keyCode === 40) {
         // console.log('down')
