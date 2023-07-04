@@ -14,8 +14,8 @@ function Platformer() {
     //Límites del escenario
     let rightLImit
     let leftLimit
-    let upperLimit
-    let lowerLimit
+    let upperLimit = 700;
+    let lowerLimit = 990;
     let gravity = canvas.height/450;
     //Variables para el movimiento del personaje
     let steady = false;
@@ -54,7 +54,7 @@ function Platformer() {
       constructor() {
         this.position = {
           x: canvas.width / 19.2,
-          y: canvas.height / 1.5,
+          y: canvas.height / 1.1,
         };
         this.velocity = {
           x: 0,
@@ -74,6 +74,7 @@ function Platformer() {
         this.draw();
         this.position.y += this.velocity.y;
         this.position.x += this.velocity.x;
+        
         if (
           this.position.y + this.height + this.velocity.y < canvas.height &&
           !onPlatform
@@ -94,7 +95,12 @@ function Platformer() {
         if (scrollOffSetY > 500) {
           init()
         }
-        
+
+        if (this.position.y <= upperLimit) {
+          this.position.y = upperLimit;
+        } else if (this.position.y >= lowerLimit) {
+          this.position.y = lowerLimit
+        }
       }
 
      meleeAttack() {
@@ -286,9 +292,7 @@ function Platformer() {
           //BORDES LATERALES
           rightLImit = Player1.position.x + Player1.width < canvas.width - canvas.width/4.95;
           leftLimit = Player1.position.x > canvas.width/4.95;
-          //Bordes SUPERIOR E INFERIOR
-          upperLimit = 300;
-          lowerLimit = 700;
+          
           if (
             keys.right.pressed &&
             rightLImit
@@ -303,15 +307,15 @@ function Platformer() {
           } else {
             // Si estoy en algún borde
             Player1.velocity.x = 0;
-            
+            /*
           //BORDES SUPERIOR E INFERIOR
-          /*if (Player1.velocity.y < 0 && Player1.position.y <= upperLimit) { //Detecta límite superior, Player1 deja de subir y vuelve a caer en el momento correcto.
+          if (Player1.velocity.y < 0 && Player1.position.y <= upperLimit) { //Detecta límite superior, Player1 deja de subir y vuelve a caer en el momento correcto.
               Player1.position.y = upperLimit;
             }
           if (Player1.velocity.y > 0 & Player1.position.y === lowerLimit) {
               Player1.position.y = lowerLimit;
           }
-             */ /*
+             
           if (Player1.position.y >= lowerLimit) {
               Player1.position.y = lowerLimit
           }
@@ -339,10 +343,10 @@ function Platformer() {
               doubleJumper.position.x += speed;
               flyer.position.x += speed;
             } 
-
+            /*
             //Actualiza posición del escenario al llegar al borde superior
             
-            /*
+            
             if (Player1.position.y === 700) { 
               platforms.forEach((platform) => {
                 platform.position.y -= Player1.velocity.y;
