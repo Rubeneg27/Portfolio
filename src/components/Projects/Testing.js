@@ -11,6 +11,11 @@ function Platformer() {
     canvas.height = 1024;
     let platformWidth = canvas.width / 9.7;
     let platformHeight = canvas.width / 48;
+    //Límites del escenario
+    let rightLImit
+    let leftLimit
+    let upperLimit
+    let lowerLimit
     let gravity = canvas.height/450;
     //Variables para el movimiento del personaje
     let steady = false;
@@ -49,7 +54,7 @@ function Platformer() {
       constructor() {
         this.position = {
           x: canvas.width / 19.2,
-          y: canvas.width / 1.5,
+          y: canvas.height / 1.5,
         };
         this.velocity = {
           x: 0,
@@ -71,22 +76,22 @@ function Platformer() {
         this.position.x += this.velocity.x;
         if (
           this.position.y + this.height + this.velocity.y < canvas.height &&
-          onPlatform === false
+          !onPlatform
         ) {
           this.velocity.y += gravity;
         } else if (
           this.position.y + this.height + this.velocity.y < canvas.height &&
-          onPlatform === true
+          onPlatform
         ) {
           this.velocity.y += gravity;
         }
         //Aumentar scrollOffSetY cuando sube y disminuir cuando baje
-        scrollOffSetY = this.position.y
+        if (this.velocity.y > 3 || this.velocity.y < 2) {
+          scrollOffSetY += this.velocity.y
+        }
+        
         console.log(`scroll off set Y: ${scrollOffSetY}`)
-        if (scrollOffSetY > canvas.height) {
-          onPlatform = false;
-          doubleJump = false;
-          fly = false;
+        if (scrollOffSetY > 500) {
           init()
         }
         
@@ -211,6 +216,8 @@ function Platformer() {
       ];
       let doubleJumper = new powerUp(canvas.width/1.98, canvas.width/6.6);
       let flyer = new powerUp(canvas.width/1.067, canvas.width/6.6);
+      //Límites de esceneario
+      
       let keys = {
         right: {
           pressed: false,
@@ -276,26 +283,39 @@ function Platformer() {
             platform.draw();//Platform1.draw() Esto sirve para una única plataforma
           });
           //ACTUALIZARÁ LA POSICIÓN DE TODO EL ESCENARIO AL LLEGAR A UN BORDE
-
-          if (Player1.position.y <= 700) { //Detecta límite superior, Player1 deja de subir y vuelve a caer en el momento correcto.
-            Player1.position.y = 700;
-          } else if (Player1.velocity.y > 0) {
-            Player1.velocity.y += gravity
-          }
-
+          //BORDES LATERALES
+          rightLImit = Player1.position.x + Player1.width < canvas.width - canvas.width/4.95;
+          leftLimit = Player1.position.x > canvas.width/4.95;
+          //Bordes SUPERIOR E INFERIOR
+          upperLimit = 300;
+          lowerLimit = 700;
           if (
             keys.right.pressed &&
-            Player1.position.x + Player1.width < canvas.width - canvas.width/4.95
+            rightLImit
           ) {
             //Si presino derecha y el player no ha llegado al borde derecho...
             Player1.velocity.x = speed;
-          } else if (keys.left.pressed && Player1.position.x > canvas.width/4.95) {
+          } else if (keys.left.pressed && 
+            leftLimit
+          ) {
             //Si presiono izquierda y el player no ha llegado al borde izquierdo...
             Player1.velocity.x = -speed;
           } else {
             // Si estoy en algún borde
             Player1.velocity.x = 0;
-
+            
+          //BORDES SUPERIOR E INFERIOR
+          /*if (Player1.velocity.y < 0 && Player1.position.y <= upperLimit) { //Detecta límite superior, Player1 deja de subir y vuelve a caer en el momento correcto.
+              Player1.position.y = upperLimit;
+            }
+          if (Player1.velocity.y > 0 & Player1.position.y === lowerLimit) {
+              Player1.position.y = lowerLimit;
+          }
+             */ /*
+          if (Player1.position.y >= lowerLimit) {
+              Player1.position.y = lowerLimit
+          }
+          */
             if (keys.right.pressed) {
               // Si estoy en los bordes y además pulso derecha...
               scrollOffSet += speed; //Se actualiza el valor de scrollOfSet igual al de la velocidad al a que avanza la plataforma. Es decir, si se avanza, el scrollOfSet aumenta.
@@ -321,6 +341,8 @@ function Platformer() {
             } 
 
             //Actualiza posición del escenario al llegar al borde superior
+            
+            /*
             if (Player1.position.y === 700) { 
               platforms.forEach((platform) => {
                 platform.position.y -= Player1.velocity.y;
@@ -330,7 +352,7 @@ function Platformer() {
                 platform.position.y += Player1.velocity.y;
               });
             }
-            
+            */
           }
           //Platform colission
           platforms.forEach((platform) => {
@@ -346,6 +368,9 @@ function Platformer() {
               onPlatform = true;
               Player1.velocity.y = 0;
               Player1.position.y = platform.position.y - Player1.height;
+              
+            } else {
+              onPlatform = false;
             }
           });
           //Código para bats
@@ -458,7 +483,7 @@ function Platformer() {
         const deltaTime = currentTime - lastFrameTime; //El tiempo que tardó en darse el proceso desde que se llamó
         if (deltaTime >= frameInterval && !isPaused) { //Si el tiempo que tardó el proceso es mayor o igual
           lastFrameTime = currentTime - (deltaTime % frameInterval);
-          let fps = 1/(deltaTime/1000)
+          //let fps = 1/(deltaTime/1000)
           //console.log(`FPS Loop: ${fps}`)
           animate();
         }     
