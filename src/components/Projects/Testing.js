@@ -12,14 +12,12 @@ function Platformer() {
     let platformWidth = canvas.width / 9.7;
     let platformHeight = canvas.width / 48;
     //Límites del escenario
-    let rightLImit
-    let leftLimit
+    let rightLImit;
+    let leftLimit;
     let upperLimit = 700;
     let lowerLimit = 990;
     let gravity = canvas.height/450;
     //Variables para el movimiento del personaje
-    let steady = false;
-    console.log(steady)
     let onPlatform = false;
     let jumped = false;
     let doubleJumped = false;
@@ -85,15 +83,8 @@ function Platformer() {
           onPlatform
         ) {
           this.velocity.y += gravity;
-        }
-        //Aumentar scrollOffSetY cuando sube y disminuir cuando baje
-        if (this.velocity.y > 3 || this.velocity.y < 2) {
-          scrollOffSetY += this.velocity.y
-        }
-        
-        //console.log(`scroll off set Y: ${scrollOffSetY}`)
-        if (scrollOffSetY > 500) {
-          init()
+        } else if (!onPlatform) {
+          this.velocity.y += gravity;
         }
 
         //Player parará de subir o bajar en los límites superiores o inferiores
@@ -102,6 +93,7 @@ function Platformer() {
         } else if (this.position.y >= lowerLimit) {
           this.position.y = lowerLimit
         }
+        console.log(Player1.velocity.y);
       }
 
      meleeAttack() {
@@ -213,19 +205,19 @@ function Platformer() {
 
     //Variables para generar el escenario en la primera ejecución
     let Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis
-      // const Platform1 = new Platform()
-      FloorGenerator(20);
-      platformGenerator(canvas.width / 6.4, 0.625*canvas.height); // const Platform1 = new Platform() Generaría una única plataforma
-      platformGenerator(canvas.width / 2.5, 0.3125*canvas.height);
-      let bat = [
+    // const Platform1 = new Platform()
+    FloorGenerator(20);
+    platformGenerator(canvas.width / 6.4, 0.625*canvas.height); // const Platform1 = new Platform() Generaría una única plataforma
+    platformGenerator(canvas.width / 2.5, 0.3125*canvas.height);
+    let bat = [
         new Enemy(canvas.width/2.4, canvas.width/19.8),
         new Enemy(canvas.width/1.28, canvas.width/9.6),
-      ];
-      let doubleJumper = new powerUp(canvas.width/1.98, canvas.width/6.6);
-      let flyer = new powerUp(canvas.width/1.067, canvas.width/6.6);
-      //Límites de esceneario
+    ];
+    let doubleJumper = new powerUp(canvas.width/1.98, canvas.width/6.6);
+    let flyer = new powerUp(canvas.width/1.067, canvas.width/6.6);
+    //Límites de esceneario
       
-      let keys = {
+    let keys = {
         right: {
           pressed: false,
         },
@@ -241,7 +233,7 @@ function Platformer() {
         control: {
           pressed: false
         }
-      };
+    };
 
     function init() {//Esta función se llamará más adelante para reiniciar el nivel cuando se pierda
       Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis 
@@ -261,7 +253,7 @@ function Platformer() {
     }
 
     function animate() {
-          
+
           c.fillStyle = 'white';
           c.fillRect(0, 0, canvas.width, canvas.height);
           bat.forEach((bat) => {
@@ -338,15 +330,12 @@ function Platformer() {
             if (Player1.position.y === upperLimit ) { 
               platforms.forEach((platform) => {
                 platform.position.y -= Player1.velocity.y;
-                console.log(platform.position.y)
               });
             } else if (Player1.position.y === lowerLimit) {
               platforms.forEach((platform) => {
                 platform.position.y -= Player1.velocity.y - gravity;
-                console.log(platform.position.y)
               });
             }
-
           
           //Platform colission
           platforms.forEach((platform) => {
@@ -468,7 +457,17 @@ function Platformer() {
           if (scrollOffSet > 2000) {
             //console.log('You win!')
           }
-          
+
+          if (Player1.velocity.y < 0) {
+            scrollOffSetY -= 10;
+          } else if (Player1.velocity.y > gravity + 0.1) {
+            scrollOffSetY += 10;
+          }
+          console.log(`Scroll Y: ${scrollOffSetY}`);
+          console.log(`Velocity Y: ${Player1.velocity.y}`);
+          if (scrollOffSetY > 300) {
+            init();
+          }
     }
     //Función recursiva para el Loop del juego y control de los FPS
     function gameLoop() {
@@ -501,7 +500,6 @@ function Platformer() {
       } else if (keyCode === 38 && !jumped && !fly) { //Salto normal
         event.preventDefault()
         jumped = true;
-        steady = false
         Player1.velocity.y = -canvas.height/25;
       } else if (keyCode === 38 && jumped && !doubleJump && !fly) { //Salto normal si esá en el aire
         event.preventDefault()
