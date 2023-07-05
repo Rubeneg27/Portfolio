@@ -340,6 +340,11 @@ function Platformer() {
               platforms.forEach((platform) => {
                 platform.position.y -= Player1.velocity.y - gravity;
               });
+              doubleJumper.position.y -= Player1.velocity.y - gravity;
+              flyer.position.y -= Player1.velocity.y - gravity;
+              bat.forEach((bat) => {
+                bat.position.y -= Player1.velocity.y - gravity;
+              });
             }
           
           //Platform colission
