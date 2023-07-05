@@ -96,6 +96,7 @@ function Platformer() {
           init()
         }
 
+        //Player parará de subir o bajar en los límites superiores o inferiores
         if (this.position.y <= upperLimit) {
           this.position.y = upperLimit;
         } else if (this.position.y >= lowerLimit) {
@@ -307,19 +308,7 @@ function Platformer() {
           } else {
             // Si estoy en algún borde
             Player1.velocity.x = 0;
-            /*
-          //BORDES SUPERIOR E INFERIOR
-          if (Player1.velocity.y < 0 && Player1.position.y <= upperLimit) { //Detecta límite superior, Player1 deja de subir y vuelve a caer en el momento correcto.
-              Player1.position.y = upperLimit;
-            }
-          if (Player1.velocity.y > 0 & Player1.position.y === lowerLimit) {
-              Player1.position.y = lowerLimit;
-          }
-             
-          if (Player1.position.y >= lowerLimit) {
-              Player1.position.y = lowerLimit
-          }
-          */
+
             if (keys.right.pressed) {
               // Si estoy en los bordes y además pulso derecha...
               scrollOffSet += speed; //Se actualiza el valor de scrollOfSet igual al de la velocidad al a que avanza la plataforma. Es decir, si se avanza, el scrollOfSet aumenta.
@@ -343,20 +332,19 @@ function Platformer() {
               doubleJumper.position.x += speed;
               flyer.position.x += speed;
             } 
-            /*
+
             //Actualiza posición del escenario al llegar al borde superior
             
-            
-            if (Player1.position.y === 700) { 
+            if (Player1.position.y === upperLimit) { 
               platforms.forEach((platform) => {
                 platform.position.y -= Player1.velocity.y;
               });
-            } else if (Player1.position.y < 700) {
+            } else if (Player1.position.y === lowerLimit) {
               platforms.forEach((platform) => {
-                platform.position.y += Player1.velocity.y;
+                platform.position.y -= Player1.velocity.y - gravity;
               });
             }
-            */
+
           }
           //Platform colission
           platforms.forEach((platform) => {
