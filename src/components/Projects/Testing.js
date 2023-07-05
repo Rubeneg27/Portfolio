@@ -14,8 +14,8 @@ function Platformer() {
     //Límites del escenario
     let rightLImit;
     let leftLimit;
-    let upperLimit = 700;
-    let lowerLimit = 990;
+    let upperLimit = 400;
+    let lowerLimit = 970;
     let gravity = canvas.height/450;
     //Variables para el movimiento del personaje
     let onPlatform = false;
@@ -330,6 +330,11 @@ function Platformer() {
             if (Player1.position.y === upperLimit ) { 
               platforms.forEach((platform) => {
                 platform.position.y -= Player1.velocity.y;
+              });
+              doubleJumper.position.y -= Player1.velocity.y;
+              flyer.position.y -= Player1.velocity.y;
+              bat.forEach((bat) => {
+                bat.position.y -= Player1.velocity.y;
               });
             } else if (Player1.position.y === lowerLimit) {
               platforms.forEach((platform) => {
