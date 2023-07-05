@@ -91,7 +91,7 @@ function Platformer() {
           scrollOffSetY += this.velocity.y
         }
         
-        console.log(`scroll off set Y: ${scrollOffSetY}`)
+        //console.log(`scroll off set Y: ${scrollOffSetY}`)
         if (scrollOffSetY > 500) {
           init()
         }
@@ -261,7 +261,7 @@ function Platformer() {
     }
 
     function animate() {
-          console.log(meleeAttack.x)
+          
           c.fillStyle = 'white';
           c.fillRect(0, 0, canvas.width, canvas.height);
           bat.forEach((bat) => {
@@ -305,47 +305,49 @@ function Platformer() {
           ) {
             //Si presiono izquierda y el player no ha llegado al borde izquierdo...
             Player1.velocity.x = -speed;
+          } else if (keys.right.pressed) {
+            // Si estoy en los bordes y además pulso derecha...
+            scrollOffSet += speed; //Se actualiza el valor de scrollOfSet igual al de la velocidad al a que avanza la plataforma. Es decir, si se avanza, el scrollOfSet aumenta.
+            platforms.forEach((platform) => {
+              platform.position.x -= speed;
+            });
+            bat.forEach((bat) => {
+            bat.position.x -= speed;
+            });
+            doubleJumper.position.x -= speed;
+            flyer.position.x -= speed;
+          } else if (keys.left.pressed) {
+            //Actualiza posición del escenario si Player está en un borde y pulso dirección
+            scrollOffSet -= speed; //Disminuye el scrollOfSet si las plataformas se mueven a la izquierda (es decir, se retrocede o lo que es lo mismo te alejas del final)
+            platforms.forEach((platform) => {
+              platform.position.x += speed;
+            });
+            bat.forEach((bat) => {
+            bat.position.x += speed;
+            });
+            doubleJumper.position.x += speed;
+            flyer.position.x += speed;
           } else {
             // Si estoy en algún borde
             Player1.velocity.x = 0;
-
-            if (keys.right.pressed) {
-              // Si estoy en los bordes y además pulso derecha...
-              scrollOffSet += speed; //Se actualiza el valor de scrollOfSet igual al de la velocidad al a que avanza la plataforma. Es decir, si se avanza, el scrollOfSet aumenta.
-              platforms.forEach((platform) => {
-                platform.position.x -= speed;
-              });
-              bat.forEach((bat) => {
-              bat.position.x -= speed;
-              });
-              doubleJumper.position.x -= speed;
-              flyer.position.x -= speed;
-            } else if (keys.left.pressed) {
-              //Actualiza posición del escenario si Player está en un borde y pulso dirección
-              scrollOffSet -= speed; //Disminuye el scrollOfSet si las plataformas se mueven a la izquierda (es decir, se retrocede o lo que es lo mismo te alejas del final)
-              platforms.forEach((platform) => {
-                platform.position.x += speed;
-              });
-              bat.forEach((bat) => {
-              bat.position.x += speed;
-              });
-              doubleJumper.position.x += speed;
-              flyer.position.x += speed;
-            } 
-
+          }
+          
+          
             //Actualiza posición del escenario al llegar al borde superior
-            
-            if (Player1.position.y === upperLimit) { 
+            //CORREGIR. NO ENTRA SI ESTOY PULSANDO DER/IZQ PERO SÍ CUANDO ESTOY EN UN BORDE
+            if (Player1.position.y === upperLimit ) { 
               platforms.forEach((platform) => {
                 platform.position.y -= Player1.velocity.y;
+                console.log(platform.position.y)
               });
             } else if (Player1.position.y === lowerLimit) {
               platforms.forEach((platform) => {
                 platform.position.y -= Player1.velocity.y - gravity;
+                console.log(platform.position.y)
               });
             }
 
-          }
+          
           //Platform colission
           platforms.forEach((platform) => {
             if (
@@ -490,14 +492,12 @@ function Platformer() {
         keys.left.pressed = true;
         looking.left = true;
         looking.right = false;
-        console.log(Player1.position.x)
       } else if (keyCode === 39) {
         // console.log('right')
         event.preventDefault()
         keys.right.pressed = true;
         looking.right = true;
         looking.left = false;
-        console.log(Player1.position.x)
       } else if (keyCode === 38 && !jumped && !fly) { //Salto normal
         event.preventDefault()
         jumped = true;
