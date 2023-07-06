@@ -14,7 +14,7 @@ function Platformer() {
     //Límites del escenario
     let rightLImit;
     let leftLimit;
-    let upperLimit = 400;
+    let upperLimit = 200;
     let lowerLimit = 900;
     let onUpperLimit = false;
     let onLowerLimit = false;
@@ -54,7 +54,7 @@ function Platformer() {
       constructor() {
         this.position = {
           x: canvas.width / 19.2,
-          y: canvas.height / 1.5,
+          y: canvas.height / 1.3,
         };
         this.velocity = {
           x: 0,
@@ -81,6 +81,8 @@ function Platformer() {
           ) {
             this.velocity.y += gravity;
             scrollOffSetY += gravity;
+          } else if (this.velocity.y > 30) {
+            this.velocity.y += 0;
           } else {
             scrollOffSetY = 0;
           }
@@ -91,6 +93,10 @@ function Platformer() {
           if (this.position.y <= upperLimit) {
             this.velocity.y = 0;
             onUpperLimit = true;
+            if (scrollOffSetY >= 0) {
+              onUpperLimit = false;
+              Player1.velocity.y = scrollOffSetY;
+            }
           } else if (this.position.y >= lowerLimit) {
             this.velocity.y = 0;
             onLowerLimit = true;
@@ -198,7 +204,7 @@ function Platformer() {
       platforms = [];
       var position = -platformWidth;
       for (let i = 0; i < n; i++) {
-        platforms.push(new Platform(position=position+platformWidth, canvas.height - platformHeight));
+        platforms.push(new Platform(position=position+platformWidth, canvas.height - platformHeight-100));
       }
     }
     
@@ -209,7 +215,7 @@ function Platformer() {
     //Variables para generar el escenario en la primera ejecución
     let Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis
     // const Platform1 = new Platform()
-    FloorGenerator(1);
+    FloorGenerator(10);
     platformGenerator(canvas.width / 6.4, 0.625*canvas.height); // const Platform1 = new Platform() Generaría una única plataforma
     platformGenerator(canvas.width / 2.5, 0.3125*canvas.height);
     let bat = [
@@ -240,7 +246,7 @@ function Platformer() {
 
     function init() {//Esta función se llamará más adelante para reiniciar el nivel cuando se pierda
       Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis 
-      FloorGenerator(1);
+      FloorGenerator(10);
       platformGenerator(canvas.width / 6.4, canvas.height / 1.6);
       platformGenerator(canvas.width / 2.5, canvas.height / 3.2);
       bat = [
@@ -329,30 +335,6 @@ function Platformer() {
             Player1.velocity.x = 0;
           }
           
-          
-            //Actualiza posición del escenario al llegar al borde superior
-          /*
-              if (Player1.position.y === upperLimit ) { 
-                platforms.forEach((platform) => {
-                  platform.position.y -= Player1.velocity.y;
-                });
-                doubleJumper.position.y -= Player1.velocity.y;
-                flyer.position.y -= Player1.velocity.y;
-                bat.forEach((bat) => {
-                  bat.position.y -= Player1.velocity.y;
-                });
-              } else if (Player1.position.y === lowerLimit) {
-                platforms.forEach((platform) => {
-                  platform.position.y -= Player1.velocity.y - gravity;
-                });
-                doubleJumper.position.y -= Player1.velocity.y - gravity;
-                flyer.position.y -= Player1.velocity.y - gravity;
-                bat.forEach((bat) => {
-                  bat.position.y -= Player1.velocity.y - gravity;
-                });
-              }
-              */
-              
               if (onUpperLimit && !onPlatform) { 
                 platforms.forEach((platform) => {
                   platform.position.y -= scrollOffSetY;
@@ -375,35 +357,30 @@ function Platformer() {
           
           //Platform colission
           platforms.forEach((platform) => {
-            if (
-              Player1.position.y + Player1.height <= platform.position.y && //track de la posición en y
-              Player1.position.y + Player1.height + scrollOffSetY >= platform.position.y &&
-              Player1.position.x + Player1.width >= platform.position.x && //track de la posición en y
-              Player1.position.x <= platform.position.x + platform.width //track de la posición en y
-            ) {
-              jumped = false;
-              doubleJumped = false;
-              onPlatform = true;
-              console.log(`onPlatform 1: ${onPlatform}`);
-              onUpperLimit = false;
-              onLowerLimit = false
-              Player1.velocity.y = 0;
-              Player1.position.y = platform.position.y - Player1.height;
-              scrollOffSetY = 0;
-            } else if (
-              Player1.position.y + Player1.height === platform.position.y &&
-             (Player1.position.x + Player1.width < platform.position.x || //track de la posición en y
-              Player1.position.x > platform.position.x + platform.width) //track de la posición en y
-            )  {
-              onPlatform = false;
-              console.log(`onPlatform 2: ${onPlatform}`);
-            } else if (
-              scrollOffSetY !== 0
-            ) {
-              onPlatform = false;
-              console.log(`onPlatform 3: ${onPlatform}`);  
-            }
-            
+              if (
+                Player1.position.y + Player1.height <= platform.position.y && //track de la posición en y
+                Player1.position.y + Player1.height + scrollOffSetY >= platform.position.y &&
+                Player1.position.x + Player1.width >= platform.position.x && //track de la posición en y
+                Player1.position.x <= platform.position.x + platform.width //track de la posición en y
+              ) {
+                jumped = false;
+                doubleJumped = false;
+                onPlatform = true;
+                console.log(`onPlatform 1: ${onPlatform}`);
+                onUpperLimit = false;
+                onLowerLimit = false;
+                Player1.velocity.y = 0;
+                Player1.position.y = platform.position.y - Player1.height;
+                scrollOffSetY = 0;
+              } else if (
+                Player1.position.y + Player1.height === platform.position.y &&
+               (Player1.position.x + Player1.width < platform.position.x || //track de la posición en y
+                Player1.position.x > platform.position.x + platform.width) //track de la posición en y
+              )  {
+                onPlatform = false;
+                console.log(`onPlatform 2: ${onPlatform}`);
+              }
+
           });
 
 
