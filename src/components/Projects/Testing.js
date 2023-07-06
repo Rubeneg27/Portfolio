@@ -16,6 +16,8 @@ function Platformer() {
     let leftLimit;
     let upperLimit = 400;
     let lowerLimit = 900;
+    let onUpperLimit = false;
+    let onLowerLimit = false;
     let gravity = canvas.height/450;
     //Variables para el movimiento del personaje
     let onPlatform = false;
@@ -73,19 +75,26 @@ function Platformer() {
         this.position.y += this.velocity.y;
         this.position.x += this.velocity.x;
         
-        if (
-          this.position.y + this.height + this.velocity.y < canvas.height 
-        ) {
-          this.velocity.y += gravity;
-        }
-        //Player parará de subir o bajar en los límites superiores o inferiores
         if (!onPlatform) {
-          if (this.position.y <= upperLimit) {
-            this.position.y = upperLimit;
-          } else if (this.position.y >= lowerLimit) {
-            this.position.y = lowerLimit;
+          if (
+            this.position.y + this.height + this.velocity.y < canvas.height 
+          ) {
+            this.velocity.y += gravity;
+            scrollOffSetY += gravity;
+          } else {
+            scrollOffSetY = 0;
           }
-        } 
+        }
+        
+        //Player parará de subir o bajar en los límites superiores o inferiores
+
+          if (this.position.y <= upperLimit) {
+            this.velocity.y = 0;
+            onUpperLimit = true;
+          } else if (this.position.y >= lowerLimit) {
+            this.velocity.y = 0;
+            onLowerLimit = true;
+          }
         
         
       }
@@ -200,7 +209,7 @@ function Platformer() {
     //Variables para generar el escenario en la primera ejecución
     let Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis
     // const Platform1 = new Platform()
-    FloorGenerator(20);
+    FloorGenerator(1);
     platformGenerator(canvas.width / 6.4, 0.625*canvas.height); // const Platform1 = new Platform() Generaría una única plataforma
     platformGenerator(canvas.width / 2.5, 0.3125*canvas.height);
     let bat = [
@@ -231,7 +240,7 @@ function Platformer() {
 
     function init() {//Esta función se llamará más adelante para reiniciar el nivel cuando se pierda
       Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis 
-      FloorGenerator(20);
+      FloorGenerator(1);
       platformGenerator(canvas.width / 6.4, canvas.height / 1.6);
       platformGenerator(canvas.width / 2.5, canvas.height / 3.2);
       bat = [
@@ -244,6 +253,8 @@ function Platformer() {
       flyer = new powerUp(canvas.width/1.067, canvas.width/6.6);
       scrollOffSet = 0; //Para definir el límite máximo de píxeles que se desplazarán los elementos (y definir por ejemplo el final del escenario)
       scrollOffSetY = 0;
+      onUpperLimit = false;
+      onLowerLimit = false;
     }
 
     function animate() {
@@ -320,8 +331,7 @@ function Platformer() {
           
           
             //Actualiza posición del escenario al llegar al borde superior
-            //CORREGIR. NO ENTRA SI ESTOY PULSANDO DER/IZQ PERO SÍ CUANDO ESTOY EN UN BORDE
-            if (!onPlatform) {
+          /*
               if (Player1.position.y === upperLimit ) { 
                 platforms.forEach((platform) => {
                   platform.position.y -= Player1.velocity.y;
@@ -341,28 +351,59 @@ function Platformer() {
                   bat.position.y -= Player1.velocity.y - gravity;
                 });
               }
-            }
-            
+              */
+              
+              if (onUpperLimit && !onPlatform) { 
+                platforms.forEach((platform) => {
+                  platform.position.y -= scrollOffSetY;
+                });
+                doubleJumper.position.y -= scrollOffSetY;
+                flyer.position.y -= scrollOffSetY;
+                bat.forEach((bat) => {
+                  bat.position.y -= scrollOffSetY;
+                });
+              } else if (onLowerLimit && !onPlatform) {
+                platforms.forEach((platform) => {
+                  platform.position.y -= scrollOffSetY - gravity;
+                });
+                doubleJumper.position.y -= scrollOffSetY - gravity;
+                flyer.position.y -= scrollOffSetY - gravity;
+                bat.forEach((bat) => {
+                  bat.position.y -= scrollOffSetY - gravity;
+                });
+              }
           
           //Platform colission
           platforms.forEach((platform) => {
             if (
               Player1.position.y + Player1.height <= platform.position.y && //track de la posición en y
-              Player1.position.y + Player1.height + Player1.velocity.y >= platform.position.y &&
+              Player1.position.y + Player1.height + scrollOffSetY >= platform.position.y &&
               Player1.position.x + Player1.width >= platform.position.x && //track de la posición en y
               Player1.position.x <= platform.position.x + platform.width //track de la posición en y
             ) {
               jumped = false;
               doubleJumped = false;
               onPlatform = true;
+              console.log(`onPlatform 1: ${onPlatform}`);
+              onUpperLimit = false;
+              onLowerLimit = false
               Player1.velocity.y = 0;
               Player1.position.y = platform.position.y - Player1.height;
+              scrollOffSetY = 0;
             } else if (
-              Player1.position.x + Player1.width <= platform.position.x || //track de la posición en y
-              Player1.position.x >= platform.position.x + platform.width
-              ) {
+              Player1.position.y + Player1.height === platform.position.y &&
+             (Player1.position.x + Player1.width < platform.position.x || //track de la posición en y
+              Player1.position.x > platform.position.x + platform.width) //track de la posición en y
+            )  {
               onPlatform = false;
+              console.log(`onPlatform 2: ${onPlatform}`);
+            } else if (
+              scrollOffSetY !== 0
+            ) {
+              onPlatform = false;
+              console.log(`onPlatform 3: ${onPlatform}`);  
             }
+            
           });
 
 
@@ -468,20 +509,29 @@ function Platformer() {
             //console.log('You win!')
           }
 
+          /*
           if (Player1.velocity.y < 0) {
             scrollOffSetY -= 10;
           } else if (Player1.velocity.y > gravity + 0.1) {
             scrollOffSetY += 10;
           }
+          */
           //console.log(`Scroll Y: ${scrollOffSetY}`);
           console.log(`Velocity Y: ${Player1.velocity.y}`);
-          console.log(`Position Y: ${Player1.position.y}`);
-          console.log(onPlatform);
+          //console.log(`Position Y: ${Player1.position.y}`);
+          console.log(`Scroll Y : ${scrollOffSetY}`);
+          console.log(`onPlatform 4: ${onPlatform}`);
+          if (onLowerLimit) {
+            console.log("onLower");
+          } else if (onUpperLimit) {
+            console.log("onTop");
+          }
           if (scrollOffSetY > 300) {
             init();
           }
     }
     //Función recursiva para el Loop del juego y control de los FPS
+    
     function gameLoop() {
         requestAnimationFrame(gameLoop);
         const currentTime = performance.now();
@@ -514,16 +564,19 @@ function Platformer() {
         onPlatform = false
         jumped = true;
         Player1.velocity.y = -canvas.height/25;
+        scrollOffSetY = -canvas.height/25;
       } else if (keyCode === 38 && jumped && !doubleJump && !fly) { //Salto normal si esá en el aire
         event.preventDefault()
       } else if (keyCode === 38 && fly) { //Salto con vuelo
         event.preventDefault()
         onPlatform = false
         Player1.velocity.y = -canvas.height/55;
+        scrollOffSetY = -canvas.height/55;
       } else if (keyCode === 38 && jumped && doubleJump && !doubleJumped) { //Salto normal con doble salto
         event.preventDefault()
         keys.up.pressed = true
         onPlatform = false
+        scrollOffSetY = -canvas.height/25;
         Player1.velocity.y = -canvas.height/25;
         doubleJumped = true;
       } else if (keyCode === 40) {
