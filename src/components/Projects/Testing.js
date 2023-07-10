@@ -54,7 +54,7 @@ function Platformer() {
       constructor() {
         this.position = {
           x: canvas.width / 19.2,
-          y: canvas.height / 1.3,
+          y: canvas.height / 1.5,
         };
         this.velocity = {
           x: 0,
@@ -87,22 +87,31 @@ function Platformer() {
             scrollOffSetY = 0;
           }
         }
+
+        
         
         //Player parará de subir o bajar en los límites superiores o inferiores
 
-          if (this.position.y <= upperLimit) {
+          if (this.position.y <= upperLimit && !onPlatform) {
             this.velocity.y = 0;
             onUpperLimit = true;
             if (scrollOffSetY >= 0) {
               onUpperLimit = false;
               Player1.velocity.y = scrollOffSetY;
             }
-          } else if (this.position.y >= lowerLimit) {
+          } else if (this.position.y + this.height >= lowerLimit && !onPlatform) {
             this.velocity.y = 0;
             onLowerLimit = true;
+          } else {
+            onLowerLimit = false;
+            onUpperLimit = false;
           }
         
-        
+          //Límite de velocidad 
+          if (this.velocity.y >= 50) {
+            this.velocity.y = 50;
+            scrollOffSetY += this.velocity.y;
+          }
       }
 
      meleeAttack() {
@@ -212,12 +221,15 @@ function Platformer() {
       platforms.push(new Platform(x, y));
     }
 
+    
+
     //Variables para generar el escenario en la primera ejecución
     let Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis
     // const Platform1 = new Platform()
     FloorGenerator(10);
     platformGenerator(canvas.width / 6.4, 0.625*canvas.height); // const Platform1 = new Platform() Generaría una única plataforma
     platformGenerator(canvas.width / 2.5, 0.3125*canvas.height);
+    
     let bat = [
         new Enemy(canvas.width/2.4, canvas.width/19.8),
         new Enemy(canvas.width/1.28, canvas.width/9.6),
@@ -354,14 +366,24 @@ function Platformer() {
                   bat.position.y -= scrollOffSetY - gravity;
                 });
               }
+
           
-          //Platform colission
+          //Comprobación de colisión
           platforms.forEach((platform) => {
-              if (
-                Player1.position.y + Player1.height <= platform.position.y && //track de la posición en y
-                Player1.position.y + Player1.height + scrollOffSetY >= platform.position.y &&
-                Player1.position.x + Player1.width >= platform.position.x && //track de la posición en y
-                Player1.position.x <= platform.position.x + platform.width //track de la posición en y
+            if (
+              Player1.position.x + Player1.width - platform.position.x < 0 && Math.abs(Player1.position.y - platform.position.y) <= Player1.height
+              ) {
+                console.log("Not here")
+                onPlatform = false
+              } else if ( 
+                Player1.position.x - (platform.position.x + platform.width) > 0 && Math.abs(Player1.position.y - platform.position.y) <= Player1.height
+              ) {
+                console.log("Not here")
+                onPlatform = false
+              } else if (
+                ( Player1.position.y + Player1.height + scrollOffSetY >= platform.position.y && Player1.position.y - platform.position.y < 0 ) &&  
+                ( Player1.position.x <= platform.position.x + platform.width )  && //track de la posición en y
+                ( Player1.position.x + Player1.width >= platform.position.x ) //track de la posición en y 
               ) {
                 jumped = false;
                 doubleJumped = false;
@@ -371,18 +393,13 @@ function Platformer() {
                 onLowerLimit = false;
                 Player1.velocity.y = 0;
                 Player1.position.y = platform.position.y - Player1.height;
-                scrollOffSetY = 0;
-              } else if (
-                Player1.position.y + Player1.height === platform.position.y &&
-               (Player1.position.x + Player1.width < platform.position.x || //track de la posición en y
-                Player1.position.x > platform.position.x + platform.width) //track de la posición en y
-              )  {
-                onPlatform = false;
-                console.log(`onPlatform 2: ${onPlatform}`);
+                scrollOffSetY += 0
               }
-
           });
+          
 
+          
+          
 
           //Código para bats
           bat.forEach((enemy, index) => {
@@ -410,7 +427,7 @@ function Platformer() {
               }
 
           });
-
+          /*
           //Enemigos persiguen
 
           bat.forEach((bat) => {
@@ -452,7 +469,7 @@ function Platformer() {
             }
             //console.log(isNearBat)
           });
-
+          */
           //Coger objetos. Cuando lo cojo se van arriba (solución momentánea)
           if (
             Player1.position.x + Player1.width >= flyer.position.x &&

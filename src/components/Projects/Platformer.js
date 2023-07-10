@@ -13,8 +13,6 @@ function Platformer() {
     let platformHeight = canvas.width / 48;
     let gravity = canvas.height/450;
     //Variables para el movimiento del personaje
-    let steady = false;
-    console.log(steady)
     let onPlatform = false;
     let jumped = false;
     let doubleJumped = false;
@@ -235,7 +233,6 @@ function Platformer() {
     }
 
     function animate() {
-          console.log(meleeAttack.x)
           c.fillStyle = 'white';
           c.fillRect(0, 0, canvas.width, canvas.height);
           bat.forEach((bat) => {
@@ -316,6 +313,7 @@ function Platformer() {
               onPlatform = true;
               Player1.velocity.y = 0;
               Player1.position.y = platform.position.y - Player1.height;
+              console.log(`1- On Platform: ${onPlatform}`)
             }
           });
           //Código para bats
@@ -427,6 +425,8 @@ function Platformer() {
             //console.log('You lose')
             init();
           }
+
+          console.log(`2- On Platform: ${onPlatform}`)
           
     }
     //Función recursiva para el Loop del juego y control de los FPS
@@ -462,7 +462,6 @@ function Platformer() {
       } else if (keyCode === 38 && !jumped && !fly) { //Salto normal
         event.preventDefault()
         jumped = true;
-        steady = false
         Player1.velocity.y = -canvas.height/26;
       } else if (keyCode === 38 && jumped && !doubleJump && !fly) { //Salto normal si esá en el aire
         event.preventDefault()
