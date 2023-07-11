@@ -179,16 +179,6 @@ main {
   position: relative;
 }
 
-.contact {
-  display: flex;
-  justify-content: space-between;
-  background-color: antiquewhite;
-  padding: 0;
-  font-size: 1.4rem;
-  margin: 0;
-  height: 100%;
-}
-
 .Nav li {
   padding-left: 1vw;
   background-color: rgb(94, 113, 119);
@@ -483,3 +473,41 @@ canvas {
     left: 0;
 }
 
+/*CONTACT*/
+
+.contact {
+  display: grid;
+  background-color: antiquewhite;
+  padding: 0;
+  font-size: 1.4rem;
+  margin: 0;
+  height: 100%;
+}
+
+.contact form {
+  padding: 0% 5% 0% 5%;
+}
+
+.contact li {
+  list-style: none;
+  display: grid;
+  margin-bottom: 2vh;
+  
+}
+
+.contact li input {
+  width: 100%;
+  background-color: white;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
+}
+
+.Message-Box {
+  height: 30vh;
+  width: 100%;
+  background-color: white;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
+}

@@ -14,8 +14,8 @@ function Platformer() {
     //Límites del escenario
     let rightLImit;
     let leftLimit;
-    let upperLimit = 200;
-    let lowerLimit = 900;
+    let upperLimit = 600;
+    let lowerLimit = 700;
     let onUpperLimit = false;
     let onLowerLimit = false;
     let gravity = canvas.height/450;
@@ -53,8 +53,8 @@ function Platformer() {
     class Player {
       constructor() {
         this.position = {
-          x: canvas.width / 19.2,
-          y: canvas.height / 1.5,
+          x: canvas.width / 2,
+          y: canvas.height / 1.3,
         };
         this.velocity = {
           x: 0,
@@ -75,42 +75,18 @@ function Platformer() {
         this.position.y += this.velocity.y;
         this.position.x += this.velocity.x;
         
-        if (!onPlatform) {
+          //Player parará de subir o bajar en los límites superiores o inferiores
+
           if (
-            this.position.y + this.height + this.velocity.y < canvas.height 
-          ) {
-            this.velocity.y += gravity;
-            scrollOffSetY += gravity;
-          } else if (this.velocity.y > 30) {
-            this.velocity.y += 0;
-          } else {
-            scrollOffSetY = 0;
-          }
+          this.position.y + this.height + this.velocity.y < canvas.height
+        ) {
+          this.velocity.y += gravity;
+          scrollOffSetY += gravity;
         }
 
-        
-        
-        //Player parará de subir o bajar en los límites superiores o inferiores
-
-          if (this.position.y <= upperLimit && !onPlatform) {
-            this.velocity.y = 0;
-            onUpperLimit = true;
-            if (scrollOffSetY >= 0) {
-              onUpperLimit = false;
-              Player1.velocity.y = scrollOffSetY;
-            }
-          } else if (this.position.y + this.height >= lowerLimit && !onPlatform) {
-            this.velocity.y = 0;
-            onLowerLimit = true;
-          } else {
-            onLowerLimit = false;
-            onUpperLimit = false;
-          }
-        
           //Límite de velocidad 
           if (this.velocity.y >= 50) {
             this.velocity.y = 50;
-            scrollOffSetY += this.velocity.y;
           }
       }
 
@@ -346,60 +322,55 @@ function Platformer() {
             // Si estoy en algún borde
             Player1.velocity.x = 0;
           }
-          
-              if (onUpperLimit && !onPlatform) { 
-                platforms.forEach((platform) => {
-                  platform.position.y -= scrollOffSetY;
-                });
-                doubleJumper.position.y -= scrollOffSetY;
-                flyer.position.y -= scrollOffSetY;
-                bat.forEach((bat) => {
-                  bat.position.y -= scrollOffSetY;
-                });
-              } else if (onLowerLimit && !onPlatform) {
-                platforms.forEach((platform) => {
-                  platform.position.y -= scrollOffSetY - gravity;
-                });
-                doubleJumper.position.y -= scrollOffSetY - gravity;
-                flyer.position.y -= scrollOffSetY - gravity;
-                bat.forEach((bat) => {
-                  bat.position.y -= scrollOffSetY - gravity;
-                });
-              }
 
-          
-          //Comprobación de colisión
+          //Platform colission
           platforms.forEach((platform) => {
             if (
-              Player1.position.x + Player1.width - platform.position.x < 0 && Math.abs(Player1.position.y - platform.position.y) <= Player1.height
-              ) {
-                console.log("Not here")
-                onPlatform = false
-              } else if ( 
-                Player1.position.x - (platform.position.x + platform.width) > 0 && Math.abs(Player1.position.y - platform.position.y) <= Player1.height
-              ) {
-                console.log("Not here")
-                onPlatform = false
-              } else if (
-                ( Player1.position.y + Player1.height + scrollOffSetY >= platform.position.y && Player1.position.y - platform.position.y < 0 ) &&  
-                ( Player1.position.x <= platform.position.x + platform.width )  && //track de la posición en y
-                ( Player1.position.x + Player1.width >= platform.position.x ) //track de la posición en y 
-              ) {
-                jumped = false;
-                doubleJumped = false;
-                onPlatform = true;
-                console.log(`onPlatform 1: ${onPlatform}`);
-                onUpperLimit = false;
-                onLowerLimit = false;
-                Player1.velocity.y = 0;
-                Player1.position.y = platform.position.y - Player1.height;
-                scrollOffSetY += 0
-              }
+              Player1.position.y + Player1.height <= platform.position.y && //track de la posición en y
+              Player1.position.y + Player1.height + Player1.velocity.y >=
+              platform.position.y &&
+              Player1.position.x + Player1.width >= platform.position.x && //track de la posición en y
+              Player1.position.x <= platform.position.x + platform.width //track de la posición en y
+            ) {
+              jumped = false;
+              doubleJumped = false;
+              onPlatform = true;
+              Player1.velocity.y = 0;
+              scrollOffSetY = 0;
+              Player1.position.y = platform.position.y - Player1.height;
+              //console.log(`1- On Platform: ${onPlatform}`)
+            }
           });
-          
 
-          
-          
+          if (Player1.position.y <= upperLimit) {
+            onLowerLimit = true
+            onPlatform = false
+            Player1.velocity.y = 0;
+          } else if (Player1.position.y >= lowerLimit) {
+            onLowerLimit = true
+            onPlatform = false
+            Player1.velocity.y = 0;
+          }
+
+          if (onUpperLimit) { 
+            platforms.forEach((platform) => {
+              platform.position.y -= scrollOffSetY;
+            });
+            doubleJumper.position.y -= scrollOffSetY;
+            flyer.position.y -= scrollOffSetY;
+            bat.forEach((bat) => {
+              bat.position.y -= scrollOffSetY;
+            });
+          } else if (onLowerLimit) {
+            platforms.forEach((platform) => {
+              platform.position.y -= scrollOffSetY - gravity;
+            });
+            doubleJumper.position.y -= scrollOffSetY - gravity;
+            flyer.position.y -= scrollOffSetY - gravity;
+            bat.forEach((bat) => {
+              bat.position.y -= scrollOffSetY - gravity;
+            });
+          }
 
           //Código para bats
           bat.forEach((enemy, index) => {
@@ -510,11 +481,12 @@ function Platformer() {
             scrollOffSetY += 10;
           }
           */
+         
           //console.log(`Scroll Y: ${scrollOffSetY}`);
           console.log(`Velocity Y: ${Player1.velocity.y}`);
           //console.log(`Position Y: ${Player1.position.y}`);
           console.log(`Scroll Y : ${scrollOffSetY}`);
-          console.log(`onPlatform 4: ${onPlatform}`);
+          //console.log(`onPlatform 4: ${onPlatform}`);
           if (onLowerLimit) {
             console.log("onLower");
           } else if (onUpperLimit) {
