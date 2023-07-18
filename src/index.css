@@ -182,7 +182,7 @@ main {
 .Nav li {
   padding-left: 1vw;
   background-color: rgb(94, 113, 119);
-  color: rgb(248, 211, 180);
+  color: white;
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
   transition: all 0.3s ease-in-out;
   border-radius: 10PX;
@@ -312,8 +312,9 @@ svg rect {
 }
 
 .Home {
+  color: white;
   display: flex;
-  background-color: antiquewhite;
+  background-color: rgb(94, 113, 119);;
   height: 100%;
 }
 
@@ -327,7 +328,11 @@ svg rect {
   background: #b09e8d;
 }
 
-canvas {
+canvas-hidden {
+  display: none;
+}
+
+canvas-init {
   background-color: rgb(255, 255, 255);
   justify-self: center;
 }
@@ -510,4 +515,16 @@ canvas {
   border-width: medium;
   border-color: #e0b995;
   border-style: dashed;
+}
+
+.game-menu-init {
+  width: 800px;
+  height: 600px;
+  background-color: grey;
+  color: #e0b995;
+  margin: 0;
+}
+
+.game-menu-hidden {
+  display: none;
 }

@@ -7,14 +7,14 @@ function Skills() {
 				    <p>Graduado en Química por la Universidad de Sevilla</p>
                 </div>
                 <div>
-                    <h3>Conocimientos</h3>
+                    <h2>Habilidades</h2>
 				    Certificado Meta Front-end Developer<br></br>
                     Lenguajes de programación: Javascript y HTML<br></br>
                     Frameworks: React y Node.js<br></br>
                 </div>
                 <div>
-                    <h3>Idiomas</h3>
-                    <p>Inglés - Certificado B1 - Nivel conversacional</p>
+                    <h2>Idiomas</h2>
+                    <p>Inglés - Certificado B2 - Nivel conversacional</p>
                 </div>            
                 </div>
             <div className="skills-b">
@@ -22,7 +22,7 @@ function Skills() {
 
                 </div>
                 <div className="div-a">
-                    <h3>Habilidades sociales</h3>
+                    <h2>Habilidades sociales</h2>
                     <p>Constante y resolutivo</p>
                     <p>Habituado al trabajo en equipo.</p>
                     <p>Siempre dispuesto a aprender y sin miedo a reconocer si estoy equivocado.</p>

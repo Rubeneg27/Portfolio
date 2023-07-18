@@ -1,14 +1,25 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 
 function Platformer() {
+  
+  const [gameStarted, setGameStarted] = useState (false)
+  
+  const startGame = () => {
+    setGameStarted(!gameStarted)
+    console.log(gameStarted);
+  }
+
   const canvasRef = useRef(null);
+
   useEffect(() => {
-    const canvas = document.querySelector('canvas')
+
+    if (gameStarted) {
+      const canvas = document.querySelector('canvas')
     const c = canvas.getContext('2d');
     //Canvas
-    canvas.width = 1280; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
-    canvas.height = 1024;
+    canvas.width = 800; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
+    canvas.height = 600;
     let platformWidth = canvas.width / 9.7;
     let platformHeight = canvas.width / 48;
     let gravity = canvas.height/450;
@@ -521,8 +532,18 @@ function Platformer() {
     document.addEventListener('keyup', handleKeyUp);
     
     gameLoop();
-  }, []);
-  return <canvas ref={canvasRef} />;
+    }
+    
+  }, [gameStarted]);
+  return (
+    <div>
+      <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
+        <div>Super Awesome Javascript action Platformer!!</div>
+        <button onClick={startGame}>Start</button>
+      </div>
+      <canvas className = {gameStarted? "canvas-hidden" : "canvas-init"}ref={canvasRef} />
+    </div>
+  )
 }
 
 export default Platformer;
