@@ -11,24 +11,28 @@ function Platformer() {
     console.log(`Game started: ${gameStarted}`);
   }
 
-
+  useEffect(() => {
     const handleKeyDown = (event) => {
       const {keyCode} = event
-      if (keyCode ===27) {
+      if (keyCode === 27 && gameStarted) {
         event.preventDefault();
         setTogglePauseMenu(!togglePauseMenu);
         console.log(`Pause menu: ${togglePauseMenu}`)
       }
     }
-    
+
     document.addEventListener('keydown', handleKeyDown);
+    
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
 
 
+  }, [togglePauseMenu, gameStarted])
 
   const canvasRef = useRef(null);
 
   useEffect(() => {
-
     if (gameStarted) {
       const canvas = document.querySelector('canvas')
     const c = canvas.getContext('2d');
@@ -543,6 +547,10 @@ function Platformer() {
     document.addEventListener('keyup', handleKeyUp);
     
     gameLoop();
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+
     }
     
   }, [gameStarted]);
