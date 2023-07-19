@@ -11,6 +11,22 @@ function Platformer() {
     console.log(`Game started: ${gameStarted}`);
   }
 
+  const handlePauseMenu = (e) => {
+    switch (e) {
+      case "Resume":
+        setTogglePauseMenu(false)
+        console.log("Resume")
+        break;
+      case "Options":
+        break;
+      case "Quit":
+        setGameStarted(false);
+        break;
+      default:
+        setGameStarted(true);
+    }
+  }
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       const {keyCode} = event
@@ -558,9 +574,9 @@ function Platformer() {
     <div>
       <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
         <h1>PAUSED</h1>
-        <button>Resume</button>
-        <button>Options</button>
-        <button>Quit</button>
+        <button onClick={()=>handlePauseMenu("Resume")}>Resume</button>
+        <button onClick={()=>handlePauseMenu("Options")}>Options</button>
+        <button onClick={()=>handlePauseMenu("Quit")}>Quit</button>
       </div>
       <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
         <div>Super Awesome Javascript action Platformer!!</div>
