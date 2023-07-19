@@ -3,12 +3,27 @@ import React, { useState, useEffect, useRef } from 'react';
 
 function Platformer() {
   
-  const [gameStarted, setGameStarted] = useState (false)
+  const [gameStarted, setGameStarted] = useState (false);
+  const [togglePauseMenu, setTogglePauseMenu] = useState(false);
   
   const startGame = () => {
     setGameStarted(!gameStarted)
-    console.log(gameStarted);
+    console.log(`Game started: ${gameStarted}`);
   }
+
+
+    const handleKeyDown = (event) => {
+      const {keyCode} = event
+      if (keyCode ===27) {
+        event.preventDefault();
+        setTogglePauseMenu(!togglePauseMenu);
+        console.log(`Pause menu: ${togglePauseMenu}`)
+      }
+    }
+    
+    document.addEventListener('keydown', handleKeyDown);
+
+
 
   const canvasRef = useRef(null);
 
@@ -324,7 +339,6 @@ function Platformer() {
               onPlatform = true;
               Player1.velocity.y = 0;
               Player1.position.y = platform.position.y - Player1.height;
-              console.log(`1- On Platform: ${onPlatform}`)
             }
           });
           //Código para bats
@@ -435,10 +449,7 @@ function Platformer() {
             fly = false;
             //console.log('You lose')
             init();
-          }
-
-          console.log(`2- On Platform: ${onPlatform}`)
-          
+          }          
     }
     //Función recursiva para el Loop del juego y control de los FPS
     function gameLoop() {
@@ -455,21 +466,21 @@ function Platformer() {
 
     const handleKeyDown = (event) => {
       const {keyCode} = event
-      console.log(event.keyCode)
+      //console.log(event.keyCode)
       if (keyCode === 37) {
         // console.log('left')
         event.preventDefault()
         keys.left.pressed = true;
         looking.left = true;
         looking.right = false;
-        console.log(Player1.position.x)
+        //console.log(Player1.position.x)
       } else if (keyCode === 39) {
         // console.log('right')
         event.preventDefault()
         keys.right.pressed = true;
         looking.right = true;
         looking.left = false;
-        console.log(Player1.position.x)
+        //console.log(Player1.position.x)
       } else if (keyCode === 38 && !jumped && !fly) { //Salto normal
         event.preventDefault()
         jumped = true;
@@ -537,6 +548,9 @@ function Platformer() {
   }, [gameStarted]);
   return (
     <div>
+      <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
+        <div>PAUSED</div>
+      </div>
       <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
         <div>Super Awesome Javascript action Platformer!!</div>
         <button onClick={startGame}>Start</button>

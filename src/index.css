@@ -323,10 +323,6 @@ svg rect {
   width: 50%;
   margin-left: 3%;
 }
-.Home img {
-  width: 60%;
-  background: #b09e8d;
-}
 
 canvas-hidden {
   display: none;
@@ -517,6 +513,8 @@ canvas-init {
   border-style: dashed;
 }
 
+/*Menú de Platformer*/
+
 .game-menu-init {
   width: 800px;
   height: 600px;
@@ -526,5 +524,18 @@ canvas-init {
 }
 
 .game-menu-hidden {
+  display: none;
+}
+
+.pause-menu-init {
+  position: absolute;
+  width: 800px;
+  height: 600px;
+  background-color: #393e4a40;
+  color: #683506;
+  margin: 0;
+}
+
+.pause-menu-hidden {
   display: none;
 }
