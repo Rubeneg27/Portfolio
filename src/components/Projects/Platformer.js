@@ -557,7 +557,10 @@ function Platformer() {
   return (
     <div>
       <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
-        <div>PAUSED</div>
+        <h1>PAUSED</h1>
+        <button>Resume</button>
+        <button>Options</button>
+        <button>Quit</button>
       </div>
       <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
         <div>Super Awesome Javascript action Platformer!!</div>

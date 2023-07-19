@@ -529,6 +529,7 @@ canvas-init {
 
 .pause-menu-init {
   position: absolute;
+  display: grid;
   width: 800px;
   height: 600px;
   background-color: #393e4a40;
@@ -538,4 +539,16 @@ canvas-init {
 
 .pause-menu-hidden {
   display: none;
+}
+
+.pause-menu-init h1 {
+  font-family: Retro Gaming;
+  font-size: 60px;
+}
+
+.pause-menu-init button {
+  font-family: Retro Gaming;
+  font-size: 30px;
+  height: 10vh;
+  justify-self: center;
 }
