@@ -1,626 +1,306 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-//TODO: HACER QUE EL JUEGO PARE AL CAMBIAR DE COMPONENTE
+
 function Platformer() {
-
   
-
-  const canvasRef = useRef(null);
-
-  const [gameStarted, setGameStarted] = useState (false)
+  const [gameStarted, setGameStarted] = useState (false);
+  const [togglePauseMenu, setTogglePauseMenu] = useState(false);
   
   const startGame = () => {
     setGameStarted(!gameStarted)
-    console.log(gameStarted);
+    console.log(`Game started: ${gameStarted}`);
+  }
+
+  const handlePauseMenu = (e) => {
+    switch (e) {
+      case "Resume":
+        setTogglePauseMenu(false)
+        console.log("Resume")
+        break;
+      case "Options":
+        break;
+      case "Quit":
+        setGameStarted(false);
+        break;
+      default:
+        setGameStarted(true);
+    }
   }
 
   useEffect(() => {
-
-    if (gameStarted) {
-
-      const canvas = document.querySelector('canvas')
-      const c = canvas.getContext('2d');
-      //Canvas
-      canvas.width = 800; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
-      canvas.height = 600;
-      let platformWidth = canvas.width / 9.7;
-      let platformHeight = canvas.width / 48;
-      //Límites del escenario
-      let rightLImit;
-      let leftLimit;
-      let upperLimit = 600;
-      let lowerLimit = 700;
-      let onUpperLimit = false;
-      let onLowerLimit = false;
-      let gravity = canvas.height/450;
-      //Variables para el movimiento del personaje
-      let onPlatform = false;
-      let jumped = false;
-      let doubleJumped = false;
-      let scrollOffSet = 0;
-      let scrollOffSetY = 0;
-      let meleeAttack =  {
-        active: false,
-        width: null,
-        height: null,
-        x: null,
-        y: null,   
-        }
-      let playerAttack = false
-      let cooldown = false
-      //Power Ups
-      let fly = false;
-      let doubleJump = false;
-      let speed = canvas.width/130;
-      let isNearBat = false;
-      let isPaused = false;
-      //Variables para plataformas
-      var platforms = [];
-      // Variables para el bucle del juego
-      let lastFrameTime = performance.now();
-      const targetFPS = 60;
-      const frameInterval = 1000 / targetFPS; //los fps objetivo en milisegundos
-      let looking = {
-        right: true,
-        left: false
+    const handleKeyDown = (event) => {
+      const {keyCode} = event
+      if (keyCode === 27 && gameStarted) {
+        event.preventDefault();
+        setTogglePauseMenu(!togglePauseMenu);
+        console.log(`Pause menu: ${togglePauseMenu}`)
       }
-      class Player {
-        constructor() {
-          this.position = {
-            x: canvas.width / 2,
-            y: canvas.height / 1.3,
-          };
-          this.velocity = {
-            x: 0,
-            y: 0,
-          };
-          this.health = 1000;
-          this.width = canvas.width / 48;
-          this.height = canvas.width / 48;
-        }
-  
-        draw() {
-          c.fillStyle = 'green';
-          c.fillRect(this.position.x, this.position.y, this.width, this.height);
-        }
-  
-        update() {
-          this.draw();
-          this.position.y += this.velocity.y;
-          this.position.x += this.velocity.x;
-          
-            //Player parará de subir o bajar en los límites superiores o inferiores
-  
-            if (
-            this.position.y + this.height + this.velocity.y < canvas.height
-          ) {
-            this.velocity.y += gravity;
-            scrollOffSetY += gravity;
-          }
-  
-            //Límite de velocidad 
-            if (this.velocity.y >= 50) {
-              this.velocity.y = 50;
-            }
-        }
-  
-       meleeAttack() {
-        setTimeout(function() {
-          meleeAttack =  {
-            active: false,
-            width: null,
-            height: null,
-            x: null,
-            y: null,   
-            }     
-        }, 600)
-         if (playerAttack) {
-          c.fillStyle = 'orange'
-          if (looking.right) {
-            meleeAttack =  {
-              active: true,
-              width: canvas.width / 30,
-              height: canvas.width / 30,
-              x: this.position.x + this.width - canvas.width / 30 + 60, //SOLUCIÓN TEMPORAL para acceder al width the meleeAttack. Para que funcione hay que definir la posición a parte.
-              y: this.position.y - 30,   
-              }
-            c.fillRect(this.position.x + this.width - meleeAttack.width + 60, this.position.y - 30, canvas.width / 30, canvas.width / 30);
-          } else if (looking.left) {
-            meleeAttack =  {
-              active: true,
-              width: canvas.width / 30,
-              height: canvas.width / 30,
-              x: this.position.x - 60,
-              y: this.position.y - 30,      
-              }
-            c.fillRect(this.position.x - 60, this.position.y - 30, canvas.width / 30, canvas.width / 30);
-          }
-         }
-        }
-      }
-      
-      class Enemy {
-        constructor(x, y) {
-          this.position = {
-            x: x,
-            y: y,
-          };
-          this.velocity = {
-            x: 0,
-            y: 0,
-          };
-          this.health = 50;
-          this.width = canvas.width / 48;
-          this.height = canvas.width / 48;
-        }
-  
-        draw() {
-          c.fillStyle = 'red';
-          c.fillRect(this.position.x, this.position.y, this.width, this.height);
-        }
-  
-        update() {
-          this.draw();
-        }
-  
-        
-      }
-  
-      class Platform {
-        constructor(x, y) {
-          this.position = {
-            x: x,
-            y: y,
-          };
-          this.width = canvas.width / 9.6; //Puedo establecer el ancho como this.image.width
-          this.height = canvas.width / 48;
-          //this.image = image
-        }
-  
-        draw() {
-          c.fillStyle = 'purple';
-          c.fillRect(this.position.x, this.position.y, this.width, this.height); //Método para dibujar al personaje
-        }
-      }
-  
-      class powerUp {
-        constructor(x, y) {
-          this.position = {
-            x: x,
-            y: y,
-          };
-          this.width = canvas.width/66;
-          this.height = canvas.width/66;
-        }
-  
-        draw(color) {
-          c.fillStyle = color;
-          c.fillRect(this.position.x, this.position.y, this.width, this.height); //Método para dibujar al personaje
-        }
-      }
-      
-      function FloorGenerator(n) {
-        platforms = [];
-        var position = -platformWidth;
-        for (let i = 0; i < n; i++) {
-          platforms.push(new Platform(position=position+platformWidth, canvas.height - platformHeight-100));
-        }
-      }
-      
-      function platformGenerator(x, y) {
-        platforms.push(new Platform(x, y));
-      }
-  
-      
-  
-      //Variables para generar el escenario en la primera ejecución
-      let Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis
-      // const Platform1 = new Platform()
-      FloorGenerator(10);
-      platformGenerator(canvas.width / 6.4, 0.625*canvas.height); // const Platform1 = new Platform() Generaría una única plataforma
-      platformGenerator(canvas.width / 2.5, 0.3125*canvas.height);
-      
-      let bat = [
-          new Enemy(canvas.width/2.4, canvas.width/19.8),
-          new Enemy(canvas.width/1.28, canvas.width/9.6),
-      ];
-      let doubleJumper = new powerUp(canvas.width/1.98, canvas.width/6.6);
-      let flyer = new powerUp(canvas.width/1.067, canvas.width/6.6);
-      //Límites de esceneario
-        
-      let keys = {
-          right: {
-            pressed: false,
-          },
-          left: {
-            pressed: false,
-          },
-          up: {
-            pressed: false,
-          },
-          down: {
-            pressed: false,
-          },
-          control: {
-            pressed: false
-          }
-      };
-  
-      function init() {//Esta función se llamará más adelante para reiniciar el nivel cuando se pierda
-        Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis 
-        FloorGenerator(10);
-        platformGenerator(canvas.width / 6.4, canvas.height / 1.6);
-        platformGenerator(canvas.width / 2.5, canvas.height / 3.2);
-        bat = [
-          new Enemy(canvas.width / 2.4, canvas.width / 19.8),
-          new Enemy(canvas.width / 1.28, canvas.width / 9.6),
-        ];
-        gravity = canvas.height/450;
-        isNearBat = false;
-        doubleJumper = new powerUp(canvas.width/1.98, canvas.width/6.6);
-        flyer = new powerUp(canvas.width/1.067, canvas.width/6.6);
-        scrollOffSet = 0; //Para definir el límite máximo de píxeles que se desplazarán los elementos (y definir por ejemplo el final del escenario)
-        scrollOffSetY = 0;
-        onUpperLimit = false;
-        onLowerLimit = false;
-      }
-  
-      function animate() {
-  
-            c.fillStyle = 'white';
-            c.fillRect(0, 0, canvas.width, canvas.height);
-            bat.forEach((bat) => {
-              bat.update();
-            });
-            doubleJumper.draw('black');
-            flyer.draw('blue');   
-            //Dibujar player
-            //Es importante que Player sea lo último que se dibuje para que siempre esté por delante de las platformas
-            //Importante actualizar primero meleeAttack para que se dibuje correctamente y no con retardo
-            
-            //Controlar el tiempo para volver atacar
-            if (playerAttack) {
-              Player1.meleeAttack()
-              setTimeout(function() {
-                cooldown = true
-                playerAttack = false
-              }, 300)
-              setTimeout(function() {
-                cooldown = false     
-              }, 600)
-            }
-            
-            Player1.update(); //update será llamado cada segundo, sumando la gravedad a la velocidad hasta que se cumpla la condicón del loop anterior
-            platforms.forEach((platform) => {//Para cada elemento dentro de platforms, se les asigna una constante platform y se dibuja
-              platform.draw();//Platform1.draw() Esto sirve para una única plataforma
-            });
-            //ACTUALIZARÁ LA POSICIÓN DE TODO EL ESCENARIO AL LLEGAR A UN BORDE
-            //BORDES LATERALES
-            rightLImit = Player1.position.x + Player1.width < canvas.width - canvas.width/4.95;
-            leftLimit = Player1.position.x > canvas.width/4.95;
-            
-            if (
-              keys.right.pressed &&
-              rightLImit
-            ) {
-              //Si presino derecha y el player no ha llegado al borde derecho...
-              Player1.velocity.x = speed;
-            } else if (keys.left.pressed && 
-              leftLimit
-            ) {
-              //Si presiono izquierda y el player no ha llegado al borde izquierdo...
-              Player1.velocity.x = -speed;
-            } else if (keys.right.pressed) {
-              // Si estoy en los bordes y además pulso derecha...
-              scrollOffSet += speed; //Se actualiza el valor de scrollOfSet igual al de la velocidad al a que avanza la plataforma. Es decir, si se avanza, el scrollOfSet aumenta.
-              platforms.forEach((platform) => {
-                platform.position.x -= speed;
-              });
-              bat.forEach((bat) => {
-              bat.position.x -= speed;
-              });
-              doubleJumper.position.x -= speed;
-              flyer.position.x -= speed;
-            } else if (keys.left.pressed) {
-              //Actualiza posición del escenario si Player está en un borde y pulso dirección
-              scrollOffSet -= speed; //Disminuye el scrollOfSet si las plataformas se mueven a la izquierda (es decir, se retrocede o lo que es lo mismo te alejas del final)
-              platforms.forEach((platform) => {
-                platform.position.x += speed;
-              });
-              bat.forEach((bat) => {
-              bat.position.x += speed;
-              });
-              doubleJumper.position.x += speed;
-              flyer.position.x += speed;
-            } else {
-              // Si estoy en algún borde
-              Player1.velocity.x = 0;
-            }
-  
-            //Platform colission
-            platforms.forEach((platform) => {
-              if (
-                Player1.position.y + Player1.height <= platform.position.y && //track de la posición en y
-                Player1.position.y + Player1.height + Player1.velocity.y >=
-                platform.position.y &&
-                Player1.position.x + Player1.width >= platform.position.x && //track de la posición en y
-                Player1.position.x <= platform.position.x + platform.width //track de la posición en y
-              ) {
-                jumped = false;
-                doubleJumped = false;
-                onPlatform = true;
-                Player1.velocity.y = 0;
-                scrollOffSetY = 0;
-                Player1.position.y = platform.position.y - Player1.height;
-                //console.log(`1- On Platform: ${onPlatform}`)
-              }
-            });
-            /*
-            if (Player1.position.y <= upperLimit) {
-              onLowerLimit = true
-              onPlatform = false
-              Player1.velocity.y = 0;
-            } else if (Player1.position.y >= lowerLimit) {
-              onLowerLimit = true
-              onPlatform = false
-              Player1.velocity.y = 0;
-            }
-  
-            if (onUpperLimit) { 
-              platforms.forEach((platform) => {
-                platform.position.y -= scrollOffSetY;
-              });
-              doubleJumper.position.y -= scrollOffSetY;
-              flyer.position.y -= scrollOffSetY;
-              bat.forEach((bat) => {
-                bat.position.y -= scrollOffSetY;
-              });
-            } else if (onLowerLimit) {
-              platforms.forEach((platform) => {
-                platform.position.y -= scrollOffSetY - gravity;
-              });
-              doubleJumper.position.y -= scrollOffSetY - gravity;
-              flyer.position.y -= scrollOffSetY - gravity;
-              bat.forEach((bat) => {
-                bat.position.y -= scrollOffSetY - gravity;
-              });
-            }
-            */
-            //Código para bats
-            bat.forEach((enemy, index) => {
-              if (
-                Player1.position.x + Player1.width >= enemy.position.x &&
-                Player1.position.x <= enemy.position.x + enemy.width &&
-                Player1.position.y + Player1.height >= enemy.position.y &&
-                Player1.position.y <= enemy.position.y + enemy.height
-              ) {
-                init();
-                onPlatform = false;
-                doubleJump = false;
-                fly = false;
-                isNearBat = false;
-              }
-              //Colisión con ataque
-              if(
-                meleeAttack.active &&
-                meleeAttack.x + meleeAttack.width >= enemy.position.x &&
-                meleeAttack.x <= enemy.position.x + enemy.width &&
-                meleeAttack.y + meleeAttack.height >= enemy.position.y &&
-                meleeAttack.y <= enemy.position.y + enemy.height
-                ) {
-                  bat.splice(index,1)
-                }
-  
-            });
-            /*
-            //Enemigos persiguen
-  
-            bat.forEach((bat) => {
-              // Falta definir bien el área de detección de los murciélagos
-              if (
-                bat.position.x + bat.width - canvas.width/3.96 < Player1.position.x &&
-                bat.position.y > Player1.position.y - canvas.width/2.83
-              ) {
-                isNearBat = true;
-              }
-              if (
-                Player1.position.x < bat.position.x &&
-                Player1.position.y > bat.position.y &&
-                isNearBat === true
-              ) {
-                bat.position.x -= 1.4;
-                bat.position.y += 1.4;
-              } else if (
-                Player1.position.x < bat.position.x &&
-                Player1.position.y < bat.position.y &&
-                isNearBat === true
-              ) {
-                bat.position.x -= 1.4;
-                bat.position.y -= 1.4;
-              } else if (
-                Player1.position.x > bat.position.x &&
-                Player1.position.y < bat.position.y &&
-                isNearBat === true
-              ) {
-                bat.position.x += 1.4;
-                bat.position.y -= 1.4;
-              } else if (
-                Player1.position.x > bat.position.x &&
-                Player1.position.y > bat.position.y &&
-                isNearBat === true
-              ) {
-                bat.position.x += 1.4;
-                bat.position.y += 1.4;
-              }
-              //console.log(isNearBat)
-            });
-            */
-            //Coger objetos. Cuando lo cojo se van arriba (solución momentánea)
-            if (
-              Player1.position.x + Player1.width >= flyer.position.x &&
-              Player1.position.x <= flyer.position.x + flyer.width &&
-              Player1.position.y + Player1.height >= flyer.position.y &&
-              Player1.position.y <= flyer.position.y + flyer.height
-            ) {
-              fly = true;
-              doubleJump = false;
-              gravity = canvas.height/768
-              flyer.position.y = -100000;
-              flyer.position.x = 0;
-              //console.log('touched')
-            }
-            if (
-              Player1.position.x + Player1.width >= doubleJumper.position.x &&
-              Player1.position.x <=
-              doubleJumper.position.x + doubleJumper.width &&
-              Player1.position.y + Player1.height >= doubleJumper.position.y &&
-              Player1.position.y <= doubleJumper.position.y + doubleJumper.height
-            ) {
-              doubleJumper.position.y = -100000;
-              doubleJumper.position.x = -0;
-              doubleJump = true;
-              fly = false;
-              //console.log('touched')
-            }
-  
-            //WIN CONDITION
-            if (scrollOffSet > 2000) {
-              //console.log('You win!')
-            }
-  
-            /*
-            if (Player1.velocity.y < 0) {
-              scrollOffSetY -= 10;
-            } else if (Player1.velocity.y > gravity + 0.1) {
-              scrollOffSetY += 10;
-            }
-            */
-           
-            //console.log(`Scroll Y: ${scrollOffSetY}`);
-            console.log(`Velocity Y: ${Player1.velocity.y}`);
-            //console.log(`Position Y: ${Player1.position.y}`);
-            console.log(`Scroll Y : ${scrollOffSetY}`);
-            //console.log(`onPlatform 4: ${onPlatform}`);
-            if (onLowerLimit) {
-              console.log("onLower");
-            } else if (onUpperLimit) {
-              console.log("onTop");
-            }
-            if (scrollOffSetY > 300) {
-              init();
-            }
-      }
-      //Función recursiva para el Loop del juego y control de los FPS
-      
-      function gameLoop() {
-          requestAnimationFrame(gameLoop);
-          const currentTime = performance.now();
-          const deltaTime = currentTime - lastFrameTime; //El tiempo que tardó en darse el proceso desde que se llamó
-          if (deltaTime >= frameInterval && !isPaused) { //Si el tiempo que tardó el proceso es mayor o igual
-            lastFrameTime = currentTime - (deltaTime % frameInterval);
-            //let fps = 1/(deltaTime/1000)
-            //console.log(`FPS Loop: ${fps}`)
-            animate();
-          }     
-        }
-  
-      const handleKeyDown = (event) => {
-        const {keyCode} = event
-        console.log(event.keyCode)
-        if (keyCode === 37) {
-          // console.log('left')
-          event.preventDefault()
-          keys.left.pressed = true;
-          looking.left = true;
-          looking.right = false;
-        } else if (keyCode === 39) {
-          // console.log('right')
-          event.preventDefault()
-          keys.right.pressed = true;
-          looking.right = true;
-          looking.left = false;
-        } else if (keyCode === 38 && !jumped && !fly) { //Salto normal
-          event.preventDefault()
-          onPlatform = false
-          jumped = true;
-          Player1.velocity.y = -canvas.height/25;
-          scrollOffSetY = -canvas.height/25;
-        } else if (keyCode === 38 && jumped && !doubleJump && !fly) { //Salto normal si esá en el aire
-          event.preventDefault()
-        } else if (keyCode === 38 && fly) { //Salto con vuelo
-          event.preventDefault()
-          onPlatform = false
-          Player1.velocity.y = -canvas.height/55;
-          scrollOffSetY = -canvas.height/55;
-        } else if (keyCode === 38 && jumped && doubleJump && !doubleJumped) { //Salto normal con doble salto
-          event.preventDefault()
-          keys.up.pressed = true
-          onPlatform = false
-          scrollOffSetY = -canvas.height/25;
-          Player1.velocity.y = -canvas.height/25;
-          doubleJumped = true;
-        } else if (keyCode === 40) {
-          // console.log('down')
-          event.preventDefault()
-          keys.down.pressed = true
-        } else if (keyCode === 27) {
-          event.preventDefault()
-          isPaused = !isPaused;
-          // console.log('Paused = ' + isPaused);
-          animate();
-        } else if (keyCode === 17 && !cooldown) {
-          keys.control.pressed = true
-          cooldown = true
-          playerAttack = true
-        } else {
-          Player1.velocity.x -= 0;
-          Player1.velocity.x += 0;
-        }
-      };
-      
-      const handleKeyUp = (event) => {
-        const {keyCode} = event
-        if (keyCode === 37) {
-          event.preventDefault()
-          // console.log('left')
-          keys.left.pressed = false;
-        } else if (keyCode === 39) {
-          event.preventDefault()
-          // console.log('right')
-          keys.right.pressed = false;
-        } else if (keyCode === 38) {
-          event.preventDefault()
-          keys.up.pressed = false
-          // console.log('up')
-        } else if (keyCode === 40) {
-          event.preventDefault()
-          keys.down.pressed = false
-          // console.log('down')
-        }else if (keyCode === 17) {
-          event.preventDefault()
-          keys.control.pressed = false
-          // console.log('down')
-        }
-      };
-      
-      document.addEventListener('keydown', handleKeyDown);
-      document.addEventListener('keyup', handleKeyUp);
-      
-      gameLoop();
     }
-  
+
+    document.addEventListener('keydown', handleKeyDown);
+    
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+
+
+  }, [togglePauseMenu, gameStarted])
+
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    if (gameStarted) {
+      const canvas = document.querySelector('canvas')
+    const c = canvas.getContext('2d');
+    //Canvas
+    canvas.width = 800; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
+    canvas.height = 600;
+    let platformWidth = canvas.width / 9.7;
+    let platformHeight = canvas.width / 48;
+    let gravity = canvas.height/450;
+    //Variables para el movimiento del personaje
+    let onPlatform = false;
+    let jumped = false;
+    let doubleJumped = false;
+    let scrollOffSet = 0;
+    let speed = canvas.width/130;
+    let isPaused = false;
+    //Variables para plataformas
+    var platforms = [];
+    // Variables para el bucle del juego
+    let lastFrameTime = performance.now();
+    const targetFPS = 60;
+    const frameInterval = 1000 / targetFPS; //los fps objetivo en milisegundos
+
+    class Player {
+      constructor() {
+        this.position = {
+          x: canvas.width / 19.2,
+          y: canvas.width / 1.5,
+        };
+        this.velocity = {
+          x: 0,
+          y: 0,
+        };
+        this.health = 1000;
+        this.width = canvas.width / 48;
+        this.height = canvas.width / 48;
+      }
+
+      draw() {
+        c.fillStyle = 'green';
+        c.fillRect(this.position.x, this.position.y, this.width, this.height);
+      }
+
+      update() {
+        this.draw();
+        this.position.y += this.velocity.y;
+        this.position.x += this.velocity.x;
+        if (
+          this.position.y + this.height + this.velocity.y < canvas.height &&
+          onPlatform === false
+        ) {
+          this.velocity.y += gravity;
+        } else if (
+          this.position.y + this.height + this.velocity.y < canvas.height &&
+          onPlatform === true
+        ) {
+          this.velocity.y += gravity;
+        }
+      }
+    }
+
+    class Platform {
+      constructor(x, y) {
+        this.position = {
+          x: x,
+          y: y,
+        };
+        this.width = canvas.width / 9.6; //Puedo establecer el ancho como this.image.width
+        this.height = canvas.width / 48;
+        //this.image = image
+      }
+
+      draw() {
+        c.fillStyle = 'purple';
+        c.fillRect(this.position.x, this.position.y, this.width, this.height); //Método para dibujar al personaje
+      }
+    }
+
+        
+    function FloorGenerator(n) {
+      platforms = [];
+      var position = -platformWidth;
+      for (let i = 0; i < n; i++) {
+        platforms.push(new Platform(position=position+platformWidth, canvas.height - platformHeight));
+      }
+    }
+
+    //Variables para generar el escenario en la primera ejecución
+    let Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis
+      // const Platform1 = new Platform()
+      FloorGenerator(20);
+
+      let keys = {
+        right: {
+          pressed: false,
+        },
+        left: {
+          pressed: false,
+        },
+        up: {
+          pressed: false,
+        },
+        down: {
+          pressed: false,
+        },
+        control: {
+          pressed: false
+        }
+      };
+
+    function init() {//Esta función se llamará más adelante para reiniciar el nivel cuando se pierda
+      Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis 
+      FloorGenerator(20);
+      gravity = canvas.height/450;
+      scrollOffSet = 0; //Para definir el límite máximo de píxeles que se desplazarán los elementos (y definir por ejemplo el final del escenario)
+    }
+
+    function animate() {
+          c.fillStyle = 'white';
+          c.fillRect(0, 0, canvas.width, canvas.height);
+          
+          //Dibujar player
+          //Es importante que Player sea lo último que se dibuje para que siempre esté por delante de las platformas
+          //Importante actualizar primero meleeAttack para que se dibuje correctamente y no con retardo
+
+          Player1.update(); //update será llamado cada segundo, sumando la gravedad a la velocidad hasta que se cumpla la condicón del loop anterior
+          platforms.forEach((platform) => {//Para cada elemento dentro de platforms, se les asigna una constante platform y se dibuja
+            platform.draw();//Platform1.draw() Esto sirve para una única plataforma
+          });
+          //ACTUALIZARÁ LA POSICIÓN DE TODO EL ESCENARIO AL LLEGAR A UN BORDE
+
+          if (
+            keys.right.pressed &&
+            Player1.position.x + Player1.width < canvas.width - canvas.width/4.95
+          ) {
+            //Si presino derecha y el player no ha llegado al borde derecho...
+            Player1.velocity.x = speed;
+          } else if (keys.left.pressed && Player1.position.x > canvas.width/4.95) {
+            //Si presiono izquierda y el player no ha llegado al borde izquierdo...
+            Player1.velocity.x = -speed;
+          } else {
+            // Si estoy en algún borde
+            Player1.velocity.x = 0;
+
+          }
+          //Platform colission
+          platforms.forEach((platform) => {
+            if (
+              Player1.position.y + Player1.height <= platform.position.y && //track de la posición en y
+              Player1.position.y + Player1.height + Player1.velocity.y >=
+              platform.position.y &&
+              Player1.position.x + Player1.width >= platform.position.x && //track de la posición en y
+              Player1.position.x <= platform.position.x + platform.width //track de la posición en y
+            ) {
+              jumped = false;
+              doubleJumped = false;
+              onPlatform = true;
+              Player1.velocity.y = 0;
+              Player1.position.y = platform.position.y - Player1.height;
+            }
+          });
+              
+    }
+    //Función recursiva para el Loop del juego y control de los FPS
+    function gameLoop() {
+        requestAnimationFrame(gameLoop);
+        const currentTime = performance.now();
+        const deltaTime = currentTime - lastFrameTime; //El tiempo que tardó en darse el proceso desde que se llamó
+        if (deltaTime >= frameInterval && !isPaused) { //Si el tiempo que tardó el proceso es mayor o igual
+          lastFrameTime = currentTime - (deltaTime % frameInterval);
+          let fps = 1/(deltaTime/1000)
+          //console.log(`FPS Loop: ${fps}`)
+          animate();
+        }     
+      }
+
+    const handleKeyDown = (event) => {
+      const {keyCode} = event
+      if (keyCode === 37) {
+        event.preventDefault()
+        keys.left.pressed = true;
+      } else if (keyCode === 39) {
+        // console.log('right')
+        event.preventDefault()
+        keys.right.pressed = true;
+      } else if (keyCode === 38 && !jumped) { //Salto normal
+        event.preventDefault()
+        jumped = true;
+        Player1.velocity.y = -canvas.height/26;
+      } else if (keyCode === 40) {
+        event.preventDefault()
+        keys.down.pressed = true
+      } else if (keyCode === 27) {
+        event.preventDefault()
+        isPaused = !isPaused;
+        animate();
+      } else {
+        Player1.velocity.x -= 0;
+        Player1.velocity.x += 0;
+      }
+    };
+    
+    const handleKeyUp = (event) => {
+      const {keyCode} = event
+      if (keyCode === 37) {
+        event.preventDefault()
+        // console.log('left')
+        keys.left.pressed = false;
+      } else if (keyCode === 39) {
+        event.preventDefault()
+        // console.log('right')
+        keys.right.pressed = false;
+      } else if (keyCode === 38) {
+        event.preventDefault()
+        keys.up.pressed = false
+        // console.log('up')
+      } else if (keyCode === 40) {
+        event.preventDefault()
+        keys.down.pressed = false
+        // console.log('down')
+      }else if (keyCode === 17) {
+        event.preventDefault()
+        keys.control.pressed = false
+        // console.log('down')
+      }
+    };
+    
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keyup', handleKeyUp);
+    
+    gameLoop();
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+
+    }
+    
   }, [gameStarted]);
-  
   return (
     <div>
+      <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
+        <h1>PAUSED</h1>
+        <button onClick={()=>handlePauseMenu("Resume")}>Resume</button>
+        <button onClick={()=>handlePauseMenu("Options")}>Options</button>
+        <button onClick={()=>handlePauseMenu("Quit")}>Quit</button>
+      </div>
       <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
+        <div>Super Awesome Javascript action Platformer!!</div>
         <button onClick={startGame}>Start</button>
-        {gameStarted ? <div>true</div> : <div>false</div>}
       </div>
       <canvas className = {gameStarted? "canvas-hidden" : "canvas-init"}ref={canvasRef} />
     </div>
-    
-
   )
 }
 
