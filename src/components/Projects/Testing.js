@@ -12,12 +12,10 @@ function Platformer() {
   }
 
   const handlePauseMenu = (e) => {
+    setTogglePauseMenu(false);
     switch (e) {
       case "Resume":
-        setTogglePauseMenu(false)
         console.log("Resume")
-        break;
-      case "Options":
         break;
       case "Quit":
         setGameStarted(false);
@@ -50,7 +48,7 @@ function Platformer() {
 
   useEffect(() => {
     if (gameStarted) {
-      const canvas = document.querySelector('canvas')
+    const canvas = document.querySelector('canvas')
     const c = canvas.getContext('2d');
     //Canvas
     canvas.width = 800; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
@@ -281,13 +279,23 @@ function gameLoop() {
         // console.log('down')
       }
     };
-    
+
+    const handleClick = () => {
+      if (isPaused) {
+        isPaused = false
+        setTogglePauseMenu(false)
+      }
+    };
+
+
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keyup', handleKeyUp);
-    
+    document.addEventListener('click', handleClick);
+
     gameLoop();
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('click', handleClick);
     };
 
     }
@@ -298,14 +306,14 @@ function gameLoop() {
       <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
         <h1>PAUSED</h1>
         <button onClick={()=>handlePauseMenu("Resume")}>Resume</button>
-        <button onClick={()=>handlePauseMenu("Options")}>Options</button>
         <button onClick={()=>handlePauseMenu("Quit")}>Quit</button>
       </div>
       <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
         <div>TESTING PLACE</div>
         <button onClick={startGame}>Start</button>
       </div>
-      <canvas className = {gameStarted? "canvas-hidden" : "canvas-init"}ref={canvasRef} />
+      {gameStarted? <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} /> : null}
+      
     </div>
   )
 }
