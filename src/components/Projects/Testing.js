@@ -61,16 +61,17 @@ function Platformer() {
     //Variables para el movimiento del personaje
     let onPlatform = false;
     let jumped = false;
-    let doubleJumped = false;
-    let scrollOffSet = 0;
     let speed = canvas.width/130;
-    let isPaused = false;
     //Variables para plataformas
     var platforms = [];
     // Variables para el bucle del juego
+    let isPaused = false;
     let lastFrameTime = performance.now();
+    let framesThisSecond = 0;
+    let lastFpsUpdate = 0;
+    let fps = 0;
     const targetFPS = 60;
-    const frameInterval = 1000 / targetFPS; //los fps objetivo en milisegundos
+    const frameInterval = 1000 / targetFPS; // los fps objetivo en milisegundos
 
     class Player {
       constructor() {
@@ -138,7 +139,7 @@ function Platformer() {
 
     //Variables para generar el escenario en la primera ejecución
     let Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis
-      // const Platform1 = new Platform()
+
       FloorGenerator(20);
 
       let keys = {
@@ -158,13 +159,6 @@ function Platformer() {
           pressed: false
         }
       };
-
-    function init() {//Esta función se llamará más adelante para reiniciar el nivel cuando se pierda
-      Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis 
-      FloorGenerator(20);
-      gravity = canvas.height/450;
-      scrollOffSet = 0; //Para definir el límite máximo de píxeles que se desplazarán los elementos (y definir por ejemplo el final del escenario)
-    }
 
     function animate() {
           c.fillStyle = 'white';
@@ -204,7 +198,6 @@ function Platformer() {
               Player1.position.x <= platform.position.x + platform.width //track de la posición en y
             ) {
               jumped = false;
-              doubleJumped = false;
               onPlatform = true;
               Player1.velocity.y = 0;
               Player1.position.y = platform.position.y - Player1.height;
@@ -213,17 +206,30 @@ function Platformer() {
               
     }
     //Función recursiva para el Loop del juego y control de los FPS
-    function gameLoop() {
-        requestAnimationFrame(gameLoop);
-        const currentTime = performance.now();
-        const deltaTime = currentTime - lastFrameTime; //El tiempo que tardó en darse el proceso desde que se llamó
-        if (deltaTime >= frameInterval && !isPaused) { //Si el tiempo que tardó el proceso es mayor o igual
-          lastFrameTime = currentTime - (deltaTime % frameInterval);
-          let fps = 1/(deltaTime/1000)
-          //console.log(`FPS Loop: ${fps}`)
-          animate();
-        }     
+    
+
+function gameLoop() {
+  requestAnimationFrame(gameLoop);
+
+  const currentTime = performance.now();
+  const deltaTime = currentTime - lastFrameTime; // El tiempo que tardó en darse el proceso desde que se llamó
+
+  if (!isPaused) {
+    if (deltaTime >= frameInterval) { // Si el tiempo que tardó el proceso es mayor o igual
+      lastFrameTime = currentTime - (deltaTime % frameInterval);
+      animate();
+
+      // Cálculo de FPS
+      framesThisSecond++;
+      if (currentTime > lastFpsUpdate + 1000) {
+        fps = framesThisSecond;
+        framesThisSecond = 0;
+        lastFpsUpdate = currentTime;
+        console.log(`FPS: ${fps}`);
       }
+    }
+  }
+}
 
     const handleKeyDown = (event) => {
       const {keyCode} = event
@@ -296,7 +302,7 @@ function Platformer() {
         <button onClick={()=>handlePauseMenu("Quit")}>Quit</button>
       </div>
       <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
-        <div>Super Awesome Javascript action Platformer!!</div>
+        <div>TESTING PLACE</div>
         <button onClick={startGame}>Start</button>
       </div>
       <canvas className = {gameStarted? "canvas-hidden" : "canvas-init"}ref={canvasRef} />
