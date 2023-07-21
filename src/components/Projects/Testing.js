@@ -6,16 +6,18 @@ function Platformer() {
   const [gameStarted, setGameStarted] = useState (false);
   const [togglePauseMenu, setTogglePauseMenu] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  let isPausedRef = useRef(false);
   const startGame = () => {
     setGameStarted(!gameStarted)
     console.log(`Game started: ${gameStarted}`);
   }
 
   const handlePauseMenu = (e) => {
-    setTogglePauseMenu(false);
-    switch (e) {
+      switch (e) {
       case "Resume":
+        setTogglePauseMenu(false);
         console.log("Resume")
+        isPausedRef.current = false
         break;
       case "Quit":
         setGameStarted(false);
@@ -63,7 +65,7 @@ function Platformer() {
     //Variables para plataformas
     var platforms = [];
     // Variables para el bucle del juego
-    let isPaused = false;
+    
     let lastFrameTime = performance.now();
     let framesThisSecond = 0;
     let lastFpsUpdate = 0;
@@ -212,7 +214,7 @@ function gameLoop() {
   const currentTime = performance.now();
   const deltaTime = currentTime - lastFrameTime; // El tiempo que tardó en darse el proceso desde que se llamó
 
-  if (!isPaused) {
+  if (!isPausedRef.current) {
     if (deltaTime >= frameInterval) { // Si el tiempo que tardó el proceso es mayor o igual
       lastFrameTime = currentTime - (deltaTime % frameInterval);
       animate();
@@ -247,7 +249,8 @@ function gameLoop() {
         keys.down.pressed = true
       } else if (keyCode === 27) {
         event.preventDefault()
-        isPaused = !isPaused;
+        isPausedRef.current = !isPausedRef.current
+        setTogglePauseMenu(true);
         animate();
       } else {
         Player1.velocity.x -= 0;
@@ -279,13 +282,17 @@ function gameLoop() {
         // console.log('down')
       }
     };
-
+    /*
     const handleClick = () => {
-      if (!togglePauseMenu) {
+      console.log(togglePauseMenu)
+      console.log(`Pause ref: ${pauseRef.current}`)
+      if (!pauseRef.current) {
         isPaused = false
+        setTogglePauseMenu(false)
+        pauseRef.current = !pauseRef.current;
       }
     };
-
+    */
     /*
     const handleMouseMove = (event) => {
       const { clientX, clientY } = event;
@@ -296,14 +303,14 @@ function gameLoop() {
 
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keyup', handleKeyUp);
-    document.addEventListener('click', handleClick);
+    //document.addEventListener('click', handleClick);
     //document.addEventListener('mousemove', handleMouseMove);
       
   
     gameLoop();
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('click', handleClick);
+      //document.removeEventListener('click', handleClick);
       //document.removeEventListener('mousemove', handleMouseMove);
     };
 
