@@ -5,7 +5,7 @@ function Platformer() {
   
   const [gameStarted, setGameStarted] = useState (false);
   const [togglePauseMenu, setTogglePauseMenu] = useState(false);
-  
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const startGame = () => {
     setGameStarted(!gameStarted)
     console.log(`Game started: ${gameStarted}`);
@@ -281,21 +281,30 @@ function gameLoop() {
     };
 
     const handleClick = () => {
-      if (isPaused) {
+      if (!togglePauseMenu) {
         isPaused = false
-        setTogglePauseMenu(false)
       }
     };
 
+    /*
+    const handleMouseMove = (event) => {
+      const { clientX, clientY } = event;
+      setMousePosition({ x: clientX, y: clientY });
+      console.log (clientX, clientY)
+    };
+    */
 
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keyup', handleKeyUp);
     document.addEventListener('click', handleClick);
-
+    //document.addEventListener('mousemove', handleMouseMove);
+      
+  
     gameLoop();
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('click', handleClick);
+      //document.removeEventListener('mousemove', handleMouseMove);
     };
 
     }
