@@ -9,6 +9,7 @@ function Platformer() {
   
   const startGame = () => {
     setGameStarted(true);
+    console.log(gameStarted)
   }
 
   const handlePauseMenu = (e) => {
@@ -23,6 +24,7 @@ function Platformer() {
         setGameStarted(false);
         setTogglePauseMenu(false);
         isPausedRef.current = false;
+        console.log(gameStarted)
         break;
       default:
         setGameStarted(true);
@@ -45,7 +47,7 @@ function Platformer() {
     };
 
 
-  }, [isPausedRef.current, gameStarted])
+  }, )
 
   const canvasRef = useRef(null);
 
@@ -81,9 +83,13 @@ function Platformer() {
     //Variables para plataformas
     var platforms = [];
     // Variables para el bucle del juego
+    
     let lastFrameTime = performance.now();
+    let framesThisSecond = 0;
+    let lastFpsUpdate = 0;
+    let fps = 0;
     const targetFPS = 60;
-    const frameInterval = 1000 / targetFPS; //los fps objetivo en milisegundos
+    const frameInterval = 1000 / targetFPS; // los fps objetivo en milisegundos
     let looking = {
       right: true,
       left: false
@@ -183,8 +189,6 @@ function Platformer() {
       update() {
         this.draw();
       }
-
-      
     }
 
     class Platform {
@@ -473,16 +477,27 @@ function Platformer() {
     }
     //Función recursiva para el Loop del juego y control de los FPS
     function gameLoop() {
-        requestAnimationFrame(gameLoop);
-        const currentTime = performance.now();
-        const deltaTime = currentTime - lastFrameTime; //El tiempo que tardó en darse el proceso desde que se llamó
-        if (deltaTime >= frameInterval && !isPausedRef.current) { //Si el tiempo que tardó el proceso es mayor o igual
+      requestAnimationFrame(gameLoop);
+    
+      const currentTime = performance.now();
+      const deltaTime = currentTime - lastFrameTime; // El tiempo que tardó en darse el proceso desde que se llamó
+    
+      if (!isPausedRef.current) {
+        if (deltaTime >= frameInterval) { // Si el tiempo que tardó el proceso es mayor o igual
           lastFrameTime = currentTime - (deltaTime % frameInterval);
-          let fps = 1/(deltaTime/1000)
-          //console.log(`FPS Loop: ${fps}`)
           animate();
-        }     
+    
+          // Cálculo de FPS
+          framesThisSecond++;
+          if (currentTime > lastFpsUpdate + 1000) {
+            fps = framesThisSecond;
+            framesThisSecond = 0;
+            lastFpsUpdate = currentTime;
+            console.log(`FPS: ${fps}`);
+          }
+        }
       }
+    }
 
     const handleKeyDown = (event) => {
       const {keyCode} = event
@@ -569,6 +584,7 @@ function Platformer() {
     }
     
   }, [gameStarted]);
+
   return (
     <div>
       <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
