@@ -21,6 +21,7 @@ function Platformer() {
         break;
       case "Quit":
         setGameStarted(false);
+        setTogglePauseMenu(false);
         isPausedRef.current = false;
         break;
       default:
