@@ -23,11 +23,11 @@ function Platformer() {
       case "Quit":
         setGameStarted(false);
         setTogglePauseMenu(false);
-        isPausedRef.current = false;
+        //isPausedRef.current = false;
         console.log(gameStarted)
         break;
       default:
-        setGameStarted(true);
+        console.log("Nada seleccionado")
     }
   }
 
@@ -53,6 +53,7 @@ function Platformer() {
 
   useEffect(() => {
     if (gameStarted) {
+      console.log("GAME LOADED")
     const canvas = document.querySelector('canvas')
     const c = canvas.getContext('2d');
     //Canvas
@@ -283,6 +284,7 @@ function Platformer() {
     }
 
     function animate() {
+      console.log("GAME RUNNING (animate())")
           c.fillStyle = 'white';
           c.fillRect(0, 0, canvas.width, canvas.height);
           bat.forEach((bat) => {
@@ -482,7 +484,7 @@ function Platformer() {
       const currentTime = performance.now();
       const deltaTime = currentTime - lastFrameTime; // El tiempo que tardó en darse el proceso desde que se llamó
     
-      if (!isPausedRef.current) {
+      if (!isPausedRef.current && gameStarted) {
         if (deltaTime >= frameInterval) { // Si el tiempo que tardó el proceso es mayor o igual
           lastFrameTime = currentTime - (deltaTime % frameInterval);
           animate();
@@ -537,7 +539,7 @@ function Platformer() {
       } else if (keyCode === 27) {
         event.preventDefault()
         isPausedRef.current = !isPausedRef.current;
-        animate();
+        //animate();
       } else if (keyCode === 17 && !cooldown) {
         keys.control.pressed = true
         cooldown = true
@@ -581,6 +583,8 @@ function Platformer() {
       document.removeEventListener('keydown', handleKeyDown);
     };
 
+    } else if (!gameStarted) {
+      console.log("GAME CLOSED")
     }
     
   }, [gameStarted]);
