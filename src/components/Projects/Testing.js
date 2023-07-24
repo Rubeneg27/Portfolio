@@ -5,8 +5,8 @@ function Platformer() {
   
   const [gameStarted, setGameStarted] = useState (false);
   const [togglePauseMenu, setTogglePauseMenu] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   let isPausedRef = useRef(false);
+  
   const startGame = () => {
     setGameStarted(!gameStarted)
     console.log(`Game started: ${gameStarted}`);

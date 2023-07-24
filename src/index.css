@@ -324,7 +324,7 @@ svg rect {
   margin-left: 3%;
 }
 
-canvas-hidden {
+.canvas-hidden {
   width: 0;
 }
 

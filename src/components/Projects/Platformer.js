@@ -5,22 +5,23 @@ function Platformer() {
   
   const [gameStarted, setGameStarted] = useState (false);
   const [togglePauseMenu, setTogglePauseMenu] = useState(false);
+  let isPausedRef = useRef(false);
   
   const startGame = () => {
-    setGameStarted(!gameStarted)
-    console.log(`Game started: ${gameStarted}`);
+    setGameStarted(true);
   }
 
   const handlePauseMenu = (e) => {
     switch (e) {
       case "Resume":
-        setTogglePauseMenu(false)
-        console.log("Resume")
+        setTogglePauseMenu(false);
+        isPausedRef.current = false
         break;
       case "Options":
         break;
       case "Quit":
         setGameStarted(false);
+        isPausedRef.current = false;
         break;
       default:
         setGameStarted(true);
@@ -33,7 +34,6 @@ function Platformer() {
       if (keyCode === 27 && gameStarted) {
         event.preventDefault();
         setTogglePauseMenu(!togglePauseMenu);
-        console.log(`Pause menu: ${togglePauseMenu}`)
       }
     }
 
@@ -44,13 +44,13 @@ function Platformer() {
     };
 
 
-  }, [togglePauseMenu, gameStarted])
+  }, [isPausedRef.current, gameStarted])
 
   const canvasRef = useRef(null);
 
   useEffect(() => {
     if (gameStarted) {
-      const canvas = document.querySelector('canvas')
+    const canvas = document.querySelector('canvas')
     const c = canvas.getContext('2d');
     //Canvas
     canvas.width = 800; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
@@ -77,7 +77,6 @@ function Platformer() {
     let doubleJump = false;
     let speed = canvas.width/130;
     let isNearBat = false;
-    let isPaused = false;
     //Variables para plataformas
     var platforms = [];
     // Variables para el bucle del juego
@@ -476,7 +475,7 @@ function Platformer() {
         requestAnimationFrame(gameLoop);
         const currentTime = performance.now();
         const deltaTime = currentTime - lastFrameTime; //El tiempo que tardó en darse el proceso desde que se llamó
-        if (deltaTime >= frameInterval && !isPaused) { //Si el tiempo que tardó el proceso es mayor o igual
+        if (deltaTime >= frameInterval && !isPausedRef.current) { //Si el tiempo que tardó el proceso es mayor o igual
           lastFrameTime = currentTime - (deltaTime % frameInterval);
           let fps = 1/(deltaTime/1000)
           //console.log(`FPS Loop: ${fps}`)
@@ -521,8 +520,7 @@ function Platformer() {
         keys.down.pressed = true
       } else if (keyCode === 27) {
         event.preventDefault()
-        isPaused = !isPaused;
-        // console.log('Paused = ' + isPaused);
+        isPausedRef.current = !isPausedRef.current;
         animate();
       } else if (keyCode === 17 && !cooldown) {
         keys.control.pressed = true
@@ -582,7 +580,7 @@ function Platformer() {
         <div>Super Awesome Javascript action Platformer!!</div>
         <button onClick={startGame}>Start</button>
       </div>
-      <canvas className = {gameStarted? "canvas-hidden" : "canvas-init"}ref={canvasRef} />
+      <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
     </div>
   )
 }
