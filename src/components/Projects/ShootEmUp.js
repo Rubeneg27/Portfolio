@@ -62,16 +62,26 @@ function ShootEmUp () {
         };
         
       }
-
+      
       draw() {
         c.fillStyle = 'green';
         c.fillRect(this.position.x, this.position.y, this.width, this.height);
       }
 
+      attack () {
+        if (keys.control.pressed) {
+          let shootWidth = canvas.width /50
+          let shootHeigth = shootWidth
+          c.fillStyle = 'orange'
+          c.fillRect(this.position.x + this.width/2, this.position.y - 100, shootWidth, shootHeigth)
+        }
+      }
       update () {
-        this.draw();
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
+
+        this.draw();
+        this.attack()
       }
     }
 
@@ -88,7 +98,7 @@ function ShootEmUp () {
 
        this.velocity = {
           x: 0,
-          y: 9,
+          y: 3,
         };
         
       }
@@ -103,6 +113,7 @@ function ShootEmUp () {
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
       }
+
     }
 
     //Variables declaration on first execution
@@ -165,9 +176,15 @@ function ShootEmUp () {
     const handleKeyDown = (e) => {
       const {keyCode} = e
       if (keyCode === 37) {
+        e.preventDefault()
         keys.left.pressed = true; 
       } else if (keyCode === 39) {
+        e.preventDefault()
         keys.right.pressed = true;
+      } else if (keyCode === 17) {
+        e.preventDefault()
+        keys.control.pressed = true
+        // console.log('down')
       }
     }
     
@@ -177,6 +194,10 @@ function ShootEmUp () {
         keys.left.pressed = false; 
       } else if (keyCode === 39) {
         keys.right.pressed = false;
+      } else if (keyCode === 17) {
+        e.preventDefault()
+        keys.control.pressed = false
+        // console.log('down')
       }
     }
 
