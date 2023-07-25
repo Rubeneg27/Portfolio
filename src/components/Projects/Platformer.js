@@ -9,6 +9,7 @@ function Platformer() {
   
   const startGame = () => {
     setGameStarted(true);
+    isPausedRef.current = false;
     console.log(gameStarted)
   }
 
@@ -23,7 +24,6 @@ function Platformer() {
       case "Quit":
         setGameStarted(false);
         setTogglePauseMenu(false);
-        //isPausedRef.current = false;
         console.log(gameStarted)
         break;
       default:
@@ -284,7 +284,7 @@ function Platformer() {
     }
 
     function animate() {
-      console.log("GAME RUNNING (animate())")
+      console.log("GAME RUNNING")
           c.fillStyle = 'white';
           c.fillRect(0, 0, canvas.width, canvas.height);
           bat.forEach((bat) => {
@@ -484,7 +484,7 @@ function Platformer() {
       const currentTime = performance.now();
       const deltaTime = currentTime - lastFrameTime; // El tiempo que tardó en darse el proceso desde que se llamó
     
-      if (!isPausedRef.current && gameStarted) {
+      if (!isPausedRef.current) {
         if (deltaTime >= frameInterval) { // Si el tiempo que tardó el proceso es mayor o igual
           lastFrameTime = currentTime - (deltaTime % frameInterval);
           animate();
@@ -498,12 +498,14 @@ function Platformer() {
             console.log(`FPS: ${fps}`);
           }
         }
+      } else if (!gameStarted) {
+        init()
       }
     }
 
     const handleKeyDown = (event) => {
       const {keyCode} = event
-      //console.log(event.keyCode)
+      console.log(event.keyCode)
       if (keyCode === 37) {
         // console.log('left')
         event.preventDefault()
@@ -584,7 +586,7 @@ function Platformer() {
     };
 
     } else if (!gameStarted) {
-      console.log("GAME CLOSED")
+      console.log("GAME CLOSED");
     }
     
   }, [gameStarted]);
@@ -601,7 +603,8 @@ function Platformer() {
         <div>Super Awesome Javascript action Platformer!!</div>
         <button onClick={startGame}>Start</button>
       </div>
-      <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
+      {gameStarted ? <canvas className = "canvas-init" ref={canvasRef} /> : null}
+      
     </div>
   )
 }

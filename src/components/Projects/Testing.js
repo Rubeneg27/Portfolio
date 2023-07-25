@@ -6,9 +6,11 @@ function Platformer() {
   const [gameStarted, setGameStarted] = useState (false);
   const [togglePauseMenu, setTogglePauseMenu] = useState(false);
   let isPausedRef = useRef(false);
+  let isGameClosedRef = useState(true); 
   
   const startGame = () => {
     setGameStarted(!gameStarted)
+    isGameClosedRef.current = true;
     console.log(`Game started: ${gameStarted}`);
   }
 
@@ -20,7 +22,9 @@ function Platformer() {
         isPausedRef.current = false
         break;
       case "Quit":
+        setTogglePauseMenu(false);
         setGameStarted(false);
+        isPausedRef.current = false
         break;
       default:
         setGameStarted(true);
@@ -49,24 +53,28 @@ function Platformer() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    if (gameStarted) {
+
+    let gameClosed = isGameClosedRef.current
     const canvas = document.querySelector('canvas')
     const c = canvas.getContext('2d');
     //Canvas
+
     canvas.width = 800; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
     canvas.height = 600;
     let platformWidth = canvas.width / 9.7;
     let platformHeight = canvas.width / 48;
     let gravity = canvas.height/450;
+
     //Variables para el movimiento del personaje
     let onPlatform = false;
     let jumped = false;
     let speed = canvas.width/130;
+
     //Variables para plataformas
     var platforms = [];
+
     // Variables para el bucle del juego
-    
-    let lastFrameTime = performance.now();
+        let lastFrameTime = performance.now();
     let framesThisSecond = 0;
     let lastFpsUpdate = 0;
     let fps = 0;
@@ -160,6 +168,16 @@ function Platformer() {
         }
       };
 
+      function init() {//Esta función se llamará más adelante para reiniciar el nivel cuando se pierda
+        Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis 
+      }
+
+      function closeGame() {
+        if (gameClosed) {
+          init();
+        }
+      }
+
     function animate() {
           c.fillStyle = 'white';
           c.fillRect(0, 0, canvas.width, canvas.height);
@@ -228,6 +246,8 @@ function gameLoop() {
         console.log(`FPS: ${fps}`);
       }
     }
+  } else if (!gameStarted) {
+    init()
   }
 }
 
@@ -314,9 +334,9 @@ function gameLoop() {
       //document.removeEventListener('mousemove', handleMouseMove);
     };
 
-    }
-    
-  }, [gameStarted]);
+    closeGame();
+
+  }, [isGameClosedRef.current]);
   return (
     <div>
       <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
@@ -328,7 +348,7 @@ function gameLoop() {
         <div>TESTING PLACE</div>
         <button onClick={startGame}>Start</button>
       </div>
-      {gameStarted? <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} /> : null}
+      <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
       
     </div>
   )
