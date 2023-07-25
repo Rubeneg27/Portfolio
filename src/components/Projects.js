@@ -1,4 +1,5 @@
 import Platformer from "./Projects/Platformer.js"
+import ShootEmUp from "./Projects/ShootEmUp.js";
 import TestFPS from "./Projects/Testing.js";
 import { useState } from "react";
 
@@ -13,6 +14,9 @@ function Projects () {
       case "Platformer":
         setProject(<Platformer></Platformer>)
         break;
+        case "ShootEmUp":
+          setProject(<ShootEmUp></ShootEmUp>)
+          break;
       case "TestFPS":
         setProject(<TestFPS></TestFPS>)
         break;
@@ -23,6 +27,7 @@ function Projects () {
     return (
         <section className="projects">
           {pressed ? null : (<button onClick={()=>handleClick("Platformer")}>Platformer</button>)}
+          {pressed ? null : (<button onClick={()=>handleClick("ShootEmUp")}>ShootEmUp!</button>)}
           {pressed ? null : (<button onClick={()=>handleClick("TestFPS")}>Testing Place</button>)}
           {project}
         </section>

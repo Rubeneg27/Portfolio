@@ -3,17 +3,17 @@ function Home () {
     <section className="Home">
       <div className="Home-text">
         <p>
-        Soy<br></br> 
+        I'm<br></br> 
         <p >Rubén Espinosa González</p>
         </p>
         <p>
-          Entusiasta del diseño y la tecnología
+          Enthusiastic of graphic design and technology
         </p>
         <p>
-          En mi sitio personal podrás conocer mi formación, explorar mis proyectos y contactarme.
+          In my personal webpage you can know more about my skills, explore my projects and contact me.
         </p>
         <p>
-          ¡Espero que disfrutes la visita!
+          I hope you enjoy your visit!
         </p>
         </div>
       <img alt="" />
