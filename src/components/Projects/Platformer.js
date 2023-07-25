@@ -148,21 +148,21 @@ function Platformer() {
         if (looking.right) {
           meleeAttack =  {
             active: true,
-            width: canvas.width / 30,
-            height: canvas.width / 30,
+            width: canvas.width / 15,
+            height: canvas.width / 15,
             x: this.position.x + this.width - canvas.width / 30 + 60, //SOLUCIÓN TEMPORAL para acceder al width the meleeAttack. Para que funcione hay que definir la posición a parte.
             y: this.position.y - 30,   
             }
-          c.fillRect(this.position.x + this.width - meleeAttack.width + 60, this.position.y - 30, canvas.width / 30, canvas.width / 30);
+          c.fillRect(this.position.x + this.width - meleeAttack.width + 60, this.position.y - 30, canvas.width / 15, canvas.width / 15);
         } else if (looking.left) {
           meleeAttack =  {
             active: true,
-            width: canvas.width / 30,
-            height: canvas.width / 30,
+            width: canvas.width / 15,
+            height: canvas.width / 15,
             x: this.position.x - 60,
             y: this.position.y - 30,      
             }
-          c.fillRect(this.position.x - 60, this.position.y - 30, canvas.width / 30, canvas.width / 30);
+          c.fillRect(this.position.x - 60, this.position.y - 30, canvas.width / 15, canvas.width / 15);
         }
        }
       }
@@ -282,6 +282,7 @@ function Platformer() {
       doubleJumper = new powerUp(canvas.width/1.98, canvas.width/6.6);
       flyer = new powerUp(canvas.width/1.067, canvas.width/6.6);
       scrollOffSet = 0; //Para definir el límite máximo de píxeles que se desplazarán los elementos (y definir por ejemplo el final del escenario)
+      console.log("Reset")
     }
 
     function animate() {
@@ -296,20 +297,21 @@ function Platformer() {
           //Dibujar player
           //Es importante que Player sea lo último que se dibuje para que siempre esté por delante de las platformas
           //Importante actualizar primero meleeAttack para que se dibuje correctamente y no con retardo
-          
+
+          Player1.update(); //update será llamado cada segundo, sumando la gravedad a la velocidad hasta que se cumpla la condicón del loop anterior
+
           //Controlar el tiempo para volver atacar
           if (playerAttack) {
             Player1.meleeAttack()
             setTimeout(function() {
               cooldown = true
               playerAttack = false
-            }, 300)
+            }, 250)
             setTimeout(function() {
               cooldown = false     
-            }, 600)
+            }, 550)
           }
-          
-          Player1.update(); //update será llamado cada segundo, sumando la gravedad a la velocidad hasta que se cumpla la condicón del loop anterior
+
           platforms.forEach((platform) => {//Para cada elemento dentro de platforms, se les asigna una constante platform y se dibuja
             platform.draw();//Platform1.draw() Esto sirve para una única plataforma
           });
@@ -503,6 +505,7 @@ function Platformer() {
       
       if (isGameClosedRef.current) {
         init()
+        console.log("Init")
       }
     }
 
@@ -589,7 +592,7 @@ function Platformer() {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isGameClosedRef.current]);
+  }, []);
 
   return (
     <div>
