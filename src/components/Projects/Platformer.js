@@ -57,12 +57,14 @@ function Platformer() {
 
     const canvas = document.querySelector('canvas')
     const c = canvas.getContext('2d');
+
     //Canvas
     canvas.width = 800; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
     canvas.height = 600;
     let platformWidth = canvas.width / 9.7;
     let platformHeight = canvas.width / 48;
     let gravity = canvas.height/450;
+
     //Variables para el movimiento del personaje
     let onPlatform = false;
     let jumped = false;
@@ -77,15 +79,17 @@ function Platformer() {
       }
     let playerAttack = false
     let cooldown = false
+
     //Power Ups
     let fly = false;
     let doubleJump = false;
     let speed = canvas.width/130;
     let isNearBat = false;
+
     //Variables para plataformas
     var platforms = [];
+
     // Variables para el bucle del juego
-    
     let lastFrameTime = performance.now();
     let framesThisSecond = 0;
     let lastFpsUpdate = 0;
@@ -134,6 +138,10 @@ function Platformer() {
       }
 
      meleeAttack() {
+
+      let meleeAttackWidth = canvas.width / 20
+      let meleeAttackHeigth = canvas.width / 15
+
       setTimeout(function() {
         meleeAttack =  {
           active: false,
@@ -142,27 +150,27 @@ function Platformer() {
           x: null,
           y: null,   
           }     
-      }, 600)
+      }, 550)
        if (playerAttack) {
         c.fillStyle = 'orange'
         if (looking.right) {
           meleeAttack =  {
             active: true,
-            width: canvas.width / 15,
-            height: canvas.width / 15,
+            width: meleeAttackWidth,
+            height: meleeAttackHeigth,
             x: this.position.x + this.width - canvas.width / 30 + 60, //SOLUCIÓN TEMPORAL para acceder al width the meleeAttack. Para que funcione hay que definir la posición a parte.
             y: this.position.y - 30,   
             }
-          c.fillRect(this.position.x + this.width - meleeAttack.width + 60, this.position.y - 30, canvas.width / 15, canvas.width / 15);
+          c.fillRect(this.position.x + this.width - meleeAttack.width + 60, this.position.y - 30, meleeAttackWidth, meleeAttackHeigth);
         } else if (looking.left) {
           meleeAttack =  {
             active: true,
-            width: canvas.width / 15,
-            height: canvas.width / 15,
+            width: meleeAttackWidth,
+            height: meleeAttackHeigth,
             x: this.position.x - 60,
             y: this.position.y - 30,      
             }
-          c.fillRect(this.position.x - 60, this.position.y - 30, canvas.width / 15, canvas.width / 15);
+          c.fillRect(this.position.x - 60, this.position.y - 30, meleeAttackWidth, meleeAttackHeigth);
         }
        }
       }
@@ -278,6 +286,8 @@ function Platformer() {
         new Enemy(canvas.width / 1.28, canvas.width / 9.6),
       ];
       gravity = canvas.height/450;
+      fly = false;
+      doubleJump = false;
       isNearBat = false;
       doubleJumper = new powerUp(canvas.width/1.98, canvas.width/6.6);
       flyer = new powerUp(canvas.width/1.067, canvas.width/6.6);
@@ -398,7 +408,6 @@ function Platformer() {
           });
 
           //Enemigos persiguen
-
           bat.forEach((bat) => {
             // Falta definir bien el área de detección de los murciélagos
             if (
