@@ -150,7 +150,7 @@ function Platformer() {
           x: null,
           y: null,   
           }     
-      }, 550)
+      }, 300)
        if (playerAttack) {
         c.fillStyle = 'orange'
         if (looking.right) {
@@ -510,12 +510,12 @@ function Platformer() {
             console.log(`FPS: ${fps}`);
           }
         }
-      } 
-      
-      if (isGameClosedRef.current) {
+      } else if (isGameClosedRef.current) {
         init()
         console.log("Init")
       }
+      
+      
     }
 
     const handleKeyDown = (event) => {
