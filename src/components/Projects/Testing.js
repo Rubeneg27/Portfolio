@@ -54,7 +54,6 @@ function Platformer() {
 
   useEffect(() => {
 
-    let gameClosed = isGameClosedRef.current
     const canvas = document.querySelector('canvas')
     const c = canvas.getContext('2d');
     //Canvas
@@ -170,12 +169,6 @@ function Platformer() {
 
       function init() {//Esta función se llamará más adelante para reiniciar el nivel cuando se pierda
         Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis 
-      }
-
-      function closeGame() {
-        if (gameClosed) {
-          init();
-        }
       }
 
     function animate() {
@@ -333,10 +326,7 @@ function gameLoop() {
       //document.removeEventListener('click', handleClick);
       //document.removeEventListener('mousemove', handleMouseMove);
     };
-
-    closeGame();
-
-  }, [isGameClosedRef.current]);
+  }, []);
   return (
     <div>
       <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>

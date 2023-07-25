@@ -6,11 +6,12 @@ function Platformer() {
   const [gameStarted, setGameStarted] = useState (false);
   const [togglePauseMenu, setTogglePauseMenu] = useState(false);
   let isPausedRef = useRef(false);
-  
+  let isGameClosedRef = useState(true); 
+
   const startGame = () => {
-    setGameStarted(true);
-    isPausedRef.current = false;
-    console.log(gameStarted)
+    setGameStarted(true)
+    isGameClosedRef.current = true;
+    console.log(`Game started: ${gameStarted}`);
   }
 
   const handlePauseMenu = (e) => {
@@ -22,9 +23,9 @@ function Platformer() {
       case "Options":
         break;
       case "Quit":
-        setGameStarted(false);
         setTogglePauseMenu(false);
-        console.log(gameStarted)
+        setGameStarted(false);
+        isPausedRef.current = false
         break;
       default:
         console.log("Nada seleccionado")
@@ -47,13 +48,12 @@ function Platformer() {
     };
 
 
-  }, )
+  }, [togglePauseMenu, gameStarted])
 
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    if (gameStarted) {
-      console.log("GAME LOADED")
+
     const canvas = document.querySelector('canvas')
     const c = canvas.getContext('2d');
     //Canvas
@@ -581,15 +581,11 @@ function Platformer() {
     document.addEventListener('keyup', handleKeyUp);
     
     gameLoop();
+    
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-
-    } else if (!gameStarted) {
-      console.log("GAME CLOSED");
-    }
-    
-  }, [gameStarted]);
+  }, []);
 
   return (
     <div>
@@ -603,7 +599,7 @@ function Platformer() {
         <div>Super Awesome Javascript action Platformer!!</div>
         <button onClick={startGame}>Start</button>
       </div>
-      {gameStarted ? <canvas className = "canvas-init" ref={canvasRef} /> : null}
+      <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
       
     </div>
   )
