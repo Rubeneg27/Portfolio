@@ -6,11 +6,12 @@ function Platformer() {
   const [gameStarted, setGameStarted] = useState (false);
   const [togglePauseMenu, setTogglePauseMenu] = useState(false);
   let isPausedRef = useRef(false);
-  let isGameClosedRef = useState(true); 
+  let isGameClosedRef = useRef(true); 
   
   const startGame = () => {
-    setGameStarted(!gameStarted)
-    isGameClosedRef.current = true;
+    setGameStarted(true)
+    isGameClosedRef.current = false;
+    isPausedRef.current = false
     console.log(`Game started: ${gameStarted}`);
   }
 
@@ -24,10 +25,10 @@ function Platformer() {
       case "Quit":
         setTogglePauseMenu(false);
         setGameStarted(false);
-        isPausedRef.current = false
+        isGameClosedRef.current = true;
         break;
       default:
-        setGameStarted(true);
+        console.log("Nada seleccionado")
     }
   }
 
@@ -48,7 +49,7 @@ function Platformer() {
     };
 
 
-  }, [togglePauseMenu, gameStarted])
+  }, )
 
   const canvasRef = useRef(null);
 
@@ -169,6 +170,7 @@ function Platformer() {
 
       function init() {//Esta función se llamará más adelante para reiniciar el nivel cuando se pierda
         Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis 
+        console.log("Reset")
       }
 
     function animate() {
@@ -239,7 +241,9 @@ function gameLoop() {
         console.log(`FPS: ${fps}`);
       }
     }
-  } else if (!gameStarted) {
+  } 
+  
+  if (isGameClosedRef.current) {
     init()
   }
 }
@@ -264,7 +268,6 @@ function gameLoop() {
         event.preventDefault()
         isPausedRef.current = !isPausedRef.current
         setTogglePauseMenu(true);
-        animate();
       } else {
         Player1.velocity.x -= 0;
         Player1.velocity.x += 0;
@@ -326,7 +329,8 @@ function gameLoop() {
       //document.removeEventListener('click', handleClick);
       //document.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+    ;
+  }, [isGameClosedRef.current]);
   return (
     <div>
       <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>

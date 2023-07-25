@@ -6,11 +6,12 @@ function Platformer() {
   const [gameStarted, setGameStarted] = useState (false);
   const [togglePauseMenu, setTogglePauseMenu] = useState(false);
   let isPausedRef = useRef(false);
-  let isGameClosedRef = useState(true); 
+  let isGameClosedRef = useRef(true); 
 
   const startGame = () => {
     setGameStarted(true)
-    isGameClosedRef.current = true;
+    isGameClosedRef.current = false;
+    isPausedRef.current = false
     console.log(`Game started: ${gameStarted}`);
   }
 
@@ -25,7 +26,7 @@ function Platformer() {
       case "Quit":
         setTogglePauseMenu(false);
         setGameStarted(false);
-        isPausedRef.current = false
+        isGameClosedRef.current = true;
         break;
       default:
         console.log("Nada seleccionado")
@@ -48,7 +49,7 @@ function Platformer() {
     };
 
 
-  }, [togglePauseMenu, gameStarted])
+  }, )
 
   const canvasRef = useRef(null);
 
@@ -284,7 +285,7 @@ function Platformer() {
     }
 
     function animate() {
-      console.log("GAME RUNNING")
+
           c.fillStyle = 'white';
           c.fillRect(0, 0, canvas.width, canvas.height);
           bat.forEach((bat) => {
@@ -498,14 +499,16 @@ function Platformer() {
             console.log(`FPS: ${fps}`);
           }
         }
-      } else if (!gameStarted) {
+      } 
+      
+      if (isGameClosedRef.current) {
         init()
       }
     }
 
     const handleKeyDown = (event) => {
       const {keyCode} = event
-      console.log(event.keyCode)
+      //console.log(event.keyCode)
       if (keyCode === 37) {
         // console.log('left')
         event.preventDefault()
@@ -541,6 +544,7 @@ function Platformer() {
       } else if (keyCode === 27) {
         event.preventDefault()
         isPausedRef.current = !isPausedRef.current;
+        isGameClosedRef.current = false;
         //animate();
       } else if (keyCode === 17 && !cooldown) {
         keys.control.pressed = true
@@ -585,7 +589,7 @@ function Platformer() {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [isGameClosedRef.current]);
 
   return (
     <div>
