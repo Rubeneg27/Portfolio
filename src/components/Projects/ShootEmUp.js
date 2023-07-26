@@ -6,6 +6,7 @@ function ShootEmUp () {
   const [togglePauseMenu, setTogglePauseMenu] = useState(false);
   let isPausedRef = useRef(false);
   let isGameClosedRef = useRef(true); 
+  let scoreRef = useRef(0)
 
   const startGame = () => {
     setGameStarted(true)
@@ -232,7 +233,6 @@ function ShootEmUp () {
     ///spawnTime: Random number for spawning time///
     ///spawnPosX: Random number for position in x axis///
     function spawnEnemies () {
-      
       if (!spawnCooldown) {
         spawnTime = Math.floor(Math.random() * (spawnTimeMax - spawnTimeMin + 1)) + spawnTimeMin;
         spawnPosX = Math.floor(Math.random() * (spawnPosXMax - spawnPosXMin + 1)) + spawnPosXMin;
@@ -277,6 +277,7 @@ function ShootEmUp () {
             // Si hay colisión, marcar enemigo y bala para eliminación
             enemiesToRemove.push(index);
             bulletsToRemove.push(i);
+            scoreRef.current = scoreRef.current + 1
           }
         }
     
@@ -399,8 +400,10 @@ function ShootEmUp () {
         <div>Super Awesome Javascript action Platformer!!</div>
         <button onClick={startGame}>Start</button>
       </div>
-      <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
-      
+      <div className='gameScreen'>
+        <div className='score'>Score: {scoreRef.current}</div>
+        <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
+      </div>
     </div>
   )
 }

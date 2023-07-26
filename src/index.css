@@ -552,3 +552,9 @@ canvas-init {
   height: 10vh;
   justify-self: center;
 }
+
+.score {
+  position: absolute;
+  color: white;
+  padding: 1vw 1vw 1vw 1vw
+}
