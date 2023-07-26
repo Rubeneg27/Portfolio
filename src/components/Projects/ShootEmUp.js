@@ -24,7 +24,9 @@ function ShootEmUp () {
     //Gameplay parameters
     let speed = 8;
     let enemySpeed1 = 3;
-    let playerBulletsSpeed1 = 10
+    let playerBulletsSpeed1 = 10;
+    let playerOnCooldown = false;
+    let playerAttackCooldown = 100;
 
     //Keys
     let keys = {
@@ -78,7 +80,13 @@ function ShootEmUp () {
 
       ///Defines and draws the attack action when control key is pressed///
       attack () {
-        if (keys.control.pressed) {
+        if (keys.control.pressed && !playerOnCooldown) {
+          playerOnCooldown = true
+
+          setTimeout(function() {
+            playerOnCooldown = false     
+          }, playerAttackCooldown)
+
           let shootWidth = canvas.width /50;
           let shootHeight = shootWidth;
           let shootPosX = this.position.x + this.width/2 - shootWidth/2;
@@ -124,14 +132,16 @@ function ShootEmUp () {
       }
 
     }
-
+    
+    ///Enemy class///
+    ///Parameters: x///Defines position of enemy in x axis
     class Enemy {
-      constructor() {
+      constructor(x) {
         this.width = canvas.width / 25;
         this.height = canvas.width / 25;
 
         this.position = {
-          x: (canvas.width/2) - (this.height/2),
+          x: x,
           y: 0,
         };
 
@@ -139,7 +149,6 @@ function ShootEmUp () {
           x: 0,
           y: enemySpeed1,
         };
-
       }
 
       ///Will draw Enemy 
@@ -160,7 +169,7 @@ function ShootEmUp () {
     ///Variables declaration on first execution///
     let Player1 = new Player();
     let enemies = [];
-    enemies.push(new Enemy());
+    enemies.push(new Enemy(10));
 
     ///Updates player position///
     function updatePlayerPosition() {
@@ -173,6 +182,7 @@ function ShootEmUp () {
       }
     }
     
+    ///Will draw every enemy and detect if there is a colission with bullets///
     function enemiesUpdate() {
       enemies.forEach((enemy, index) => {
         enemy.update();
@@ -197,20 +207,6 @@ function ShootEmUp () {
       });
     }
 
- /*
-    for (let i = 0; i <= enemies.length; i++) {
-      for (let j = 0; i <= Player1.bullets.length; j++) {
-        if(
-          Enemy.position.x < Player1.bullets.position.x + Player1.bullets.width &&
-          Enemy.position.y+Enemy.height > Player1.bullets.position.y
-          
-          ) {
-            enemies.splice(index,1)
-          }
-      }
-    }
-*/
-    
     ///Animation function to be called later on loop///
     function animate () {
       c.fillStyle = '#281845'
