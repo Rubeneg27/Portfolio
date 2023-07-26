@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 function ShootEmUp () {
 
@@ -60,6 +60,8 @@ function ShootEmUp () {
           x: 0,
           y: 0,
         };
+
+        this.bullets = [];
         
       }
       
@@ -70,19 +72,59 @@ function ShootEmUp () {
 
       attack () {
         if (keys.control.pressed) {
-          let shootWidth = canvas.width /50
-          let shootHeigth = shootWidth
+          let shootWidth = canvas.width /50;
+          let shootHeight = shootWidth;
+          let shootPosX = this.position.x + this.width/2 - shootWidth/2;
+          let shootPosY = this.position.y - canvas.height/30;
           c.fillStyle = 'orange'
-          c.fillRect(this.position.x + this.width/2, this.position.y - 100, shootWidth, shootHeigth)
+          c.fillRect(shootPosX, shootPosY, shootWidth, shootHeight)
+
+          this.bullets.push({
+            x: shootPosX,
+            y: shootPosY,
+            width: shootWidth,
+            height: shootHeight,
+            velocity: {
+              x: 0,
+              y: -speed,
+            },
+          });
+
+          console.log(this.bullets)
         }
       }
+
+      destroyBullet() {
+        this.bullets.forEach((bullet, index) => {
+          
+        })
+      }
+
       update () {
+
+        //Draw Player
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
 
         this.draw();
-        this.attack()
+        this.attack();
+        
+        // Update each bullet in bullets array
+        this.bullets.forEach((bullet, index) => {
+          bullet.x += bullet.velocity.x;
+          bullet.y += bullet.velocity.y;
+
+          ///Draw each bullet in bullets
+          c.fillStyle = 'orange';
+          c.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+
+          //Destroy each bullet in bullets
+          if ( bullet.y < -200) {
+            this.bullets.splice(index,1)
+          }
+        });
       }
+
     }
 
     class Enemy {
@@ -116,12 +158,12 @@ function ShootEmUp () {
 
     }
 
-    //Variables declaration on first execution
+    ///Variables declaration on first execution///
     let Player1 = new Player();
 
     let Enemy1 = new Enemy();
 
-    //Update player position 
+    ///Updates player position///
     function updatePlayerPosition() {
       if (keys.left.pressed) {
         Player1.velocity.x = -speed;
@@ -132,7 +174,7 @@ function ShootEmUp () {
       }
     }
     
-    //Animation function to be called every ms
+    ///Animation function to be called every ms///
     function animate () {
 
       c.fillStyle = '#281845'
