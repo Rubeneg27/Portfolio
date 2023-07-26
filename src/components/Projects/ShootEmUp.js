@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
 function ShootEmUp () {
-
   const canvasRef = useRef(null);
 
   let isPausedRef = useRef (false)
@@ -69,6 +68,10 @@ function ShootEmUp () {
       
       ///Will draw Player
       draw() {
+        //Updates Player positions
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
+
         c.fillStyle = 'green';
         c.fillRect(this.position.x, this.position.y, this.width, this.height);
       }
@@ -93,22 +96,11 @@ function ShootEmUp () {
               y: -playerBulletsSpeed1,
             },
           });
-
-          console.log(this.bullets)
         }
       }
 
-      ///Will update everything rellated to Player///
-      update () {
-
-        //Draw Player
-        this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
-
-        this.draw();
-        this.attack();
-        
-        //Updates each bullet in bullets array
+      ///Updates each bullet in bullets array///
+      bulletManager() {
         this.bullets.forEach((bullet, index) => {
           bullet.x += bullet.velocity.x;
           bullet.y += bullet.velocity.y;
@@ -124,11 +116,17 @@ function ShootEmUp () {
         });
       }
 
+      ///Will update everything rellated to Player///
+      update () {
+        this.draw();
+        this.attack();
+        this.bulletManager();
+      }
+
     }
 
     class Enemy {
       constructor() {
-
         this.width = canvas.width / 25;
         this.height = canvas.width / 25;
 
@@ -137,15 +135,17 @@ function ShootEmUp () {
           y: 0,
         };
 
-       this.velocity = {
+        this.velocity = {
           x: 0,
           y: enemySpeed1,
         };
-        
+
       }
 
       ///Will draw Enemy 
       draw() {
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
         c.fillStyle = 'red';
         c.fillRect(this.position.x, this.position.y, this.width, this.height);
       }
@@ -153,8 +153,6 @@ function ShootEmUp () {
       ///Will draw the updated Enemy
       update () {
         this.draw();
-        this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
       }
 
     }
@@ -175,16 +173,46 @@ function ShootEmUp () {
       }
     }
     
-    function enemiesUpdate () {
-      enemies.forEach((enemy) => {
-        enemy.update()
-      })
-    }
+    function enemiesUpdate() {
+      enemies.forEach((enemy, index) => {
+        enemy.update();
     
+        // Verificar colisiones entre cada enemigo y cada bala del jugador
+        for (let i = 0; i < Player1.bullets.length; i++) {
+          const bullet = Player1.bullets[i];
+    
+          if (
+            enemy.position.x < bullet.x + bullet.width &&
+            enemy.position.x + enemy.width > bullet.x &&
+            enemy.position.y + enemy.height > bullet.y
+          ) {
+            // Si hay colisión, elimina el enemigo y la bala
+            enemies.splice(index, 1);
+            Player1.bullets.splice(i, 1);
+    
+            // Decrementa el valor de 'i' para evitar saltarse una bala después de la eliminación
+            i--;
+          }
+        }
+      });
+    }
+
+ /*
+    for (let i = 0; i <= enemies.length; i++) {
+      for (let j = 0; i <= Player1.bullets.length; j++) {
+        if(
+          Enemy.position.x < Player1.bullets.position.x + Player1.bullets.width &&
+          Enemy.position.y+Enemy.height > Player1.bullets.position.y
+          
+          ) {
+            enemies.splice(index,1)
+          }
+      }
+    }
+*/
     
     ///Animation function to be called later on loop///
     function animate () {
-
       c.fillStyle = '#281845'
       c.fillRect(0, 0, canvas.width, canvas.height);
       
