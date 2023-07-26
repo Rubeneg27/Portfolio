@@ -27,6 +27,14 @@ function ShootEmUp () {
     let playerBulletsSpeed1 = 10;
     let playerOnCooldown = false;
     let playerAttackCooldown = 100;
+    //Spawn parameters
+    let spawnCooldown = false
+    let spawnTimeMin = 500
+    let spawnTimeMax = 2000
+    let spawnPosXMin = canvas.width*0.1
+    let spawnPosXMax = canvas.width - canvas.width*0.1
+    let spawnTime
+    let spawnPosX
 
     //Keys
     let keys = {
@@ -169,8 +177,27 @@ function ShootEmUp () {
     ///Variables declaration on first execution///
     let Player1 = new Player();
     let enemies = [];
-    enemies.push(new Enemy(10));
 
+    ///Spawn enemies at random time in random position when the cooldown is false///
+    ///Variables///
+    ///spawnCooldown: When true, enemies doesn't appear///
+    ///spawnTime: Random number for spawning time///
+    ///spawnPosX: Random number for position in x axis///
+    function spawnEnemies () {
+      
+      if (!spawnCooldown) {
+        spawnTime = Math.floor(Math.random() * (spawnTimeMax - spawnTimeMin + 1)) + spawnTimeMin;
+        spawnPosX = Math.floor(Math.random() * (spawnPosXMax - spawnPosXMin + 1)) + spawnPosXMin;
+        spawnCooldown = true
+
+        setTimeout(function () {
+        enemies.push(new Enemy(spawnPosX))  
+        spawnCooldown = false
+      }, spawnTime)
+      }
+      
+    }
+    
     ///Updates player position///
     function updatePlayerPosition() {
       if (keys.left.pressed) {
@@ -181,6 +208,8 @@ function ShootEmUp () {
         Player1.velocity.x = 0;
       }
     }
+    
+    
     
     ///Will draw every enemy and detect if there is a colission with bullets///
     function enemiesUpdate() {
@@ -204,6 +233,10 @@ function ShootEmUp () {
             i--;
           }
         }
+
+        if (enemy.position.y > canvas.height) {
+          enemies.splice(index, 1);
+        }
       });
     }
 
@@ -214,6 +247,7 @@ function ShootEmUp () {
       
       updatePlayerPosition();
       Player1.update();
+      spawnEnemies();
       enemiesUpdate();
     }
 
