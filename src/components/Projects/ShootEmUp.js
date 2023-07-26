@@ -24,6 +24,8 @@ function ShootEmUp () {
 
     //Gameplay parameters
     let speed = 8;
+    let enemySpeed1 = 3;
+    let playerBulletsSpeed1 = 10
 
     //Keys
     let keys = {
@@ -65,11 +67,13 @@ function ShootEmUp () {
         
       }
       
+      ///Will draw Player
       draw() {
         c.fillStyle = 'green';
         c.fillRect(this.position.x, this.position.y, this.width, this.height);
       }
 
+      ///Defines and draws the attack action when control key is pressed///
       attack () {
         if (keys.control.pressed) {
           let shootWidth = canvas.width /50;
@@ -86,7 +90,7 @@ function ShootEmUp () {
             height: shootHeight,
             velocity: {
               x: 0,
-              y: -speed,
+              y: -playerBulletsSpeed1,
             },
           });
 
@@ -94,12 +98,7 @@ function ShootEmUp () {
         }
       }
 
-      destroyBullet() {
-        this.bullets.forEach((bullet, index) => {
-          
-        })
-      }
-
+      ///Will update everything rellated to Player///
       update () {
 
         //Draw Player
@@ -109,16 +108,16 @@ function ShootEmUp () {
         this.draw();
         this.attack();
         
-        // Update each bullet in bullets array
+        //Updates each bullet in bullets array
         this.bullets.forEach((bullet, index) => {
           bullet.x += bullet.velocity.x;
           bullet.y += bullet.velocity.y;
 
-          ///Draw each bullet in bullets
+          ///Draws each bullet in bullets
           c.fillStyle = 'orange';
           c.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
 
-          //Destroy each bullet in bullets
+          //Destroys each bullet in bullets
           if ( bullet.y < -200) {
             this.bullets.splice(index,1)
           }
@@ -140,16 +139,18 @@ function ShootEmUp () {
 
        this.velocity = {
           x: 0,
-          y: 3,
+          y: enemySpeed1,
         };
         
       }
 
+      ///Will draw Enemy 
       draw() {
         c.fillStyle = 'red';
         c.fillRect(this.position.x, this.position.y, this.width, this.height);
       }
 
+      ///Will draw the updated Enemy
       update () {
         this.draw();
         this.position.x += this.velocity.x;
@@ -160,8 +161,8 @@ function ShootEmUp () {
 
     ///Variables declaration on first execution///
     let Player1 = new Player();
-
-    let Enemy1 = new Enemy();
+    let enemies = [];
+    enemies.push(new Enemy());
 
     ///Updates player position///
     function updatePlayerPosition() {
@@ -174,21 +175,26 @@ function ShootEmUp () {
       }
     }
     
-    ///Animation function to be called every ms///
+    function enemiesUpdate () {
+      enemies.forEach((enemy) => {
+        enemy.update()
+      })
+    }
+    
+    
+    ///Animation function to be called later on loop///
     function animate () {
 
       c.fillStyle = '#281845'
       c.fillRect(0, 0, canvas.width, canvas.height);
       
       updatePlayerPosition();
-
       Player1.update();
-
-      Enemy1.update();
+      enemiesUpdate();
     }
 
     
-    //Loop manager for animation loop
+    ///Loop manager for animation loop///
     function gameLoop () {
       requestAnimationFrame(gameLoop);
 
