@@ -1,9 +1,54 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function ShootEmUp () {
   const canvasRef = useRef(null);
+  const [gameStarted, setGameStarted] = useState (false);
+  const [togglePauseMenu, setTogglePauseMenu] = useState(false);
+  let isPausedRef = useRef(false);
+  let isGameClosedRef = useRef(true); 
 
-  let isPausedRef = useRef (false)
+  const startGame = () => {
+    setGameStarted(true)
+    isGameClosedRef.current = false;
+    isPausedRef.current = false
+    console.log(`Game started: ${gameStarted}`);
+  }
+
+  const handlePauseMenu = (e) => {
+    switch (e) {
+      case "Resume":
+        setTogglePauseMenu(false);
+        isPausedRef.current = false
+        break;
+      case "Options":
+        break;
+      case "Quit":
+        setTogglePauseMenu(false);
+        setGameStarted(false);
+        isGameClosedRef.current = true;
+        break;
+      default:
+        console.log("Nada seleccionado")
+    }
+  }
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      const {keyCode} = event
+      if (keyCode === 27 && gameStarted) {
+        event.preventDefault();
+        setTogglePauseMenu(!togglePauseMenu);
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
+    
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+
+
+  }, )
 
   useEffect(() => {
 
@@ -30,27 +75,30 @@ function ShootEmUp () {
     //Spawn parameters
     let spawnCooldown = false
     let spawnTimeMin = 500
-    let spawnTimeMax = 2000
-    let spawnPosXMin = canvas.width*0.1
-    let spawnPosXMax = canvas.width - canvas.width*0.1
+    let spawnTimeMax = 800
+    let spawnPosXMin = canvas.width*0.05
+    let spawnPosXMax = canvas.width - canvas.width*0.05
     let spawnTime
     let spawnPosX
 
     //Keys
     let keys = {
       right: {
-        pressed: false,
+        pressed: false
       },
       left: {
-        pressed: false,
+        pressed: false
       },
       up: {
-        pressed: false,
+        pressed: false
       },
       down: {
-        pressed: false,
+        pressed: false
       },
       control: {
+        pressed: false
+      },
+      esc: {
         pressed: false
       }
     };
@@ -209,10 +257,11 @@ function ShootEmUp () {
       }
     }
     
-    
-    
     ///Will draw every enemy and detect if there is a colission with bullets///
     function enemiesUpdate() {
+      const enemiesToRemove = [];
+      const bulletsToRemove = [];
+    
       enemies.forEach((enemy, index) => {
         enemy.update();
     
@@ -225,19 +274,33 @@ function ShootEmUp () {
             enemy.position.x + enemy.width > bullet.x &&
             enemy.position.y + enemy.height > bullet.y
           ) {
-            // Si hay colisión, elimina el enemigo y la bala
-            enemies.splice(index, 1);
-            Player1.bullets.splice(i, 1);
-    
-            // Decrementa el valor de 'i' para evitar saltarse una bala después de la eliminación
-            i--;
+            // Si hay colisión, marcar enemigo y bala para eliminación
+            enemiesToRemove.push(index);
+            bulletsToRemove.push(i);
           }
         }
-
+    
         if (enemy.position.y > canvas.height) {
-          enemies.splice(index, 1);
+          enemiesToRemove.push(index);
         }
       });
+    
+      // Eliminar enemigos y balas marcados para eliminación
+      for (let i = enemiesToRemove.length - 1; i >= 0; i--) {
+        const enemyIndex = enemiesToRemove[i];
+        enemies.splice(enemyIndex, 1);
+      }
+    
+      for (let i = bulletsToRemove.length - 1; i >= 0; i--) {
+        const bulletIndex = bulletsToRemove[i];
+        Player1.bullets.splice(bulletIndex, 1);
+      }
+    }
+
+    ///Will initialize parameters when neccesary
+    function init() {
+      Player1 = new Player();
+      enemies = [];
     }
 
     ///Animation function to be called later on loop///
@@ -250,7 +313,6 @@ function ShootEmUp () {
       spawnEnemies();
       enemiesUpdate();
     }
-
     
     ///Loop manager for animation loop///
     function gameLoop () {
@@ -273,11 +335,12 @@ function ShootEmUp () {
             console.log(`FPS: ${fps}`);
           }
         }
+      }  else if (isGameClosedRef.current) {
+        init()
+        console.log("Init")
       }
     }
 
-    gameLoop();
-    
     //Controller's logic
     const handleKeyDown = (e) => {
       const {keyCode} = e
@@ -291,6 +354,10 @@ function ShootEmUp () {
         e.preventDefault()
         keys.control.pressed = true
         // console.log('down')
+      } else if (keyCode === 27) {
+        e.preventDefault()
+        keys.esc.pressed = true;
+        isPausedRef.current = !isPausedRef.current
       }
     }
     
@@ -304,20 +371,36 @@ function ShootEmUp () {
         e.preventDefault()
         keys.control.pressed = false
         // console.log('down')
+      } else if (keyCode === 27) {
+        e.preventDefault()
+        keys.esc.pressed = false;
       }
     }
 
     document.addEventListener('keydown', handleKeyDown)
     document.addEventListener('keyup', handleKeyUp);
 
+    gameLoop();
+
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     }
 
-  })
+  }, [])
   return (
     <div>
-      <canvas ref={canvasRef}></canvas>
+      <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
+        <h1>PAUSED</h1>
+        <button onClick={()=>handlePauseMenu("Resume")}>Resume</button>
+        <button onClick={()=>handlePauseMenu("Options")}>Options</button>
+        <button onClick={()=>handlePauseMenu("Quit")}>Quit</button>
+      </div>
+      <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
+        <div>Super Awesome Javascript action Platformer!!</div>
+        <button onClick={startGame}>Start</button>
+      </div>
+      <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
+      
     </div>
   )
 }
