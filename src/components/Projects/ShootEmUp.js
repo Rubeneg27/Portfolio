@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 function ShootEmUp () {
-  const canvasRef = useRef(null);
-  const [gameStarted, setGameStarted] = useState (false);
-  const [togglePauseMenu, setTogglePauseMenu] = useState(false);
   let isPausedRef = useRef(false);
   let isGameClosedRef = useRef(true); 
   let scoreRef = useRef(0)
+
+  const canvasRef = useRef(null);
+  const [gameStarted, setGameStarted] = useState (false);
+  const [togglePauseMenu, setTogglePauseMenu] = useState(false);
+  const [score, setScore] = useState(scoreRef.current)
 
   const startGame = () => {
     setGameStarted(true)
@@ -50,6 +52,10 @@ function ShootEmUp () {
 
 
   }, )
+
+  function updateScore() {
+    setScore(scoreRef.current)
+  }
 
   useEffect(() => {
 
@@ -278,6 +284,7 @@ function ShootEmUp () {
             enemiesToRemove.push(index);
             bulletsToRemove.push(i);
             scoreRef.current = scoreRef.current + 1
+            console.log(scoreRef.current)
           }
         }
     
@@ -313,6 +320,7 @@ function ShootEmUp () {
       Player1.update();
       spawnEnemies();
       enemiesUpdate();
+      updateScore();
     }
     
     ///Loop manager for animation loop///
@@ -401,7 +409,7 @@ function ShootEmUp () {
         <button onClick={startGame}>Start</button>
       </div>
       <div className='gameScreen'>
-        <div className='score'>Score: {scoreRef.current}</div>
+        <div className='score'>Score: {score}</div>
         <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
       </div>
     </div>
