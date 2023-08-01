@@ -60,14 +60,6 @@ code {
   padding-top: 1vw;
 }
 
-.subCabecera {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 3vh;
-  height: 7vh;
-  
-}
-
 .logos{
   transition: all 0.3s ease-in-out;
   width: 19.2vw;
@@ -77,6 +69,8 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 3vh;
+  height: 7vh;
 }
 
 .logos-collapsed{
@@ -88,6 +82,8 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 3vh;
+  height: 7vh;
 }
 
 .logo {
