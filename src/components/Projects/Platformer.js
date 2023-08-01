@@ -1,42 +1,110 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 
 function Platformer() {
-  const canvasRef = useRef(null);
+  
+  const [gameStarted, setGameStarted] = useState (false);
+  const [togglePauseMenu, setTogglePauseMenu] = useState(false);
+  let isPausedRef = useRef(false);
+  let isGameClosedRef = useRef(true); 
+
+  const startGame = () => {
+    setGameStarted(true)
+    isGameClosedRef.current = false;
+    isPausedRef.current = false
+    console.log(`Game started: ${gameStarted}`);
+  }
+
+  const handlePauseMenu = (e) => {
+    switch (e) {
+      case "Resume":
+        setTogglePauseMenu(false);
+        isPausedRef.current = false
+        break;
+      case "Options":
+        break;
+      case "Quit":
+        setTogglePauseMenu(false);
+        setGameStarted(false);
+        isGameClosedRef.current = true;
+        break;
+      default:
+        console.log("Nada seleccionado")
+    }
+  }
+
   useEffect(() => {
+    const handleKeyDown = (event) => {
+      const {keyCode} = event
+      if (keyCode === 27 && gameStarted) {
+        event.preventDefault();
+        setTogglePauseMenu(!togglePauseMenu);
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
+    
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+
+
+  }, )
+
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+
     const canvas = document.querySelector('canvas')
     const c = canvas.getContext('2d');
+
     //Canvas
     canvas.width = 800; // Alteramos las propiedades de canvas con JS. Podríamos hacerlo con CSS
     canvas.height = 600;
     let platformWidth = canvas.width / 9.7;
     let platformHeight = canvas.width / 48;
-    const gravity = 0.7;
-    let gameSpeed = 200;
-    
+    let gravity = canvas.height/450;
+
     //Variables para el movimiento del personaje
-    let steady = false; //Trackea si el personaje está quieto o no
     let onPlatform = false;
     let jumped = false;
     let doubleJumped = false;
-    let scrollOffSet = 0; //Para definir el límite máximo de píxeles que se desplazarán los elementos (y definir por ejemplo el final del escenario)
+    let scrollOffSet = 0;
+    let meleeAttack =  {
+      active: false,
+      width: null,
+      height: null,
+      x: null,
+      y: null,   
+      }
+    let playerAttack = false
+    let cooldown = false
+
     //Power Ups
     let fly = false;
     let doubleJump = false;
-    let speed = 6;
-    let isNearBat = false; // Poniendo la variable fuera, con que un sólo murciélago vea al player, todos le perseguirán
-    let isPaused = false;
-    let lastFrameTime = performance.now();
+    let speed = canvas.width/130;
+    let isNearBat = false;
+
     //Variables para plataformas
     var platforms = [];
-    //REVISAR.Estas variables están porque no he conseguido acceder al ancho de cada plataforma en el array
-    
 
+    // Variables para el bucle del juego
+    let lastFrameTime = performance.now();
+    let framesThisSecond = 0;
+    let lastFpsUpdate = 0;
+    let fps = 0;
+    const targetFPS = 60;
+    const frameInterval = 1000 / targetFPS; // los fps objetivo en milisegundos
+    let looking = {
+      right: true,
+      left: false
+    }
     class Player {
       constructor() {
         this.position = {
           x: canvas.width / 19.2,
-          y: canvas.width / 3.2,
+          y: canvas.width / 1.5,
         };
         this.velocity = {
           x: 0,
@@ -48,38 +116,66 @@ function Platformer() {
       }
 
       draw() {
-        //Dibuja al player
         c.fillStyle = 'green';
-        c.fillRect(this.position.x, this.position.y, this.width, this.height); //Método para dibujar al personaje
+        c.fillRect(this.position.x, this.position.y, this.width, this.height);
       }
 
-      update() {//Función para actualizar las propiedades de Player en función del tiempo
+      update() {
         this.draw();
-        this.position.y += this.velocity.y; // 100 + 0 = 100
-        this.position.x += this.velocity.x; // 50 + 0 = 50 Mientras no se actualice velocity.x, position.x seguirá siendo la misma
-        //console.log(`Is player on platform? ${onPlatform}`)
+        this.position.y += this.velocity.y;
+        this.position.x += this.velocity.x;
         if (
           this.position.y + this.height + this.velocity.y < canvas.height &&
-          onPlatform == false
+          onPlatform === false
         ) {
-          //Este loop para la caída tomando la altura del canvas. Si 100 + 40 + 0 <= 800
-          this.velocity.y += gravity; // Si arriba = true -> 0 + 0.4 = 0.4 + 0.4 = 0.8 + 0.4 ... etc, va acelerando
-          steady = false;
-          //console.log(`Player velocity: ${this.velocity.y}`)
-          //console.log(`Position: ${this.position.y}`)
-          //console.log(`PLayer is still standing? ${steady}`)
+          this.velocity.y += gravity;
         } else if (
           this.position.y + this.height + this.velocity.y < canvas.height &&
-          onPlatform == true
+          onPlatform === true
         ) {
-          this.velocity.y += gravity; // Si arriba = true -> 0 + 0.4 = 0.4 + 0.4 = 0.8 + 0.4 ... etc, va acelerando
-          steady = true;
-          //console.log(`Position: ${this.position.y}`)
-          //console.log(`PLayer is still standing? ${steady}`)
+          this.velocity.y += gravity;
         }
       }
-    }
 
+     meleeAttack() {
+
+      let meleeAttackWidth = canvas.width / 20
+      let meleeAttackHeigth = canvas.width / 15
+
+      setTimeout(function() {
+        meleeAttack =  {
+          active: false,
+          width: null,
+          height: null,
+          x: null,
+          y: null,   
+          }     
+      }, 300)
+       if (playerAttack) {
+        c.fillStyle = 'orange'
+        if (looking.right) {
+          meleeAttack =  {
+            active: true,
+            width: meleeAttackWidth,
+            height: meleeAttackHeigth,
+            x: this.position.x + this.width - canvas.width / 30 + 60, //SOLUCIÓN TEMPORAL para acceder al width the meleeAttack. Para que funcione hay que definir la posición a parte.
+            y: this.position.y - 30,   
+            }
+          c.fillRect(this.position.x + this.width - meleeAttack.width + 60, this.position.y - 30, meleeAttackWidth, meleeAttackHeigth);
+        } else if (looking.left) {
+          meleeAttack =  {
+            active: true,
+            width: meleeAttackWidth,
+            height: meleeAttackHeigth,
+            x: this.position.x - 60,
+            y: this.position.y - 30,      
+            }
+          c.fillRect(this.position.x - 60, this.position.y - 30, meleeAttackWidth, meleeAttackHeigth);
+        }
+       }
+      }
+    }
+    
     class Enemy {
       constructor(x, y) {
         this.position = {
@@ -154,8 +250,8 @@ function Platformer() {
     let Player1 = new Player(); //Ojo a la sintaxis y a los paréntesis
       // const Platform1 = new Platform()
       FloorGenerator(20);
-      platformGenerator(canvas.width / 6.4, canvas.height / 1.6); // const Platform1 = new Platform() Generaría una única plataforma
-      platformGenerator(canvas.width / 2.5, canvas.height / 3.2);
+      platformGenerator(canvas.width / 6.4, 0.625*canvas.height); // const Platform1 = new Platform() Generaría una única plataforma
+      platformGenerator(canvas.width / 2.5, 0.3125*canvas.height);
       let bat = [
         new Enemy(canvas.width/2.4, canvas.width/19.8),
         new Enemy(canvas.width/1.28, canvas.width/9.6),
@@ -174,6 +270,9 @@ function Platformer() {
         },
         down: {
           pressed: false,
+        },
+        control: {
+          pressed: false
         }
       };
 
@@ -186,21 +285,17 @@ function Platformer() {
         new Enemy(canvas.width / 2.4, canvas.width / 19.8),
         new Enemy(canvas.width / 1.28, canvas.width / 9.6),
       ];
+      gravity = canvas.height/450;
+      fly = false;
+      doubleJump = false;
+      isNearBat = false;
       doubleJumper = new powerUp(canvas.width/1.98, canvas.width/6.6);
       flyer = new powerUp(canvas.width/1.067, canvas.width/6.6);
       scrollOffSet = 0; //Para definir el límite máximo de píxeles que se desplazarán los elementos (y definir por ejemplo el final del escenario)
+      console.log("Reset")
     }
 
-
     function animate() {
-      const currentTime = performance.now();
-      const deltaTime = (currentTime - lastFrameTime) / 1000;
-      lastFrameTime = currentTime;
-      const fps = 1 / deltaTime;
-      const targetFPS = 60
-      const fixedDeltaTime = 1 / targetFPS
-      console.log(`FPS: ${fps.toFixed(0)}`);
-        const iterations = Math.floor((performance.now() - lastFrameTime) / fixedDeltaTime);
 
           c.fillStyle = 'white';
           c.fillRect(0, 0, canvas.width, canvas.height);
@@ -211,11 +306,27 @@ function Platformer() {
           flyer.draw('blue');   
           //Dibujar player
           //Es importante que Player sea lo último que se dibuje para que siempre esté por delante de las platformas
+          //Importante actualizar primero meleeAttack para que se dibuje correctamente y no con retardo
+
           Player1.update(); //update será llamado cada segundo, sumando la gravedad a la velocidad hasta que se cumpla la condicón del loop anterior
+
+          //Controlar el tiempo para volver atacar
+          if (playerAttack) {
+            Player1.meleeAttack()
+            setTimeout(function() {
+              cooldown = true
+              playerAttack = false
+            }, 250)
+            setTimeout(function() {
+              cooldown = false     
+            }, 550)
+          }
+
           platforms.forEach((platform) => {//Para cada elemento dentro de platforms, se les asigna una constante platform y se dibuja
             platform.draw();//Platform1.draw() Esto sirve para una única plataforma
           });
           //ACTUALIZARÁ LA POSICIÓN DE TODO EL ESCENARIO AL LLEGAR A UN BORDE
+
           if (
             keys.right.pressed &&
             Player1.position.x + Player1.width < canvas.width - canvas.width/4.95
@@ -253,35 +364,6 @@ function Platformer() {
               flyer.position.x += speed;
             }
           }
-        
-          /*
-          //ACTUALIZARÁ LA POSICIÓN DE TODO EL ESCENARIO AL PULSAR IZQ/DER
-          if (keys.right.pressed) {
-            // Si estoy en los bordes y además pulso derecha...
-            scrollOffSet += speed; //Se actualiza el valor de scrollOfSet igual al de la velocidad al a que avanza la plataforma. Es decir, si se avanza, el scrollOfSet aumenta.
-            platforms.forEach((platform) => {
-            platform.position.x -= speed;
-            });
-            bat.forEach((bat) => {
-            bat.position.x -= speed;
-            });
-            doubleJumper.position.x -= speed;
-            flyer.position.x -= speed;
-          } else if (keys.left.pressed) {
-            //si estoy en un borde y pulso izquierda...
-            scrollOffSet -= speed; //Disminuye el scrollOfSet si las plataformas se mueven a la izquierda (es decir, se retrocede o lo que es lo mismo te alejas del final)
-            platforms.forEach((platform) => {
-            platform.position.x += speed;
-            });
-            bat.forEach((bat) => {
-              bat.position.x += speed;
-            });
-            doubleJumper.position.x += speed;
-            flyer.position.x += speed;
-          }
-          */
-          //console.log(`Has avanzado ${scrollOffSet}`)
-
           //Platform colission
           platforms.forEach((platform) => {
             if (
@@ -298,13 +380,13 @@ function Platformer() {
               Player1.position.y = platform.position.y - Player1.height;
             }
           });
-
-          bat.forEach((bat) => {
+          //Código para bats
+          bat.forEach((enemy, index) => {
             if (
-              Player1.position.x + Player1.width >= bat.position.x &&
-              Player1.position.x <= bat.position.x + bat.width &&
-              Player1.position.y + Player1.height >= bat.position.y &&
-              Player1.position.y <= bat.position.y + bat.height
+              Player1.position.x + Player1.width >= enemy.position.x &&
+              Player1.position.x <= enemy.position.x + enemy.width &&
+              Player1.position.y + Player1.height >= enemy.position.y &&
+              Player1.position.y <= enemy.position.y + enemy.height
             ) {
               init();
               onPlatform = false;
@@ -312,10 +394,20 @@ function Platformer() {
               fly = false;
               isNearBat = false;
             }
+            //Colisión con ataque
+            if(
+              meleeAttack.active &&
+              meleeAttack.x + meleeAttack.width >= enemy.position.x &&
+              meleeAttack.x <= enemy.position.x + enemy.width &&
+              meleeAttack.y + meleeAttack.height >= enemy.position.y &&
+              meleeAttack.y <= enemy.position.y + enemy.height
+              ) {
+                bat.splice(index,1)
+              }
+
           });
 
           //Enemigos persiguen
-
           bat.forEach((bat) => {
             // Falta definir bien el área de detección de los murciélagos
             if (
@@ -327,28 +419,28 @@ function Platformer() {
             if (
               Player1.position.x < bat.position.x &&
               Player1.position.y > bat.position.y &&
-              isNearBat == true
+              isNearBat === true
             ) {
               bat.position.x -= 1.4;
               bat.position.y += 1.4;
             } else if (
               Player1.position.x < bat.position.x &&
               Player1.position.y < bat.position.y &&
-              isNearBat == true
+              isNearBat === true
             ) {
               bat.position.x -= 1.4;
               bat.position.y -= 1.4;
             } else if (
               Player1.position.x > bat.position.x &&
               Player1.position.y < bat.position.y &&
-              isNearBat == true
+              isNearBat === true
             ) {
               bat.position.x += 1.4;
               bat.position.y -= 1.4;
             } else if (
               Player1.position.x > bat.position.x &&
               Player1.position.y > bat.position.y &&
-              isNearBat == true
+              isNearBat === true
             ) {
               bat.position.x += 1.4;
               bat.position.y += 1.4;
@@ -365,6 +457,7 @@ function Platformer() {
           ) {
             fly = true;
             doubleJump = false;
+            gravity = canvas.height/768
             flyer.position.y = -100000;
             flyer.position.x = 0;
             //console.log('touched')
@@ -394,36 +487,67 @@ function Platformer() {
             fly = false;
             //console.log('You lose')
             init();
+          }          
+    }
+    //Función recursiva para el Loop del juego y control de los FPS
+    function gameLoop() {
+      requestAnimationFrame(gameLoop);
+    
+      const currentTime = performance.now();
+      const deltaTime = currentTime - lastFrameTime; // El tiempo que tardó en darse el proceso desde que se llamó
+    
+      if (!isPausedRef.current) {
+        if (deltaTime >= frameInterval) { // Si el tiempo que tardó el proceso es mayor o igual
+          lastFrameTime = currentTime - (deltaTime % frameInterval);
+          animate();
+    
+          // Cálculo de FPS
+          framesThisSecond++;
+          if (currentTime > lastFpsUpdate + 1000) {
+            fps = framesThisSecond;
+            framesThisSecond = 0;
+            lastFpsUpdate = currentTime;
+            console.log(`FPS: ${fps}`);
           }
-          if (!isPaused) {
-            requestAnimationFrame(animate)
-          }
+        }
+      } else if (isGameClosedRef.current) {
+        init()
+        console.log("Init")
+      }
+      
+      
     }
 
     const handleKeyDown = (event) => {
       const {keyCode} = event
+      //console.log(event.keyCode)
       if (keyCode === 37) {
         // console.log('left')
         event.preventDefault()
         keys.left.pressed = true;
+        looking.left = true;
+        looking.right = false;
+        //console.log(Player1.position.x)
       } else if (keyCode === 39) {
         // console.log('right')
         event.preventDefault()
         keys.right.pressed = true;
-      } else if (keyCode === 38 && !jumped) {
+        looking.right = true;
+        looking.left = false;
+        //console.log(Player1.position.x)
+      } else if (keyCode === 38 && !jumped && !fly) { //Salto normal
         event.preventDefault()
         jumped = true;
-        // console.log('up')
-        Player1.velocity.y = -25;
-      } else if (keyCode === 38 && jumped && !doubleJump && !fly) {
+        Player1.velocity.y = -canvas.height/26;
+      } else if (keyCode === 38 && jumped && !doubleJump && !fly) { //Salto normal si esá en el aire
         event.preventDefault()
-      } else if (keyCode === 38 && fly) {
+      } else if (keyCode === 38 && fly) { //Salto con vuelo
         event.preventDefault()
-        Player1.velocity.y = -15;
-      } else if (keyCode === 38 && jumped && doubleJump && !doubleJumped) {
+        Player1.velocity.y = -canvas.height/55;
+      } else if (keyCode === 38 && jumped && doubleJump && !doubleJumped) { //Salto normal con doble salto
         event.preventDefault()
         keys.up.pressed = true
-        Player1.velocity.y = -25;
+        Player1.velocity.y = -canvas.height/26;
         doubleJumped = true;
       } else if (keyCode === 40) {
         // console.log('down')
@@ -431,12 +555,13 @@ function Platformer() {
         keys.down.pressed = true
       } else if (keyCode === 27) {
         event.preventDefault()
-        isPaused = !isPaused;
-        // console.log('Paused = ' + isPaused);
-        animate();
-      } else if (keyCode === 32) {
-        c.fillStyle = 'black';
-        c.fillRect(Player1.position.x + 50, Player1.position.y, 30, 30);
+        isPausedRef.current = !isPausedRef.current;
+        isGameClosedRef.current = false;
+        //animate();
+      } else if (keyCode === 17 && !cooldown) {
+        keys.control.pressed = true
+        cooldown = true
+        playerAttack = true
       } else {
         Player1.velocity.x -= 0;
         Player1.velocity.x += 0;
@@ -461,82 +586,39 @@ function Platformer() {
         event.preventDefault()
         keys.down.pressed = false
         // console.log('down')
+      }else if (keyCode === 17) {
+        event.preventDefault()
+        keys.control.pressed = false
+        // console.log('down')
       }
     };
     
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keyup', handleKeyUp);
-  
-    // Limpia los event listeners cuando el componente se desmonta
-    //---MOVIMIENTO DEL PERSONAJE---
-    /*
-    addEventListener('keydown', (event) => { //Cualquier método que venga del objeto window no necesita el "window."
-     console.log(event) //Revisando la consola, podemos ver con esta línea qué "keycode" tiene asociado cada tecla que pulsamos
-    }) 
-    */
-    /*
-    addEventListener('keydown', ({ keyCode }) => {
-      //De esta forma es más específico que las líneas 52-54
-      //console.log( keyCode )
-      if (keyCode == 37) {
-        //console.log('left')
-        keys.left.pressed = true;
-      } else if (keyCode == 39) {
-        //console.log('right')
-        keys.right.pressed = true;
-      } else if (keyCode == 38 && jumped == false) {
-        jumped = true;
-        //console.log('up')
-        Player1.velocity.y = -20;
-      } else if (keyCode == 38 && jumped == true && fly == true) {
-        //console.log('up')
-        Player1.velocity.y = -20;
-      } else if (
-        keyCode == 38 &&
-        jumped == true &&
-        doubleJump == true &&
-        doubleJumped == false
-      ) {
-        //console.log('up')
-        doubleJumped = true;
-        Player1.velocity.y = -20;
-      } else if (keyCode == 40) {
-        //console.log('down')
-      } else if (keyCode == 27) {
-        isPaused = !isPaused;
-        //console.log('Paused = ' + isPaused);
-        animate();
-      } else if (keyCode == 32) {
-        c.fillStyle = 'black';
-        c.fillRect(Player1.position.x + 50, Player1.position.y, 30, 30);
-      } else {
-        Player1.velocity.x -= 0;
-        Player1.velocity.x += 0;
-      }
-    });
-
-    addEventListener('keyup', ({ keyCode }) => {
-      //De esta forma es más específico que las líneas 52-54
-      //console.log( keyCode )
-      if (keyCode == 37) {
-        //console.log('left')
-        keys.left.pressed = false;
-      } else if (keyCode == 39) {
-        //console.log('right')
-        keys.right.pressed = false;
-      } else if (keyCode == 38) {
-        //console.log('up')
-      } else if (keyCode == 40) {
-        // console.log('down')
-      }
-    });
-    */
-   
-    //Player1.update()
     
-    animate();
+    gameLoop();
+    
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
-  return <canvas ref={canvasRef} />;
+
+  return (
+    <div>
+      <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
+        <h1>PAUSED</h1>
+        <button onClick={()=>handlePauseMenu("Resume")}>Resume</button>
+        <button onClick={()=>handlePauseMenu("Options")}>Options</button>
+        <button onClick={()=>handlePauseMenu("Quit")}>Quit</button>
+      </div>
+      <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
+        <div>Super Awesome Javascript action Platformer!!</div>
+        <button onClick={startGame}>Start</button>
+      </div>
+      <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
+      
+    </div>
+  )
 }
 
 export default Platformer;

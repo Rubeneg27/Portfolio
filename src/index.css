@@ -1,5 +1,6 @@
+
 body {
-  margin-top: 5vh;
+  margin: 0;
   font-size: 25px;
   font-family: monospace, Retro Gaming, Quicksand
     sans-serif;
@@ -10,6 +11,9 @@ body {
   height: 100vh;
 }
 
+.App {
+  padding-top: 2vh;
+}
 .Header {
   margin-left: 10vw;
   margin-right: 10vw;
@@ -24,34 +28,35 @@ code {
 .cabecera {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 1vw;
+  padding-bottom: 3vh;
 }
 
 .cabecera .title {
-  font-size: 2.2rem;
+  width: 275px;
+  font-size: 1.7em;
   border-left: solid 0.2vw rgb(100, 91, 85);
-  border-bottom: solid 6px rgb(100, 91, 85);
-  border-top: hidden;
-  border-right: hidden;
   margin-top: 0;
   margin-bottom: 0;
   text-align: start;
-  padding-left: 2vw;
-  padding-bottom: 1vw;
-  padding-top: 1vw;
-  padding-right: 0vw;
-  width: 17vw; 
+  padding-left: 1vw;
 }
 
 .cabecera .title:hover{
   cursor: pointer;
 }
 .cabecera p {
-  border-top: solid 3px rgb(100, 91, 85);
-  border-right: solid 3px rgb(100, 91, 85);
   align-self: center;
-  padding-bottom: 1vw;
   padding-right: 2vw;
+  padding-top: 1vw;
+}
+
+.email {
+  font-size: 0.8em;
+  border: solid 0.2vw rgb(100, 91, 85);
+  border-left: hidden;
+  border-bottom: hidden;
+  padding-bottom: 1vh;
+  padding-right: 1vh;
   padding-top: 1vw;
 }
 
@@ -59,7 +64,7 @@ code {
   display: flex;
   justify-content: space-between;
   margin-bottom: 3vh;
-  height: 10vh;
+  height: 7vh;
   
 }
 
@@ -75,8 +80,22 @@ code {
 }
 
 .logos-collapsed{
-  width: 0;
   transition: all 0.3s ease-in-out;
+  width: 0vw;
+  background-color: rgb(100, 91, 85);
+  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 4vh;
+  height: 4vh;
+  fill: rgb(248, 211, 180);
+  padding: 0;
+  margin: 0.5vw;
 }
 
 .resumen {
@@ -84,7 +103,7 @@ code {
   border: solid 3px rgb(100, 91, 85);
   background-color: rgb(100, 91, 85);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
-  color: rgb(236, 209, 173);
+  color: rgb(248, 211, 180);
   width: 55vw;
   text-align: center;
   display: flex;
@@ -97,7 +116,7 @@ code {
   border: solid 3px rgb(94, 113, 119);
   background-color: rgb(94, 113, 119);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
-  color: rgb(236, 209, 173);
+  color: rgb(248, 211, 180);
   width: 100%;
   text-align: center;
   display: flex;
@@ -105,10 +124,15 @@ code {
   align-items: center;
 }
 
-.Hero {
+main {
+  display: block;
+  justify-content: space-between;
+  height: 60vh;
+}
+.main-section {
+  display: flex;
   margin-left: 10vw;
   margin-right: 10vw;
-  display: flex;
   justify-content: space-between;
   height: 60vh;
 }
@@ -119,25 +143,27 @@ code {
   padding-inline-start: 0;
   margin: 0; 
   justify-self: center;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 0;
+  transition: all 0.3s ease-in-out
 }
 
 .Nav-collapsed {
-  width: 0;
-  height: 0;
+  width: 0vw;
   padding-inline-start: 0;
+  margin: 0; 
+  margin-block-start: 0;
+  transition: all 0.3s ease-in-out
 }
 
 .Nav-collapsed:hover {
   cursor: pointer;
 }
 
-.Hero .article {
+.main-section .article {
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
   width: 55vw;
+  height: 60vh;
   transition: all 0.3s ease-in-out;
   text-align: center;
   justify-content: center;
@@ -145,27 +171,28 @@ code {
 }
 
 
-.Hero .article-expanded {
+.main-section .article-expanded {
   width: 100%;
-  height: 600px;
+  height: 65vh;
   transition: all 0.3s ease-in-out;
   text-align: center;
   position: relative;
 }
 
 .Nav li {
-  background-color: rgb(100, 91, 85);
-  color: rgb(236, 209, 173);
+  padding-left: 1vw;
+  background-color: rgb(94, 113, 119);
+  color: white;
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
   transition: all 0.3s ease-in-out;
   border-radius: 10PX;
   margin-bottom: 2vh;
   font-size: 30px;
   align-self: center;
-  height: 5vh;
-  width: 19.2vw;
+  height: 6vh;
+  width: 18.2vw;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   overflow: hidden;
 }
@@ -180,16 +207,21 @@ code {
   opacity: 0;
 }
 .li-collapsed {
-  border-radius: 25PX;
+  background-color: rgb(94, 113, 119);
+  color: rgb(248, 211, 180);
+  box-shadow: 0px 0px 0px rgba(60, 61, 63, 0.25);
+  transition: all 0.3s ease-in-out;
+  border-radius: 10PX;
   margin-bottom: 2vh;
   font-size: 30px;
   align-self: center;
-  height: 5vh;
-  width: 0;
+  height: 6vh;
+  width: 0vw;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   overflow: hidden;
+  opacity: 0;
 }
 
 .li-collapsed:hover {
@@ -200,22 +232,34 @@ code {
   width: 0;
 }
 
-.burger{
+.burger {
+  opacity: 100%;
   padding: 0;
-  margin-top: 1%;
-  margin-left: 1%;
   position: absolute;
   background-color: rgb(94, 113, 119);
   height: 60px;
   width: 60px;
   border: none;
+  z-index: 9999;
+  transition: opacity 0.6s ease-in-out;
 }
-.burger:hover{
+.burger:hover {
+  cursor: pointer;
+}
+.burger:active {
+  background-color: rgb(62, 86, 92);
   cursor: pointer;
 }
 
 .burger-hidden{
-  display: none;
+  opacity: 0%;
+  padding: 0;
+  position: absolute;
+  background-color: rgb(94, 113, 119);
+  height: 60px;
+  width: 60px;
+  border: none;
+  z-index: 9999;
 }
 
 svg {
@@ -228,21 +272,24 @@ svg rect {
   height: 6px;
 }
 .dropdown-menu {
-  margin-top: 1%;
-  margin-left: 1%;
-  width: 120px;
-  padding: 2%;
+  margin: 0;
+  width: 11vw;
+  padding: 2% 0% 2% 0%;
   background-color: rgb(94, 113, 119);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
-  color: rgb(236, 209, 173);
+  color: rgb(248, 211, 180);
   list-style: none;
   position: absolute;
+  z-index: 9999;
+  transition: all 0.3s ease-in-out;
 }
 .dropdown-menu li {
-  text-align: left;
-  cursor: pointer;
-  margin-bottom: 10%;
-  background-color: rgb(94, 113, 119);
+  border-bottom: 1px solid rgb(248, 211, 180);
+    margin: 2%;
+    text-align: left;
+    cursor: pointer;
+    margin-bottom: 2vh;
+    background-color: rgb(94, 113, 119);
 }
 
 .dropdown-menu li:hover {
@@ -252,44 +299,93 @@ svg rect {
 }
 
 .dropdown-menu-closed {
-  position: absolute;
-  transition: all 0.3s ease-in-out;
-  padding-inline-start: 0;
-  margin-block-start: 0;
-}
-
-section {
-  background-color: antiquewhite;
-  font-size: 1.4rem;
   margin: 0;
-  width: 100%;
-  height: 100%;
+  width: 0vw;
+  padding: 2% 0% 2% 0%;
+  background-color: rgb(94, 113, 119);
+  box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
+  color: rgb(248, 211, 180);
+  list-style: none;
+  position: absolute;
+  z-index: 9999;
+  transition: all 0.3s ease-in-out;
 }
 
 .Home {
+  color: white;
   display: flex;
-  justify-content: space-between;
+  background-color: rgb(94, 113, 119);;
+  height: 100%;
 }
 
-.Home span {
+.Home-text {
   text-align: left;
   width: 50%;
-}
-.Home img {
-  width: 40%;
+  margin-left: 3%;
 }
 
-canvas {
+.canvas-hidden {
+  width: 0;
+}
+
+canvas-init {
   background-color: rgb(255, 255, 255);
   justify-self: center;
 }
 
 .about {
-  display: grid;
+  display: flex;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
+  background-color: antiquewhite;
+  padding: 0% 7% 0% 7%;
+  font-size: 1.1rem;
+  margin: 0;
+  height: 100%;
+}
+
+.about button {
+  width: 50%;
+  height: 100%;
+  font-size: 50px;
+  border: 0;
+  color: aliceblue;
+  background-color: #968473;
+}
+.about button:hover {
+  border: 0;
+  color: rgb(62, 70, 77);
+  background-color: #ecdbca;
+  width: 50%;
+}
+
+.projects button {
+  font-size: 50px;
+  border: 0;
+  color: aliceblue;
+  background-color: #968473;
+  width: 50%;
+}
+
+.projects button:hover {
+  border: 0;
+  color: rgb(62, 70, 77);
+  background-color: #ecdbca;
+  width: 50%;
 }
 
 .projects {
-  display: grid;
+  display: flex;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
+  background-color: antiquewhite;
+  justify-content: center;
+  padding: 0%;
+  font-size: 1.4rem;
+  margin: 0;
+  height: 100%;
 }
 
 .back-button {
@@ -298,5 +394,167 @@ canvas {
   position: absolute;
   margin: 6% 1% 1% 1%;
   background-color: rgb(94, 113, 119);
-  color: rgb(236, 209, 173);
+  color: rgb(248, 211, 180);
+}
+
+.skills {
+  width: 100%;
+  height: 100%;
+  margin: 2px;
+  display: flex;
+  text-align: left;
+  justify-content: space-evenly;
+}
+
+.skills-a{
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
+  width: 49%;
+}
+.skills-a div{
+  height: 30%;
+  margin: 2% 0 0 0;
+  padding: 0 2% 0 2%;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
+}
+
+.skills-b{
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
+  width: 49%;
+}
+
+
+.skills-b div{
+  height: 30%;
+  margin: 2% 0 0 0;
+  padding: 0 2% 0 2%;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
+}
+
+.skills-b .div-a{
+  height: 62%;
+  margin: 2% 0 0 0;
+  padding: 0 2% 0 2%;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
+}
+
+.skills-img{
+  margin: 2px;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
+  height: 30vh;
+}
+
+.linkedIn {
+  position: relative;
+}
+
+.linkedIn:before {
+  content: "\f000";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: #000;
+    font-size: 18px;
+    padding-right: 0.5em;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+/*CONTACT*/
+
+.contact {
+  display: grid;
+  background-color: antiquewhite;
+  padding: 0;
+  font-size: 1.4rem;
+  margin: 0;
+  height: 100%;
+}
+
+.contact form {
+  padding: 0% 5% 0% 5%;
+}
+
+.contact li {
+  list-style: none;
+  display: grid;
+  margin-bottom: 2vh;
+  
+}
+
+.contact li input {
+  width: 100%;
+  background-color: white;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
+}
+
+.Message-Box {
+  height: 30vh;
+  width: 100%;
+  background-color: white;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
+}
+
+/*Menú de Platformer*/
+
+.game-menu-init {
+  width: 800px;
+  height: 600px;
+  background-color: grey;
+  color: #e0b995;
+  margin: 0;
+}
+
+.game-menu-hidden {
+  display: none;
+}
+
+.pause-menu-init {
+  position: absolute;
+  display: grid;
+  width: 800px;
+  height: 600px;
+  background-color: #393e4a40;
+  color: #683506;
+  margin: 0;
+}
+
+.pause-menu-hidden {
+  display: none;
+}
+
+.pause-menu-init h1 {
+  font-family: Retro Gaming;
+  font-size: 60px;
+}
+
+.pause-menu-init button {
+  font-family: Retro Gaming;
+  font-size: 30px;
+  height: 10vh;
+  justify-self: center;
+}
+
+.score {
+  position: absolute;
+  color: white;
+  padding: 1vw 1vw 1vw 1vw
 }

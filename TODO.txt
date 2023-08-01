@@ -1,0 +1,5 @@
+///Projects -> Platformer
+
+Se pueden abrir simultáneamente infinitos "platforme" si se hace click al inicio de la página. Controlar el estado de los juegos en los componentes parent.
+
+El PayerAttack sigue haciendo efecto poco despues de desaparecer. Corregir el tiempo que se mantiene activo.
