@@ -278,17 +278,22 @@ function ShootEmUp () {
       }
 
       bulletManager() {
+        let bulletsToRemove = [];
+
         this.bullets.forEach((bullet, index) => {
           bullet.x += bullet.velocity.x;
           bullet.y += bullet.velocity.y;
-
           ///Draws each bullet in bullets
           c.fillStyle = 'orange';
           c.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
 
           //Destroys each bullet in bullets
-          if ( bullet.y < -200) {
-            this.bullets.splice(index,1)
+          if ( bullet.y > canvas.height) {
+            bulletsToRemove.push(index)
+          }
+          for (let i = bulletsToRemove.length - 1; i >= 0; i--) {
+            const bulletIndex = bulletsToRemove[i];
+            this.bullets.splice(bulletIndex, 1);
           }
         });
       }
