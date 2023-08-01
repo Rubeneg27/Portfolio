@@ -5,6 +5,7 @@ import Contact from "./Contact";
 import Header from './Header';
 import Nav from './Nav';
 
+
 import { useEffect, useState } from "react";
 
 function Main () { 
@@ -101,17 +102,16 @@ function Main () {
 
   return (
     <main onClick={handleClickBody}>
-      
       <Header isNavCollapsed={isNavCollapsed} updateContent={updateContent}></Header>
       <div className="main-section">
         <Nav 
-        isCollapsed={isCollapsed} 
+        isNavCollapsed={isNavCollapsed}
+        isCollapsed={isCollapsed}
         handleClickHome={handleClickHome} 
         handleClickAbout={handleClickAbout} 
         handleClickProjects={handleClickProjects} 
-        handleClickContact={handleClickContact} 
+        handleClickContact={handleClickContact}
         />
-        
         <div className={isCollapsed? "article-expanded" : "article"}>
           {isCollapsed&&!isMenuOpen ?
           <div className="burger" onClick={toggleMenu} >
