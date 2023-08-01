@@ -123,14 +123,14 @@ code {
 main {
   display: block;
   justify-content: space-between;
-  height: 60vh;
+  height: 75vh;
 }
 .main-section {
   display: flex;
   margin-left: 10vw;
   margin-right: 10vw;
   justify-content: space-between;
-  height: 60vh;
+  height: 100%;
 }
 
 .Nav {
@@ -159,7 +159,7 @@ main {
   border-color: #e0b995;
   border-style: dashed;
   width: 55vw;
-  height: 60vh;
+  height: 100%;
   transition: all 0.3s ease-in-out;
   text-align: center;
   justify-content: center;
@@ -169,7 +169,7 @@ main {
 
 .main-section .article-expanded {
   width: 100%;
-  height: 65vh;
+  height: 100%;
   transition: all 0.3s ease-in-out;
   text-align: center;
   position: relative;
@@ -321,10 +321,12 @@ svg rect {
 }
 
 .canvas-hidden {
+  position: absolute;
   width: 0;
+  height: 768px;
 }
 
-canvas-init {
+.canvas-init {
   background-color: rgb(255, 255, 255);
   justify-self: center;
 }
@@ -526,8 +528,8 @@ canvas-init {
 .pause-menu-init {
   position: absolute;
   display: grid;
-  width: 800px;
-  height: 600px;
+  width: 1024px;
+  height: 768px;
   background-color: #393e4a40;
   color: #683506;
   margin: 0;
@@ -553,4 +555,19 @@ canvas-init {
   position: absolute;
   color: white;
   padding: 1vw 1vw 1vw 1vw
+}
+
+.gameScreen {
+  display: flex;
+  justify-content: center;
+  transition: all 1s ease; 
+  height: 768px;
+  width: 100vw;
+  background-color: #252121;
+}
+
+.gameScreen-hidden {
+  transition: all 0.3s ease-in-out;
+  height: 768px;
+  width: 800px;
 }

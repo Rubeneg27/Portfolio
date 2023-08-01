@@ -62,8 +62,8 @@ function ShootEmUp () {
     //Canvas parameters
     const canvas = document.querySelector('canvas');
     const c = canvas.getContext('2d');
-    canvas.width = 800;
-    canvas.height = 600;
+    canvas.width = 1024;
+    canvas.height = 768;
 
     //Loop parameters
     let lastFrameTime = performance.now();
@@ -77,8 +77,11 @@ function ShootEmUp () {
     let speed = 8;
     let enemySpeed1 = 3;
     let playerBulletsSpeed1 = 10;
+    let enemyBulletSpeed1 = 2 * enemySpeed1;
     let playerOnCooldown = false;
     let playerAttackCooldown = 100;
+    let enemyOnCoolDown = false;
+    let enemyAttackOnCoolDown = 900;
     //Spawn parameters
     let spawnCooldown = false
     let spawnTimeMin = 500
@@ -198,7 +201,7 @@ function ShootEmUp () {
     
     ///Enemy class///
     ///Parameters: x///Defines position of enemy in x axis
-    class Enemy {
+    class Asteroid {
       constructor(x) {
         this.width = canvas.width / 25;
         this.height = canvas.width / 25;
@@ -226,12 +229,89 @@ function ShootEmUp () {
       update () {
         this.draw();
       }
-
     }
 
+    class EnemyA {
+      constructor(x,y) {
+        this.width = canvas.width / 25;
+        this.height = canvas.width / 25;
+
+        this.position = {
+          x: x,
+          y: y,
+        };
+
+        this.velocity = {
+          x: 0,
+          y: enemySpeed1/2,
+        };
+
+        this.bullets = [];
+      }
+
+      shoot () {
+        if (!enemyOnCoolDown) {
+          enemyOnCoolDown = true
+
+          setTimeout(function() {
+            enemyOnCoolDown = false     
+          }, enemyAttackOnCoolDown)
+
+          let shootWidth = canvas.width /50;
+          let shootHeight = shootWidth;
+          let shootPosX = this.position.x + this.width/2 - shootWidth/2;
+          let shootPosY = this.position.y + canvas.height/10;
+          c.fillStyle = 'white'
+          c.fillRect(shootPosX, shootPosY, shootWidth, shootHeight)
+
+          this.bullets.push({
+            x: shootPosX,
+            y: shootPosY,
+            width: shootWidth,
+            height: shootHeight,
+            velocity: {
+              x: 0,
+              y: enemyBulletSpeed1,
+            },
+          });
+        }  
+      }
+
+      bulletManager() {
+        this.bullets.forEach((bullet, index) => {
+          bullet.x += bullet.velocity.x;
+          bullet.y += bullet.velocity.y;
+
+          ///Draws each bullet in bullets
+          c.fillStyle = 'orange';
+          c.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+
+          //Destroys each bullet in bullets
+          if ( bullet.y < -200) {
+            this.bullets.splice(index,1)
+          }
+        });
+      }
+
+      draw() {
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
+        c.fillStyle = 'purple';
+        c.fillRect(this.position.x, this.position.y, this.width, this.height);
+      }
+
+      update() {
+        this.draw();
+        this.shoot();
+        this.bulletManager();
+      }
+      
+    }
+    
     ///Variables declaration on first execution///
     let Player1 = new Player();
-    let enemies = [];
+    let asteroids = [];
+    let enemyShootA = new EnemyA(300,0);
 
     ///Spawn enemies at random time in random position when the cooldown is false///
     ///Variables///
@@ -245,7 +325,7 @@ function ShootEmUp () {
         spawnCooldown = true
 
         setTimeout(function () {
-        enemies.push(new Enemy(spawnPosX))  
+        asteroids.push(new Asteroid(spawnPosX))  
         spawnCooldown = false
       }, spawnTime)
       }
@@ -268,7 +348,7 @@ function ShootEmUp () {
       const enemiesToRemove = [];
       const bulletsToRemove = [];
     
-      enemies.forEach((enemy, index) => {
+      asteroids.forEach((enemy, index) => {
         enemy.update();
     
         // Verificar colisiones entre cada enemigo y cada bala del jugador
@@ -296,7 +376,7 @@ function ShootEmUp () {
       // Eliminar enemigos y balas marcados para eliminación
       for (let i = enemiesToRemove.length - 1; i >= 0; i--) {
         const enemyIndex = enemiesToRemove[i];
-        enemies.splice(enemyIndex, 1);
+        asteroids.splice(enemyIndex, 1);
       }
     
       for (let i = bulletsToRemove.length - 1; i >= 0; i--) {
@@ -308,7 +388,7 @@ function ShootEmUp () {
     ///Will initialize parameters when neccesary
     function init() {
       Player1 = new Player();
-      enemies = [];
+      asteroids = [];
     }
 
     ///Animation function to be called later on loop///
@@ -320,6 +400,7 @@ function ShootEmUp () {
       Player1.update();
       spawnEnemies();
       enemiesUpdate();
+      enemyShootA.update();
       updateScore();
     }
     
@@ -397,22 +478,20 @@ function ShootEmUp () {
 
   }, [])
   return (
-    <div>
+      <div className={gameStarted? 'gameScreen' : 'gameScreen-hidden'} >
+      <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
+        <div>Super Awesome Javascript action Platformer!!</div>
+        <button onClick={startGame}>Start</button>
+      </div>
       <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
         <h1>PAUSED</h1>
         <button onClick={()=>handlePauseMenu("Resume")}>Resume</button>
         <button onClick={()=>handlePauseMenu("Options")}>Options</button>
         <button onClick={()=>handlePauseMenu("Quit")}>Quit</button>
       </div>
-      <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
-        <div>Super Awesome Javascript action Platformer!!</div>
-        <button onClick={startGame}>Start</button>
-      </div>
-      <div className='gameScreen'>
         <div className='score'>Score: {score}</div>
         <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
       </div>
-    </div>
   )
 }
 
