@@ -330,7 +330,7 @@ function ShootEmUp () {
 
 
     ///Spawn enemies at random time in random position when the cooldown is false///
-    ///Variables///
+    ///PARAMETERES///
     ///spawnCooldown: When true, enemies doesn't appear///
     ///spawnTime: Random number for spawning time///
     ///spawnPosX: Random number for position in x axis///
@@ -357,51 +357,61 @@ function ShootEmUp () {
         Player1.velocity.x = 0;
       }
     }
+
+    ///Give to every object a new index and remove it from the original array///
+      ///PARAMETERES///
+      ///removerArray: The array wich saves the objects to eliminate///
+      ///objectsToRemove: Objects to remove from original array///
+    function eliminator (removerArray, objectsToRemove) {
+      for (let i = removerArray.length - 1; i >= 0; i--) {
+        const newIndex = removerArray[i];
+        objectsToRemove.splice(newIndex, 1);
+      }
+    }
+
+    function checkColission (objectA, objectB) {
+      return(
+        objectA.position.x < objectB.x + objectB.width &&
+        objectA.position.x + objectA.width > objectB.x &&
+        objectA.position.y + objectA.height > objectB.y
+      )
+    }
     
     ///Will draw every enemy and detect if there is a colission with bullets///
     function collissionsUpdate() {
+
+      //Variables to handle elimination of objects
       const enemiesToRemove = [];
       const bulletsToRemove = [];
       const enemiesAtoRemove = [];
-    
+
       asteroids.forEach((asteroid, index) => {
         asteroid.update();
     
         // Verificar colisiones entre cada enemigo y cada bala del jugador
         for (let i = 0; i < Player1.bullets.length; i++) {
           const bullet = Player1.bullets[i];
-    
-          if (
-            asteroid.position.x < bullet.x + bullet.width &&
-            asteroid.position.x + asteroid.width > bullet.x &&
-            asteroid.position.y + asteroid.height > bullet.y
-          ) {
+
+          if(checkColission(asteroid, bullet)) {
             // Si hay colisión, marcar enemigo y bala para eliminación
             enemiesToRemove.push(index);
             bulletsToRemove.push(i);
             scoreRef.current = scoreRef.current + 1
           }
-
           
         }
         //Eliminar enemigos que salgan del canvas
         if (asteroid.position.y > canvas.height) {
           enemiesToRemove.push(index);
         }
-
       });
 
       enemiesA.forEach((enemyA,index) => {
         enemyA.update();
         for (let i = 0; i < Player1.bullets.length; i++) {
           const bullet = Player1.bullets[i];
-    
-          if (
-            enemyA.position.x < bullet.x + bullet.width &&
-            enemyA.position.x + enemyA.width > bullet.x &&
-            enemyA.position.y + enemyA.height > bullet.y
-          ) {
-            // Si hay colisión, marcar enemigo y bala para eliminación
+
+          if(checkColission(enemyA, bullet)) {
             enemiesAtoRemove.push(index);
             bulletsToRemove.push(i);
             scoreRef.current = scoreRef.current + 5
@@ -409,21 +419,9 @@ function ShootEmUp () {
         }
       })
       
-      // Eliminar enemigos y balas marcados para eliminación
-      for (let i = enemiesToRemove.length - 1; i >= 0; i--) {
-        const enemyIndex = enemiesToRemove[i];
-        asteroids.splice(enemyIndex, 1);
-      }
-    
-      for (let i = bulletsToRemove.length - 1; i >= 0; i--) {
-        const bulletIndex = bulletsToRemove[i];
-        Player1.bullets.splice(bulletIndex, 1);
-      }
-
-      for (let i = enemiesAtoRemove.length - 1; i >= 0; i--) {
-        const enemyAIndex = enemiesAtoRemove[i];
-        enemiesA.splice(enemyAIndex, 1);
-      }
+      eliminator(enemiesToRemove, asteroids)
+      eliminator(bulletsToRemove, Player1.bullets)
+      eliminator(enemiesAtoRemove, enemiesA)
     }
 
     ///Animation function to be called later on loop///
