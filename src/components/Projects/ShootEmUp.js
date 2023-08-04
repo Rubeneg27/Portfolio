@@ -157,8 +157,6 @@ function ShootEmUp () {
           let shootHeight = shootWidth;
           let shootPosX = this.position.x + this.width/2 - shootWidth/2;
           let shootPosY = this.position.y - canvas.height/30;
-          c.fillStyle = 'orange'
-          c.fillRect(shootPosX, shootPosY, shootWidth, shootHeight)
 
           this.bullets.push({
             x: shootPosX,
@@ -243,7 +241,7 @@ function ShootEmUp () {
 
         this.velocity = {
           x: 0,
-          y: enemySpeed1/2,
+          y: 0,//enemySpeed1/2,
         };
 
         this.bullets = [];
@@ -261,8 +259,6 @@ function ShootEmUp () {
           let shootHeight = shootWidth;
           let shootPosX = this.position.x + this.width/2 - shootWidth/2;
           let shootPosY = this.position.y + canvas.height/10;
-          c.fillStyle = 'white'
-          c.fillRect(shootPosX, shootPosY, shootWidth, shootHeight)
 
           this.bullets.push({
             x: shootPosX,
@@ -283,19 +279,25 @@ function ShootEmUp () {
         this.bullets.forEach((bullet, index) => {
           bullet.x += bullet.velocity.x;
           bullet.y += bullet.velocity.y;
+
           ///Draws each bullet in bullets
-          c.fillStyle = 'orange';
+          c.fillStyle = 'purple';
           c.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
 
           //Destroys each bullet in bullets
           if ( bullet.y > canvas.height) {
             bulletsToRemove.push(index)
           }
-          for (let i = bulletsToRemove.length - 1; i >= 0; i--) {
-            const bulletIndex = bulletsToRemove[i];
-            this.bullets.splice(bulletIndex, 1);
-          }
+
+          
+
         });
+
+        for (let i = bulletsToRemove.length - 1; i >= 0; i--) {
+          const bulletIndex = bulletsToRemove[i];
+          this.bullets.splice(bulletIndex, 1);
+        }
+
       }
 
       draw() {
@@ -316,7 +318,16 @@ function ShootEmUp () {
     ///Variables declaration on first execution///
     let Player1 = new Player();
     let asteroids = [];
-    let enemyShootA = new EnemyA(300,0);
+    let enemiesA = [];
+    enemiesA.push(new EnemyA(300,0));
+
+    ///Initialize game
+    function init() {
+      Player1 = new Player();
+      asteroids = [];
+      enemiesA.push(new EnemyA(300,0)); 
+    }
+
 
     ///Spawn enemies at random time in random position when the cooldown is false///
     ///Variables///
@@ -330,11 +341,10 @@ function ShootEmUp () {
         spawnCooldown = true
 
         setTimeout(function () {
-        asteroids.push(new Asteroid(spawnPosX))  
+        asteroids.push(new Asteroid(spawnPosX))
         spawnCooldown = false
       }, spawnTime)
-      }
-      
+      }   
     }
     
     ///Updates player position///
@@ -349,35 +359,56 @@ function ShootEmUp () {
     }
     
     ///Will draw every enemy and detect if there is a colission with bullets///
-    function enemiesUpdate() {
+    function collissionsUpdate() {
       const enemiesToRemove = [];
       const bulletsToRemove = [];
+      const enemiesAtoRemove = [];
     
-      asteroids.forEach((enemy, index) => {
-        enemy.update();
+      asteroids.forEach((asteroid, index) => {
+        asteroid.update();
     
         // Verificar colisiones entre cada enemigo y cada bala del jugador
         for (let i = 0; i < Player1.bullets.length; i++) {
           const bullet = Player1.bullets[i];
     
           if (
-            enemy.position.x < bullet.x + bullet.width &&
-            enemy.position.x + enemy.width > bullet.x &&
-            enemy.position.y + enemy.height > bullet.y
+            asteroid.position.x < bullet.x + bullet.width &&
+            asteroid.position.x + asteroid.width > bullet.x &&
+            asteroid.position.y + asteroid.height > bullet.y
           ) {
             // Si hay colisión, marcar enemigo y bala para eliminación
             enemiesToRemove.push(index);
             bulletsToRemove.push(i);
             scoreRef.current = scoreRef.current + 1
-            console.log(scoreRef.current)
           }
+
+          
         }
-    
-        if (enemy.position.y > canvas.height) {
+        //Eliminar enemigos que salgan del canvas
+        if (asteroid.position.y > canvas.height) {
           enemiesToRemove.push(index);
         }
+
       });
+
+      enemiesA.forEach((enemyA,index) => {
+        enemyA.update();
+        for (let i = 0; i < Player1.bullets.length; i++) {
+          const bullet = Player1.bullets[i];
     
+          if (
+            enemyA.position.x < bullet.x + bullet.width &&
+            enemyA.position.x + enemyA.width > bullet.x &&
+            enemyA.position.y + enemyA.height > bullet.y
+          ) {
+            // Si hay colisión, marcar enemigo y bala para eliminación
+            enemiesAtoRemove.push(index);
+            bulletsToRemove.push(i);
+            scoreRef.current = scoreRef.current + 5
+          }
+        }
+      })
+      
       // Eliminar enemigos y balas marcados para eliminación
       for (let i = enemiesToRemove.length - 1; i >= 0; i--) {
         const enemyIndex = enemiesToRemove[i];
@@ -388,12 +419,11 @@ function ShootEmUp () {
         const bulletIndex = bulletsToRemove[i];
         Player1.bullets.splice(bulletIndex, 1);
       }
-    }
 
-    ///Will initialize parameters when neccesary
-    function init() {
-      Player1 = new Player();
-      asteroids = [];
+      for (let i = enemiesAtoRemove.length - 1; i >= 0; i--) {
+        const enemyAIndex = enemiesAtoRemove[i];
+        enemiesA.splice(enemyAIndex, 1);
+      }
     }
 
     ///Animation function to be called later on loop///
@@ -404,8 +434,7 @@ function ShootEmUp () {
       updatePlayerPosition();
       Player1.update();
       spawnEnemies();
-      enemiesUpdate();
-      enemyShootA.update();
+      collissionsUpdate();
       updateScore();
     }
     
