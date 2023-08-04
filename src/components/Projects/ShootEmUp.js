@@ -159,8 +159,10 @@ function ShootEmUp () {
           let shootPosY = this.position.y - canvas.height/30;
 
           this.bullets.push({
-            x: shootPosX,
-            y: shootPosY,
+            position: {
+              x: shootPosX,
+              y: shootPosY,
+            },
             width: shootWidth,
             height: shootHeight,
             velocity: {
@@ -174,12 +176,12 @@ function ShootEmUp () {
       ///Updates each bullet in bullets array///
       bulletManager() {
         this.bullets.forEach((bullet, index) => {
-          bullet.x += bullet.velocity.x;
-          bullet.y += bullet.velocity.y;
+          bullet.position.x += bullet.velocity.x;
+          bullet.position.y += bullet.velocity.y;
 
           ///Draws each bullet in bullets
           c.fillStyle = 'orange';
-          c.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+          c.fillRect(bullet.position.x, bullet.position.y, bullet.width, bullet.height);
 
           //Destroys each bullet in bullets
           if ( bullet.y < -200) {
@@ -369,12 +371,13 @@ function ShootEmUp () {
       }
     }
 
-    function checkColission (objectA, objectB) {
-      return(
-        objectA.position.x < objectB.x + objectB.width &&
-        objectA.position.x + objectA.width > objectB.x &&
-        objectA.position.y + objectA.height > objectB.y
-      )
+    function checkCollision(objectA, objectB) {
+      return (
+        objectA.position.x < objectB.position.x + objectB.width &&
+        objectA.position.x + objectA.width > objectB.position.x &&
+        objectA.position.y < objectB.position.y + objectB.height &&
+        objectA.position.y + objectA.height > objectB.position.y
+      );
     }
     
     ///Will draw every enemy and detect if there is a colission with bullets///
@@ -392,13 +395,17 @@ function ShootEmUp () {
         for (let i = 0; i < Player1.bullets.length; i++) {
           const bullet = Player1.bullets[i];
 
-          if(checkColission(asteroid, bullet)) {
+          if(checkCollision(asteroid, bullet)) {
             // Si hay colisión, marcar enemigo y bala para eliminación
             enemiesToRemove.push(index);
             bulletsToRemove.push(i);
             scoreRef.current = scoreRef.current + 1
           }
           
+        }
+
+        if(checkCollision(asteroid, Player1)) {
+          init();
         }
         //Eliminar enemigos que salgan del canvas
         if (asteroid.position.y > canvas.height) {
@@ -411,13 +418,15 @@ function ShootEmUp () {
         for (let i = 0; i < Player1.bullets.length; i++) {
           const bullet = Player1.bullets[i];
 
-          if(checkColission(enemyA, bullet)) {
+          if(checkCollision(enemyA, bullet)) {
             enemiesAtoRemove.push(index);
             bulletsToRemove.push(i);
             scoreRef.current = scoreRef.current + 5
           }
         }
       })
+
+      
       
       eliminator(enemiesToRemove, asteroids)
       eliminator(bulletsToRemove, Player1.bullets)
