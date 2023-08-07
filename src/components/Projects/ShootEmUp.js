@@ -252,7 +252,6 @@ function ShootEmUp () {
       shoot () {
         if (!enemyOnCoolDown) {
           enemyOnCoolDown = true
-
           setTimeout(function() {
             enemyOnCoolDown = false     
           }, enemyAttackOnCoolDown)
@@ -262,44 +261,8 @@ function ShootEmUp () {
           let shootPosX = this.position.x + this.width/2 - shootWidth/2;
           let shootPosY = this.position.y + canvas.height/10;
 
-          this.bullets.push({
-            x: shootPosX,
-            y: shootPosY,
-            width: shootWidth,
-            height: shootHeight,
-            velocity: {
-              x: 0,
-              y: enemyBulletSpeed1,
-            },
-          });
+          shooter(shootPosX, shootPosY, shootWidth, shootHeight, enemyBulletSpeed1)
         }  
-      }
-
-      bulletManager() {
-        let bulletsToRemove = [];
-
-        this.bullets.forEach((bullet, index) => {
-          bullet.x += bullet.velocity.x;
-          bullet.y += bullet.velocity.y;
-
-          ///Draws each bullet in bullets
-          c.fillStyle = 'purple';
-          c.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
-
-          //Destroys each bullet in bullets
-          if ( bullet.y > canvas.height) {
-            bulletsToRemove.push(index)
-          }
-
-          
-
-        });
-
-        for (let i = bulletsToRemove.length - 1; i >= 0; i--) {
-          const bulletIndex = bulletsToRemove[i];
-          this.bullets.splice(bulletIndex, 1);
-        }
-
       }
 
       draw() {
@@ -312,7 +275,6 @@ function ShootEmUp () {
       update() {
         this.draw();
         this.shoot();
-        this.bulletManager();
       }
       
     }
@@ -321,6 +283,7 @@ function ShootEmUp () {
     let Player1 = new Player();
     let asteroids = [];
     let enemiesA = [];
+    let enemyBullets = [];
     enemiesA.push(new EnemyA(300,0));
 
     ///Initialize game
@@ -357,6 +320,49 @@ function ShootEmUp () {
         Player1.velocity.x = speed;
       } else {
         Player1.velocity.x = 0;
+      }
+    }
+
+    ///Se encarga de dibujar cada bala que se dispare, de actualizarla y eliminarla///
+    ///param<positionX, positionY, velocityY///
+    function shooter (shootPosX, shootPosY, shootWidth, shootHeight, velocityY) {
+
+      
+
+      enemyBullets.push({
+        x: shootPosX,
+        y: shootPosY,
+        width: shootWidth,
+        height: shootHeight,
+        velocity: {
+          x: 0,
+          y: velocityY,
+        },
+      });
+
+      
+
+    }
+
+    function bulletUpdator () {
+      let bulletsToRemove = [];
+      enemyBullets.forEach((bullet, index) => {
+        bullet.x += bullet.velocity.x;
+        bullet.y += bullet.velocity.y;
+
+        ///Draws each bullet in bullets
+        c.fillStyle = 'purple';
+        c.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+
+        //Destroys each bullet in bullets
+        if ( bullet.y > canvas.height) {
+          bulletsToRemove.push(index)
+        }
+      });
+
+      for (let i = bulletsToRemove.length - 1; i >= 0; i--) {
+        const bulletIndex = bulletsToRemove[i];
+        enemyBullets.splice(bulletIndex, 1);
       }
     }
 
@@ -426,8 +432,6 @@ function ShootEmUp () {
         }
       })
 
-      
-      
       eliminator(enemiesToRemove, asteroids)
       eliminator(bulletsToRemove, Player1.bullets)
       eliminator(enemiesAtoRemove, enemiesA)
@@ -443,6 +447,7 @@ function ShootEmUp () {
       spawnEnemies();
       collissionsUpdate();
       updateScore();
+      bulletUpdator();
     }
     
     ///Loop manager for animation loop///
