@@ -201,8 +201,8 @@ function ShootEmUp () {
     
     ///Enemy class///
     ///Parameters: x///Defines position of enemy in x axis
-    class Asteroid {
-      constructor(x) {
+    class Enemy {
+      constructor(x,y) {
         this.width = canvas.width / 25;
         this.height = canvas.width / 25;
 
@@ -252,16 +252,18 @@ function ShootEmUp () {
       shoot () {
         if (!enemyOnCoolDown) {
           enemyOnCoolDown = true
-          setTimeout(function() {
-            enemyOnCoolDown = false     
-          }, enemyAttackOnCoolDown)
-
+        
           let shootWidth = canvas.width /50;
           let shootHeight = shootWidth;
           let shootPosX = this.position.x + this.width/2 - shootWidth/2;
           let shootPosY = this.position.y + canvas.height/10;
 
           shooter(shootPosX, shootPosY, shootWidth, shootHeight, enemyBulletSpeed1)
+
+          setTimeout(function() {
+            enemyOnCoolDown = false     
+          }, enemyAttackOnCoolDown)
+
         }  
       }
 
@@ -293,7 +295,7 @@ function ShootEmUp () {
       enemiesA.push(new EnemyA(300,0)); 
     }
 
-
+    
     ///Spawn enemies at random time in random position when the cooldown is false///
     ///PARAMETERES///
     ///spawnCooldown: When true, enemies doesn't appear///
@@ -306,7 +308,7 @@ function ShootEmUp () {
         spawnCooldown = true
 
         setTimeout(function () {
-        asteroids.push(new Asteroid(spawnPosX))
+        asteroids.push(new Enemy(spawnPosX, 0))
         spawnCooldown = false
       }, spawnTime)
       }   
@@ -327,8 +329,6 @@ function ShootEmUp () {
     ///param<positionX, positionY, velocityY///
     function shooter (shootPosX, shootPosY, shootWidth, shootHeight, velocityY) {
 
-      
-
       enemyBullets.push({
         x: shootPosX,
         y: shootPosY,
@@ -339,9 +339,6 @@ function ShootEmUp () {
           y: velocityY,
         },
       });
-
-      
-
     }
 
     function bulletUpdator () {
