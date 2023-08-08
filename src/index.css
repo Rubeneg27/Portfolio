@@ -40,7 +40,7 @@ code {
   margin-top: 0;
   margin-bottom: 0;
   text-align: start;
-  padding: 0 0 0 1vw;
+  padding: 1vh 0 0 1vw;
 }
 
 .cabecera .title:hover{
@@ -186,8 +186,8 @@ main {
 
 .Nav li {
   padding-left: 1vw;
-  background-color: rgb(105 143 156);
-  color: white;
+  background-color: rgb(96 134 146);
+  color: rgb(250, 223, 201);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
   transition: all 0.3s ease-in-out;
   border-radius: 10PX;
@@ -204,8 +204,8 @@ main {
 
 .Nav li:hover {
   cursor: pointer;
-  background-color: rgb(176, 226, 231);
-  color: rgb(105, 84, 64);
+  background-color: rgb(76, 180, 187);
+  color: rgb(102, 78, 69);
 }
 
 .Nav-hidden {
