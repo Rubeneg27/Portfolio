@@ -62,8 +62,6 @@ function Main () {
   const handleClickAbout = () => {
     setHidden(false)
     setisMenuOpen(false)
-    setIsCollapsed(true)
-    collapse()
     setContent(
       <About hidden={hidden} handleAbout={handleAbout}></About> //Se tiene que renderizar cuando cambie hidden
     )

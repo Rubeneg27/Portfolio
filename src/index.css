@@ -141,6 +141,7 @@ sidebar {
 sidebar > img {
   position: absolute;
   bottom: 0;
+  width: 3vw;
 }
 
 .Nav {
@@ -350,33 +351,16 @@ svg rect {
 }
 
 .about {
-  display: flex;
-  border-width: medium;
-  border-color: #e0b995;
-  border-style: dashed;
-  background-color: antiquewhite;
-  padding: 0% 7% 0% 7%;
-  font-size: 1.1rem;
-  margin: 0;
+  padding-top: 6vh;
+  display: grid;
+  font-size: 1.4rem;
   height: 100%;
+  width: 100%;
+  align-content: flex-start;
 }
 
-.about button {
-  width: 50%;
-  height: 100%;
-  font-size: 50px;
-  border: 0;
-  color: aliceblue;
-  background-color: #968473;
-}
-.about button:hover {
-  border: 0;
-  color: rgb(62, 70, 77);
-  background-color: #ecdbca;
-  width: 50%;
-}
-
-.projects button {
+section > button {
+  transition: all 0.3s ease-out;
   font-size: 50px;
   border: 0;
   color: rgb(250, 223, 201);
@@ -385,7 +369,7 @@ svg rect {
   width: 100%;
 }
 
-.projects button:hover {
+section > button:hover {
   transition: all 0.3s ease-in;
   font-size: 50px;
   border: 0;
@@ -429,7 +413,7 @@ svg rect {
 }
 .skills-a div{
   height: 30%;
-  margin: 2% 0 0 0;
+  margin: 0 0 2vh 0;
   padding: 0 2% 0 2%;
   border-width: medium;
   border-color: #e0b995;
