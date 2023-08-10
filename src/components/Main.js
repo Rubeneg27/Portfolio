@@ -8,6 +8,8 @@ import Nav from './Nav';
 
 import { useEffect, useState } from "react";
 
+
+
 function Main () { 
   
   const [isNavCollapsed, setIsNavCollapsed] = useState(false);

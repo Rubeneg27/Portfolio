@@ -124,8 +124,6 @@ code {
 }
 
 main {
-  display: block;
-  justify-content: space-between;
   height: 75vh;
 }
 .main-section {
@@ -133,7 +131,16 @@ main {
   margin-left: 10vw;
   margin-right: 10vw;
   justify-content: space-between;
-  height: 100%;
+  height: 75vh;
+}
+
+sidebar {
+  position: relative;
+  height: 80vh;
+}
+sidebar > img {
+  position: absolute;
+  bottom: 0;
 }
 
 .Nav {
@@ -156,6 +163,7 @@ main {
 .Nav-collapsed:hover {
   cursor: pointer;
 }
+
 
 .main-section .article {
   margin-top: 2vh;
@@ -203,8 +211,9 @@ main {
 
 .Nav li:hover {
   cursor: pointer;
-  background-color: rgb(76, 180, 187);
-  color: rgb(102, 78, 69);
+  font-weight: bold;
+  background-color: rgb(88, 203, 211);
+  color: rgb(80 91 100);
 }
 
 .Nav-hidden {
@@ -370,29 +379,28 @@ svg rect {
 .projects button {
   font-size: 50px;
   border: 0;
-  color: aliceblue;
-  background-color: #968473;
-  width: 50%;
+  color: rgb(250, 223, 201);
+  background-color: #808690;
+  height: 21vh;
+  width: 100%;
 }
 
 .projects button:hover {
+  transition: all 0.3s ease-in;
+  font-size: 50px;
   border: 0;
-  color: rgb(62, 70, 77);
-  background-color: #ecdbca;
-  width: 50%;
+  color: rgb(250, 223, 201);
+  background-color: #6e747e;
+  height: 21vh;
+  width: 60%;
 }
 
 .projects {
-  display: flex;
-  border-width: medium;
-  border-color: #e0b995;
-  border-style: dashed;
-  background-color: antiquewhite;
-  justify-content: center;
-  padding: 0%;
+  display: grid;
   font-size: 1.4rem;
-  margin: 0;
   height: 100%;
+  width: 100%;
+  align-content: center;
 }
 
 .back-button {
