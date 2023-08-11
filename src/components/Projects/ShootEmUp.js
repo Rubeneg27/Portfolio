@@ -521,7 +521,9 @@ function ShootEmUp () {
 
   }, [])
   return (
+    <div className='shootEmUp'>
       <div className={gameStarted? 'gameScreen' : 'gameScreen-hidden'} >
+      </div>
       <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
         <div>Super Awesome Javascript action Platformer!!</div>
         <button onClick={startGame}>Start</button>
@@ -534,7 +536,7 @@ function ShootEmUp () {
       </div>
         <div className='score'>Score: {score}</div>
         <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
-      </div>
+    </div>
   )
 }
 

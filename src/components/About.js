@@ -4,9 +4,10 @@ import { useState } from "react";
 
 const About = ({ hidden, handleAbout }) => {
   const [content, setContent] = useState("");
+  const [pressed, setPressed] = useState(false);
 
   function handleClick (elemento) {
-    console.log(`hidden About: ${hidden}`)
+    setPressed(true)
     handleAbout()
     switch (elemento) {
       case "Formación":
@@ -22,10 +23,13 @@ const About = ({ hidden, handleAbout }) => {
 
   return (
     <section className="about">
-      <button hidden={hidden} onClick={()=>handleClick("Formación")}>Formación</button>
-      <button hidden={hidden} onClick={()=>handleClick("Experiencia")}>Experiencia</button>
-      {hidden? content : null}
-    </section>
+          {pressed ? null : 
+            <section className="button-container">
+              <button hidden={hidden} onClick={()=>handleClick("Formación")}>Formación</button>
+              <button hidden={hidden} onClick={()=>handleClick("Experiencia")}>Experiencia</button>
+            </section>}
+            {hidden? content : null}
+        </section>
   )
   
 }

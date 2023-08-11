@@ -26,9 +26,12 @@ function Projects () {
   }
     return (
         <section className="projects">
-          {pressed ? null : (<button onClick={()=>handleClick("Platformer")}>Platformer</button>)}
-          {pressed ? null : (<button onClick={()=>handleClick("ShootEmUp")}>ShootEmUp!</button>)}
-          {pressed ? null : (<button onClick={()=>handleClick("TestFPS")}>Testing Place</button>)}
+          {pressed ? null : 
+            <section className="button-container">
+              {pressed ? null : (<button onClick={()=>handleClick("Platformer")}>Platformer</button>)}
+              {pressed ? null : (<button onClick={()=>handleClick("ShootEmUp")}>ShootEmUp!</button>)}
+              {pressed ? null : (<button onClick={()=>handleClick("TestFPS")}>Testing Place</button>)}
+            </section>}
           {project}
         </section>
         
