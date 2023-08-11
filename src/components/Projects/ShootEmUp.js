@@ -62,8 +62,8 @@ function ShootEmUp () {
     //Canvas parameters
     const canvas = document.querySelector('canvas');
     const c = canvas.getContext('2d');
-    canvas.width = 1024;
-    canvas.height = 768;
+    canvas.width = 800;
+    canvas.height = 600;
 
     //Loop parameters
     let lastFrameTime = performance.now();
@@ -522,10 +522,11 @@ function ShootEmUp () {
   }, [])
   return (
     <div className='shootEmUp'>
+      <div className='score'>Score: {score}</div>
       <div className={gameStarted? 'gameScreen' : 'gameScreen-hidden'} >
       </div>
       <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
-        <div>Super Awesome Javascript action Platformer!!</div>
+        <div className='title'>Shoot'em all!</div>
         <button onClick={startGame}>Start</button>
       </div>
       <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
@@ -534,7 +535,6 @@ function ShootEmUp () {
         <button onClick={()=>handlePauseMenu("Options")}>Options</button>
         <button onClick={()=>handlePauseMenu("Quit")}>Quit</button>
       </div>
-        <div className='score'>Score: {score}</div>
         <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
     </div>
   )

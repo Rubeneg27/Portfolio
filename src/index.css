@@ -519,11 +519,14 @@ section > button:hover {
 /*Menú de Platformer*/
 
 .game-menu-init {
-  width: 100%;
-  height: 100%;
-  background-color: grey;
-  color: #e0b995;
-  margin: 0;
+  display: grid;
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+    color: #e0b995;
+    margin: 0;
+    justify-content: center;
+  
 }
 
 .game-menu-hidden {
@@ -549,21 +552,30 @@ section > button:hover {
   font-size: 60px;
 }
 
-.pause-menu-init button {
+.game-menu-init button {
+  margin-bottom: 38vh;
+  align-self: center;
+  justify-self: center;
   font-family: Retro Gaming;
   font-size: 30px;
   height: 10vh;
+}
+
+.pause-menu-init button {
+  align-self: center;
   justify-self: center;
+  font-family: Retro Gaming;
+  font-size: 30px;
+  height: 10vh;
 }
 
 .score {
   position: absolute;
   color: white;
-  padding: 1vw 1vw 1vw 1vw
 }
 
 .gameScreen {
-  display: flex;
+  display: none;
   justify-content: center;
   transition: all 1s ease; 
   height: 768px;
@@ -580,6 +592,13 @@ section > button:hover {
 /*Menú de ShootEmUp*/
 
 .shootEmUp {
+  display: grid;
+  position: relative;
   height: 100%;
   width: 100%;
+}
+
+.title {
+  font-size: 6vw;
+  margin-top: 5vh;
 }
