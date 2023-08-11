@@ -522,7 +522,6 @@ function ShootEmUp () {
   }, [])
   return (
     <div className='shootEmUp'>
-      <div className='score'>Score: {score}</div>
       <div className={gameStarted? 'gameScreen' : 'gameScreen-hidden'} >
       </div>
       <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
@@ -536,6 +535,7 @@ function ShootEmUp () {
         <button onClick={()=>handlePauseMenu("Quit")}>Quit</button>
       </div>
         <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
+        <div className='score'>Score: {score}</div>
     </div>
   )
 }

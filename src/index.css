@@ -355,6 +355,7 @@ svg rect {
 .canvas-init {
   background-color: rgb(255, 255, 255);
   justify-self: center;
+  align-self: center;
 }
 
 .about {
@@ -519,13 +520,14 @@ section > button:hover {
 /*Menú de Platformer*/
 
 .game-menu-init {
+  position: absolute;
   display: grid;
-    width: 100%;
-    height: 100%;
-    background-color: grey;
-    color: #e0b995;
-    margin: 0;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: grey;
+  color: #e0b995;
+  margin: 0;
+  justify-content: center;
   
 }
 
