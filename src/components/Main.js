@@ -70,8 +70,8 @@ function Main () {
     console.log(`hidden: ${hidden}`)
     setHidden(false)
     setisMenuOpen(false)
-    //setIsCollapsed(true)
-    //collapse()
+    setIsCollapsed(true)
+    collapse()
     setContent(
       <Projects ></Projects>
     )

@@ -167,16 +167,16 @@ sidebar > img {
 
 
 .main-section .article {
-  margin-top: 2vh;
-  padding: 1%;
-  border-width: medium;
-  border-color: rgb(100, 91, 85);
-  background-color: rgb(250, 223, 201);
-  border-style: dashed;
-  width: 61vw;
-  height: 100%;
-  transition: all 0.3s ease-in-out;
-
+      margin-right: 18vw;
+    margin-top: 2vh;
+    padding: 1%;
+    border-width: medium;
+    border-color: rgb(100, 91, 85);
+    background-color: rgb(250, 223, 201);
+    border-style: dashed;
+    width: 43vw;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
 }
 
 
