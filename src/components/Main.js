@@ -45,7 +45,8 @@ function Main () {
     }
   }
 
-  const handleAbout = () => {
+  ///Will show/hide buttons in about/projects section
+  const handleButtons = () => {
     setHidden(true)
     setAboutClicked(!aboutClicked)
   }
@@ -63,17 +64,20 @@ function Main () {
     setHidden(false)
     setisMenuOpen(false)
     setContent(
-      <About hidden={hidden} handleAbout={handleAbout}></About> //Se tiene que renderizar cuando cambie hidden
+      <About hidden={hidden} handleButtons={handleButtons}></About> //Se tiene que renderizar cuando cambie hidden
     )
   }
-  const handleClickProjects = () => {
-    console.log(`hidden: ${hidden}`)
+
+  const handleCollapse = () => {
     setHidden(false)
     setisMenuOpen(false)
     setIsCollapsed(true)
     collapse()
+  }
+
+  const handleClickProjects = () => {
     setContent(
-      <Projects ></Projects>
+      <Projects handleCollapse={handleCollapse}></Projects>
     )
   }
   const handleClickContact = () => {
@@ -93,7 +97,7 @@ function Main () {
   useEffect(()=>{
     if (hidden) {
       setHidden(false)
-      setContent(<About hidden={hidden} handleAbout={handleAbout}></About>)
+      setContent(<About hidden={hidden} handleButtons={handleButtons}></About>)
     } else {
       setContent(content)
     }

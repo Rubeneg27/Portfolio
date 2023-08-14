@@ -2,11 +2,11 @@ import Skills from "./About/Skills"
 import Experience from "./About/Experience"
 import { useState } from "react";
 
-const About = ({ hidden, handleAbout }) => {
+const About = ({ hidden, handleButtons }) => {
   const [content, setContent] = useState("");
 
   function handleClick (elemento) {
-    handleAbout()
+    handleButtons()
     switch (elemento) {
       case "Formación":
         setContent(<Skills></Skills>);

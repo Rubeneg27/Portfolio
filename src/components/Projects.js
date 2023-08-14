@@ -3,13 +3,14 @@ import ShootEmUp from "./Projects/ShootEmUp.js";
 import TestFPS from "./Projects/Testing.js";
 import { useState } from "react";
 
-function Projects () {
+function Projects ({handleCollapse}) {
 
   const [project, setProject] = useState("");
   const [pressed, setPressed] = useState(false);
 
   function handleClick (elemento) {
     setPressed(true)
+    handleCollapse()
     switch(elemento) {
       case "Platformer":
         setProject(<Platformer></Platformer>)
