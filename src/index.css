@@ -27,52 +27,50 @@ code {
 }
 
 .cabecera {
-  background-color: rgb(80 91 100);
+  height: 14vh;
   display: flex;
   justify-content: space-between;
+  background-color: rgb(250, 223, 201);
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
 }
 
-.cabecera .title {
-  width: 16.2vw;
-  font-size: 1.9em;
-  margin-top: 0;
-  margin-bottom: 0;
-  text-align: start;
-  padding: 1vh 0 0 1vw;
+.title {
+  display: inline-flex;
+  align-content: center;
+  flex-wrap: wrap;
+  padding: 0vw 0vw 0vw 1vw;
+  margin-right: auto;
+  background-color: rgb(80 91 100);
+  font-size: 2.7vw;
+  width: 13vw;
 }
 
-.cabecera .title:hover{
+.title:hover{
   cursor: pointer;
 }
 
-.cabecera .decoration {
-  background-color: rgb(250, 223, 201);
-  margin-right: auto;
-  margin-left: 0;
-  margin-bottom: 0;
-  margin-top: 0;
-  height: 8vh;
-  width: 45vw;
-  align-self: center;
+.email {
+  margin: 1vw 1vw 1vw 0vw;
+  width: 17vw;
+  display: grid;
+  align-content: center;
+  background-color: rgb(80 91 100);
+  justify-content: center;
 }
 
-.email {
-  align-self: center;
-  text-align: center;
-  width: 16.2vw;
-  font-size: 0.8em;
+.decoration {
+  width: 35vw;
+  margin: 1vw 1vw 1vw 0vw;
+  background-color: rgb(80 91 100);
 }
 
 .logos{
-  transition: all 0.3s ease-in-out;
-  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-content: center;
+  margin: 1vw 1vw 1vw 0vw;
+  margin-right: 1vw;
   background-color: rgb(80 91 100);
-  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
-  display: flex;
-  align-items: center;
-  margin-bottom: 3vh;
-  padding: 0 0 0 1vw;
 }
 
 .logos-collapsed{
@@ -92,9 +90,6 @@ code {
   width: 4vh;
   height: 4vh;
   fill: rgb(250, 223, 201);
-  padding: 0 0 1vh 0;
-  margin-right: 0.6vw;
-  margin-bottom: 0.5vh;
 }
 
 .resumen {
@@ -136,6 +131,7 @@ main {
 
 sidebar {
   position: relative;
+  margin-top: 2vh;
   height: 80vh;
 }
 sidebar > img {
@@ -167,16 +163,16 @@ sidebar > img {
 
 
 .main-section .article {
-      margin-right: 18vw;
-    margin-top: 2vh;
-    padding: 1%;
-    border-width: medium;
-    border-color: rgb(100, 91, 85);
-    background-color: rgb(250, 223, 201);
-    border-style: dashed;
-    width: 43vw;
-    height: 100%;
-    transition: all 0.3s ease-in-out;
+  margin-top: 2vh;
+  margin-right: 18vw;
+  padding: 1%;
+  border-width: medium;
+  border-color: rgb(100, 91, 85);
+  background-color: rgb(250, 223, 201);
+  border-style: dashed;
+  width: 43vw;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
 }
 
 
@@ -283,10 +279,6 @@ sidebar > img {
   height: 100%;
 }
 
-svg {
-  margin-top: 5%;
-  padding: 25%;
-}
 svg rect {
   fill: rgb(236, 209, 173);
   width: 30px;
@@ -346,6 +338,26 @@ svg rect {
   margin-left: 3%;
 }
 
+.p-1{
+  font-size: 3rem;
+  margin-bottom: 3vh;
+  margin-top: 2vh;
+  text-align: justify;
+}
+
+.p-2{
+  font-size: 1.4rem;
+  margin-bottom: 2vh;
+  margin-top: 2vh;
+  text-align: justify;
+}
+
+.p-3{
+  font-size: 3rem;
+  margin-bottom: 4vh;
+  margin-top: 3vh;
+  
+}
 .canvas-hidden {
   position: absolute;
   width: 0;
@@ -600,7 +612,3 @@ section > button:hover {
   width: 100%;
 }
 
-.title {
-  font-size: 6vw;
-  margin-top: 5vh;
-}

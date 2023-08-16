@@ -5,10 +5,7 @@ import Contact from "./Contact";
 import Header from './Header';
 import Nav from './Nav';
 
-
 import { useEffect, useState } from "react";
-
-
 
 function Main () { 
   
