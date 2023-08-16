@@ -15,6 +15,7 @@ body {
   padding-top: 2vh;
 }
 .Header {
+  margin-bottom: 4vh;
   color: rgb(250, 223, 201);
   margin-left: 10vw;
   margin-right: 10vw;
@@ -27,7 +28,6 @@ code {
 }
 
 .cabecera {
-  height: 14vh;
   display: flex;
   justify-content: space-between;
   background-color: rgb(250, 223, 201);
@@ -41,8 +41,8 @@ code {
   padding: 0vw 0vw 0vw 1vw;
   margin-right: auto;
   background-color: rgb(80 91 100);
-  font-size: 2.7vw;
-  width: 13vw;
+  font-size: 2.5vw;
+  width: 12vw;
 }
 
 .title:hover{
@@ -50,6 +50,7 @@ code {
 }
 
 .email {
+  font-size: 1.2rem;
   margin: 1vw 1vw 1vw 0vw;
   width: 17vw;
   display: grid;
@@ -59,19 +60,21 @@ code {
 }
 
 .decoration {
-  width: 34vw;
+  width: 33vw;
+  height: 9vh;
   margin: 1vw 0vw 1vw 0vw;
   background-color: rgb(161 147 138);
 }
 
 .logos{
-  padding: 1vw;
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-content: center;
-    margin: 1vw 0vw 1vw 0vw;
-    margin-right: 1vw;
-    background-color: rgb(80 91 100);
+  justify-content: center;
+  width: 10vw;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-content: center;
+  margin: 1vw 0vw 1vw 0vw;
+  margin-right: 1vw;
+  background-color: rgb(80 91 100);
 }
 
 .logos-collapsed{
@@ -131,9 +134,12 @@ main {
 }
 
 sidebar {
+  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
+  padding-bottom: 1%;
+  padding-top: 1%;
   position: relative;
-  margin-top: 2vh;
-  height: 80vh;
+  background-color: rgb(250, 223, 201);
+  height: 100%;
 }
 sidebar > img {
   position: absolute;
@@ -164,7 +170,7 @@ sidebar > img {
 
 
 .main-section .article {
-  margin-top: 2vh;
+  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   margin-right: 18vw;
   padding: 1%;
   border-width: medium;
@@ -190,6 +196,7 @@ sidebar > img {
 }
 
 .Nav li {
+  margin-left: 0.5vw;
   padding-left: 1vw;
   background-color: rgb(96 134 146);
   color: rgb(250, 223, 201);
@@ -200,7 +207,7 @@ sidebar > img {
   font-size: 30px;
   align-self: center;
   height: 6vh;
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: left;
   align-items: center;
