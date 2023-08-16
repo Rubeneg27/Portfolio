@@ -175,7 +175,7 @@ sidebar > img {
   padding: 1%;
   border-width: medium;
   border-color: rgb(100, 91, 85);
-  background-color: rgb(250, 223, 201);
+  background-color: rgb(80 91 100);
   border-style: dashed;
   width: 43vw;
   height: 100%;
@@ -336,9 +336,9 @@ svg rect {
 }
 
 .Home {
-  color: white;
+  color: rgb(80 91 100);
   display: flex;
-  background-color: rgb(161 147 138);
+  background-color: rgb(250, 223, 201);
   height: 100%;
 }
 
@@ -382,6 +382,7 @@ svg rect {
 }
 
 .about {
+  background-color: rgb(250, 223, 201);
   font-size: 1.4rem;
   height: 100%;
   width: 100%;

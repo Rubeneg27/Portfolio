@@ -454,7 +454,7 @@ function ShootEmUp () {
       const currentTime = performance.now();
       const deltaTime = currentTime - lastFrameTime;
 
-      if (!isPausedRef.current) {
+      if (!isPausedRef.current && !isGameClosedRef.current === true) {
         if (deltaTime >= frameInterval) { // Si el tiempo que tardó el proceso es mayor o igual
           lastFrameTime = currentTime - (deltaTime % frameInterval);
           animate();
@@ -468,9 +468,6 @@ function ShootEmUp () {
             console.log(`FPS: ${fps}`);
           }
         }
-      }  else if (isGameClosedRef.current) {
-        init()
-        console.log("Init")
       }
     }
 
