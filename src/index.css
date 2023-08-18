@@ -346,10 +346,22 @@ svg rect {
 }
 
 .Home-text {
+  padding: 1vw;
+  background: rgb(255 235 218);
+  margin: 3% 3% 0% 3%;
+  height: 85%;
+  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   text-align: left;
-  width: 50%;
-  margin-top: 3vh;
-  margin-left: 3%;
+  width: 100%;
+}
+
+.Home > img {
+  margin: 3% 3% 0% 3%;
+  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
+  text-align: left;
+  height: 45vh;
+  width: 64vw;
+  background-color: rgb(161 147 138);
 }
 
 .p-1{
