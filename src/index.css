@@ -138,7 +138,7 @@ sidebar {
   padding-bottom: 1%;
   padding-top: 1%;
   position: relative;
-  background-color: rgb(250, 223, 201);
+  background-color: rgb(80 91 100);
   height: 100%;
 }
 sidebar > img {
@@ -199,7 +199,7 @@ sidebar > img {
 .Nav li {
   margin-left: 0.5vw;
   padding-left: 1vw;
-  background-color: rgb(96 134 146);
+  background-color: rgb(97 157 175);
   color: rgb(250, 223, 201);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
   transition: all 0.3s ease-in-out;
@@ -562,11 +562,12 @@ section > button:hover {
 /*Menú de Platformer*/
 
 .game-menu-init {
+  justify-self: center;
   position: absolute;
   display: grid;
-  width: 100%;
+  width: 43vw;
   height: 100%;
-  background-color: grey;
+  background-color: rgb(80 91 100);
   color: #e0b995;
   margin: 0;
   justify-content: center;
@@ -614,8 +615,9 @@ section > button:hover {
 }
 
 .score {
+  margin: 4vw 0 0 19vw;
   position: absolute;
-  color: white;
+  color: rgb(250, 223, 201);
 }
 
 .gameScreen {
