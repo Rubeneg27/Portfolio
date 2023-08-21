@@ -135,13 +135,12 @@ main {
 
 sidebar {
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
-  padding-bottom: 1%;
-  padding-top: 1%;
   position: relative;
   background-color: rgb(80 91 100);
   height: 100%;
 }
 sidebar > img {
+  display: none;
   position: absolute;
   bottom: 0;
   width: 3vw;
@@ -151,9 +150,9 @@ sidebar > img {
   width: 13vw;
   list-style: none;
   padding-inline-start: 0;
-  margin: 0; 
+  margin: 2vw 0 0 0;
   justify-self: center;
-  transition: all 0.3s ease-in-out
+  transition: all 0.3s ease-in-out;
 }
 
 .Nav-collapsed {
@@ -172,28 +171,20 @@ sidebar > img {
 .main-section .article {
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   margin-right: 0;
-  padding: 1%;
-  /*
-  border-style: dashed;
-  border-width: medium;
-  border-color: rgb(100, 91, 85);
-  */
-  background-color: rgb(80 91 100);
-  width: 61vw;
+  background-color: rgb(250, 223, 201);
+  width: 62vw;
   height: 100%;
   transition: all 0.3s ease-in-out;
 }
 
 
 .main-section .article-expanded {
-  padding: 1%;
-  border-width: medium;
-  border-color: rgb(100, 91, 85);
-  background-color: rgb(250, 223, 201);
-  border-style: dashed;
-  width: 100%;
-  height: 100%;
-  transition: all 0.3s ease-in-out;
+ box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
+ margin-right: 0;
+ background-color: rgb(250, 223, 201);
+ width: 100%;
+ height: 100%;
+ transition: all 0.3s ease-in-out;;
 }
 
 .Nav li {
@@ -204,11 +195,11 @@ sidebar > img {
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
   transition: all 0.3s ease-in-out;
   border-radius: 10PX;
-  margin-bottom: 2vh;
+  margin-bottom: 2vw;
   font-size: 30px;
   align-self: center;
-  height: 6vh;
-  width: 80%;
+  height: 7vh;
+  width: 83%;
   display: flex;
   justify-content: left;
   align-items: center;
@@ -346,9 +337,10 @@ svg rect {
 }
 
 .Home-text {
+  color: rgb(245 227 213);
   padding: 1vw;
-  background: rgb(255 235 218);
-  margin: 3% 3% 0% 3%;
+  background: rgb(161 147 138);
+  margin: 2vw 2vw 0 2vw;
   height: 85%;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   text-align: left;
@@ -356,7 +348,7 @@ svg rect {
 }
 
 .Home > img {
-  margin: 3% 3% 0% 3%;
+  margin: 2vw 2vw 0% 2vw;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   text-align: left;
   height: 45vh;
@@ -365,6 +357,10 @@ svg rect {
 }
 
 .p-1{
+  color: rgb(80 91 100);
+  font-weight: bold;
+  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
+  background: rgb(255 235 218);
   font-size: 3rem;
   margin-bottom: 3vh;
   margin-top: 2vh;
@@ -379,10 +375,13 @@ svg rect {
 }
 
 .p-3{
+  color: rgb(80 91 100);
+  font-weight: bold;
+  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
+  background: rgb(255 235 218);
   font-size: 3rem;
   margin-bottom: 4vh;
   margin-top: 3vh;
-  
 }
 .canvas-hidden {
   position: absolute;
@@ -615,7 +614,7 @@ section > button:hover {
 }
 
 .score {
-  margin: 4vw 0 0 19vw;
+  margin: 2vw 0 0 19vw;
   position: absolute;
   color: rgb(250, 223, 201);
 }
