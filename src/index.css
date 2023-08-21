@@ -192,7 +192,7 @@ sidebar > img {
   padding-left: 1vw;
   background-color: rgb(97 157 175);
   color: rgb(250, 223, 201);
-  box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
+  box-shadow: 7px 7px 0px rgba(62, 63, 66, 0.521);
   transition: all 0.3s ease-in-out;
   border-radius: 10PX;
   margin-bottom: 2vw;
@@ -210,13 +210,13 @@ sidebar > img {
   cursor: pointer;
   font-weight: bold;
   background-color: rgb(88, 203, 211);
-  color: rgb(88, 107, 122);
+  color: rgb(233, 219, 209);
 }
 
 .Nav li:active {
   cursor: pointer;
   font-weight: bold;
-  background-color: rgb(77, 130, 165);
+  background-color: rgb(71, 120, 134);
   color: rgb(231, 207, 188);
   transition: none;
   box-shadow: none;
