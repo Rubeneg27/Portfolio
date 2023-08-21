@@ -213,9 +213,19 @@ sidebar > img {
   color: rgb(88, 107, 122);
 }
 
+.Nav li:active {
+  cursor: pointer;
+  font-weight: bold;
+  background-color: rgb(77, 130, 165);
+  color: rgb(231, 207, 188);
+  transition: none;
+  box-shadow: none;
+}
+
 .Nav-hidden {
   opacity: 0;
 }
+
 .li-collapsed {
   background-color: rgb(94, 113, 119);
   color: rgb(248, 211, 180);
