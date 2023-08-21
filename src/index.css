@@ -19,6 +19,10 @@ body {
   color: rgb(250, 223, 201);
   margin-left: 10vw;
   margin-right: 10vw;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(250, 223, 201);
+  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
 }
 
 
@@ -27,12 +31,6 @@ code {
     monospace;
 }
 
-.cabecera {
-  display: flex;
-  justify-content: space-between;
-  background-color: rgb(250, 223, 201);
-  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
-}
 
 .title {
   display: inline-flex;
@@ -60,23 +58,24 @@ code {
 }
 
 .decoration {
-  width: 33vw;
+  display: flex;
+  justify-content: flex-end;
+  width: 43vw;
   height: 9vh;
-  margin: 1vw 0vw 1vw 0vw;
+  margin: 1vw;
   background-color: rgb(161 147 138);
 }
-
+/*
 .logos{
+  height: 100%;
   justify-content: center;
-  width: 10vw;
   display: inline-flex;
   flex-wrap: wrap;
   align-content: center;
-  margin: 1vw 0vw 1vw 0vw;
-  margin-right: 1vw;
   background-color: rgb(80 91 100);
 }
-
+*/
+/*
 .logos-collapsed{
   transition: all 0.3s ease-in-out;
   width: 0vw;
@@ -89,10 +88,12 @@ code {
   margin-bottom: 3vh;
   height: 7vh;
 }
-
+*/
 .logo {
+  background-color: rgb(80 91 100);
+  padding: 0 0.6vw 0 0.6vw;
   width: 4vh;
-  height: 4vh;
+  height: 100%;
   fill: rgb(250, 223, 201);
 }
 
@@ -134,11 +135,11 @@ main {
 }
 
 sidebar {
-  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   position: relative;
   background-color: rgb(80 91 100);
   height: 100%;
 }
+
 sidebar > img {
   display: none;
   position: absolute;
@@ -172,7 +173,7 @@ sidebar > img {
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   margin-right: 0;
   background-color: rgb(250, 223, 201);
-  width: 62vw;
+  width: 64vw;
   height: 100%;
   transition: all 0.3s ease-in-out;
 }
@@ -290,8 +291,8 @@ sidebar > img {
   height: 100%;
 }
 
-svg {
-  padding: 2%;
+.burger svg {
+  padding: 25%;
 }
 
 svg rect {
