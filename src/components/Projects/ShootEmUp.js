@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
+import {GameManager} from './methods';
+
+const _GameManager = new GameManager();
 
 function ShootEmUp () {
+  
   let isPausedRef = useRef(false);
   let isGameClosedRef = useRef(true); 
   let scoreRef = useRef(0)
+  
 
   const canvasRef = useRef(null);
   const [gameStarted, setGameStarted] = useState (false);
@@ -15,6 +20,7 @@ function ShootEmUp () {
     isGameClosedRef.current = false;
     isPausedRef.current = false
     console.log(`Game started: ${gameStarted}`);
+    _GameManager.test();
   }
 
   const handlePauseMenu = (e) => {
@@ -84,10 +90,6 @@ function ShootEmUp () {
     let enemyAttackOnCoolDown = 900;
     //Spawn parameters
     let spawnCooldown = false
-    let spawnTimeMin = 500
-    let spawnTimeMax = 800
-    let spawnPosXMin = canvas.width*0.05
-    let spawnPosXMax = canvas.width - canvas.width*0.05
     let spawnTime
     let spawnPosX
 
@@ -301,14 +303,14 @@ function ShootEmUp () {
     ///spawnCooldown: When true, enemies doesn't appear///
     ///spawnTime: Random number for spawning time///
     ///spawnPosX: Random number for position in x axis///
-    function spawnEnemies () {
+    function spawnEnemies (enemyToSpawn, spawnTimeMax, spawnTimeMin, spawnPosXMax, spawnPosXMin) {
       if (!spawnCooldown) {
         spawnTime = Math.floor(Math.random() * (spawnTimeMax - spawnTimeMin + 1)) + spawnTimeMin;
         spawnPosX = Math.floor(Math.random() * (spawnPosXMax - spawnPosXMin + 1)) + spawnPosXMin;
         spawnCooldown = true
 
         setTimeout(function () {
-        asteroids.push(new Enemy(spawnPosX, 0))
+        enemyToSpawn.push(new Enemy(spawnPosX, 0))
         spawnCooldown = false
       }, spawnTime)
       }   
@@ -441,7 +443,7 @@ function ShootEmUp () {
       
       updatePlayerPosition();
       Player1.update();
-      spawnEnemies();
+      spawnEnemies(asteroids, 800, 500, canvas.width - canvas.width*0.05, canvas.width*0.05);
       collissionsUpdate();
       updateScore();
       bulletUpdator();
