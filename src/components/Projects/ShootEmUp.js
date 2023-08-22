@@ -88,10 +88,6 @@ function ShootEmUp () {
     let playerAttackCooldown = 100;
     let enemyOnCoolDown = false;
     let enemyAttackOnCoolDown = 900;
-    //Spawn parameters
-    let spawnCooldown = false
-    let spawnTime
-    let spawnPosX
 
     //Keys
     let keys = {
@@ -201,38 +197,6 @@ function ShootEmUp () {
 
     }
     
-    ///Enemy class///
-    ///Parameters: x///Defines position of enemy in x axis
-    class Enemy {
-      constructor(x,y) {
-        this.width = canvas.width / 25;
-        this.height = canvas.width / 25;
-
-        this.position = {
-          x: x,
-          y: 0,
-        };
-
-        this.velocity = {
-          x: 0,
-          y: enemySpeed1,
-        };
-      }
-
-      ///Will draw Enemy 
-      draw() {
-        this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
-        c.fillStyle = 'red';
-        c.fillRect(this.position.x, this.position.y, this.width, this.height);
-      }
-
-      ///Will draw the updated Enemy
-      update () {
-        this.draw();
-      }
-    }
-
     class EnemyA {
       constructor(x,y) {
         this.width = canvas.width / 25;
@@ -297,25 +261,6 @@ function ShootEmUp () {
       enemiesA.push(new EnemyA(300,0)); 
     }
 
-    
-    ///Spawn enemies at random time in random position when the cooldown is false///
-    ///PARAMETERES///
-    ///spawnCooldown: When true, enemies doesn't appear///
-    ///spawnTime: Random number for spawning time///
-    ///spawnPosX: Random number for position in x axis///
-    function spawnEnemies (enemyToSpawn, spawnTimeMax, spawnTimeMin, spawnPosXMax, spawnPosXMin) {
-      if (!spawnCooldown) {
-        spawnTime = Math.floor(Math.random() * (spawnTimeMax - spawnTimeMin + 1)) + spawnTimeMin;
-        spawnPosX = Math.floor(Math.random() * (spawnPosXMax - spawnPosXMin + 1)) + spawnPosXMin;
-        spawnCooldown = true
-
-        setTimeout(function () {
-        enemyToSpawn.push(new Enemy(spawnPosX, 0))
-        spawnCooldown = false
-      }, spawnTime)
-      }   
-    }
-    
     ///Updates player position///
     function updatePlayerPosition() {
       if (keys.left.pressed) {
@@ -443,7 +388,8 @@ function ShootEmUp () {
       
       updatePlayerPosition();
       Player1.update();
-      spawnEnemies(asteroids, 800, 500, canvas.width - canvas.width*0.05, canvas.width*0.05);
+      //spawnEnemies(asteroids, 800, 500, canvas.width - canvas.width*0.05, canvas.width*0.05);
+      _GameManager.spawnEnemies(asteroids, 800, 500, canvas.width - canvas.width*0.05, canvas.width*0.05, canvas, c);
       collissionsUpdate();
       updateScore();
       bulletUpdator();
