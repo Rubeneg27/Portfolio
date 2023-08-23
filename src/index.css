@@ -97,6 +97,7 @@ code {
 
 /*Efecto scroll lateral para los logos de Header*/
 .logo1, .logo2, .logo3, .logo4, .logo5, .logo6 {
+  user-select: none;
   display: inline-flex;
   align-items: center;
   padding: 0 0.6vw 0 0.6vw;
@@ -106,18 +107,21 @@ code {
 }
 
 .logoCont1, .logoCont2, .logoCont3, .logoCont4, .logoCont5, .logoCont6 {
+  user-select: none;
   transition: all 0.6s ease-out;
   display: flex;
-  width: 3vw;
+  width: 2.8vw;
   background-color: rgb(80 91 100);
 }
 
 .logoCont1 > span, .logoCont2 > span, .logoCont3 > span, .logoCont4 > span, .logoCont5 > span, .logoCont6 > span {
+  user-select: none;
   width: 0;
   opacity: 0;
 }
 
 .logoCont1:hover, .logoCont2:hover, .logoCont3:hover, .logoCont4:hover, .logoCont5:hover, .logoCont6:hover {
+  user-select: none;
   display: flex;
   transition: all 0.6s ease-out;
   width: 100%;
@@ -127,6 +131,7 @@ code {
 }
 
 .logoCont1:hover > span, .logoCont2:hover > span, .logoCont3:hover > span, .logoCont4:hover > span, .logoCont5:hover > span, .logoCont6:hover > span {
+  user-select: none;
   transition: opacity 0.7s ease-out;
   opacity: 100%;
   border-left: 1.5vw solid rgb(79, 97, 114);
@@ -231,6 +236,7 @@ sidebar > img {
 }
 
 .Nav li {
+  user-select: none;
   margin-left: 0.5vw;
   padding-left: 1vw;
   background-color: rgb(97 157 175);
@@ -458,6 +464,7 @@ svg rect {
 }
 
 .canvas-init {
+  height: 75vh;
   background-color: rgb(255, 255, 255);
   justify-self: center;
   align-self: center;
@@ -632,8 +639,8 @@ section > button:hover {
   justify-self: center;
   position: absolute;
   display: grid;
-  width: 43vw;
-  height: 100%;
+  width: 100vh;
+  height: 75vh;
   background-color: rgb(80 91 100);
   color: #e0b995;
   margin: 0;
@@ -646,13 +653,14 @@ section > button:hover {
 }
 
 .pause-menu-init {
+  justify-self: center;
   position: absolute;
   display: grid;
-  width: 100%;
-  height: 100%;
+  width: 100vh;
+  height: 75vh;
   background-color: #393e4a40;
   color: #683506;
-  margin: 0;
+  justify-content: center;
 }
 
 .pause-menu-hidden {
@@ -682,7 +690,7 @@ section > button:hover {
 }
 
 .score {
-  margin: 2vw 0 0 19vw;
+  margin: 1vw 0 0 17vw;
   position: absolute;
   color: rgb(250, 223, 201);
 }

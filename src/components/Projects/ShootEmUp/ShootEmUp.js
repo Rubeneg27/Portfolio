@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {GameManager, Player, EnemyA} from './methods';
+import {GameManager, Player, EnemyA} from './Clases';
 
 const _GameManager = new GameManager();
 
@@ -8,7 +8,6 @@ function ShootEmUp () {
   let isPausedRef = useRef(false);
   let isGameClosedRef = useRef(true); 
   let scoreRef = useRef(0)
-  
 
   const canvasRef = useRef(null);
   const [gameStarted, setGameStarted] = useState (false);
@@ -66,8 +65,8 @@ function ShootEmUp () {
     //Canvas parameters
     const canvas = document.querySelector('canvas');
     const c = canvas.getContext('2d');
-    canvas.width = 800;
-    canvas.height = 600;
+    canvas.width = 1024;
+    canvas.height = 768;
 
     //Loop parameters
     let lastFrameTime = performance.now();
@@ -125,16 +124,21 @@ function ShootEmUp () {
 
       asteroids.forEach((asteroid, index) => {
         asteroid.update();
-    
+        if (asteroid.hp <=0){
+          enemiesToRemove.push(index);
+        }
         // Verificar colisiones entre cada enemigo y cada bala del jugador
         for (let i = 0; i < Player1.bullets.length; i++) {
           const bullet = Player1.bullets[i];
 
-          if(_GameManager.checkCollision(asteroid, bullet)) {
+          if(_GameManager.checkCollision(asteroid, bullet) && asteroid.hp <= 0) {
             // Si hay colisión, marcar enemigo y bala para eliminación
-            enemiesToRemove.push(index);
+            //enemiesToRemove.push(index);
             bulletsToRemove.push(i);
             scoreRef.current = scoreRef.current + 1
+          } else if (_GameManager.checkCollision(asteroid, bullet)){
+            bulletsToRemove.push(i);
+            asteroid.hp -= 1
           }
           
         }
@@ -172,9 +176,9 @@ function ShootEmUp () {
       c.fillRect(0, 0, canvas.width, canvas.height);
       
       _GameManager.updatePlayerPosition(keys, Player1, speed);
-      _GameManager.spawnEnemies(asteroids, 800, 500, canvas.width - canvas.width*0.05, canvas.width*0.05, canvas, c);
+      _GameManager.spawnEnemies(asteroids, 800, 500, canvas.width - canvas.width*0.05, canvas.width*0.05, canvas, c, 2);
       _GameManager.bulletUpdator(canvas, c, enemyBullets);
-      
+
       collissionsUpdate();
       updateScore();
     }
