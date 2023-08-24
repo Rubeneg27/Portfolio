@@ -7,7 +7,7 @@ function ShootEmUp () {
   
   let isPausedRef = useRef(false);
   let isGameClosedRef = useRef(true); 
-  let scoreRef = useRef(0)
+  let scoreRef = useRef(0);
 
   const canvasRef = useRef(null);
   const [gameStarted, setGameStarted] = useState (false);
@@ -78,6 +78,7 @@ function ShootEmUp () {
 
     //Gameplay parameters
     let speed = 8;
+    let enemyAWave = 0;
 
     //Keys
     let keys = {
@@ -106,17 +107,46 @@ function ShootEmUp () {
     let asteroids = [];
     let enemiesA = [];
     let enemyBullets = [];
-    enemiesA.push(new EnemyA(300,0, canvas, c, enemyBullets));
-
+    
+    
     ///Initialize game
     function init() {
       Player1 = new Player(canvas,c,keys);
       asteroids = [];
       enemiesA = [];
       enemyBullets = []
-      enemiesA.push(new EnemyA(300,0, canvas, c, enemyBullets)); 
     }
 
+    function spawner () {
+      if (Player1.scrollY >= 10 && enemyAWave === 0) {
+        enemiesA.push(
+          new EnemyA(500,0, canvas, c, enemyBullets),
+        );
+        enemyAWave += 1
+      } else if (Player1.scrollY >= 30 && enemyAWave === 1) {
+        enemiesA.push(
+          new EnemyA(300,0, canvas, c, enemyBullets),
+          new EnemyA(600,0, canvas, c, enemyBullets),
+        );
+        enemyAWave += 1
+      } else if (Player1.scrollY >= 60 && enemyAWave === 2) {
+        enemiesA.push(
+          new EnemyA(100,0, canvas, c, enemyBullets),
+          new EnemyA(400,0, canvas, c, enemyBullets),
+          new EnemyA(700,0, canvas, c, enemyBullets),
+        );
+        enemyAWave += 1
+      } else if (Player1.scrollY >= 90 && enemyAWave === 3) {
+        enemiesA.push(
+          new EnemyA(100,0, canvas, c, enemyBullets),
+          new EnemyA(300,0, canvas, c, enemyBullets),
+          new EnemyA(500,0, canvas, c, enemyBullets),
+          new EnemyA(700,0, canvas, c, enemyBullets),
+        );
+        enemyAWave += 1
+      }
+    }
+    
     ///Will draw every enemy and detect if there is a colission with bullets///
     function collissionsUpdate() {
       //Variables to handle elimination of objects
@@ -188,8 +218,11 @@ function ShootEmUp () {
       _GameManager.spawnEnemies(asteroids, 800, 500, canvas.width - canvas.width*0.05, canvas.width*0.05, canvas, c, 2);
       _GameManager.bulletUpdator(canvas, c, enemyBullets, Player1);
 
+      spawner()
       collissionsUpdate();
       updateScore();
+      console.log(Player1.scrollY)
+
     }
     
     ///Loop manager for animation loop///
@@ -203,7 +236,6 @@ function ShootEmUp () {
         if (deltaTime >= frameInterval) { // Si el tiempo que tardó el proceso es mayor o igual
           lastFrameTime = currentTime - (deltaTime % frameInterval);
           animate();
-    
           // Cálculo de FPS
           framesThisSecond++;
           if (currentTime > lastFpsUpdate + 1000) {
