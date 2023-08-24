@@ -115,6 +115,7 @@ function ShootEmUp () {
       asteroids = [];
       enemiesA = [];
       enemyBullets = []
+      enemyAWave = 0
     }
 
     function spawner () {
