@@ -112,6 +112,8 @@ function ShootEmUp () {
     function init() {
       Player1 = new Player(canvas,c,keys);
       asteroids = [];
+      enemiesA = [];
+      enemyBullets = []
       enemiesA.push(new EnemyA(300,0, canvas, c, enemyBullets)); 
     }
 
@@ -125,6 +127,7 @@ function ShootEmUp () {
       asteroids.forEach((asteroid, index) => {
         asteroid.update();
         if (asteroid.hp <=0){
+          scoreRef.current = scoreRef.current + 1
           enemiesToRemove.push(index);
         }
         // Verificar colisiones entre cada enemigo y cada bala del jugador
@@ -135,7 +138,6 @@ function ShootEmUp () {
             // Si hay colisión, marcar enemigo y bala para eliminación
             //enemiesToRemove.push(index);
             bulletsToRemove.push(i);
-            scoreRef.current = scoreRef.current + 1
           } else if (_GameManager.checkCollision(asteroid, bullet)){
             bulletsToRemove.push(i);
             asteroid.hp -= 1
@@ -146,6 +148,7 @@ function ShootEmUp () {
         if(_GameManager.checkCollision(asteroid, Player1)) {
           init();
         }
+        
         //Eliminar enemigos que salgan del canvas
         if (asteroid.position.y > canvas.height) {
           enemiesToRemove.push(index);
@@ -165,6 +168,12 @@ function ShootEmUp () {
         }
       })
 
+      enemyBullets.forEach((enemyBullet) => {
+        if(_GameManager.checkCollision(enemyBullet, Player1)) {
+          init()
+        }
+      })
+
       _GameManager.eliminator(enemiesToRemove, asteroids)
       _GameManager.eliminator(bulletsToRemove, Player1.bullets)
       _GameManager.eliminator(enemiesAtoRemove, enemiesA)
@@ -177,7 +186,7 @@ function ShootEmUp () {
       
       _GameManager.updatePlayerPosition(keys, Player1, speed);
       _GameManager.spawnEnemies(asteroids, 800, 500, canvas.width - canvas.width*0.05, canvas.width*0.05, canvas, c, 2);
-      _GameManager.bulletUpdator(canvas, c, enemyBullets);
+      _GameManager.bulletUpdator(canvas, c, enemyBullets, Player1);
 
       collissionsUpdate();
       updateScore();
