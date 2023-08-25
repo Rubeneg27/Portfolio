@@ -488,6 +488,7 @@ section > button {
 }
 
 section > button:hover {
+  cursor: pointer;
   transition: all 0.3s ease-in;
   font-size: 50px;
   border: 0;
@@ -514,7 +515,7 @@ section > button:hover {
 }
 
 .skills {
-  padding: 2%;
+  padding: 2vw;
   box-sizing: border-box;
   height: 100%;
   display: flex;

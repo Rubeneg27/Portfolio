@@ -8,15 +8,15 @@ function Skills() {
                 </div>
                 <div>
                     <h2>Habilidades</h2>
-				    Certificado: Meta Front-end Developer<br></br>
-                    Lenguajes de programación: Javascript, C# y HTML<br></br>
-                    Frameworks: React, Angular.<br></br>
+				    <p>Certificado: Meta Front-end Developer.</p>
+                    <p>Lenguajes de programación: Javascript, C# y HTML.</p> 
+                    <p>Frameworks: React, Angular.</p>
                 </div>
                 <div>
                     <h2>Idiomas</h2>
                     <p>Inglés</p>
                     <p>Certificado: B1.</p>
-                    <p>Nivel: conversacional</p>
+                    <p>Nivel: conversacional.</p>
                 </div>            
                 </div>
             <div className="skills-b">
