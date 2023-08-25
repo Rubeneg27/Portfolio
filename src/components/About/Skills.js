@@ -8,22 +8,24 @@ function Skills() {
                 </div>
                 <div>
                     <h2>Habilidades</h2>
-				    Certificado Meta Front-end Developer<br></br>
-                    Lenguajes de programación: Javascript y HTML<br></br>
-                    Frameworks: React y Node.js<br></br>
+				    Certificado: Meta Front-end Developer<br></br>
+                    Lenguajes de programación: Javascript, C# y HTML<br></br>
+                    Frameworks: React, Angular.<br></br>
                 </div>
                 <div>
                     <h2>Idiomas</h2>
-                    <p>Inglés - Certificado B2 - Nivel conversacional</p>
+                    <p>Inglés</p>
+                    <p>Certificado: B1.</p>
+                    <p>Nivel: conversacional</p>
                 </div>            
                 </div>
             <div className="skills-b">
                 <div className="div-a">
                     <h2>Soft skills</h2>
-                    <p>Constante y resolutivo</p>
+                    <p>Constante y resolutivo.</p>
                     <p>Habituado al trabajo en equipo.</p>
                     <p>Siempre dispuesto a aprender y sin miedo a reconocer si estoy equivocado.</p>
-                    <p>Afronto los restos con paciencia y perseverancia.</p>
+                    <p>Afronto los retos con paciencia y perseverancia.</p>
                 </div>
             </div>               
 				</section>

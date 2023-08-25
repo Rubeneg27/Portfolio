@@ -198,7 +198,7 @@ sidebar > img {
   width: 11vw;
   list-style: none;
   padding-inline-start: 0;
-  margin: 4vw 0 0 0;
+  margin: 2vw 0 0 0;
   justify-self: center;
   transition: all 0.3s ease-in-out;
 }
@@ -471,7 +471,6 @@ svg rect {
 }
 
 .about {
-  padding: 2vw;
   box-sizing: border-box;
   height: 100%;
   background-color: rgb(250, 223, 201);
@@ -515,6 +514,7 @@ section > button:hover {
 }
 
 .skills {
+  padding: 2%;
   box-sizing: border-box;
   height: 100%;
   display: flex;
