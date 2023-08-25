@@ -124,20 +124,20 @@ function ShootEmUp () {
           new EnemyA(500,0, canvas, c, enemyBullets),
         );
         enemyAWave += 1
-      } else if (Player1.scrollY >= 30 && enemyAWave === 1) {
+      } else if (Player1.scrollY >= 50 && enemyAWave === 1) {
         enemiesA.push(
           new EnemyA(300,0, canvas, c, enemyBullets),
           new EnemyA(600,0, canvas, c, enemyBullets),
         );
         enemyAWave += 1
-      } else if (Player1.scrollY >= 60 && enemyAWave === 2) {
+      } else if (Player1.scrollY >= 150 && enemyAWave === 2) {
         enemiesA.push(
           new EnemyA(100,0, canvas, c, enemyBullets),
           new EnemyA(400,0, canvas, c, enemyBullets),
           new EnemyA(700,0, canvas, c, enemyBullets),
         );
         enemyAWave += 1
-      } else if (Player1.scrollY >= 90 && enemyAWave === 3) {
+      } else if (Player1.scrollY >= 300 && enemyAWave === 3) {
         enemiesA.push(
           new EnemyA(100,0, canvas, c, enemyBullets),
           new EnemyA(300,0, canvas, c, enemyBullets),

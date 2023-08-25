@@ -18,11 +18,8 @@ function Skills() {
                 </div>            
                 </div>
             <div className="skills-b">
-                <div className="skills-img">
-
-                </div>
                 <div className="div-a">
-                    <h2>Habilidades sociales</h2>
+                    <h2>Soft skills</h2>
                     <p>Constante y resolutivo</p>
                     <p>Habituado al trabajo en equipo.</p>
                     <p>Siempre dispuesto a aprender y sin miedo a reconocer si estoy equivocado.</p>
