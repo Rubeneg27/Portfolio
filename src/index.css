@@ -332,7 +332,6 @@ sidebar > img {
 }
 
 .button-container {
-  background: rgb(80 91 100);
   display: grid;
   align-content: center;
   width: 100%;
@@ -484,7 +483,7 @@ section > button {
   font-size: 50px;
   border: 0;
   color: rgb(250, 223, 201);
-  background-color: rgb(96 134 146);
+  background-color: rgb(80 91 100);
   height: 21vh;
   width: 100%;
 }
@@ -493,9 +492,10 @@ section > button:hover {
   cursor: pointer;
   transition: all 0.3s ease-in;
   font-size: 50px;
+  font-weight: bold;
   border: 0;
-  color: rgb(250, 223, 201);
-  background-color: #a3afc7;
+  color: rgb(255, 241, 231);
+  background-color: rgb(97 157 175);
   height: 21vh;
   width: 60%;
 }
