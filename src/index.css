@@ -332,6 +332,7 @@ sidebar > img {
 }
 
 .button-container {
+  background-color: rgb(80 91 100);
   display: grid;
   align-content: center;
   width: 100%;
@@ -479,11 +480,11 @@ svg rect {
 }
 
 section > button {
+  border: solid 8px rgb(49 62 73);
   transition: all 0.3s ease-out;
   font-size: 50px;
-  border: 0;
   color: rgb(250, 223, 201);
-  background-color: rgb(80 91 100);
+  background-color: rgb(102 116 127);
   height: 21vh;
   width: 100%;
 }
@@ -598,12 +599,10 @@ section > button:hover {
 /*CONTACT*/
 
 .contact {
-  display: grid;
-  background-color: antiquewhite;
+  box-sizing: border-box;
   padding: 0;
   font-size: 1.4rem;
-  margin: 0;
-  height: 100%;
+  margin: 2vw;
 }
 
 .contact form {
