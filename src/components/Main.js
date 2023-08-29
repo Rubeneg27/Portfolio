@@ -42,7 +42,8 @@ function Main () {
     }
   }
 
-  const handleAbout = () => {
+  ///Will show/hide buttons in about/projects section
+  const handleButtons = () => {
     setHidden(true)
     setAboutClicked(!aboutClicked)
   }
@@ -59,20 +60,21 @@ function Main () {
   const handleClickAbout = () => {
     setHidden(false)
     setisMenuOpen(false)
-    setIsCollapsed(true)
-    collapse()
     setContent(
-      <About hidden={hidden} handleAbout={handleAbout}></About> //Se tiene que renderizar cuando cambie hidden
+      <About hidden={hidden} handleButtons={handleButtons}></About> //Se tiene que renderizar cuando cambie hidden
     )
   }
-  const handleClickProjects = () => {
-    console.log(`hidden: ${hidden}`)
+
+  const handleCollapse = () => {
     setHidden(false)
     setisMenuOpen(false)
     setIsCollapsed(true)
     collapse()
+  }
+
+  const handleClickProjects = () => {
     setContent(
-      <Projects ></Projects>
+      <Projects handleCollapse={handleCollapse}></Projects>
     )
   }
   const handleClickContact = () => {
@@ -92,7 +94,7 @@ function Main () {
   useEffect(()=>{
     if (hidden) {
       setHidden(false)
-      setContent(<About hidden={hidden} handleAbout={handleAbout}></About>)
+      setContent(<About hidden={hidden} handleButtons={handleButtons}></About>)
     } else {
       setContent(content)
     }
@@ -101,17 +103,16 @@ function Main () {
 
   return (
     <main onClick={handleClickBody}>
-      
       <Header isNavCollapsed={isNavCollapsed} updateContent={updateContent}></Header>
       <div className="main-section">
         <Nav 
-        isCollapsed={isCollapsed} 
+        isNavCollapsed={isNavCollapsed}
+        isCollapsed={isCollapsed}
         handleClickHome={handleClickHome} 
         handleClickAbout={handleClickAbout} 
         handleClickProjects={handleClickProjects} 
-        handleClickContact={handleClickContact} 
+        handleClickContact={handleClickContact}
         />
-        
         <div className={isCollapsed? "article-expanded" : "article"}>
           {isCollapsed&&!isMenuOpen ?
           <div className="burger" onClick={toggleMenu} >

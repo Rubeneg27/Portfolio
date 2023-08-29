@@ -2,12 +2,11 @@ import Skills from "./About/Skills"
 import Experience from "./About/Experience"
 import { useState } from "react";
 
-const About = ({ hidden, handleAbout }) => {
+const About = ({ hidden, handleButtons }) => {
   const [content, setContent] = useState("");
 
   function handleClick (elemento) {
-    console.log(`hidden About: ${hidden}`)
-    handleAbout()
+    handleButtons()
     switch (elemento) {
       case "Formación":
         setContent(<Skills></Skills>);
@@ -22,9 +21,12 @@ const About = ({ hidden, handleAbout }) => {
 
   return (
     <section className="about">
-      <button hidden={hidden} onClick={()=>handleClick("Formación")}>Formación</button>
-      <button hidden={hidden} onClick={()=>handleClick("Experiencia")}>Experiencia</button>
-      {hidden? content : null}
+          {hidden ? null : 
+            <section className="button-container">
+              <button  onClick={()=>handleClick("Formación")}>Formación</button>
+              <button  onClick={()=>handleClick("Experiencia")}>Experiencia</button>
+            </section>}
+          {hidden? content : null}
     </section>
   )
   
