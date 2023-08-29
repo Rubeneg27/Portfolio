@@ -411,7 +411,7 @@ svg rect {
 .Home > img {
   margin: 2vw 2vw 0% 2vw;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
-  height: 65%;
+  height: 70%;
 }
 
 .p-1{
@@ -476,6 +476,54 @@ svg rect {
   font-size: 60%;
 }
 
+.experiencie {
+  padding: 2vw;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.experiencie section {
+  color: rgb(255 244 234);
+    box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
+    background-color: rgb(161 147 138);
+    box-sizing: border-box;
+    width: 100%;
+    height: 44vh;
+    padding: 2vw;
+    border-width: medium;
+    border-color: rgb(255 244 234);
+    border-style: dashed;
+}
+
+.skills-exp {
+  border: none;
+  margin: -6vw 0 0 51vw;
+  position: absolute;
+  padding: 1vw;
+  transition: all 0.3s ease-out;
+  color: rgb(250, 223, 201);
+  background-color: rgb(102 116 127);
+  width: auto;
+  height: auto;
+  font-size: 1.4vw;
+}
+
+.skills-exp:hover {
+  border: none;
+  margin: -6vw 0 0 51vw;
+  position: absolute;
+  padding: 1vw;
+  transition: all 0.3s ease-out;
+  color: rgb(250, 223, 201);
+  background-color: rgb(72, 83, 92);
+  width: auto;
+  height: auto;
+  font-size: 1.4vw;
+  font-weight: normal;
+}
+
 section > button {
   border: solid 8px rgb(49 62 73);
   transition: all 0.3s ease-out;
@@ -523,7 +571,11 @@ section > button:hover {
 }
 
 .skills-a, .skills-b {
+  display: grid;
+  height: auto;
+  box-sizing: border-box;
   width: 45%;
+  align-content: space-between;
 }
 .skills-a div{
   color: rgb(255 244 234);
@@ -531,17 +583,11 @@ section > button:hover {
   background-color: rgb(161 147 138);
   box-sizing: border-box;
   height: 21vh;
-  margin: 0 0 2vh 0;
   padding: 2vh;
   border-width: medium;
   border-color: rgb(255 244 234);
   border-style: dashed;
 }
-/*
-.skills-a div h2, .skills-b div h2 {
-  margin: 0;
-}
-*/
 
 .skills-b div{
   background: #fffaf4;
