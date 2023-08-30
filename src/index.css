@@ -217,6 +217,7 @@ sidebar > img {
 
 
 .main-section .article {
+  display: grid;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   margin-right: 0;
   background-color: rgb(250, 223, 201);
@@ -405,13 +406,17 @@ svg rect {
   height: 85%;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   text-align: left;
-  width: 100%;
+  width: 34vw;
 }
-
-.Home > img {
+.image-container {
   margin: 2vw 2vw 0% 2vw;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
+  height: 20vw;
   height: 24vw;
+}
+
+.image-container > img {
+  height: 100%;
 }
 
 .p-1{
@@ -674,14 +679,18 @@ section > button:hover {
 /*CONTACT*/
 
 .contact {
+  width: 60vw;
+  height: 89%;
+  align-self: center;
+  justify-self: center;
   padding: 2vw;
+  margin: 4%;
   background: rgb(255 235 218);
   border-width: medium;
   border-color: #e0b995;
   border-style: dashed;
   box-sizing: border-box;
-  font-size: 1.4rem;
-  margin: 2vw;
+  
 }
 
 .contact form {

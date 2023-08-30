@@ -19,10 +19,12 @@ function Contact () {
                     <label>Subject</label>
                     <input 
                     type="text"
+                    placeholder='Subject of the email'
                     onChange={(e) => setSubject(encodeURIComponent(e.target.value))}
                     ></input>
                 </li>
                 <li>
+                    <label>Message</label>
                     <textarea 
                     className="Message-Box" 
                     placeholder="Write here your message"

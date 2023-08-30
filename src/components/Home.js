@@ -11,7 +11,9 @@ function Home () {
         <p className="p-2">On my personal webpage, you can learn more about my skills, explore my projects, and get in touch with me.</p>
         <p className="p-1B">I hope you enjoy your visit!</p>
         </div>
-      <img src={img} alt="foto de perfil de Rubén Espinosa con el monte fuji en el fondo"></img>
+      <div className="image-container">
+        <img src={img} alt="foto de perfil de Rubén Espinosa con el monte fuji en el fondo"/>
+      </div>
     </section>
     
   )
