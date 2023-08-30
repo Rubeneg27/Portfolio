@@ -3,29 +3,29 @@ function Skills() {
         <section className="skills">
             <div className="skills-a">
                 <div>
-                    <h2>Formación académica</h2>
-				    <p>Graduado en Química por la Universidad de Sevilla</p>
+                    <h2>Academic Background</h2>
+				    <p>Graduated in Chemistry from the University of Seville</p>
                 </div>
                 <div>
-                    <h2>Habilidades</h2>
-				    <p>Certificado: Meta Front-end Developer.</p>
-                    <p>Lenguajes de programación: Javascript, C# y HTML.</p> 
-                    <p>Frameworks: React, Angular.</p>
+                    <h2>Skills</h2>
+				    <p>Certification: Meta Front-end Developer.</p>
+                    <p>Programming Languages: Javascript, C# and HTML.</p> 
+                    <p>Libraries: React, Angular.</p>
                 </div>
                 <div>
-                    <h2>Idiomas</h2>
-                    <p>Inglés</p>
-                    <p>Certificado: B1.</p>
-                    <p>Nivel: conversacional.</p>
+                    <h2>Languages</h2>
+                    <p>English</p>
+                    <p>Certification: B1.</p>
+                    <p>Speaking Level: Conversational.</p>
                 </div>            
                 </div>
             <div className="skills-b">
                 <div className="div-a">
                     <h2>Soft skills</h2>
-                    <p>Constante y resolutivo.</p>
-                    <p>Habituado al trabajo en equipo.</p>
-                    <p>Siempre dispuesto a aprender y sin miedo a reconocer si estoy equivocado.</p>
-                    <p>Afronto los retos con paciencia y perseverancia.</p>
+                    <p>Consistent and solution-oriented.</p>
+                    <p>Accustomed to teamwork.</p>
+                    <p>Always ready to learn, acknowledge my mistakes, and learn from them.</p>
+                    <p>I approach challenges with patience and perseverance.</p>
                 </div>
             </div>              
 		</section>

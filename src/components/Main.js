@@ -14,12 +14,9 @@ function Main () {
   const [isMenuOpen, setisMenuOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [aboutClicked, setAboutClicked] = useState(false)
-  console.log(`hidden in main: ${hidden}`)
   const [content, setContent] = useState(
     <Home></Home>
   )
-
-  
   
   const collapse = () => { //Collapses hero's section
     setIsNavCollapsed(true);

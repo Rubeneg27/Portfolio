@@ -51,9 +51,9 @@ code {
 
 .email {
   align-self: center;
-  font-size: 1.2rem;
+  font-size: 1vw;
   margin: 1vw 2vw 1vw 0vw;
-  width: 17vw;
+  width: 20vw;
   height: 7vh;
   display: grid;
   align-content: center;
@@ -65,9 +65,9 @@ code {
   align-self: center;
   display: flex;
   justify-content: flex-end;
-  width: 42vw;
+  width: 36vw;
   height: 7vh;
-  margin: 1vw;
+  margin: 1vw 4vw 1vw 1vw;
   background-color: rgb(161 147 138);
 }
 /*
@@ -411,7 +411,7 @@ svg rect {
 .Home > img {
   margin: 2vw 2vw 0% 2vw;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
-  height: 70%;
+  height: 24vw;
 }
 
 .p-1{
@@ -420,7 +420,7 @@ svg rect {
   font-weight: bold;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   background: rgb(255 235 218);
-  font-size: 1.5vw;
+  font-size: 1.3vw;
   margin-bottom: 3vh;
   margin-top: 2vh;
   text-align: justify;
@@ -452,7 +452,7 @@ svg rect {
   font-weight: bold;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   background: rgb(255 235 218);
-  font-size: 1.5vw;
+  font-size: 1.3vw;
   margin-bottom: 4vh;
   margin-top: 3vh;
 }
@@ -497,7 +497,7 @@ svg rect {
     border-style: dashed;
 }
 
-.skills-exp {
+.toExpButton {
   border: none;
   margin: -6vw 0 0 51vw;
   position: absolute;
@@ -510,18 +510,50 @@ svg rect {
   font-size: 1.4vw;
 }
 
-.skills-exp:hover {
+.toExpButton:hover {
   border: none;
   margin: -6vw 0 0 51vw;
   position: absolute;
   padding: 1vw;
   transition: all 0.3s ease-out;
   color: rgb(250, 223, 201);
-  background-color: rgb(72, 83, 92);
+  background-color: rgb(139, 177, 206);
   width: auto;
   height: auto;
   font-size: 1.4vw;
   font-weight: normal;
+}
+
+.toSkillsButton {
+  border: none;
+  margin: -6vw 0 0 55vw;
+  position: absolute;
+  padding: 1vw;
+  transition: all 0.3s ease-out;
+  color: rgb(250, 223, 201);
+  background-color: rgb(102 116 127);
+  width: auto;
+  height: auto;
+  font-size: 1.4vw;
+}
+
+.toSkillsButton:hover {
+  border: none;
+  margin: -6vw 0 0 55vw;
+  position: absolute;
+  padding: 1vw;
+  transition: all 0.3s ease-out;
+  color: rgb(250, 223, 201);
+  background-color: rgb(139, 177, 206);
+  width: auto;
+  height: auto;
+  font-size: 1.4vw;
+  font-weight: normal;
+}
+
+.toExpButton:active, .toSkillsButton:active{
+  transition: none;
+  background-color: rgb(62, 82, 97);
 }
 
 section > button {
@@ -642,8 +674,12 @@ section > button:hover {
 /*CONTACT*/
 
 .contact {
+  padding: 2vw;
+  background: rgb(255 235 218);
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
   box-sizing: border-box;
-  padding: 0;
   font-size: 1.4rem;
   margin: 2vw;
 }
@@ -670,7 +706,7 @@ section > button:hover {
 .Message-Box {
   height: 30vh;
   width: 100%;
-  background-color: #fffaf4;
+  background-color: #white;
   border-width: medium;
   border-color: #e0b995;
   border-style: dashed;

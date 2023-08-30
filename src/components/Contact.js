@@ -1,20 +1,35 @@
+import React, { useState } from 'react';
+
 function Contact () {
+
+    const [message, setMessage] = useState("");
+    const [subject, setSubject] = useState("");
+
+    function composeEmail() {
+        const mailtoLink = `mailto:rubeneg27@gmail.com?subject=${subject}&body=${message}`;
+    
+        window.location.href = mailtoLink;
+    }
+
     return (
         <section className="contact">
             <form>
+
                 <li>
-                    <label>Name</label><input type="text"></input>
+                    <label>Subject</label>
+                    <input 
+                    type="text"
+                    onChange={(e) => setSubject(encodeURIComponent(e.target.value))}
+                    ></input>
                 </li>
                 <li>
-                    <label>Surname</label><input type="text"></input>
+                    <textarea 
+                    className="Message-Box" 
+                    placeholder="Write here your message"
+                    onChange={(e) => setMessage(encodeURIComponent(e.target.value))}
+                    ></textarea>
                 </li>
-                <li>
-                    <label>E-Mail</label><input type="text"></input>
-                </li>
-                <li>
-                    <textarea className="Message-Box" placeholder="Write here your message"></textarea>
-                </li>
-                <button type="submit">SUBMIT</button>
+                <button onClick={composeEmail}>Send mail</button>
             </form>
         </section>
     )
