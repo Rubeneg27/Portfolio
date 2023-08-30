@@ -27,8 +27,8 @@ function Skills() {
                     <p>Siempre dispuesto a aprender y sin miedo a reconocer si estoy equivocado.</p>
                     <p>Afronto los retos con paciencia y perseverancia.</p>
                 </div>
-            </div>               
-				</section>
+            </div>              
+		</section>
     )
 }
 

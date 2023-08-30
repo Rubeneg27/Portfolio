@@ -1,3 +1,5 @@
+import img from "../Assets/Perfil.png"
+
 function Home () {
   return (
     <section className="Home">
@@ -9,7 +11,7 @@ function Home () {
         <p className="p-2">In my personal webpage you can know more about my skills, explore my projects and contact me.</p>
         <p className="p-1B">I hope you enjoy your visit!</p>
         </div>
-      <img alt="" />
+      <img src={img} alt="foto de perfil de Rubén Espinosa con el monte fuji en el fondo"></img>
     </section>
     
   )
