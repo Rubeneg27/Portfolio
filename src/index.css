@@ -41,8 +41,8 @@ code {
   padding: 0vw 0vw 0vw 1vw;
   margin-right: auto;
   background-color: rgb(80 91 100);
-  font-size: 2.3vw;
-  width: 10vw;
+  font-size: 2.5rem;
+  width: 9vw;
 }
 
 .title:hover{
@@ -51,7 +51,7 @@ code {
 
 .email {
   align-self: center;
-  font-size: 1vw;
+  font-size: 80%;
   margin: 1vw 2vw 1vw 0vw;
   width: 20vw;
   height: 7vh;
@@ -195,7 +195,7 @@ sidebar > img {
 }
 
 .Nav {
-  width: 11vw;
+  width: 10vw;
   list-style: none;
   padding-inline-start: 0;
   margin: 2vw 0 0 0;
@@ -246,7 +246,7 @@ sidebar > img {
   transition: all 0.3s ease-in-out;
   border-radius: 10PX;
   margin-bottom: 1.4vw;
-  font-size: 1.4vw;
+  font-size: 90%;
   align-self: center;
   height: 6vh;
   width: 80%;
@@ -425,7 +425,7 @@ svg rect {
   font-weight: bold;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   background: rgb(255 235 218);
-  font-size: 1.3vw;
+  font-size: 90%;
   margin-bottom: 3vh;
   margin-top: 2vh;
   text-align: justify;
@@ -437,7 +437,7 @@ svg rect {
   font-weight: bold;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   background: rgb(255 235 218);
-  font-size: 1vw;
+  font-size: 80%;
   margin-bottom: 3vh;
   margin-top: 12vh;
   text-align: justify;
@@ -445,7 +445,7 @@ svg rect {
 
 .p-2{
   padding: 2%;
-  font-size: 1vw;
+  font-size: 80%;
   margin-bottom: 2vh;
   margin-top: 2vh;
   text-align: justify;
@@ -457,7 +457,7 @@ svg rect {
   font-weight: bold;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   background: rgb(255 235 218);
-  font-size: 1.3vw;
+  font-size: 90%;
   margin-bottom: 4vh;
   margin-top: 3vh;
 }
@@ -495,7 +495,7 @@ svg rect {
     background-color: rgb(161 147 138);
     box-sizing: border-box;
     width: 100%;
-    height: 44vh;
+    height: 50vh;
     padding: 2vw;
     border-width: medium;
     border-color: rgb(255 244 234);
