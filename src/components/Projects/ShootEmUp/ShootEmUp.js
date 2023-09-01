@@ -12,8 +12,14 @@ function ShootEmUp () {
   const canvasRef = useRef(null);
   const [gameStarted, setGameStarted] = useState (false);
   const [togglePauseMenu, setTogglePauseMenu] = useState(false);
-  const [score, setScore] = useState(scoreRef.current)
+  const [score, setScore] = useState(scoreRef.current);
+  const [isLoading, setIsLoading] = useState(true);
 
+  //Pantalla de carga
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 1000)
+  
   const startGame = () => {
     setGameStarted(true)
     isGameClosedRef.current = false;
@@ -299,8 +305,8 @@ function ShootEmUp () {
     <div className='shootEmUp'>
       <div className={gameStarted? 'gameScreen' : 'gameScreen-hidden'} >
       </div>
-      <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
-        <div className='title'>Shoot'em all!</div>
+      <div className={gameStarted || isLoading? "game-menu-hidden" : "game-menu-init"}>
+        <div className='gameTitle'>Shoot'em all!</div>
         <button onClick={startGame}>Start</button>
       </div>
       <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
@@ -311,6 +317,7 @@ function ShootEmUp () {
       </div>
         <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
         <div className='score'>Score: {score}</div>
+        {isLoading ? <span className='loader'></span> : null}
     </div>
   )
 }
