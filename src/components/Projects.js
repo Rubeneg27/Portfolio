@@ -18,9 +18,6 @@ function Projects ({handleCollapse}) {
         case "ShootEmUp":
           setProject(<ShootEmUp></ShootEmUp>)
           break;
-      case "TestFPS":
-        setProject(<TestFPS></TestFPS>)
-        break;
       default:
         setProject("")
     }
@@ -31,7 +28,6 @@ function Projects ({handleCollapse}) {
             <section className="button-container">
               {pressed ? null : (<button onClick={()=>handleClick("Platformer")}>Platformer</button>)}
               {pressed ? null : (<button onClick={()=>handleClick("ShootEmUp")}>ShootEmUp!</button>)}
-              {pressed ? null : (<button onClick={()=>handleClick("TestFPS")}>Testing Place</button>)}
             </section>}
           {project}
         </section>

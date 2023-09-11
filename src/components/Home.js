@@ -7,7 +7,7 @@ function Home () {
         <p className="p-1">Hello!</p>
         <p className="p-2">My name is</p>
         <p className="p-3">Rubén Espinosa González</p>
-        <p className="p-2">Passionate about graphic design and technology.</p>
+        <p className="p-2">Passionate about graphic design, technology and videogames.</p>
         <p className="p-2">On my personal webpage, you can learn more about my skills, explore my projects, and get in touch with me.</p>
         <p className="p-1B">I hope you enjoy your visit!</p>
         </div>

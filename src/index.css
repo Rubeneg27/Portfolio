@@ -306,7 +306,7 @@ sidebar > img {
   opacity: 100%;
   padding: 0;
   position: absolute;
-  background-color: rgb(94, 113, 119);
+  background-color: rgb(80 91 100);
   height: 60px;
   width: 60px;
   border: none;
@@ -315,6 +315,7 @@ sidebar > img {
 }
 .burger:hover {
   cursor: pointer;
+  background-color: rgb(97 157 175);
 }
 .burger:active {
   background-color: rgb(62, 86, 92);
@@ -350,8 +351,10 @@ svg rect {
   height: 6px;
 }
 .dropdown-menu {
+  display: grid;
+  height: 25vh;
   margin: 0;
-  width: 11vw;
+  width: 10vw;
   padding: 0;
   background-color: rgb(80 91 100);
   box-shadow: 7px 7px 0px rgba(60, 61, 63, 0.25);
@@ -360,16 +363,37 @@ svg rect {
   position: absolute;
   z-index: 9999;
   transition: all 0.3s ease-in-out;
+  align-content: center;
 }
+
+.dropdown-menu-hidden {
+  height: 0;
+  width: 0;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+}
+
 .dropdown-menu li {
+  width: 100%;
   box-sizing: border-box;
-  height: 4vh;
-  padding: 1vw 0vw 0vw 0vw;
+  padding-left: 1vw;
+  height: 5.5vh;
   color: rgb(250, 223, 201);
-  margin: 0vw 1vw 0vw 1vw;
   text-align: left;
   cursor: pointer;
-  margin-bottom: 2vh;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropdown-menu-hidden li {
+  display: none;
+  width: 0;
+  box-sizing: border-box;
+  padding-left: 1vw;
+  height: 5.5vh;
+  color: rgb(250, 223, 201);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .dropdown-menu li:hover {
