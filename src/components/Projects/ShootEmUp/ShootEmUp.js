@@ -6,7 +6,7 @@ const _GameManager = new GameManager();
 function ShootEmUp () {
   
   let isPausedRef = useRef(false);
-  let isGameClosedRef = useRef(true); 
+  let isGameClosedRef = useRef(true);
   let scoreRef = useRef(0);
 
   const canvasRef = useRef(null);
@@ -228,7 +228,7 @@ function ShootEmUp () {
       spawner()
       collissionsUpdate();
       updateScore();
-      console.log(Player1.scrollY)
+      //console.log(Player1.scrollY)
 
     }
     
@@ -252,6 +252,8 @@ function ShootEmUp () {
             console.log(`FPS: ${fps}`);
           }
         }
+      } else if (isGameClosedRef.current) {
+        init()
       }
     }
 
