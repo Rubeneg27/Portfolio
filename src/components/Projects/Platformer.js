@@ -604,7 +604,7 @@ function Platformer() {
   }, []);
 
   return (
-    <div>
+    <div className='platformer'>
       <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
         <h1>PAUSED</h1>
         <button onClick={()=>handlePauseMenu("Resume")}>Resume</button>

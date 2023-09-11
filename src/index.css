@@ -835,7 +835,7 @@ form > button:active {
 
 /*Menú de ShootEmUp*/
 
-.shootEmUp {
+.shootEmUp, .platformer {
   display: flex;
   justify-content: center;
   position: relative;
