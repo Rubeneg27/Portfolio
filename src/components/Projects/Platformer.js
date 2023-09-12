@@ -27,6 +27,10 @@ function Platformer({handleQuitGame}) {
         setTogglePauseMenu(false);
         setGameStarted(false);
         isGameClosedRef.current = true;
+        setTimeout(() => {
+          isPausedRef.current = false;
+        }, 100)
+        
         break;
       default:
         console.log("Nada seleccionado")
@@ -292,7 +296,6 @@ function Platformer({handleQuitGame}) {
       doubleJumper = new powerUp(canvas.width/1.98, canvas.width/6.6);
       flyer = new powerUp(canvas.width/1.067, canvas.width/6.6);
       scrollOffSet = 0; //Para definir el límite máximo de píxeles que se desplazarán los elementos (y definir por ejemplo el final del escenario)
-      console.log("Reset")
     }
 
     function animate() {
@@ -496,7 +499,7 @@ function Platformer({handleQuitGame}) {
       const currentTime = performance.now();
       const deltaTime = currentTime - lastFrameTime; // El tiempo que tardó en darse el proceso desde que se llamó
     
-      if (!isPausedRef.current) {
+      if (!isPausedRef.current&&!isGameClosedRef.current) {
         if (deltaTime >= frameInterval) { // Si el tiempo que tardó el proceso es mayor o igual
           lastFrameTime = currentTime - (deltaTime % frameInterval);
           animate();
@@ -510,7 +513,7 @@ function Platformer({handleQuitGame}) {
             console.log(`FPS: ${fps}`);
           }
         }
-      } else if (isGameClosedRef.current) {
+      } else if (isPausedRef.current&&isGameClosedRef.current) {
         init()
         console.log("Init")
       }
@@ -556,7 +559,6 @@ function Platformer({handleQuitGame}) {
       } else if (keyCode === 27) {
         event.preventDefault()
         isPausedRef.current = !isPausedRef.current;
-        isGameClosedRef.current = false;
         //animate();
       } else if (keyCode === 17 && !cooldown) {
         keys.control.pressed = true

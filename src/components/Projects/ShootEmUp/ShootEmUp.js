@@ -38,6 +38,9 @@ function ShootEmUp ({handleQuitGame}) {
         setTogglePauseMenu(false);
         setGameStarted(false);
         isGameClosedRef.current = true;
+        setTimeout(() => {
+          isPausedRef.current = false;
+        }, 100)
         break;
       default:
         console.log("Nada seleccionado")
@@ -239,7 +242,7 @@ function ShootEmUp ({handleQuitGame}) {
       const currentTime = performance.now();
       const deltaTime = currentTime - lastFrameTime;
 
-      if (!isPausedRef.current && !isGameClosedRef.current === true) {
+      if (!isPausedRef.current && !isGameClosedRef.current) {
         if (deltaTime >= frameInterval) { // Si el tiempo que tardó el proceso es mayor o igual
           lastFrameTime = currentTime - (deltaTime % frameInterval);
           animate();
@@ -252,8 +255,9 @@ function ShootEmUp ({handleQuitGame}) {
             console.log(`FPS: ${fps}`);
           }
         }
-      } else if (isGameClosedRef.current) {
+      } else if (isGameClosedRef.current&&isPausedRef.current) {
         init()
+        console.log("Init")
       }
     }
 
