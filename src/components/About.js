@@ -25,10 +25,17 @@ const About = ({ hidden, handleButtons }) => {
   return (
     <section className="about">
           {hidden ? null : 
+          <div>
             <section className="button-container">
               <button  onClick={()=>handleClick("Formación")}>Training</button>
+              <div className="resume">Un resumen de mi formación académica</div>
+            </section>
+            <section className="button-container">
               <button  onClick={()=>handleClick("Experiencia")}>Experience</button>
-            </section>}
+              <div className="resume">Resumen de mi experiencia profesional</div>
+            </section>
+          </div>
+            }
           {hidden? content : null}
           <button 
           hidden={hidden?  false : true} 

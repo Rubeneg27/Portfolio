@@ -334,16 +334,44 @@ sidebar > img {
 }
 
 .button-container {
-  background-color: rgb(80 91 100);
-  display: grid;
+  background-color: rgb(161 147 138);
+  display: flex;
   align-content: center;
   width: 100%;
   height: 100%;
 }
 
+.button-container > button {
+  margin-left: 3%;
+  border: none;
+  transition: all 0.3s ease-out;
+  font-size: 50px;
+  color: rgb(250, 223, 201);
+  background-color: rgb(80 91 100);
+  height: 21vh;
+  width: 94%;
+  z-index: 1;
+}
+
 .button-container > .resume{
-  width: 40%;
-  height: 100%;
+  background: rgb(161 147 138);
+  margin-left: 38%;
+  position: absolute;
+  color: white;
+  width: 26%;
+  height: 21vh;
+}
+
+.button-container:hover > button {
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  font-size: 50px;
+  font-weight: bold;
+  border: 0;
+  color: rgb(255, 241, 231);
+  background-color: rgb(97 157 175);
+  height: 21vh;
+  width: 56%;
 }
 
 .burger svg {
@@ -589,28 +617,6 @@ svg rect {
 .toExpButton:active, .toSkillsButton:active{
   transition: none;
   background-color: rgb(62, 82, 97);
-}
-
-section > button {
-  border: solid 8px rgb(49 62 73);
-  transition: all 0.3s ease-out;
-  font-size: 50px;
-  color: rgb(250, 223, 201);
-  background-color: rgb(102 116 127);
-  height: 21vh;
-  width: 100%;
-}
-
-section > button:hover {
-  cursor: pointer;
-  transition: all 0.3s ease-in;
-  font-size: 50px;
-  font-weight: bold;
-  border: 0;
-  color: rgb(255, 241, 231);
-  background-color: rgb(97 157 175);
-  height: 21vh;
-  width: 60%;
 }
 
 .projects {
