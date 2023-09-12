@@ -314,9 +314,9 @@ function ShootEmUp ({handleQuitGame}) {
       </div>
       <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
         <h1>PAUSED</h1>
-        <button onClick={()=>handlePauseMenu("Resume")}>Resume</button>
+        <button onClick={()=>handlePauseMenu("Resume")}>Resume game</button>
         <button onClick={()=>handlePauseMenu("Options")}>Options</button>
-        <button onClick={()=>handlePauseMenu("Quit")}>Quit</button>
+        <button onClick={()=>handlePauseMenu("Quit")}>Back to menu</button>
       </div>
         <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
         <div className='score'>Score: {score}</div>

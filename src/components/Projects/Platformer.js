@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 
-function Platformer() {
+function Platformer({handleQuitGame}) {
   
   const [gameStarted, setGameStarted] = useState (false);
   const [togglePauseMenu, setTogglePauseMenu] = useState(false);
@@ -607,13 +607,14 @@ function Platformer() {
     <div className='platformer'>
       <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
         <h1>PAUSED</h1>
-        <button onClick={()=>handlePauseMenu("Resume")}>Resume</button>
+        <button onClick={()=>handlePauseMenu("Resume")}>Resume game</button>
         <button onClick={()=>handlePauseMenu("Options")}>Options</button>
-        <button onClick={()=>handlePauseMenu("Quit")}>Quit</button>
+        <button onClick={()=>handlePauseMenu("Quit")}>Back to menu</button>
       </div>
       <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
         <div>Super Awesome Javascript action Platformer!!</div>
-        <button onClick={startGame}>Start</button>
+        <button onClick={startGame}>- Start -</button>
+        <button onClick={handleQuitGame}> - Quit - </button>
       </div>
       <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
       

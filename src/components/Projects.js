@@ -13,7 +13,7 @@ function Projects ({handleCollapse}) {
     handleCollapse(true)
     switch(elemento) {
       case "Platformer":
-        setProject(<Platformer></Platformer>)
+        setProject(<Platformer handleQuitGame={handleQuitGame}></Platformer>)
         break;
         case "ShootEmUp":
           setProject(<ShootEmUp handleQuitGame={handleQuitGame}></ShootEmUp>)
