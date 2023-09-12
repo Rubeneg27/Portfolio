@@ -54,12 +54,14 @@ function Main () {
       <Home></Home>
     )
   }
+
+
   const handleClickAbout = (e) => {
     setHidden(false)
     setisMenuOpen(false)
     setIsCollapsed(false)
     setContent(
-      <About hidden={hidden} handleButtons={handleButtons}></About> //Se tiene que renderizar cuando cambie hidden
+      <About hidden={hidden} handleButtons={handleButtons}></About>
     )
   }
 
@@ -70,7 +72,11 @@ function Main () {
     collapse()
   }
 
+    //Maneja el click de Projects en el dropdown-menu. Para arreglarlo hay que pasar más estados de Projects al componente main
   const handleClickProjects = () => {
+    setHidden(false)
+    setisMenuOpen(false)
+    setIsCollapsed(false)
     setContent(
       <Projects handleCollapse={handleCollapse}></Projects>
     )
@@ -124,7 +130,6 @@ function Main () {
           <ul className={isMenuOpen? "dropdown-menu" : "dropdown-menu-hidden"}>
               <li onClick={handleClickHome}>Home</li>
               <li onClick={handleClickAbout}>About</li>
-              <li onClick={handleClickProjects}>Projects</li>
               <li onClick={handleClickContact}>Contact</li>
             </ul>
           </div>
