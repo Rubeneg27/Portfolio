@@ -471,7 +471,7 @@ svg rect {
 .image-container {
   margin: 2vw 2vw 0% 2vw;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
-  height: 20vw;
+  width: 20vw;
   height: 24vw;
 }
 

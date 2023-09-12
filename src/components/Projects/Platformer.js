@@ -614,7 +614,7 @@ function Platformer({handleQuitGame}) {
         <button onClick={()=>handlePauseMenu("Quit")}>Back to menu</button>
       </div>
       <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
-        <div>Super Awesome Javascript action Platformer!!</div>
+        <div className='gameTitle'>JSAP</div>
         <button onClick={startGame}>- Start -</button>
         <button onClick={handleQuitGame}> - Quit - </button>
       </div>
