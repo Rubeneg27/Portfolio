@@ -341,12 +341,17 @@ sidebar > img {
   height: 100%;
 }
 
+.button-container > .resume{
+  width: 40%;
+  height: 100%;
+}
+
 .burger svg {
   padding: 25%;
 }
 
 svg rect {
-  fill: rgb(236, 209, 173);
+  fill: rgb(248, 211, 180);
   width: 30px;
   height: 6px;
 }
@@ -364,6 +369,7 @@ svg rect {
   z-index: 9999;
   transition: all 0.3s ease-in-out;
   align-content: center;
+  overflow: hidden;
 }
 
 .dropdown-menu-hidden {
