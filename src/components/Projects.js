@@ -25,10 +25,19 @@ function Projects ({handleCollapse}) {
     return (
         <section className="projects">
           {pressed ? null : 
-            <section className="button-container">
+            <div>
+              <section className="button-container">
               {pressed ? null : (<button onClick={()=>handleClick("Platformer")}>Platformer</button>)}
-              {pressed ? null : (<button onClick={()=>handleClick("ShootEmUp")}>ShootEmUp!</button>)}
-            </section>}
+              <div className="resume"></div>
+            </section>
+            <section className="button-container">
+              {pressed ? null : (<button onClick={()=>handleClick("ShootEmUp")}>ShootEmUp</button>)}
+              <div className="resume"></div>
+            </section>
+            </div>
+            
+            
+            }
           {project}
         </section>
         

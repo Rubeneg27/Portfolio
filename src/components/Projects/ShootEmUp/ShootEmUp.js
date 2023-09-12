@@ -319,7 +319,7 @@ function ShootEmUp () {
       </div>
         <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
         <div className='score'>Score: {score}</div>
-        {isLoading ? <span className='loader'></span> : null}
+        {isLoading ? <div className="loading-screen"><span className='loader'></span></div> : null}
     </div>
   )
 }

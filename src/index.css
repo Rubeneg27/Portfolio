@@ -622,11 +622,9 @@ svg rect {
 }
 
 .projects {
-  display: flex;
   font-size: 1.4rem;
   height: 100%;
   width: 100%;
-  justify-content: center;
 }
 
 .back-button {
@@ -874,12 +872,13 @@ form > button:active {
 /*Menú de ShootEmUp*/
 
 .shootEmUp, .platformer {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  background-color: rgb(80 91 100);
-  height: 100%;
-  width: 100vh;
+  box-sizing: border-box;
+    padding: 0vw 5vw 0vw 5vw;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    /* background-color: rgb(80 91 100); */
+    height: 100%;
 }
 
 .gameTitle {
@@ -887,7 +886,16 @@ form > button:active {
   font-size: 5vw;
 }
 
-/*Loader*/
+/*Loading Screen*/
+
+.loading-screen{
+  display: flex;
+  justify-content: center;
+  background-color: rgb(80 91 100);
+  width: 100vh;
+  height: 75vh;
+}
+
 .loader{
   margin-top: 60vh;
   display: block;
