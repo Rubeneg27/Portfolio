@@ -3,7 +3,7 @@ import sprite_01 from "../Assets/sprite_01.png"
 
 function Nav ({isNavCollapsed, isCollapsed, handleClickHome, handleClickAbout, handleClickProjects, handleClickContact}) {
   return (
-    <sidebar>
+    <div className="sidebar">
       <ul className={ isCollapsed ? "Nav-collapsed" : "Nav" } >
                 
         <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={handleClickHome}>Home</li>
@@ -12,7 +12,7 @@ function Nav ({isNavCollapsed, isCollapsed, handleClickHome, handleClickAbout, h
         <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={handleClickContact}>Contact</li>
       </ul>
         <img src={sprite_01} alt="sprite"/>
-    </sidebar>
+    </div>
       
   )
 }

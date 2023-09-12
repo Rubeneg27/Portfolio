@@ -556,7 +556,7 @@ function Platformer({handleQuitGame}) {
         // console.log('down')
         event.preventDefault()
         keys.down.pressed = true
-      } else if (keyCode === 27) {
+      } else if (keyCode === 27&&!isGameClosedRef.current) {
         event.preventDefault()
         isPausedRef.current = !isPausedRef.current;
         //animate();

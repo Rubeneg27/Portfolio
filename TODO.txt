@@ -1,5 +1,4 @@
-///Projects -- IMPORTANTE!!
-Al hacer Quit en los juegos se produce un bucle en isGameClosedRef
+
 
 ///Main
 Hacer del dropdown menu un componente reutilizable
@@ -10,3 +9,6 @@ Añadir redes sociales
 ///Projects -> Platformer
 Se pueden abrir simultáneamente infinitos "platformer" si se hace click al inicio de la página. Controlar el estado de los juegos en los componentes parent.
 El PayerAttack sigue haciendo efecto poco despues de desaparecer. Corregir el tiempo que se mantiene activo.
+
+///Projects
+Al hacer Quit en los juegos se produce un bucle en isGameClosedRef que lo he solucionado con un setTimeOut. Encontrar solución más "elegante".

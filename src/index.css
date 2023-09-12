@@ -181,13 +181,13 @@ main {
   height: 75vh;
 }
 
-sidebar {
+.sidebar {
   position: relative;
   background-color: rgb(80 91 100);
   height: 100%;
 }
 
-sidebar > img {
+.sidebar > img {
   display: none;
   position: absolute;
   bottom: 0;

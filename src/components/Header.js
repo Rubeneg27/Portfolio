@@ -10,7 +10,7 @@ function Header ({isNavCollapsed, updateContent}) {
                         <div className="logoCont3"><FaHtml5 className="logo3" /><span>HTML5</span></div>
                         <div className="logoCont4"><FaCss3 className="logo4" /><span>CSS</span></div>
                         <div className="logoCont5"><FaUnity className="logo5" /><span>Unity</span></div>
-                        <div className="logoCont6"><logo className="logo6" >C#</logo><span>C#</span></div>
+                        <div className="logoCont6"><div className="logo6" >C#</div><span>C#</span></div>
                 </div>
                 <div className="email">rubeneg27@gmail.com</div> 
         </div>

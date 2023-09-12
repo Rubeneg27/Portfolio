@@ -274,7 +274,7 @@ function ShootEmUp ({handleQuitGame}) {
         e.preventDefault()
         keys.control.pressed = true
         // console.log('down')
-      } else if (keyCode === 27) {
+      } else if (keyCode === 27&&!isGameClosedRef.current) {
         e.preventDefault()
         keys.esc.pressed = true;
         isPausedRef.current = !isPausedRef.current
