@@ -1,6 +1,6 @@
 import Platformer from "./Projects/Platformer.js"
 import ShootEmUp from "./Projects/ShootEmUp/ShootEmUp.js";
-import TestFPS from "./Projects/Testing.js";
+/*import TestFPS from "./Projects/Testing.js";*/
 import { useState } from "react";
 
 function Projects ({handleCollapse}) {
@@ -10,18 +10,25 @@ function Projects ({handleCollapse}) {
 
   function handleClick (elemento) {
     setPressed(true)
-    handleCollapse()
+    handleCollapse(true)
     switch(elemento) {
       case "Platformer":
         setProject(<Platformer></Platformer>)
         break;
         case "ShootEmUp":
-          setProject(<ShootEmUp></ShootEmUp>)
+          setProject(<ShootEmUp handleQuitGame={handleQuitGame}></ShootEmUp>)
           break;
       default:
         setProject("")
     }
   }
+
+  function handleQuitGame () {
+    setProject("")
+    setPressed(false)
+    handleCollapse(false)
+  }
+
     return (
         <section className="projects">
           {pressed ? null : 

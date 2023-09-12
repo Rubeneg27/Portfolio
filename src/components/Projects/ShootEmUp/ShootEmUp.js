@@ -3,7 +3,7 @@ import {GameManager, Player, EnemyA} from './Clases';
 
 const _GameManager = new GameManager();
 
-function ShootEmUp () {
+function ShootEmUp ({handleQuitGame}) {
   
   let isPausedRef = useRef(false);
   let isGameClosedRef = useRef(true);
@@ -309,7 +309,8 @@ function ShootEmUp () {
       </div>
       <div className={gameStarted || isLoading? "game-menu-hidden" : "game-menu-init"}>
         <div className='gameTitle'>Shoot'em all!</div>
-        <button onClick={startGame}>Start</button>
+        <button onClick={startGame}> - Start Game - </button>
+        <button onClick={handleQuitGame}> - Quit - </button>
       </div>
       <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
         <h1>PAUSED</h1>

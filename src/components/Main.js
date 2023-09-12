@@ -62,10 +62,10 @@ function Main () {
     )
   }
 
-  const handleCollapse = () => {
+  const handleCollapse = (e) => {
     setHidden(false)
     setisMenuOpen(false)
-    setIsCollapsed(true)
+    setIsCollapsed(e)
     collapse()
   }
 
