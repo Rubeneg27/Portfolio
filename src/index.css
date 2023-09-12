@@ -334,7 +334,6 @@ sidebar > img {
 }
 
 .button-container {
-  background-color: rgb(161 147 138);
   display: flex;
   align-content: center;
   width: 100%;
@@ -354,11 +353,14 @@ sidebar > img {
 }
 
 .button-container > .resume{
+  box-sizing: border-box;
+  padding: 2%;
+  margin-right: 0%;
   background: rgb(161 147 138);
-  margin-left: 38%;
+  margin-left: 37%;
   position: absolute;
   color: white;
-  width: 26%;
+  width: 25%;
   height: 21vh;
 }
 
