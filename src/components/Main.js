@@ -18,6 +18,8 @@ function Main () {
   )
   const [isGameClosed, setIsGameClosed] = useState(true)
   const [path, setPath] = useState("")
+
+
   
   ///Define el estado del booleano isGameClosed para cerrar o no los juegos de "Projects"
   function handleCloseGame (e) {
@@ -66,7 +68,7 @@ function Main () {
     setIsCollapsed(e)
   }
 
-  ///Cambiará el estado booleano isMenuOpen///
+  ///Cambiará el estado booleano isMenuOpen.///
   const toggleMenu = () => {
     setisMenuOpen(!isMenuOpen)
   }
@@ -75,20 +77,27 @@ function Main () {
    const handleButtons = () => {
     setHidden(true)
     setAboutClicked(!aboutClicked)
+    console.log("handleButtons")
   }
 
+  useEffect(() => {
+    setContent(content)
+  }, [])
 
+/*
   useEffect(()=>{
     if (hidden) {
       setHidden(false)
       setContent("About")
+      console.log("if hidden")
     } else {
       setContent(content)
+      console.log("else")
     }
   },[aboutClicked])
-
+*/
   /*
-  ///Comprobará que el juego se cierra correctamente en este componente///
+  ///Comprobará que el juego se cierra correctamente en este componente.///
   useEffect(() => {
     console.log(isGameClosed)
   }, [isGameClosed])

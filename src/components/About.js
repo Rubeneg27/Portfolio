@@ -1,10 +1,14 @@
 import Skills from "./About/Skills"
 import Experience from "./About/Experience"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const About = ({ hidden, handleButtons }) => {
   const [content, setContent] = useState("");
   const [buttonPressed, setButtonPressed] = useState("")
+
+  useEffect(() => {
+    console.log("hidden")
+  }, [hidden])
 
   function handleClick (e) {
     handleButtons()
