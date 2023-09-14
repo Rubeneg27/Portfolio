@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 
-function Platformer({handleQuitGame}) {
+function Platformer({handleQuitGame, testBool}) {
+
+  useEffect(() => {
+    console.log(testBool)
+  }, [testBool])
   
   const [gameStarted, setGameStarted] = useState (false);
   const [togglePauseMenu, setTogglePauseMenu] = useState(false);

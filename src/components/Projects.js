@@ -1,12 +1,16 @@
 import Platformer from "./Projects/Platformer.js"
 import ShootEmUp from "./Projects/ShootEmUp/ShootEmUp.js";
 /*import TestFPS from "./Projects/Testing.js";*/
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function Projects ({handleCollapse}) {
+function Projects ({handleCollapse, testBool}) {
 
   const [project, setProject] = useState("");
   const [pressed, setPressed] = useState(false);
+
+  useEffect(() => {
+    console.log(testBool)
+  }, [testBool])
 
   function handleClick (elemento) {
     setPressed(true)
@@ -43,8 +47,8 @@ function Projects ({handleCollapse}) {
             </section>
             </div>
             }
-          {project === "shootemup" ? <ShootEmUp handleQuitGame={handleQuitGame}></ShootEmUp> : null}
-          {project === "platformer" ? <Platformer handleQuitGame={handleQuitGame}></Platformer> : null}
+          {project === "shootemup" ? <ShootEmUp testBool={testBool} handleQuitGame={handleQuitGame}></ShootEmUp> : null}
+          {project === "platformer" ? <Platformer testBool={testBool} handleQuitGame={handleQuitGame}></Platformer> : null}
         </section>
         
     )

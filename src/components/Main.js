@@ -17,6 +17,15 @@ function Main () {
   const [content, setContent] = useState(
     "Home"
   )
+  const [testBool, setTestBool] = useState(false)
+  
+  function handleTestBool (e) {
+    setTestBool(e)
+  }
+
+  useEffect(() => {
+    console.log(testBool)
+  }, [testBool])
   
   const collapse = () => { //Collapses hero's section
     setIsNavCollapsed(true);
@@ -27,7 +36,7 @@ function Main () {
   
   const updateContent = () => { 
     setHidden(false)
-    setContent(<Home></Home>) // update heros's section content to "Home" when clicking on "Ruben's site" in the Header component
+    setContent("Home") // update heros's section content to "Home" when clicking on "Ruben's site" in the Header component
     setIsCollapsed(false)
     setIsNavCollapsed(false)
     setisMenuOpen(false)
@@ -107,6 +116,8 @@ function Main () {
 
   return (
     <main onClick={handleClickBody}>
+      <button onClick={() => handleTestBool(true)}>TRUE</button>
+      <button onClick={() => handleTestBool(false)}>FALSE</button>
       <Header isNavCollapsed={isNavCollapsed} updateContent={updateContent}></Header>
       <div className="main-section">
         <Nav 
@@ -137,7 +148,7 @@ function Main () {
           <div className="burger-hidden"></div>
           }
           {content === "Home"? <Home></Home> : null}
-          {content === "Projects"? <Projects handleCollapse={handleCollapse}></Projects> : null}
+          {content === "Projects"? <Projects testBool={testBool} handleCollapse={handleCollapse}></Projects> : null}
           {content === "Contact"? <Contact></Contact> : null}
           {content === "About"? <About hidden={hidden} handleButtons={handleButtons}></About> : null}
           </div>

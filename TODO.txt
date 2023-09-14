@@ -1,7 +1,8 @@
-
+***En rama refactor***
 
 ///Main
 Hacer del dropdown menu un componente reutilizable
+Reagrupar funciones de handleClick en una
 
 ///Header
 Añadir redes sociales 

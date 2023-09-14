@@ -3,7 +3,11 @@ import {GameManager, Player, EnemyA} from './Clases';
 
 const _GameManager = new GameManager();
 
-function ShootEmUp ({handleQuitGame}) {
+function ShootEmUp ({handleQuitGame, testBool}) {
+
+  useEffect(() => {
+    console.log(testBool)
+  }, [testBool])
   
   let isPausedRef = useRef(false);
   let isGameClosedRef = useRef(true);
