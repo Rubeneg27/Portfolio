@@ -71,22 +71,13 @@ function Main () {
     setContent(content)
   }, [])
 
-/*
-  useEffect(()=>{
-    if (hidden) {
-      setHidden(false)
-      setContent("About")
-    } else {
-      setContent(content)
-    }
-  },[aboutClicked])
-*/
   /*
   ///Comprobará que el juego se cierra correctamente en este componente.///
   useEffect(() => {
     console.log(isGameClosed)
   }, [isGameClosed])
   */
+ 
   return (
     <main onClick={handleClickBody}>
       
