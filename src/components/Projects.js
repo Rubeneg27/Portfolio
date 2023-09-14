@@ -13,10 +13,10 @@ function Projects ({handleCollapse}) {
     handleCollapse(true)
     switch(elemento) {
       case "Platformer":
-        setProject(<Platformer handleQuitGame={handleQuitGame}></Platformer>)
+        setProject("platformer")
         break;
         case "ShootEmUp":
-          setProject(<ShootEmUp handleQuitGame={handleQuitGame}></ShootEmUp>)
+          setProject("shootemup")
           break;
       default:
         setProject("")
@@ -42,10 +42,9 @@ function Projects ({handleCollapse}) {
               <div className="resume"></div>
             </section>
             </div>
-            
-            
             }
-          {project}
+          {project === "shootemup" ? <ShootEmUp handleQuitGame={handleQuitGame}></ShootEmUp> : null}
+          {project === "platformer" ? <Platformer handleQuitGame={handleQuitGame}></Platformer> : null}
         </section>
         
     )

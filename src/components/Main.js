@@ -15,7 +15,7 @@ function Main () {
   const [hidden, setHidden] = useState(false)
   const [aboutClicked, setAboutClicked] = useState(false)
   const [content, setContent] = useState(
-    <Home></Home>
+    "Home"
   )
   
   const collapse = () => { //Collapses hero's section
@@ -51,7 +51,7 @@ function Main () {
     setIsCollapsed(false)
     unCollapse()
     setContent(
-      <Home></Home>
+      "Home"
     )
   }
 
@@ -61,7 +61,7 @@ function Main () {
     setisMenuOpen(false)
     setIsCollapsed(false)
     setContent(
-      <About hidden={hidden} handleButtons={handleButtons}></About>
+      "About"
     )
   }
 
@@ -78,7 +78,7 @@ function Main () {
     setisMenuOpen(false)
     setIsCollapsed(false)
     setContent(
-      <Projects handleCollapse={handleCollapse}></Projects>
+      "Projects"
     )
   }
   const handleClickContact = () => {
@@ -87,7 +87,7 @@ function Main () {
     setisMenuOpen(false)
     setIsCollapsed(false)
     setContent(
-      <Contact></Contact>
+      "Contact"
     )
   }
 
@@ -98,7 +98,7 @@ function Main () {
   useEffect(()=>{
     if (hidden) {
       setHidden(false)
-      setContent(<About hidden={hidden} handleButtons={handleButtons}></About>)
+      setContent("About")
     } else {
       setContent(content)
     }
@@ -136,11 +136,10 @@ function Main () {
           : 
           <div className="burger-hidden"></div>
           }
-          {content}
-          <Home></Home>
-          <Projects handleCollapse={handleCollapse}></Projects>
-          <Contact></Contact>
-          <About hidden={hidden} handleButtons={handleButtons}></About>
+          {content === "Home"? <Home></Home> : null}
+          {content === "Projects"? <Projects handleCollapse={handleCollapse}></Projects> : null}
+          {content === "Contact"? <Contact></Contact> : null}
+          {content === "About"? <About hidden={hidden} handleButtons={handleButtons}></About> : null}
           </div>
       </div>
       
