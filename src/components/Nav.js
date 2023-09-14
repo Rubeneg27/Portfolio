@@ -1,7 +1,7 @@
 
 import sprite_01 from "../Assets/sprite_01.png"
 
-function Nav ({isNavCollapsed, isCollapsed, handleClickHome, handleClickAbout, handleClickProjects, handleClickContact}) {
+function Nav ({isCollapsed, handleClickHome, handleClickAbout, handleClickProjects, handleClickContact}) {
   return (
     <div className="sidebar">
       <ul className={ isCollapsed ? "Nav-collapsed" : "Nav" } >

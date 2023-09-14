@@ -1,6 +1,6 @@
 import {FaReact, FaJs, FaHtml5, FaCss3, FaUnity } from "react-icons/fa";
 
-function Header ({isNavCollapsed, updateContent}) {
+function Header ({updateContent}) {
     return (
         <div className="Header">
                 <div className="title" onClick={() => updateContent("Home")}>Ruben's site</div>

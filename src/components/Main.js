@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 
 function Main () { 
   
-  const [isNavCollapsed, setIsNavCollapsed] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isMenuOpen, setisMenuOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
@@ -18,66 +17,62 @@ function Main () {
     "Home"
   )
   const [isGameClosed, setIsGameClosed] = useState(true)
-  const [backHome, setBackHome] = useState(false)
+  const [path, setPath] = useState("")
   
+  ///Define el estado del booleano isGameClosed para cerrar o no los juegos de "Projects"
   function handleCloseGame (e) {
     setIsGameClosed(e)
   }
 
-  useEffect(() => {
-    console.log(isGameClosed)
-  }, [isGameClosed])
-  
-  ///Collapses hero's section///
-  const collapse = () => { 
-    setIsNavCollapsed(true);
-  }
-  ///Uncollapses hero's section///
-  const unCollapse = () => { 
-    setIsNavCollapsed(false)
-  }
-  
-  useEffect(() => {
+  ///Se llamará al hacer click en los botones del Nav y el DropdownMenu.///
+  ///PARÁMETROS///
+  ///e: recibirá y pasará a updateContent el content a renderizar.///
+  const handleClick = (e) => {
+    updateContent(e)
     setHidden(false)
-    //setContent("Home") 
-    setIsCollapsed(false)
-    setIsNavCollapsed(false)
     setisMenuOpen(false)
-    setContent(backHome)
-  },[backHome])
+    setIsCollapsed(false)
+  }
 
+  ///Cerrará el juego en ejecución y marcará que contenido se deberá renderizar posteriormente en el efecto///
+  ///PARAMETROS///
+  ///e = recibirá el contenido que se tiene que renderizar///
   const updateContent = (e) => {
     setIsGameClosed(true)
-    setBackHome(e)
+    setPath(e)
   }
   
+  ///Asegura que content cambie después que setIsGameClosed se ejecute y los juegos en projects puedan terminar los procesos en ejecución///
+  useEffect(() => {
+    setHidden(false)
+    setIsCollapsed(false)
+    setisMenuOpen(false)
+    setContent(path)
+  },[path])
+
+  ///Cerrará el menú drop-down al hacer click en el cuerpo del documento.///
   const handleClickBody = () => {
     if (isMenuOpen) {
       setisMenuOpen(false)
     }
   }
 
-  ///Will show/hide buttons in about/projects section
+  ///Will show/hide buttons in about/projects section.///
   const handleButtons = () => {
     setHidden(true)
     setAboutClicked(!aboutClicked)
   }
 
-  const handleClick = (e) => {
-    updateContent(e)
-    setHidden(false)
-    setisMenuOpen(false)
-    setIsCollapsed(false)
-    unCollapse()
-  }
-
+  ////Maneja el colapso del Nav.///
+  ///PARÁMETROS///
+  ///e: recibirá y pasará el estado booleano a isCollapsed.///
   const handleCollapse = (e) => {
     setHidden(false)
     setisMenuOpen(false)
     setIsCollapsed(e)
-    collapse()
   }
 
+  ///Cambiará el estado booleano isMenuOpen///
   const toggleMenu = () => {
     setisMenuOpen(!isMenuOpen)
   }
@@ -89,16 +84,20 @@ function Main () {
     } else {
       setContent(content)
     }
-    
   },[aboutClicked])
 
+  /*
+  ///Comprobará que el juego se cierra correctamente en este componente///
+  useEffect(() => {
+    console.log(isGameClosed)
+  }, [isGameClosed])
+  */
   return (
     <main onClick={handleClickBody}>
       
-      <Header isNavCollapsed={isNavCollapsed} updateContent={updateContent}></Header>
+      <Header updateContent={updateContent}></Header>
       <div className="main-section">
         <Nav 
-        isNavCollapsed={isNavCollapsed}
         isCollapsed={isCollapsed}
         handleClickHome={()=>{handleClick("Home")}} 
         handleClickAbout={()=>{handleClick("About")}} 
