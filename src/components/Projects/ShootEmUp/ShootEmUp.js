@@ -6,6 +6,9 @@ const _GameManager = new GameManager();
 function ShootEmUp ({handleCloseGame, isGameClosed, setProject, setPressed, handleCollapse}) {
 
   useEffect(() => {
+    if(isGameClosed) {
+      isGameClosedRef.current = true
+    }
     console.log(isGameClosed)
   }, [isGameClosed])
   
