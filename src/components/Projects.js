@@ -3,7 +3,7 @@ import ShootEmUp from "./Projects/ShootEmUp/ShootEmUp.js";
 /*import TestFPS from "./Projects/Testing.js";*/
 import { useState, useEffect } from "react";
 
-function Projects ({handleCollapse, testBool}) {
+function Projects ({handleCollapse, testBool, handleTestBool}) {
 
   const [project, setProject] = useState("");
   const [pressed, setPressed] = useState(false);
@@ -47,7 +47,7 @@ function Projects ({handleCollapse, testBool}) {
             </section>
             </div>
             }
-          {project === "shootemup" ? <ShootEmUp testBool={testBool} handleQuitGame={handleQuitGame}></ShootEmUp> : null}
+          {project === "shootemup" ? <ShootEmUp handleTestBool={handleTestBool} testBool={testBool} handleQuitGame={handleQuitGame}></ShootEmUp> : null}
           {project === "platformer" ? <Platformer testBool={testBool} handleQuitGame={handleQuitGame}></Platformer> : null}
         </section>
         

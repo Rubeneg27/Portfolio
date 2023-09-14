@@ -3,7 +3,7 @@ import {GameManager, Player, EnemyA} from './Clases';
 
 const _GameManager = new GameManager();
 
-function ShootEmUp ({handleQuitGame, testBool}) {
+function ShootEmUp ({handleQuitGame, testBool, handleTestBool}) {
 
   useEffect(() => {
     console.log(testBool)
@@ -313,6 +313,8 @@ function ShootEmUp ({handleQuitGame, testBool}) {
   }, [])
   return (
     <div className='shootEmUp'>
+      <button onClick={() => handleTestBool(true)}>TRUE</button>
+      <button onClick={() => handleTestBool(false)}>FALSE</button>
       <div className={gameStarted? 'gameScreen' : 'gameScreen-hidden'} >
       </div>
       <div className={gameStarted || isLoading? "game-menu-hidden" : "game-menu-init"}>

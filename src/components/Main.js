@@ -116,8 +116,7 @@ function Main () {
 
   return (
     <main onClick={handleClickBody}>
-      <button onClick={() => handleTestBool(true)}>TRUE</button>
-      <button onClick={() => handleTestBool(false)}>FALSE</button>
+      
       <Header isNavCollapsed={isNavCollapsed} updateContent={updateContent}></Header>
       <div className="main-section">
         <Nav 
@@ -148,7 +147,7 @@ function Main () {
           <div className="burger-hidden"></div>
           }
           {content === "Home"? <Home></Home> : null}
-          {content === "Projects"? <Projects testBool={testBool} handleCollapse={handleCollapse}></Projects> : null}
+          {content === "Projects"? <Projects handleTestBool={handleTestBool} testBool={testBool} handleCollapse={handleCollapse}></Projects> : null}
           {content === "Contact"? <Contact></Contact> : null}
           {content === "About"? <About hidden={hidden} handleButtons={handleButtons}></About> : null}
           </div>
