@@ -17,7 +17,8 @@ function Main () {
   const [content, setContent] = useState(
     "Home"
   )
-  const [isGameClosed, setIsGameClosed] = useState(false)
+  const [isGameClosed, setIsGameClosed] = useState(true)
+  const [backHome, setBackHome] = useState(false)
   
   function handleCloseGame (e) {
     setIsGameClosed(e)
@@ -34,13 +35,18 @@ function Main () {
     setIsNavCollapsed(false)
   }
   
-  const updateContent = () => {
-    setIsGameClosed(true)
+  useEffect(() => {
     setHidden(false)
     //setContent("Home") // update heros's section content to "Home" when clicking on "Ruben's site" in the Header component
     setIsCollapsed(false)
     setIsNavCollapsed(false)
     setisMenuOpen(false)
+    setContent("Home")
+  },[backHome])
+
+  const updateContent = () => {
+    setIsGameClosed(true)
+    setBackHome(true)
   }
   
   const handleClickBody = () => {
