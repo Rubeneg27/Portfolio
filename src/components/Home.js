@@ -12,7 +12,7 @@ function Home () {
         <p className="p-1B">I hope you enjoy your visit!</p>
         </div>
       <div className="image-container">
-        <img src={img} alt="foto de perfil de Rubén Espinosa con el monte fuji en el fondo"/>
+        <img /*src={img}*/ alt="foto de perfil de Rubén Espinosa con el monte fuji en el fondo"/>
       </div>
     </section>
     

@@ -137,6 +137,10 @@ function Main () {
           <div className="burger-hidden"></div>
           }
           {content}
+          <Home></Home>
+          <Projects handleCollapse={handleCollapse}></Projects>
+          <Contact></Contact>
+          <About hidden={hidden} handleButtons={handleButtons}></About>
           </div>
       </div>
       
