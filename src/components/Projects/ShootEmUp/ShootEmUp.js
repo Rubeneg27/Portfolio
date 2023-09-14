@@ -25,6 +25,7 @@ function ShootEmUp ({handleCloseGame, isGameClosed, setProject, setPressed, hand
   }, 1000)
   
   const startGame = () => {
+    handleCloseGame(false)
     setGameStarted(true)
     isGameClosedRef.current = false;
     isPausedRef.current = false

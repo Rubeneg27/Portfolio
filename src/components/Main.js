@@ -34,9 +34,10 @@ function Main () {
     setIsNavCollapsed(false)
   }
   
-  const updateContent = () => { 
+  const updateContent = () => {
+    setIsGameClosed(true)
     setHidden(false)
-    setContent("Home") // update heros's section content to "Home" when clicking on "Ruben's site" in the Header component
+    //setContent("Home") // update heros's section content to "Home" when clicking on "Ruben's site" in the Header component
     setIsCollapsed(false)
     setIsNavCollapsed(false)
     setisMenuOpen(false)
