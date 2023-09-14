@@ -8,10 +8,12 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
   const [project, setProject] = useState("");
   const [pressed, setPressed] = useState(false);
 
+  /*
   useEffect(() => {
     console.log(isGameClosed)
   }, [isGameClosed])
-
+  */
+ 
   function handleClick (elemento) {
     setPressed(true)
     handleCollapse(true)

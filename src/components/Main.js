@@ -57,12 +57,6 @@ function Main () {
     }
   }
 
-  ///Will show/hide buttons in about/projects section.///
-  const handleButtons = () => {
-    setHidden(true)
-    setAboutClicked(!aboutClicked)
-  }
-
   ////Maneja el colapso del Nav.///
   ///PARÁMETROS///
   ///e: recibirá y pasará el estado booleano a isCollapsed.///
@@ -76,6 +70,13 @@ function Main () {
   const toggleMenu = () => {
     setisMenuOpen(!isMenuOpen)
   }
+
+   ///Will show/hide buttons in about/projects section.///
+   const handleButtons = () => {
+    setHidden(true)
+    setAboutClicked(!aboutClicked)
+  }
+
 
   useEffect(()=>{
     if (hidden) {
@@ -107,14 +108,14 @@ function Main () {
         <div className={isCollapsed? "article-expanded" : "article"}>
           {isCollapsed?
           <div>
-          <div className={isMenuOpen? "burger-hidden": "burger" }onClick={toggleMenu} >
-            <svg width="60px" height="60px">
-              <rect></rect>
-              <rect y="10"></rect>
-              <rect y="20"></rect>
-            </svg>
-          </div>
-          <ul className={isMenuOpen? "dropdown-menu" : "dropdown-menu-hidden"}>
+            <div className={isMenuOpen? "burger-hidden": "burger" }onClick={toggleMenu} >
+              <svg width="60px" height="60px">
+                <rect></rect>
+                <rect y="10"></rect>
+                <rect y="20"></rect>
+              </svg>
+            </div>
+            <ul className={isMenuOpen? "dropdown-menu" : "dropdown-menu-hidden"}>
               <li onClick={()=>{handleClick("Home")}}>Home</li>
               <li onClick={()=>{handleClick("About")}}>About</li>
               <li onClick={()=>{handleClick("Contact")}}>Contact</li>

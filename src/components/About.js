@@ -6,9 +6,9 @@ const About = ({ hidden, handleButtons }) => {
   const [content, setContent] = useState("");
   const [buttonPressed, setButtonPressed] = useState("")
 
-  function handleClick (elemento) {
+  function handleClick (e) {
     handleButtons()
-    switch (elemento) {
+    switch (e) {
       case "Formación":
         setContent(<Skills></Skills>);
         setButtonPressed("skills")
