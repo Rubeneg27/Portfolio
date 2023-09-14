@@ -11,16 +11,12 @@ function Main () {
   
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isMenuOpen, setisMenuOpen] = useState(false)
-  const [hidden, setHidden] = useState(false)
-  const [aboutClicked, setAboutClicked] = useState(false)
   const [content, setContent] = useState(
     "Home"
   )
   const [isGameClosed, setIsGameClosed] = useState(true)
   const [path, setPath] = useState("")
 
-
-  
   ///Define el estado del booleano isGameClosed para cerrar o no los juegos de "Projects"
   function handleCloseGame (e) {
     setIsGameClosed(e)
@@ -31,7 +27,6 @@ function Main () {
   ///e: recibirá y pasará a updateContent el content a renderizar.///
   const handleClick = (e) => {
     updateContent(e)
-    setHidden(false)
     setisMenuOpen(false)
     setIsCollapsed(false)
   }
@@ -46,7 +41,6 @@ function Main () {
   
   ///Asegura que content cambie después que setIsGameClosed se ejecute y los juegos en projects puedan terminar los procesos en ejecución///
   useEffect(() => {
-    setHidden(false)
     setIsCollapsed(false)
     setisMenuOpen(false)
     setContent(path)
@@ -63,7 +57,6 @@ function Main () {
   ///PARÁMETROS///
   ///e: recibirá y pasará el estado booleano a isCollapsed.///
   const handleCollapse = (e) => {
-    setHidden(false)
     setisMenuOpen(false)
     setIsCollapsed(e)
   }
@@ -73,13 +66,7 @@ function Main () {
     setisMenuOpen(!isMenuOpen)
   }
 
-   ///Will show/hide buttons in about/projects section.///
-   const handleButtons = () => {
-    setHidden(true)
-    setAboutClicked(!aboutClicked)
-    console.log("handleButtons")
-  }
-
+  ///Renderizará el contenido correspondiente en el primer renderizado del compomente.///
   useEffect(() => {
     setContent(content)
   }, [])
@@ -89,10 +76,8 @@ function Main () {
     if (hidden) {
       setHidden(false)
       setContent("About")
-      console.log("if hidden")
     } else {
       setContent(content)
-      console.log("else")
     }
   },[aboutClicked])
 */
@@ -136,7 +121,7 @@ function Main () {
           {content === "Home"? <Home></Home> : null}
           {content === "Projects"? <Projects handleCloseGame={handleCloseGame} isGameClosed={isGameClosed} handleCollapse={handleCollapse}></Projects> : null}
           {content === "Contact"? <Contact></Contact> : null}
-          {content === "About"? <About hidden={hidden} handleButtons={handleButtons}></About> : null}
+          {content === "About"? <About></About> : null}
           </div>
       </div>
       
