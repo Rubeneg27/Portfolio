@@ -28,25 +28,27 @@ function Main () {
     console.log(isGameClosed)
   }, [isGameClosed])
   
-  const collapse = () => { //Collapses hero's section
+  ///Collapses hero's section///
+  const collapse = () => { 
     setIsNavCollapsed(true);
   }
-  const unCollapse = () => { //Uncollapses hero's section
+  ///Uncollapses hero's section///
+  const unCollapse = () => { 
     setIsNavCollapsed(false)
   }
   
   useEffect(() => {
     setHidden(false)
-    //setContent("Home") // update heros's section content to "Home" when clicking on "Ruben's site" in the Header component
+    //setContent("Home") 
     setIsCollapsed(false)
     setIsNavCollapsed(false)
     setisMenuOpen(false)
-    setContent("Home")
+    setContent(backHome)
   },[backHome])
 
-  const updateContent = () => {
+  const updateContent = (e) => {
     setIsGameClosed(true)
-    setBackHome(true)
+    setBackHome(e)
   }
   
   const handleClickBody = () => {
@@ -61,24 +63,12 @@ function Main () {
     setAboutClicked(!aboutClicked)
   }
 
-  const handleClickHome = () => {
+  const handleClick = (e) => {
+    updateContent(e)
     setHidden(false)
     setisMenuOpen(false)
     setIsCollapsed(false)
     unCollapse()
-    setContent(
-      "Home"
-    )
-  }
-
-
-  const handleClickAbout = (e) => {
-    setHidden(false)
-    setisMenuOpen(false)
-    setIsCollapsed(false)
-    setContent(
-      "About"
-    )
   }
 
   const handleCollapse = (e) => {
@@ -86,25 +76,6 @@ function Main () {
     setisMenuOpen(false)
     setIsCollapsed(e)
     collapse()
-  }
-
-    //Maneja el click de Projects en el dropdown-menu. Para arreglarlo hay que pasar más estados de Projects al componente main
-  const handleClickProjects = () => {
-    setHidden(false)
-    setisMenuOpen(false)
-    setIsCollapsed(false)
-    setContent(
-      "Projects"
-    )
-  }
-  const handleClickContact = () => {
-    setHidden(false)
-    unCollapse()
-    setisMenuOpen(false)
-    setIsCollapsed(false)
-    setContent(
-      "Contact"
-    )
   }
 
   const toggleMenu = () => {
@@ -129,10 +100,10 @@ function Main () {
         <Nav 
         isNavCollapsed={isNavCollapsed}
         isCollapsed={isCollapsed}
-        handleClickHome={handleClickHome} 
-        handleClickAbout={handleClickAbout} 
-        handleClickProjects={handleClickProjects} 
-        handleClickContact={handleClickContact}
+        handleClickHome={()=>{handleClick("Home")}} 
+        handleClickAbout={()=>{handleClick("About")}} 
+        handleClickProjects={()=>{handleClick("Projects")}} 
+        handleClickContact={()=>{handleClick("Contact")}}
         />
         <div className={isCollapsed? "article-expanded" : "article"}>
           {isCollapsed?
@@ -145,9 +116,9 @@ function Main () {
             </svg>
           </div>
           <ul className={isMenuOpen? "dropdown-menu" : "dropdown-menu-hidden"}>
-              <li onClick={handleClickHome}>Home</li>
-              <li onClick={handleClickAbout}>About</li>
-              <li onClick={handleClickContact}>Contact</li>
+              <li onClick={()=>{handleClick("Home")}}>Home</li>
+              <li onClick={()=>{handleClick("About")}}>About</li>
+              <li onClick={()=>{handleClick("Contact")}}>Contact</li>
             </ul>
           </div>
           : 
