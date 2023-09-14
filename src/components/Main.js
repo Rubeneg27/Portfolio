@@ -17,15 +17,15 @@ function Main () {
   const [content, setContent] = useState(
     "Home"
   )
-  const [testBool, setTestBool] = useState(false)
+  const [isGameClosed, setIsGameClosed] = useState(false)
   
-  function handleTestBool (e) {
-    setTestBool(e)
+  function handleCloseGame (e) {
+    setIsGameClosed(e)
   }
 
   useEffect(() => {
-    console.log(testBool)
-  }, [testBool])
+    console.log(isGameClosed)
+  }, [isGameClosed])
   
   const collapse = () => { //Collapses hero's section
     setIsNavCollapsed(true);
@@ -147,7 +147,7 @@ function Main () {
           <div className="burger-hidden"></div>
           }
           {content === "Home"? <Home></Home> : null}
-          {content === "Projects"? <Projects handleTestBool={handleTestBool} testBool={testBool} handleCollapse={handleCollapse}></Projects> : null}
+          {content === "Projects"? <Projects handleCloseGame={handleCloseGame} isGameClosed={isGameClosed} handleCollapse={handleCollapse}></Projects> : null}
           {content === "Contact"? <Contact></Contact> : null}
           {content === "About"? <About hidden={hidden} handleButtons={handleButtons}></About> : null}
           </div>

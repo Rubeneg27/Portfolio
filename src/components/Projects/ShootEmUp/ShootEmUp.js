@@ -3,11 +3,11 @@ import {GameManager, Player, EnemyA} from './Clases';
 
 const _GameManager = new GameManager();
 
-function ShootEmUp ({handleQuitGame, testBool, handleTestBool}) {
+function ShootEmUp ({handleCloseGame, isGameClosed, setProject, setPressed, handleCollapse}) {
 
   useEffect(() => {
-    console.log(testBool)
-  }, [testBool])
+    console.log(isGameClosed)
+  }, [isGameClosed])
   
   let isPausedRef = useRef(false);
   let isGameClosedRef = useRef(true);
@@ -30,6 +30,13 @@ function ShootEmUp ({handleQuitGame, testBool, handleTestBool}) {
     isPausedRef.current = false
   }
 
+  function handleQuitGame () {
+    handleCloseGame(true)
+    setProject("")
+    setPressed(false)
+    handleCollapse(false)
+  }
+
   const handlePauseMenu = (e) => {
     switch (e) {
       case "Resume":
@@ -39,6 +46,7 @@ function ShootEmUp ({handleQuitGame, testBool, handleTestBool}) {
       case "Options":
         break;
       case "Quit":
+        
         setTogglePauseMenu(false);
         setGameStarted(false);
         isGameClosedRef.current = true;
@@ -313,8 +321,6 @@ function ShootEmUp ({handleQuitGame, testBool, handleTestBool}) {
   }, [])
   return (
     <div className='shootEmUp'>
-      <button onClick={() => handleTestBool(true)}>TRUE</button>
-      <button onClick={() => handleTestBool(false)}>FALSE</button>
       <div className={gameStarted? 'gameScreen' : 'gameScreen-hidden'} >
       </div>
       <div className={gameStarted || isLoading? "game-menu-hidden" : "game-menu-init"}>

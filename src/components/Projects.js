@@ -3,14 +3,14 @@ import ShootEmUp from "./Projects/ShootEmUp/ShootEmUp.js";
 /*import TestFPS from "./Projects/Testing.js";*/
 import { useState, useEffect } from "react";
 
-function Projects ({handleCollapse, testBool, handleTestBool}) {
+function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
 
   const [project, setProject] = useState("");
   const [pressed, setPressed] = useState(false);
 
   useEffect(() => {
-    console.log(testBool)
-  }, [testBool])
+    console.log(isGameClosed)
+  }, [isGameClosed])
 
   function handleClick (elemento) {
     setPressed(true)
@@ -27,11 +27,7 @@ function Projects ({handleCollapse, testBool, handleTestBool}) {
     }
   }
 
-  function handleQuitGame () {
-    setProject("")
-    setPressed(false)
-    handleCollapse(false)
-  }
+
 
     return (
         <section className="projects">
@@ -47,8 +43,8 @@ function Projects ({handleCollapse, testBool, handleTestBool}) {
             </section>
             </div>
             }
-          {project === "shootemup" ? <ShootEmUp handleTestBool={handleTestBool} testBool={testBool} handleQuitGame={handleQuitGame}></ShootEmUp> : null}
-          {project === "platformer" ? <Platformer testBool={testBool} handleQuitGame={handleQuitGame}></Platformer> : null}
+          {project === "shootemup" ? <ShootEmUp setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></ShootEmUp> : null}
+          {project === "platformer" ? <Platformer handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></Platformer> : null}
         </section>
         
     )
