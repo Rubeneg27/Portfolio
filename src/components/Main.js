@@ -109,7 +109,6 @@ function Main () {
           : 
           <div className="burger-hidden"></div>
           }
-          {test2}
           {content === "Home"? <Home></Home> : null}
           {content === "Projects"? <Projects handleCloseGame={handleCloseGame} isGameClosed={isGameClosed} handleCollapse={handleCollapse}></Projects> : null}
           {content === "Contact"? <Contact></Contact> : null}
