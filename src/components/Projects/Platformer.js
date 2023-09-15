@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 
-function Platformer({handleQuitGame, testBool}) {
+function Platformer({handleCloseGame, isGameClosed, setProject, setPressed, handleCollapse}) {
 
   useEffect(() => {
-    console.log(testBool)
-  }, [testBool])
+    if(isGameClosed) {
+      isGameClosedRef.current = true
+    }
+    console.log(isGameClosed)
+  }, [isGameClosed])
   
   const [gameStarted, setGameStarted] = useState (false);
   const [togglePauseMenu, setTogglePauseMenu] = useState(false);
@@ -13,10 +16,17 @@ function Platformer({handleQuitGame, testBool}) {
   let isGameClosedRef = useRef(true); 
 
   const startGame = () => {
+    handleCloseGame(false)
     setGameStarted(true)
     isGameClosedRef.current = false;
     isPausedRef.current = false
-    console.log(`Game started: ${gameStarted}`);
+  }
+
+  function handleQuitGame () {
+    handleCloseGame(true)
+    setProject("")
+    setPressed(false)
+    handleCollapse(false)
   }
 
   const handlePauseMenu = (e) => {
@@ -497,17 +507,16 @@ function Platformer({handleQuitGame, testBool}) {
           }          
     }
     //Función recursiva para el Loop del juego y control de los FPS
-    function gameLoop() {
+    function gameLoop () {
       requestAnimationFrame(gameLoop);
-    
+
       const currentTime = performance.now();
-      const deltaTime = currentTime - lastFrameTime; // El tiempo que tardó en darse el proceso desde que se llamó
-    
-      if (!isPausedRef.current&&!isGameClosedRef.current) {
+      const deltaTime = currentTime - lastFrameTime;
+
+      if (!isPausedRef.current && !isGameClosedRef.current) {
         if (deltaTime >= frameInterval) { // Si el tiempo que tardó el proceso es mayor o igual
           lastFrameTime = currentTime - (deltaTime % frameInterval);
           animate();
-    
           // Cálculo de FPS
           framesThisSecond++;
           if (currentTime > lastFpsUpdate + 1000) {
@@ -517,12 +526,10 @@ function Platformer({handleQuitGame, testBool}) {
             console.log(`FPS: ${fps}`);
           }
         }
-      } else if (isPausedRef.current&&isGameClosedRef.current) {
+      } else if (isGameClosedRef.current&&isPausedRef.current) {
         init()
         console.log("Init")
       }
-      
-      
     }
 
     const handleKeyDown = (event) => {
@@ -619,7 +626,11 @@ function Platformer({handleQuitGame, testBool}) {
       </div>
       <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
         <div className='gameTitle'>JSAP</div>
-        <button onClick={startGame}>- Start -</button>
+        <h3>Controlls</h3>
+        <div>Move: Arrows left-right</div>
+        <div>Jumps: Arrow up</div>
+        <div>Attack: Ctrl</div>
+        <button onClick={startGame}>- Start GAME -</button>
         <button onClick={handleQuitGame}> - Quit - </button>
       </div>
       <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />

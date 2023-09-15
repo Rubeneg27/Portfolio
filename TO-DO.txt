@@ -1,0 +1,14 @@
+***En rama refactor***
+
+///Main
+Hacer del dropdown menu un componente reutilizable
+
+///Header
+Añadir redes sociales 
+
+///Projects -> Platformer
+El PayerAttack sigue haciendo efecto poco despues de desaparecer. Corregir el tiempo que se mantiene activo.
+
+///Projects
+Estilizar explicación controles
+Añadir opciones de resolución

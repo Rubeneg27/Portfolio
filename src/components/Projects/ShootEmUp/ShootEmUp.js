@@ -329,11 +329,13 @@ function ShootEmUp ({handleCloseGame, isGameClosed, setProject, setPressed, hand
       </div>
       <div className={gameStarted || isLoading? "game-menu-hidden" : "game-menu-init"}>
         <div className='gameTitle'>Shoot'em all!</div>
+        <h3>Controlls</h3>
+        <div>Move: Direction arrows left-right</div>
+        <div>Shoot: Ctrl</div>
         <button onClick={startGame}> - Start Game - </button>
         <button onClick={handleQuitGame}> - Quit - </button>
       </div>
       <div className={togglePauseMenu ? "pause-menu-init" : "pause-menu-hidden"}>
-        <h1>PAUSED</h1>
         <button onClick={()=>handlePauseMenu("Resume")}>Resume game</button>
         <button onClick={()=>handlePauseMenu("Options")}>Options</button>
         <button onClick={()=>handlePauseMenu("Quit")}>Back to menu</button>
