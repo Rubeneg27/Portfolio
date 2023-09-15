@@ -2,13 +2,23 @@ import Skills from "./About/Skills"
 import Experience from "./About/Experience"
 import { useEffect, useState } from "react";
 
-const About = () => {
+const About = ({showButtons, setShowButtons}) => {
   const [content, setContent] = useState("");
   const [buttonPressed, setButtonPressed] = useState("")
   const [hidden, setHidden] = useState(false)
 
+  useEffect(()=> {
+    if (showButtons) {
+      setHidden(false)
+      console.log(showButtons)
+    } else {
+      setHidden(true)
+    }
+  }, [showButtons])
+
   function handleClick (e) {
     setHidden(true)
+    setShowButtons(false)
     switch (e) {
       case "Formación":
         setContent(<Skills></Skills>);

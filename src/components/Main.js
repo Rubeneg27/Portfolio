@@ -16,6 +16,7 @@ function Main () {
   )
   const [isGameClosed, setIsGameClosed] = useState(true)
   const [path, setPath] = useState("")
+  const [showButtons, setShowButtons] = useState(true)
 
   ///Define el estado del booleano isGameClosed para cerrar o no los juegos de "Projects"
   function handleCloseGame (e) {
@@ -29,6 +30,12 @@ function Main () {
     updateContent(e)
     setisMenuOpen(false)
     setIsCollapsed(false)
+    if (e==="About") {
+      setShowButtons(true)
+      console.log(showButtons)
+    } else {
+      setShowButtons(false)
+    }
   }
 
   ///Cerrará el juego en ejecución y marcará que contenido se deberá renderizar posteriormente en el efecto///
@@ -112,7 +119,7 @@ function Main () {
           {content === "Home"? <Home></Home> : null}
           {content === "Projects"? <Projects handleCloseGame={handleCloseGame} isGameClosed={isGameClosed} handleCollapse={handleCollapse}></Projects> : null}
           {content === "Contact"? <Contact></Contact> : null}
-          {content === "About"? <About></About> : null}
+          {content === "About"? <About showButtons={showButtons} setShowButtons={setShowButtons}></About> : null}
           </div>
       </div>
       
