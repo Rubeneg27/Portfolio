@@ -1,7 +1,7 @@
 import Platformer from "./Projects/Platformer.js"
 import ShootEmUp from "./Projects/ShootEmUp/ShootEmUp.js";
 /*import TestFPS from "./Projects/Testing.js";*/
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
 
@@ -46,7 +46,7 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
             </div>
             }
           {project === "shootemup" ? <ShootEmUp setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></ShootEmUp> : null}
-          {project === "platformer" ? <Platformer handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></Platformer> : null}
+          {project === "platformer" ? <Platformer setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></Platformer> : null}
         </section>
         
     )
