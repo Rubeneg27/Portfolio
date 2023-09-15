@@ -1,4 +1,7 @@
-***En rama refactor***
+***En rama main***
+
+///GENERAL
+Documentar funciones y variables
 
 ///Main
 Hacer del dropdown menu un componente reutilizable
