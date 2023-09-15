@@ -46,7 +46,7 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
             </div>
             }
           {project === "shootemup" ? <ShootEmUp setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></ShootEmUp> : null}
-          {project === "platformer" ? <Platformer handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></Platformer> : null}
+          {project === "platformer" ? <Platformer setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></Platformer> : null}
         </section>
         
     )
