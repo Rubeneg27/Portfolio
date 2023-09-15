@@ -10,5 +10,9 @@ Añadir redes sociales
 El PayerAttack sigue haciendo efecto poco despues de desaparecer. Corregir el tiempo que se mantiene activo.
 
 ///Projects
-Estilizar explicación controles
-Añadir opciones de resolución
+Estilizar explicación controles.
+Añadir resumen a botones de proyectos.
+Añadir opciones de resolución.
+
+//About
+Estilizar resumen en botones de sección
