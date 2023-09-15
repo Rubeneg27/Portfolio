@@ -619,6 +619,10 @@ function Platformer({handleQuitGame, testBool}) {
       </div>
       <div className={gameStarted ? "game-menu-hidden" : "game-menu-init"}>
         <div className='gameTitle'>JSAP</div>
+        <h3>Controlls</h3>
+        <div>Move: Arrows left-right</div>
+        <div>Jumps: Arrow up</div>
+        <div>Attack: Ctrl</div>
         <button onClick={startGame}>- Start -</button>
         <button onClick={handleQuitGame}> - Quit - </button>
       </div>
