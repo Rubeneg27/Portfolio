@@ -8,7 +8,7 @@ function Skills() {
                 </div>
                 <div>
                     <h2>Skills</h2>
-				    <p>Certification: Meta Front-end Developer.</p>
+				    <p>Certification: <span className="CertificateLink">Meta Front-end Developer</span>.</p>
                     <p>Programming Languages: Javascript, C# and HTML.</p> 
                     <p>Libraries: React, Angular.</p>
                 </div>

@@ -1,7 +1,9 @@
-***En rama main***
-
 ///GENERAL
 Documentar funciones y variables
+
+//About
+Añadir certificado front-end y estilizar
+Estilizar resumen en botones de sección
 
 ///Main
 Hacer del dropdown menu un componente reutilizable
@@ -17,5 +19,4 @@ Estilizar explicación controles.
 Añadir resumen a botones de proyectos.
 Añadir opciones de resolución.
 
-//About
-Estilizar resumen en botones de sección
+

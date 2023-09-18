@@ -562,6 +562,15 @@ svg rect {
     border-style: dashed;
 }
 
+.CertificateLink{
+  font-weight: bold;
+  background-color: rgb(102 116 127);
+}
+
+.CertificateLink:hover{
+  cursor: pointer;
+}
+
 .toExpButton {
   border: none;
   margin: -6vw 0 0 51vw;
