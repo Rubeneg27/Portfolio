@@ -571,6 +571,10 @@ svg rect {
   cursor: pointer;
 }
 
+.CertificateImg {
+  position: absolute;
+}
+
 .toExpButton {
   border: none;
   margin: -6vw 0 0 51vw;

@@ -1,3 +1,5 @@
+import courseraCertificate from "../../Assets/Coursera-Certificado.png"
+
 function Skills() {
     return (
         <section className="skills">
@@ -11,6 +13,7 @@ function Skills() {
 				    <p>Certification: <span className="CertificateLink">Meta Front-end Developer</span>.</p>
                     <p>Programming Languages: Javascript, C# and HTML.</p> 
                     <p>Libraries: React, Angular.</p>
+                    <img className="CertificateImg" src={courseraCertificate} alt="certificado coursera de front end developer"></img>
                 </div>
                 <div>
                     <h2>Languages</h2>
