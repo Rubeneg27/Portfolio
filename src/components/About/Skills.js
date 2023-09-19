@@ -1,6 +1,18 @@
+import { useEffect, useState } from "react";
 import courseraCertificate from "../../Assets/Coursera-Certificado.png"
 
 function Skills() {
+
+    const [showCertificateImg, setShowCertificateImg] = useState(false);
+
+    function handleCertificateImg () {
+        setShowCertificateImg(!showCertificateImg)
+    }
+
+    useEffect(()=>{
+        setShowCertificateImg(showCertificateImg)
+    }, [showCertificateImg])
+    
     return (
         <section className="skills">
             <div className="skills-a">
@@ -10,10 +22,10 @@ function Skills() {
                 </div>
                 <div>
                     <h2>Skills</h2>
-				    <p>Certification: <span className="CertificateLink">Meta Front-end Developer</span>.</p>
+				    <p>Certification: <span className="CertificateLink" onClick={handleCertificateImg}>Meta Front-end Developer</span>.</p>
                     <p>Programming Languages: Javascript, C# and HTML.</p> 
                     <p>Libraries: React, Angular.</p>
-                    <img className="CertificateImg" src={courseraCertificate} alt="certificado coursera de front end developer"></img>
+                    {<img hidden={showCertificateImg ? false : true} className="CertificateImg" src={courseraCertificate} alt="certificado coursera de front end developer"></img>}
                 </div>
                 <div>
                     <h2>Languages</h2>
