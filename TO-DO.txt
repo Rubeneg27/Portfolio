@@ -1,8 +1,10 @@
 ///GENERAL
+Adaptar la interfaz a diferentes dispositivos
 Documentar funciones y variables
+Trabajar accesibilidad
+Revisar seguridad
 
 //About
-Añadir certificado front-end y estilizar
 Estilizar resumen en botones de sección
 
 ///Main

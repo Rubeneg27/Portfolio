@@ -5,6 +5,9 @@ function Skills() {
 
     const [showCertificateImg, setShowCertificateImg] = useState(false);
 
+    ///Handle the display of img in .skills///
+    ///Parameters:///
+    ///e: will recieve true o false depding of display=true and display=false///
     function handleCertificateImg (e) {
         setShowCertificateImg(e)
     }
