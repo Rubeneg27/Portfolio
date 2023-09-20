@@ -563,8 +563,9 @@ svg rect {
 }
 
 .CertificateLink{
+  padding: 0.8%;
   font-weight: bold;
-  background-color: rgb(102 116 127);
+  background-color: rgb(80 91 100);
 }
 
 .CertificateLink:hover{
@@ -573,6 +574,7 @@ svg rect {
 
 .CertificateImg {
   position: absolute;
+  z-index: 1;
   width: 45vw;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   transition: all 0.3s ease-in-out;
@@ -584,10 +586,23 @@ svg rect {
   transition: all 0.3s ease-in-out;
 }
 
-.CertificateImg > img{
+.CertificateImg > img {
   width: 100%;
 }
-.CertificateImg_hidden > img{
+
+.CertificateImg > a {
+  top: 30vw;
+  position: absolute;
+  right: 3vw;
+  width: 10vw;
+  height: 4vw;
+}
+
+.CertificateImg > a:hover {
+  cursor: pointer;
+}
+
+.CertificateImg_hidden > img {
   width: 0vw;
   transition: all 0.3s ease-in-out;
 }
@@ -607,7 +622,7 @@ svg rect {
   padding: 1vw;
   transition: all 0.3s ease-out;
   color: rgb(250, 223, 201);
-  background-color: rgb(102 116 127);
+  background-color: rgb(80 91 100);
   width: auto;
   height: auto;
   font-size: 1.4vw;

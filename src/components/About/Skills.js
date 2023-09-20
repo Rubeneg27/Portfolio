@@ -13,6 +13,7 @@ function Skills() {
         <section className="skills">
             <div className={showCertificateImg ? "CertificateImg" : "CertificateImg_hidden"} >
                 {<img  alt="certificado coursera de front end developer" src={courseraCertificate}></img>}
+                <a hidden={showCertificateImg ? false : true} href="https://www.coursera.org/account/accomplishments/professional-cert/N6SAE74TJBAN" target="blank"> </a>
             </div>
             <div className="skills-a">
                 <div>
