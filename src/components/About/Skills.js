@@ -1,20 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import courseraCertificate from "../../Assets/Coursera-Certificado.png"
 
 function Skills() {
 
     const [showCertificateImg, setShowCertificateImg] = useState(false);
 
-    function handleCertificateImg () {
-        setShowCertificateImg(!showCertificateImg)
+    function handleCertificateImg (e) {
+        setShowCertificateImg(e)
     }
 
-    useEffect(()=>{
-        setShowCertificateImg(showCertificateImg)
-    }, [showCertificateImg])
-    
     return (
         <section className="skills">
+            <div className={showCertificateImg ? "CertificateImg" : "CertificateImg_hidden"} >
+                {<img  alt="certificado coursera de front end developer" src={courseraCertificate}></img>}
+            </div>
             <div className="skills-a">
                 <div>
                     <h2>Academic Background</h2>
@@ -22,10 +21,9 @@ function Skills() {
                 </div>
                 <div>
                     <h2>Skills</h2>
-				    <p>Certification: <span className="CertificateLink" onClick={handleCertificateImg}>Meta Front-end Developer</span>.</p>
+				    <p>Certification: <span className="CertificateLink" onClick={()=>handleCertificateImg(true)}>Meta Front-end Developer</span>.</p>
                     <p>Programming Languages: Javascript, C# and HTML.</p> 
                     <p>Libraries: React, Angular.</p>
-                    {<img hidden={showCertificateImg ? false : true} className="CertificateImg" src={courseraCertificate} alt="certificado coursera de front end developer"></img>}
                 </div>
                 <div>
                     <h2>Languages</h2>
@@ -42,7 +40,8 @@ function Skills() {
                     <p>Always ready to learn, acknowledge my mistakes, and learn from them.</p>
                     <p>I approach challenges with patience and perseverance.</p>
                 </div>
-            </div>              
+            </div>
+            {showCertificateImg? <div className="imgClose" onClick={()=>handleCertificateImg(false)}></div> : null}                    
 		</section>
     )
 }

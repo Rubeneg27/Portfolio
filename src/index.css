@@ -573,6 +573,31 @@ svg rect {
 
 .CertificateImg {
   position: absolute;
+  width: 45vw;
+  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
+  transition: all 0.3s ease-in-out;
+}
+
+.CertificateImg_hidden {
+  position: absolute;
+  width: 0vw;
+  transition: all 0.3s ease-in-out;
+}
+
+.CertificateImg > img{
+  width: 100%;
+}
+.CertificateImg_hidden > img{
+  width: 0vw;
+  transition: all 0.3s ease-in-out;
+}
+
+.imgClose {
+  left: 0;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  width: 100%;
 }
 
 .toExpButton {
