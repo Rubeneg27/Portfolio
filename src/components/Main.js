@@ -88,7 +88,6 @@ function Main () {
  
   return (
     <main onClick={handleClickBody}>
-      
       <Header updateContent={updateContent}></Header>
       <div className="main-section">
         <Nav 
@@ -106,11 +105,8 @@ function Main () {
           {content === "About"? <About showButtons={showButtons} setShowButtons={setShowButtons}></About> : null}
           </div>
       </div>
-      
     </main>
-    
-  )
-  
+  )  
 }
 
 export default Main;
