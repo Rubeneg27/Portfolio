@@ -6,6 +6,7 @@ import Header from './Header';
 import Nav from './Nav';
 import Burger from "./Burger";
 
+
 import { useEffect, useState } from "react";
 
 function Main () { 
@@ -103,10 +104,11 @@ function Main () {
           {content === "Projects"? <Projects handleCloseGame={handleCloseGame} isGameClosed={isGameClosed} handleCollapse={handleCollapse}></Projects> : null}
           {content === "Contact"? <Contact></Contact> : null}
           {content === "About"? <About showButtons={showButtons} setShowButtons={setShowButtons}></About> : null}
-          </div>
+        </div>
       </div>
     </main>
-  )  
+  )
+  
 }
 
 export default Main;
