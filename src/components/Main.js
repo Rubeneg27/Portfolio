@@ -4,6 +4,7 @@ import Projects from "./Projects";
 import Contact from "./Contact";
 import Header from './Header';
 import Nav from './Nav';
+import Burger from "./Burger";
 
 import { useEffect, useState } from "react";
 
@@ -98,24 +99,7 @@ function Main () {
         handleClickContact={()=>{handleClick("Contact")}}
         />
         <div className={isCollapsed? "article-expanded" : "article"}>
-          {isCollapsed?
-          <div>
-            <div className={isMenuOpen? "burger-hidden": "burger" }onClick={toggleMenu} >
-              <svg width="60px" height="60px">
-                <rect></rect>
-                <rect y="10"></rect>
-                <rect y="20"></rect>
-              </svg>
-            </div>
-            <ul className={isMenuOpen? "dropdown-menu" : "dropdown-menu-hidden"}>
-              <li onClick={()=>{handleClick("Home")}}>Home</li>
-              <li onClick={()=>{handleClick("About")}}>About</li>
-              <li onClick={()=>{handleClick("Contact")}}>Contact</li>
-            </ul>
-          </div>
-          : 
-          <div className="burger-hidden"></div>
-          }
+          <Burger isCollapsed={isCollapsed} isMenuOpen={isMenuOpen} handleClick={handleClick} toggleMenu={toggleMenu}></Burger>
           {content === "Home"? <Home></Home> : null}
           {content === "Projects"? <Projects handleCloseGame={handleCloseGame} isGameClosed={isGameClosed} handleCollapse={handleCollapse}></Projects> : null}
           {content === "Contact"? <Contact></Contact> : null}

@@ -183,7 +183,7 @@ main {
 
 .sidebar {
   position: relative;
-  background-color: rgb(80 91 100);
+  background-color: rgb(84 101 99);
   height: 100%;
 }
 
@@ -237,19 +237,17 @@ main {
 }
 
 .Nav li {
-  user-select: none;
   margin-left: 0.5vw;
   padding-left: 1vw;
-  background-color: rgb(97 157 175);
+  background-color: rgb(93 171 167);
   color: rgb(250, 223, 201);
   box-shadow: 7px 7px 0px rgba(62, 63, 66, 0.521);
   transition: all 0.3s ease-in-out;
   border-radius: 10PX;
   margin-bottom: 1.4vw;
   font-size: 90%;
-  align-self: center;
   height: 6vh;
-  width: 80%;
+  width: 77%;
   display: flex;
   justify-content: left;
   align-items: center;

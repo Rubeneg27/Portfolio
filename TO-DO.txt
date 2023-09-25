@@ -7,9 +7,6 @@ Revisar seguridad
 //About
 Estilizar resumen en botones de sección
 
-///Main
-Hacer del dropdown menu un componente reutilizable
-
 ///Header
 Añadir redes sociales 
 
