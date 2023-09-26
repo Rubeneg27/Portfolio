@@ -1,5 +1,6 @@
 ///GENERAL
 Adaptar la interfaz a diferentes dispositivos
+Agrupar estados en un reducer y context
 Documentar funciones y variables
 Trabajar accesibilidad
 Revisar seguridad

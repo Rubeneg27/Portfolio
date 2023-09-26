@@ -4,9 +4,8 @@ import Projects from "./Projects";
 import Contact from "./Contact";
 import Burger from "./Burger";
 
-import { useEffect, useState } from "react";
 
-function Article ({isCollapsed, handleClick}) {
+function Article ({content, isCollapsed, handleClick, isMenuOpen, toggleMenu, handleCloseGame, isGameClosed, handleCollapse, showButtons, setShowButtons}) {
 
   return (
     <div className={isCollapsed? "article-expanded" : "article"}>
@@ -18,3 +17,5 @@ function Article ({isCollapsed, handleClick}) {
   </div>
   )
 }
+
+export default Article;
