@@ -1,10 +1,13 @@
 import Header from './Header';
 import Nav from './Nav';
 import Article from "./Article";
+import { useDevice } from "./Context/DeviceContext.js";
 
 import { useEffect, useState } from "react";
 
-function Main () { 
+function Main() {
+
+  const { isMobile } = useDevice();
 
   const [isGameClosed, setIsGameClosed] = useState(true)
   const [path, setPath] = useState("")
@@ -85,7 +88,7 @@ function Main () {
   return (
     <main onClick={handleClickBody}>
       <Header updateContent={updateContent}></Header>
-      <div className="main-section">
+      <div className={isMobile? "mainSectionMobile" : "main-section"} >
         <Nav 
         isCollapsed={isCollapsed}
         handleClickHome={()=>{handleClick("Home")}} 

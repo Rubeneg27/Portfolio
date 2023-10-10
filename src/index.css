@@ -14,6 +14,11 @@ body {
 .App {
   padding-top: 4vh;
 }
+
+.AppMobile {
+  padding-top: 0;
+}
+
 .Header {
   height: 12vh;
   margin-bottom: 4vh;
@@ -179,6 +184,11 @@ main {
   margin-right: 10vw;
   justify-content: space-between;
   height: 75vh;
+}
+
+.mainSectionMobile {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .sidebar {
