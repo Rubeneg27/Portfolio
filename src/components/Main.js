@@ -86,7 +86,7 @@ function Main() {
   */
  
   return (
-    <main onClick={handleClickBody}>
+    <main className={isMobile ? "mainMobile" : "main"} onClick={handleClickBody}>
       <Header updateContent={updateContent}></Header>
       <div className={isMobile? "mainSectionMobile" : "main-section"} >
         <Nav 

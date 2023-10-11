@@ -11,11 +11,6 @@ body {
   height: 100vh;
 }
 
-.App {
-  padding-top: 4vh;
-}
-
-
 .Header {
   height: 12vh;
   margin-bottom: 4vh;
@@ -201,9 +196,15 @@ code {
   align-items: center;
 }
 
-main {
+.main {
+  height: 75vh;
+  padding-top: 4vh;
+}
+
+.mainMobile {
   height: 75vh;
 }
+
 .main-section {
   display: flex;
   margin-left: 10vw;
@@ -573,7 +574,7 @@ svg > rect {
 
 .HomeMobile > .image-container {
   position: absolute;
-  margin: -65vh 0vw 0vw 69vw;
+  margin: -68vh 0vw 0vw 69vw;
   width: 30vw;
 }
 
