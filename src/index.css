@@ -15,9 +15,6 @@ body {
   padding-top: 4vh;
 }
 
-.AppMobile {
-  padding-top: 0;
-}
 
 .Header {
   height: 12vh;
@@ -25,6 +22,18 @@ body {
   color: rgb(250, 223, 201);
   margin-left: 10vw;
   margin-right: 10vw;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(250, 223, 201);
+  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
+}
+
+.HeaderMobile {
+  height: 12vh;
+  margin-bottom: 4vh;
+  color: rgb(250, 223, 201);
+  margin-left: 0;
+  margin-right: 0;
   display: flex;
   justify-content: space-between;
   background-color: rgb(250, 223, 201);
@@ -66,6 +75,18 @@ code {
   justify-content: center;
 }
 
+.HeaderMobile > .email {
+  align-self: center;
+  font-size: 80%;
+  margin: 0;
+  width: 20vw;
+  height: 100%;
+  display: grid;
+  align-content: center;
+  background-color: rgb(80 91 100);
+  justify-content: center;
+}
+
 .decoration {
   align-self: center;
   display: flex;
@@ -75,6 +96,11 @@ code {
   margin: 1vw 4vw 1vw 1vw;
   background-color: rgb(161 147 138);
 }
+
+.decorationMobile {
+  display: none;
+}
+
 /*
 .logos{
   height: 100%;
@@ -481,6 +507,8 @@ svg rect {
 
 .HomeMobile {
   display: block;
+  background: rgb(250, 223, 201);
+  padding: 3vw 0vw 3vw 0vw;
 }
 
 .HomeMobile > .Home-text {
@@ -509,14 +537,13 @@ svg rect {
 }
 
 .HomeMobile > .image-container {
-     position: absolute;
-    margin: 2vw 2vw 0% 71vw;
-    width: 20vw;
-    height: 33vw;
+  position: absolute;
+  margin: -148vw 0vw 0vw 69vw;
+  width: 30vw;
 }
 
 .image-container > img {
-  height: 100%;
+  width: 100%;
 }
 
 .p-1{
@@ -529,6 +556,10 @@ svg rect {
   margin-bottom: 3vh;
   margin-top: 2vh;
   text-align: justify;
+}
+
+.HomeMobile > .Home-text > .p-1{
+  width: 60vw;
 }
 
 .p-1B{
