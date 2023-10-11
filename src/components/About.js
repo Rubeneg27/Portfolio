@@ -1,8 +1,12 @@
 import Skills from "./About/Skills"
 import Experience from "./About/Experience"
 import { useEffect, useState } from "react";
+import { useDevice } from "./Context/DeviceContext.js";
 
 const About = ({showButtons, setShowButtons}) => {
+
+  const { isMobile } = useDevice();
+
   const [content, setContent] = useState("");
   const [buttonPressed, setButtonPressed] = useState("")
   const [hidden, setHidden] = useState(false)
@@ -34,7 +38,7 @@ const About = ({showButtons, setShowButtons}) => {
   }
 
   return (
-    <section className="about">
+    <section className={isMobile ? "aboutMobile" : "about"} >
           {hidden ? null : 
           <div>
             <section className="button-container">

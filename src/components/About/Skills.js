@@ -1,7 +1,10 @@
 import { useState } from "react";
 import courseraCertificate from "../../Assets/Coursera-Certificado.png"
+import { useDevice } from "../Context/DeviceContext.js";
 
 function Skills() {
+
+    const { isMobile } = useDevice();
 
     const [showCertificateImg, setShowCertificateImg] = useState(false);
 
@@ -13,7 +16,7 @@ function Skills() {
     }
 
     return (
-        <section className="skills">
+        <section className={isMobile ? "skillsMobile" : "skills"} >
             <a hidden={showCertificateImg ? false : true} href="https://www.coursera.org/account/accomplishments/professional-cert/N6SAE74TJBAN" target="blank"> </a>
             <div className={showCertificateImg ? "CertificateImg" : "CertificateImg_hidden"} >
                 {<img  alt="certificado coursera de front end developer" src={courseraCertificate}></img>}
