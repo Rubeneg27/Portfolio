@@ -645,7 +645,7 @@ svg > rect {
   box-sizing: border-box;
   height: 100%;
   background-color: rgb(250, 223, 201);
-  font-size: 60%;
+  font-size: 55%;
 }
 
 .aboutMobile {
@@ -852,7 +852,8 @@ svg > rect {
   justify-content: space-between;
 }
 
-.skills > .skills-a, .skills-b {
+.skills > .skills-a,
+.skills > .skills-b {
   display: grid;
   height: auto;
   box-sizing: border-box;
@@ -860,7 +861,9 @@ svg > rect {
   align-content: space-between;
 }
 
-.skillsMobile > .skills-a, .skills-b {
+
+.skillsMobile > .skills-a,
+.skillsMobile > .skills-b {
   display: grid;
   height: auto;
   box-sizing: border-box;
@@ -868,7 +871,9 @@ svg > rect {
   align-content: space-between;
 }
 
+
 .skills-a div{
+  overflow: auto;
   color: rgb(255 244 234);
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   background-color: rgb(161 147 138);
@@ -881,6 +886,7 @@ svg > rect {
 }
 
 .skills-b div{
+  overflow: auto;
   background: #fffaf4;
   height: 30%;
   margin: 2% 0 0 0;
