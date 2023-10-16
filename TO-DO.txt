@@ -8,6 +8,7 @@ Trabajar accesibilidad
 Revisar seguridad
 
 //About
+IMPORTANTE Corregir el estilo en los elementos de skills y experience. Se han perdido al adaptarlo a móvil.
 Estilizar resumen en botones de sección
 
 ///Header
