@@ -6,7 +6,7 @@ function Nav ({isCollapsed, handleClickHome, handleClickAbout, handleClickProjec
   const { isMobile } = useDevice();
 
   return (
-    <div className={isMobile? "sidebarMobile" : "sidebar"}>
+    <div className={isMobile? "sidebarMobile" : isCollapsed ? "sidebarCollapsed" : "sidebar"}>
       <ul className={ isCollapsed ? "Nav-collapsed" : "Nav" } >      
         <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={handleClickHome}>Home</li>
         <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={handleClickAbout}>About</li>

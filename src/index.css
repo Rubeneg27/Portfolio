@@ -231,6 +231,15 @@ code {
   height: 100%;
 }
 
+.sidebarCollapsed {
+  width: 0;
+  box-sizing: border-box;
+  padding-left: 0;
+  position: relative;
+  background-color: rgb(84 101 99);
+  height: 100%;
+}
+
 .sidebarMobile {
   display: none;
 }
@@ -429,7 +438,7 @@ code {
   margin-left: 37%;
   position: absolute;
   color: white;
-  width: 25%;
+  width: 20%;
   height: 21vh;
 }
 
