@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDevice } from "./Context/DeviceContext.js";
 
 function Contact () {
 
     const [message, setMessage] = useState("");
     const [subject, setSubject] = useState("");
+    const { isMobile } = useDevice();
 
     function composeEmail() {
         const mailtoLink = `mailto:rubeneg27@gmail.com?subject=${subject}&body=${message}`;
@@ -11,8 +13,14 @@ function Contact () {
         window.location.href = mailtoLink;
     }
 
+    useEffect(() => {
+        if (isMobile) {
+            alert("Contact not working on mobile. Please, use my email rubeneg27@gmail.com");
+        }
+    }, [isMobile]);
+
     return (
-        <section className="contact">
+        <section className={isMobile ? "contactMobile" : "contact"}>
             <form>
 
                 <li>
