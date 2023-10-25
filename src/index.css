@@ -767,7 +767,7 @@ svg > rect {
   font-size: 3vh;
 }
 
-.toExpButton:hover {
+.about > .toExpButton:hover {
   border: none;
   margin: -6vw 0 0 51vw;
   position: absolute;
@@ -803,7 +803,7 @@ svg > rect {
   font-size: 3vh;
 }
 
-.toSkillsButton:hover {
+.about > .toSkillsButton:hover {
   border: none;
   margin: -6vw 0 0 55vw;
   position: absolute;
