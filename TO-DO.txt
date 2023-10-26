@@ -1,6 +1,6 @@
 ///GENERAL
-Adaptar la interfaz a diferentes dispositivos
-ToExp y ToSkills buttons no funcionan en modo mobile
+Arreglar vista móvil
+Corregir tamaño de fuente para tamaños más pequeños
 IMPORTANTE Añadir Projects a burger IMPORTANTE
 Agrupar estados en un reducer y context
 Documentar funciones y variables
