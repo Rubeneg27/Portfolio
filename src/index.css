@@ -307,7 +307,6 @@ code {
   color: rgb(250, 223, 201);
   box-shadow: 7px 7px 0px rgba(62, 63, 66, 0.521);
   transition: all 0.3s ease-in-out;
-  border-radius: 10PX;
   margin-bottom: 1.4vw;
   font-size: 90%;
   height: 6vh;
