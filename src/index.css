@@ -6,17 +6,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(248, 211, 180);
+  background-color: rgb(161 147 138);
   color: rgb(100, 91, 85);
-  height: 100vh;
 }
 
 .Header {
   height: 12vh;
   margin-bottom: 4vh;
   color: rgb(250, 223, 201);
-  margin-left: 10vw;
-  margin-right: 10vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
   display: flex;
   justify-content: space-between;
   background-color: rgb(250, 223, 201);
@@ -202,8 +201,10 @@ code {
 }
 
 .main {
-  height: 75vh;
-  padding-top: 4vh;
+  background-color: rgb(248, 211, 180);
+  box-sizing: border-box;
+  height: 100vh;
+  margin: 0vw 4vw 0vw 4vw;
 }
 
 .mainMobile {
@@ -212,10 +213,10 @@ code {
 
 .main-section {
   display: flex;
-  margin-left: 10vw;
-  margin-right: 10vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
   justify-content: space-between;
-  height: 75vh;
+  height: 80vh;
   background: rgb(161 147 138);
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
 }
@@ -229,7 +230,6 @@ code {
   width: 15vw;
   float: left;
   max-width: 220px;
-  /* display: block; */
   box-sizing: border-box;
   padding-left: 0.4vw;
   background-color: rgb(80 91 100);
