@@ -216,6 +216,8 @@ code {
   margin-right: 10vw;
   justify-content: space-between;
   height: 75vh;
+  background: rgb(161 147 138);
+  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
 }
 
 .mainSectionMobile {
@@ -276,7 +278,6 @@ code {
 
 
 .main-section >.article {
-  display: grid;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   margin-right: 0;
   padding: 0 2vw 0 2vw;
@@ -574,10 +575,11 @@ svg > rect {
 }
 
 .Home-text {
+  box-sizing: border-box;
   color: rgb(245 227 213);
   padding: 1vw;
   background: rgb(161 147 138);
-  height: 85%;
+  height: 100%;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   text-align: left;
   width: 34vw;
@@ -957,7 +959,7 @@ svg > rect {
 
 .contact {
   width: 60vw;
-  height: 89%;
+  height: 100%;
   justify-self: center;
   padding: 2vw;
   background: rgb(255 235 218);
