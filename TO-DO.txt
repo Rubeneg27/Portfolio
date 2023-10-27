@@ -21,4 +21,8 @@ Estilizar explicación controles.
 Añadir resumen a botones de proyectos.
 Añadir opciones de resolución.
 
+//Ideas
+Página web responde a juegos
+Botones sin uso en todo el lateral con mensajes si los pulsas
+
 
