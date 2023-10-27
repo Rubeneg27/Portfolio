@@ -435,14 +435,13 @@ code {
 }
 
 .button-container > button {
-  margin-left: 3%;
   border: none;
   transition: all 0.3s ease-out;
   font-size: 50px;
   color: rgb(250, 223, 201);
   background-color: rgb(101 125 123);
   height: 21vh;
-  width: 94%;
+  width: 100%;
   z-index: 1;
 }
 
