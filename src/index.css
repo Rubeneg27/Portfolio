@@ -242,7 +242,6 @@ code {
 
 .sidebar {
   width: 15vw;
-  float: left;
   max-width: 220px;
   box-sizing: border-box;
   padding-left: 0.4vw;
@@ -293,7 +292,6 @@ code {
 
 .main-section >.article {
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
-  margin-right: 0;
   padding: 0 2vw 0 2vw;
   background-color: rgb(250, 223, 201);
   width: 60vw;
@@ -308,7 +306,6 @@ code {
 
 .main-section .article-expanded {
  box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
- margin-right: 0;
  background-color: rgb(250, 223, 201);
  width: 100%;
  height: 100%;
@@ -316,6 +313,7 @@ code {
 }
 
 .Nav li {
+  box-sizing: border-box;
   padding-left: 1vw;
   background-color: rgb(93 171 167);
   color: rgb(250, 223, 201);
@@ -324,7 +322,7 @@ code {
   margin-bottom: 1.4vw;
   font-size: 90%;
   height: 6vh;
-  width: 85%;
+  width: 93%;
   display: flex;
   justify-content: left;
   align-items: center;
