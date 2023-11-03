@@ -585,10 +585,11 @@ svg > rect {
 }
 
 .Home-text {
+  font-weight: bold;
   box-sizing: border-box;
-  color: rgb(245 227 213);
+  color: rgb(105 97 90);
   padding: 1vw;
-  background: rgb(161 147 138);
+  background: rgb(198 209 189);
   height: 100%;
   box-shadow: 6px 6px 0px rgba(82, 82, 82, 0.25);
   text-align: left;
