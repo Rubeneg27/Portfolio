@@ -1,5 +1,5 @@
-import img from "../Assets/Perfil.png"
-import { useDevice } from "./Context/DeviceContext.js";
+import img from "../../Assets/Perfil.png"
+import { useDevice } from "../Context/DeviceContext.js";
 
 function Home () {
 

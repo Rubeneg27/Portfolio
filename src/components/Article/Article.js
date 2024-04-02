@@ -1,9 +1,9 @@
-import Home from "./Home";
-import About from "./About";
-import Projects from "./Projects";
-import Contact from "./Contact";
-import Burger from "./Burger";
-import { useDevice } from "./Context/DeviceContext.js";
+import Home from "../Home/Home";
+import About from "../About/About";
+import Projects from "../Projects/Projects.js";
+import Contact from "../Contact/Contact";
+import Burger from "../Burger/Burger";
+import { useDevice } from "../Context/DeviceContext.js";
 
 
 function Article ({content, isCollapsed, handleClick, isMenuOpen, toggleMenu, handleCloseGame, isGameClosed, handleCollapse, showButtons, setShowButtons}) {

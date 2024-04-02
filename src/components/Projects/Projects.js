@@ -1,5 +1,5 @@
-import Platformer from "./Projects/Platformer.js"
-import ShootEmUp from "./Projects/ShootEmUp/ShootEmUp.js";
+import Platformer from "./Platformer.js"
+import ShootEmUp from "./ShootEmUp/ShootEmUp.js";
 /*import TestFPS from "./Projects/Testing.js";*/
 import { useState } from "react";
 

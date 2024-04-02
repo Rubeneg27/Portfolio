@@ -1,6 +1,6 @@
 import './index.css';
 import { DeviceProvider, useDevice } from "./components/Context/DeviceContext.js";
-import Main from './components/Main.js'
+import Main from './components/Main/Main.js'
 
 function App() {
   //const { isMobile } = useDevice()

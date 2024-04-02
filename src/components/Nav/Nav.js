@@ -1,5 +1,5 @@
 
-import { useDevice } from "./Context/DeviceContext.js";
+import { useDevice } from "../Context/DeviceContext.js";
 
 function Nav ({isCollapsed, handleClickHome, handleClickAbout, handleClickProjects, handleClickContact}) {
   

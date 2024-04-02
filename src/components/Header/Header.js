@@ -1,5 +1,5 @@
 import {FaReact, FaJs, FaHtml5, FaCss3, FaUnity } from "react-icons/fa";
-import { useDevice } from "./Context/DeviceContext.js";
+import { useDevice } from "../Context/DeviceContext.js";
 
 function Header ({updateContent}) {
 

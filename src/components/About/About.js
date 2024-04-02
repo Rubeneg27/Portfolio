@@ -1,7 +1,7 @@
-import Skills from "./About/Skills"
-import Experience from "./About/Experience"
+import Skills from "./Skills.js"
+import Experience from "./Experience.js"
 import { useEffect, useState } from "react";
-import { useDevice } from "./Context/DeviceContext.js";
+import { useDevice } from "../Context/DeviceContext.js";
 
 const About = ({showButtons, setShowButtons}) => {
 

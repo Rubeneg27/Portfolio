@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDevice } from "./Context/DeviceContext.js";
+import { useDevice } from "../Context/DeviceContext.js";
 
 function Contact () {
 

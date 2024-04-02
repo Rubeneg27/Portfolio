@@ -1,7 +1,7 @@
-import Header from './Header';
-import Nav from './Nav';
-import Article from "./Article";
-import { useDevice } from "./Context/DeviceContext.js";
+import Header from '../Header/Header.js';
+import Nav from '../Nav/Nav.js';
+import Article from "../Article/Article.js";
+import { useDevice } from "../Context/DeviceContext.js";
 
 import { useEffect, useState } from "react";
 
