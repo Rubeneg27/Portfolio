@@ -1,4 +1,4 @@
-import './index.css';
+import './styles/css/index.css';
 import { DeviceProvider, useDevice } from "./components/Context/DeviceContext.js";
 import Main from './components/Main/Main.js'
 
