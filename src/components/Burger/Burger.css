@@ -1,0 +1,139 @@
+.burger {
+  opacity: 100%;
+  padding: 0;
+  position: absolute;
+  background-color: var(--secondary-color);
+  height: 60px;
+  width: 60px;
+  border: none;
+  z-index: 9999;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.burgerMobile {
+  margin-top: -7vh;
+  opacity: 100%;
+  padding: 0;
+  position: absolute;
+  background-color: var(--secondary-color);
+  height: 60px;
+  width: 60px;
+  border: none;
+  z-index: 9999;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.burger:hover {
+  cursor: pointer;
+  background-color: var(--info-lighest-color);
+}
+.burger:active {
+  background-color: var(--info-lighest-color);
+  cursor: pointer;
+}
+
+.burger-hidden{
+  opacity: 0%;
+  padding: 0;
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  border: none;
+  z-index: 9999;
+}
+
+.burger > svg {
+  padding: 25%;
+}
+
+.burgerMobile > svg {
+  padding: 25%;
+}
+
+svg > rect {
+  fill: var(--primary-color);
+  width: 30px;
+  height: 6px;
+}
+
+.dropdown-menu {
+  display: grid;
+  height: 25vh;
+  margin-top: -7vh;
+  width: 31vw;
+  padding: 0;
+  background-color: var(--secondary-color);
+  box-shadow: 7px 7px 0px var(--secondary-darkest-color-transparent);
+  color: var(--primary-color);
+  list-style: none;
+  position: absolute;
+  z-index: 9999;
+  transition: all 0.3s ease-in-out;
+  align-content: center;
+  overflow: hidden;
+}
+
+.dropdownMenuMobile {
+  display: grid;
+  height: 25vh;
+  margin: 0;
+  width: 10vw;
+  padding: 0;
+  background-color: var(--secondary-color);
+  box-shadow: 7px 7px 0px var(--secondary-darkest-color-transparent);
+  color: var(--primary-color);
+  list-style: none;
+  position: absolute;
+  z-index: 9999;
+  transition: all 0.3s ease-in-out;
+  align-content: center;
+  overflow: hidden;
+}
+
+.dropdown-menu-hidden {
+  height: 0;
+  width: 0;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropdown-menu li {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 1vw;
+  height: 5.5vh;
+  color: var(--primary-color);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropdown-menu-hidden li {
+  display: none;
+  width: 0;
+  box-sizing: border-box;
+  padding-left: 1vw;
+  height: 5.5vh;
+  color: var(--primary-color);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropdown-menu li:hover {
+  cursor: pointer;
+  background-color: var(--info-lighest-color);
+  color: var(--secondary-color)
+}
+
+.dropdown-menu-closed {
+  margin: 0;
+  width: 0vw;
+  padding: 2% 0% 2% 0%;
+  box-shadow: 7px 7px 0px var(--secondary-darkest-color-transparent);
+  color: var(--primary-color);
+  list-style: none;
+  position: absolute;
+  z-index: 9999;
+  transition: all 0.3s ease-in-out;
+}

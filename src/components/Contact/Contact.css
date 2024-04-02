@@ -1,0 +1,96 @@
+/*CONTACT*/
+
+.contact {
+  width: 60vw;
+  height: 100%;
+  justify-self: center;
+  padding: 2vw;
+  background: var(--primary-light-color);
+  border-width: medium;
+  border-color: var(--primary-light-color);
+  border-style: dashed;
+  box-sizing: border-box;
+}
+
+.contactMobile {
+  padding: 2vw;
+  background: var(--primary-light-color);
+  border-width: medium;
+  border-color: var(--primary-light-color);
+  border-style: dashed;
+  box-sizing: border-box;
+  
+}
+
+.contact form {
+  color: var(--secondary-color);
+  padding: 0% 5% 0% 5%;
+}
+
+.contact li,
+.contactMobile li {
+  list-style: none;
+  display: grid;
+  margin-bottom: 2vh;
+  
+}
+
+.contact li input {
+  height: 3vh;
+  width: 100%;
+  background-color: white;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
+}
+
+.Message-Box {
+  height: 25vh;
+  width: 100%;
+  background-color: white;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
+}
+
+form > li > label {
+  margin-bottom: 2vh;
+}
+
+
+.contact > form > button {
+  border: none;
+  padding: 1vw;
+  transition: all 0.3s ease-out;
+  color: var(--primary-color);
+  background-color: var(--info-dark-color);
+  width: auto;
+  height: auto;
+  font-size: 1.4vw;
+  margin-top: 3vh
+}
+
+.contactMobile > form > button {
+  border: none;
+  padding: 1vw;
+  transition: all 0.3s ease-out;
+  color: var(--primary-color);
+  background-color: var(--info-dark-color);
+  font-size: large;
+}
+
+form > button:hover {
+  border: none;
+  padding: 1vw;
+  transition: all 0.3s ease-out;
+  color: var(--primary-color);
+  background-color: var(--info-dark-color);
+  width: auto;
+  height: auto;
+  font-size: 1.4vw;
+}
+
+form > button:active {
+  transition: none;
+  background-color: var(--secondary-color);
+}

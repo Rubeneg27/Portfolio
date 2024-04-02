@@ -1,0 +1,14 @@
+.projects {
+  font-size: 1.4rem;
+  height: 100%;
+  width: 100%;
+}
+
+.back-button {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  margin: 6% 1% 1% 1%;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}

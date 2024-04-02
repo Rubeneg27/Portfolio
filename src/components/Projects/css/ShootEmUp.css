@@ -1,0 +1,67 @@
+.canvas-hidden {
+  position: absolute;
+  width: 0;
+  height: 768px;
+}
+
+.canvas-init {
+  height: 75vh;
+  background-color: var(--primary-light-color);
+  justify-self: center;
+  align-self: center;
+}
+
+/*Menú de ShootEmUp*/
+
+.shootEmUp, .platformer {
+  box-sizing: border-box;
+    padding: 0vw 5vw 0vw 5vw;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    /* background-color: var(--secondary-color); */
+    height: 100%;
+}
+
+.gameTitle {
+    box-sizing: border-box;
+    color: #77deff;
+    font-family: retro gaming;
+    margin: 6vh 2vw 10vh 2vw;
+    font-size: 5vw;
+}
+
+/*Loading Screen*/
+
+.loading-screen{
+  display: flex;
+  justify-content: center;
+  background-color: var(--secondary-color);
+  width: 100vh;
+  height: 75vh;
+}
+
+.loader{
+  margin-top: 40vh;
+  display: block;
+  position: relative;
+  height: 12px;
+  width: 40%;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.loader:after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background: #FF3D00;
+  animation: 1s prog ease-in infinite;
+}
+
+@keyframes prog {
+  to  {   width: 100%;}
+}

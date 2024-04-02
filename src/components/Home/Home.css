@@ -1,0 +1,103 @@
+.Home {
+  color: var(--secondary-color);
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+  height: 100%;
+}
+
+.HomeMobile {
+  display: block;
+  background: var(--primary-color);
+  padding: 3vw 0vw 3vw 0vw;
+}
+
+.HomeMobile > .Home-text {
+  box-sizing: border-box;
+  margin: 0;
+  box-shadow: none;
+  width: 100%;
+}
+
+.Home-text {
+  font-weight: bold;
+  box-sizing: border-box;
+  padding: 1vw;
+  background: var(--info-color);
+  height: 100%;
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+  text-align: left;
+  width: 36vw;
+}
+
+.image-container {
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+  width: 20vw;
+  height: 24vw;
+}
+
+.HomeMobile > .image-container {
+  position: absolute;
+  margin: -68vh 0vw 0vw 69vw;
+  width: 30vw;
+}
+
+.image-container > img {
+  width: 100%;
+}
+
+.Home > .Home-text > .p-1{
+  padding: 2%;
+  color: var(--secondary-color);
+  font-weight: bold;
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+  background: var(--primary-light-color);
+  font-size: 90%;
+  margin-bottom: 3vh;
+  margin-top: 2vh;
+  text-align: justify;
+}
+
+
+.HomeMobile > .Home-text > .p-1{
+  padding: 2%;
+  color: var(--secondary-color);
+  font-weight: bold;
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+  background: var(--primary-light-color);
+  font-size: 90%;
+  margin-bottom: 3vh;
+  margin-top: 2vh;
+  text-align: justify;
+}
+
+.p-1B{
+  padding: 2%;
+  color: var(--secondary-color);
+  font-weight: bold;
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+  background: var(--primary-light-color);
+  font-size: 80%;
+  margin-bottom: 3vh;
+  margin-top: 12vh;
+  text-align: justify;
+}
+
+.p-2{
+  padding: 2%;
+  font-size: 80%;
+  margin-bottom: 2vh;
+  margin-top: 2vh;
+  text-align: justify;
+}
+
+.p-3{
+  padding: 2%;
+  color: var(--secondary-color);
+  font-weight: bold;
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+  background: var(--primary-light-color);
+  font-size: 90%;
+  margin-bottom: 4vh;
+  margin-top: 3vh;
+}

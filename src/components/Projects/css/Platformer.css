@@ -1,0 +1,103 @@
+.canvas-hidden {
+  position: absolute;
+  width: 0;
+  height: 768px;
+}
+
+.canvas-init {
+  height: 75vh;
+  background-color: var(--primary-light-color);
+  justify-self: center;
+  align-self: center;
+}
+
+/*Menú de Platformer*/
+
+.game-menu-init {
+  position: absolute;
+  display: grid;
+  width: 100vh;
+  height: 75vh;
+  background-color: var(--secondary-dark-color);
+  color: var(--primary-color);
+  margin: 0;
+  justify-content: center;
+}
+
+.game-menu-hidden {
+  display: none;
+}
+
+.pause-menu-init {
+  justify-self: center;
+  position: absolute;
+  display: grid;
+  width: 100vh;
+  height: 75vh;
+  background-color: #393e4a40;
+  color: #683506;
+  justify-content: center;
+}
+
+.pause-menu-hidden {
+  display: none;
+}
+
+.pause-menu-init h1 {
+  font-family: Retro Gaming;
+  color: white;
+  font-size: 60px;
+}
+
+.game-menu-init button {
+  color: #5a8ded;
+  border: none;
+  background: none;
+  font-family: Retro Gaming;
+  font-size: 2rem;
+}
+.game-menu-init button:hover {
+  color: #3af8b9;
+  border: none;
+  background: none;
+  font-family: Retro Gaming;
+  font-size: 2rem;
+}
+
+.pause-menu-init button {
+  color: #5a8ded;
+  border: none;
+  background: none;
+  font-family: Retro Gaming;
+  font-size: 2rem;
+}
+
+.pause-menu-init button:hover {
+  color: #3af8b9;
+  border: none;
+  background: none;
+  font-family: Retro Gaming;
+  font-size: 2rem;
+}
+
+.score {
+  margin: 2vh 0 0 -40vw;
+  position: absolute;
+  color: var(--primary-color);
+
+}
+
+.gameScreen {
+  display: none;
+  justify-content: center;
+  transition: all 1s ease; 
+  height: 768px;
+  width: 100vw;
+  background-color: var(--secondary-darkest-color);
+}
+
+.gameScreen-hidden {
+  transition: all 0.3s ease-in-out;
+  height: 0;
+  width: 0;
+}

@@ -1,0 +1,89 @@
+.experiencie {
+  padding: 2vw;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.about > .experiencie > section {
+    color: var(--primary-color);
+    box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+    background-color: var(--neutral-light-color);
+    box-sizing: border-box;
+    width: 100%;
+    height: 50vh;
+    padding: 2vw;
+    border-width: medium;
+    border-color: var(--primary-color);
+    border-style: dashed;
+}
+
+.aboutMobile > .experiencie > section {
+  color: var(--primary-light-color);
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+  background-color: var(--neutral-light-color);
+  box-sizing: border-box;
+  width: 100%;
+  padding: 2vw;
+  border-width: medium;
+  border-color: var(--primary-light-color);
+  border-style: dashed;
+}
+
+.CertificateLink{
+  padding: 0.8%;
+  font-weight: bold;
+  background-color: var(--info-dark-color);
+}
+
+.CertificateLink:hover{
+  cursor: pointer;
+}
+
+.CertificateImg {
+  position: absolute;
+  top: 11vw;
+  z-index: 1;
+  width: 45vw;
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+  transition: all 0.5s ease-in-out;
+}
+
+.CertificateImg_hidden {
+  position: absolute;
+  top: 30vw;
+  width: 0vw;
+  transition: all 0.3s ease-in-out;
+}
+
+.CertificateImg > img {
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+}
+
+.skills > a {
+  position: absolute;
+  z-index: 2;
+  top: 41vw;
+  right: 30vw;
+  width: 10vw;
+  height: 4vw;
+}
+
+.CertificateImg > a:hover {
+  cursor: pointer;
+}
+
+.CertificateImg_hidden > img {
+  width: 0vw;
+  transition: all 0.3s ease-in-out;
+}
+
+.imgClose {
+  left: 0;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}

@@ -1,0 +1,82 @@
+html {
+  --font-size-global: 16px;
+  --min-width: 320px;
+  /*Sizes*/
+  --h1-font-size: 2.2rem;
+  --h2-font-size: 1.8rem;
+  --h3-font-size: 1.8rem;
+  --h4-font-size: 1.5rem;
+  --h5-font-size: 1.25rem;
+  --h6-font-size: 1rem;
+  --p-font-size: 1rem;
+  --small-font-size: 0.8rem;
+  /*Colors*/
+  --primary-color: rgb(250, 223, 201);
+  --primary-complement-color: #76b3fe;
+  --primary-dark-color: rgb(229, 194, 166);
+  --primary-darkest-color: rgb(184, 156, 133);
+  --primary-light-color: rgb(247, 230, 217);
+  --primary-lighest-color: rgb(247, 241, 236);
+  /**/
+  --secondary-color: rgb(80 91 100);
+  --secondary-complement-color: #6b9e77;
+  --secondary-dark-color: rgb(54, 61, 66);
+  --secondary-darkest-color: rgb(39, 43, 46);
+  --secondary-darkest-color-transparent: rgb(39, 43, 46, 0.5);
+  --secondary-light-color: rgb(117, 132, 145);
+  --secondary-lighest-color: rgb(165, 186, 204);
+  /**/
+  --neutral-color: rgb(97, 93, 89);
+  --neutral-complement-color: #353a30;
+  --neutral-dark-color: rgb(75, 72, 70);
+  --neutral-darkest-color: rgb(59, 58, 56);
+  --neutral-light-color: rgb(138, 133, 130);
+  --neutral-lighest-color: rgb(179, 174, 169);
+  /**/
+  --warning-color: rgb(249, 243, 189);
+  --warning-complement-color: #bdc3f9;
+  --warning-dark-color: #f7efa6;
+  --warning-darkest-color: #f6ec98;
+  --warning-light-color: #fbf7d4;
+  --warning-lighest-color: #fcfae2;
+  /**/
+  --info-color: rgb(198 209 189);
+  --info-complement-color: rgb(125, 101, 105);
+  --info-dark-color: rgb(101 125 123);
+  --info-darkest-color: rgb(68, 87, 85);
+  --info-light-color: rgb(134, 170, 167);
+  --info-lighest-color: rgb(189, 241, 237);
+  /**/
+  --text-color: rgb(230, 225, 227);
+  --text-complement-color: #e1e6e4;
+  --text-dark-color: #dad3d6;
+  --text-darkest-color: #d3cbce;
+  --text-light-color: #f2eff0;
+  --text-lighest-color: #f9f7f8;
+  /**/
+  /*Weights*/
+  --h1-font-weight: 900;
+  --h2-font-weight: 700;
+  --h3-font-weight: 400;
+  --h4-font-weight: 400;
+  --h5-font-weight: 400;
+  --h6-font-weight: 400;
+  --p-font-weight: 400;
+  --small-font-weight: 250;
+  /*Paddings*/
+  --h1-padding: 1.5rem 0;
+  --h2-padding: 1rem 0;
+  --h3-padding: 1rem 0;
+  --h4-padding: 1rem 0;
+  --h5-padding: 1rem 0;
+  --h6-padding: 1rem 0;
+  --p-padding: 1rem 0;
+  --small-padding: 0.2rem 0;
+  /*Breakpoints*/
+  --xs-breakpoint: 0;
+  --sm-breakpoint: 576px;
+  --md-breakpoint: 768px;
+  --lg-breakpoint: 992px;
+  --xl-breakpoint: 1200px;
+  --xxl-breakpoint: 1400px;
+}

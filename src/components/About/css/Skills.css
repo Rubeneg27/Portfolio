@@ -1,0 +1,98 @@
+.skills {
+  padding: 2vw;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.skillsMobile {
+  padding: 2vw;
+  box-sizing: border-box;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.skills > .skills-a,
+.skills > .skills-b {
+  display: grid;
+  height: auto;
+  box-sizing: border-box;
+  width: 45%;
+  align-content: space-between;
+}
+
+
+.skillsMobile > .skills-a,
+.skillsMobile > .skills-b {
+  display: grid;
+  height: auto;
+  box-sizing: border-box;
+  width: 100%;
+  align-content: space-between;
+}
+
+
+.skills-a div{
+  overflow: auto;
+  color: var(--primary-light-color);
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+  background-color: var(--neutral-light-color);
+  box-sizing: border-box;
+  height: 21vh;
+  padding: 2vh;
+  border-width: medium;
+  border-color: var(--primary-light-color);
+  border-style: dashed;
+}
+
+.skills-b div{
+  overflow: auto;
+  background: var(--primary-light-color);
+  height: 30%;
+  margin: 2% 0 0 0;
+  padding: 0 2% 0 2%;
+  border-width: medium;
+  border-color: var(--primary-light-color);
+  border-style: dashed;
+}
+
+.skills-b .div-a{
+  color: var(--primary-light-color);
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+  background-color: var(--neutral-light-color);
+  box-sizing: border-box;
+  height: 44vh;
+  margin: 0;
+  padding: 2vh;
+  border-width: medium;
+  border-color: var(--primary-light-color);
+  border-style: dashed;
+}
+
+.skills-img{
+  margin: 2px;
+  border-width: medium;
+  border-color: #e0b995;
+  border-style: dashed;
+  height: 30vh;
+}
+
+.linkedIn {
+  position: relative;
+}
+
+.linkedIn:before {
+  content: "\f000";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: #000;
+    font-size: 18px;
+    padding-right: 0.5em;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}

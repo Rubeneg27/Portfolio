@@ -1,0 +1,25 @@
+.main {
+  background-color: var(--primary-color);
+  box-sizing: border-box;
+  height: 100vh;
+  margin: 0vw 4vw 0vw 4vw;
+}
+
+.mainMobile {
+  height: 75vh;
+}
+
+.main-section {
+  display: flex;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  justify-content: space-between;
+  height: 80vh;
+  background: var(--neutral-light-color);
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+}
+
+.mainSectionMobile {
+  margin-left: 0;
+  margin-right: 0;
+}
