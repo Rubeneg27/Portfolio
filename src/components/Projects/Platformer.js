@@ -634,7 +634,6 @@ function Platformer({handleCloseGame, isGameClosed, setProject, setPressed, hand
         <button onClick={handleQuitGame}> - Quit - </button>
       </div>
       <canvas className = {gameStarted? "canvas-init" : "canvas-hidden"}ref={canvasRef} />
-      
     </div>
   )
 }

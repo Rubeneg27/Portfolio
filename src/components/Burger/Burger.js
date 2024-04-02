@@ -1,4 +1,5 @@
 import { useDevice } from "../Context/DeviceContext.js";
+import './Burger.css'
 
 function Burger ({isCollapsed, isMenuOpen, handleClick, toggleMenu}) {
 

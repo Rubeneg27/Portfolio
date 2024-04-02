@@ -1,3 +1,5 @@
+import './Main.css'
+
 import Header from '../Header/Header.js';
 import Nav from '../Nav/Nav.js';
 import Article from "../Article/Article.js";

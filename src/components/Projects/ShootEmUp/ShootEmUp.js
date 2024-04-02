@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import '../css/ShootEmUp.css'
 import {GameManager, Player, EnemyA} from './Clases';
 
 const _GameManager = new GameManager();
