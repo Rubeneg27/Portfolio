@@ -1,4 +1,5 @@
 import img from "../../Assets/Perfil.png"
+import './Home.css'
 import { useDevice } from "../Context/DeviceContext.js";
 
 function Home () {

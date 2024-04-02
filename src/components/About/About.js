@@ -1,5 +1,6 @@
 import Skills from "./Skills.js"
 import Experience from "./Experience.js"
+import './css/About.css'
 import { useEffect, useState } from "react";
 import { useDevice } from "../Context/DeviceContext.js";
 

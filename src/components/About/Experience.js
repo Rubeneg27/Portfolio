@@ -1,3 +1,5 @@
+import './css/Experience.css'
+
 function Experience() {
     return (
             <div className="experiencie">

@@ -1,5 +1,6 @@
 
 import { useDevice } from "../Context/DeviceContext.js";
+import './Nav.css'
 
 function Nav ({isCollapsed, handleClickHome, handleClickAbout, handleClickProjects, handleClickContact}) {
   

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './css/Skills.css'
 import courseraCertificate from "../../Assets/Coursera-Certificado.png"
 import { useDevice } from "../Context/DeviceContext.js";
 

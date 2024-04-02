@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import './css/Platformer.css'
 
 function Platformer({handleCloseGame, isGameClosed, setProject, setPressed, handleCollapse}) {
 

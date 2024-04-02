@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './Contact.css'
 import { useDevice } from "../Context/DeviceContext.js";
 
 function Contact () {

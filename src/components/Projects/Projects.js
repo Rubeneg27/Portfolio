@@ -1,7 +1,9 @@
+import { useState } from "react";
+import './css/Projects.css'
 import Platformer from "./Platformer.js"
 import ShootEmUp from "./ShootEmUp/ShootEmUp.js";
 /*import TestFPS from "./Projects/Testing.js";*/
-import { useState } from "react";
+
 
 function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
 

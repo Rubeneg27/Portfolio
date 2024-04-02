@@ -1,7 +1,7 @@
 function Goals() {
     return (
         <section>
-				</section>
+		</section>
     )
 }
 
