@@ -12,14 +12,14 @@ function Main() {
   const { isMobile } = useDevice();
 
   //Agrupar aquí todos los estados
-  const [pageStatus, setPageStatus] = useState ({
-    isGameClosed:true,
-    path:"",
-    showButtons:true,
-    isCollapsed:false,
-    isMenuOpen:false,
-    content:"Home",
-  })
+  // const [pageStatus, setPageStatus] = useState ({
+  //   isGameClosed:true,
+  //   path:"",
+  //   showButtons:true,
+  //   isCollapsed:false,
+  //   isMenuOpen:false,
+  //   content:"Home",
+  // })
 
   const [isGameClosed, setIsGameClosed] = useState(true)
   const [path, setPath] = useState("")
@@ -88,7 +88,7 @@ function Main() {
   ///Renderizará el contenido correspondiente en el primer renderizado del compomente.///
   useEffect(() => {
     setContent(content)
-  }, [])
+  }, [content])
 
   /*
   ///Comprobará que el juego se cierra correctamente en este componente.///
