@@ -24,24 +24,27 @@ function Skills() {
             </div>
             <div className="skills-a">
                 <div>
-                    <h2>Academic Background</h2>
-				    <p>Graduated in Chemistry from the University of Seville</p>
-                </div>
-                <div>
                     <h2>Skills</h2>
-				    <p>Certification: <span className="CertificateLink" onClick={()=>handleCertificateImg(true)}>Meta Front-end Developer</span>.</p>
-                    <p>Programming Languages: Javascript, C# and HTML.</p> 
-                    <p>Libraries: React, Angular.</p>
-                </div>
-                <div>
+                    <p>HTML5</p>
+                    <p>CSS, SASS</p>
+                    <p>Javascript, Typescript</p>
+                    <p>C#</p>
+                    <p>Python</p>
+                    <p>React</p>
+                    <p>Angular</p>
+                    <p>Git, GitHub</p>            
+                    <h2>Academic Background</h2>
+                    <p>Bootcamp: Front-End developer</p>
+                    <p>Certification: <span className="CertificateLink" onClick={()=>handleCertificateImg(true)}>Meta Front-end Developer</span>.</p>
+				    <p>Graduated in Chemistry from the University of Seville</p>
                     <h2>Languages</h2>
                     <p>English</p>
                     <p>Certification: B1.</p>
                     <p>Speaking Level: Conversational.</p>
-                </div>            
-                </div>
-            <div className="skills-b">
-                <div className="div-a">
+                </div>           
+            </div>
+            <div className="skills-a">
+                <div>
                     <h2>Soft skills</h2>
                     <p>Consistent and solution-oriented.</p>
                     <p>Accustomed to teamwork.</p>

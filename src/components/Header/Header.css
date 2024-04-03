@@ -1,12 +1,11 @@
 .Header {
   height: 12vh;
   margin-bottom: 4vh;
-
   margin-left: 5vw;
   margin-right: 5vw;
   display: flex;
   justify-content: space-between;
-  background-color: var(--primary-color);
+  background-color: var(--primary-light-color, rgb(252, 211, 136));
   box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
 }
 
@@ -126,7 +125,7 @@ code {
 */
 
 /*Efecto scroll lateral para los logos de Header*/
-.logo1, .logo2, .logo3, .logo4, .logo5, .logo6 {
+.logo {
   box-sizing: border-box;
   -webkit-user-select: none;
   user-select: none;
@@ -137,7 +136,7 @@ code {
   fill: var(--primary-color);
 }
 
-.logoCont1, .logoCont2, .logoCont3, .logoCont4, .logoCont5, .logoCont6 {
+.logoCont {
   padding: 2%;
   -webkit-user-select: none;
   user-select: none;
@@ -147,13 +146,13 @@ code {
   background-color: var(--secondary-color);
 }
 
-.logoCont1 > span, .logoCont2 > span, .logoCont3 > span, .logoCont4 > span, .logoCont5 > span, .logoCont6 > span {
+.logoCont > span{
   user-select: none;
   width: 0;
   opacity: 0;
 }
 
-.logoCont1:hover, .logoCont2:hover, .logoCont3:hover, .logoCont4:hover, .logoCont5:hover, .logoCont6:hover {
+.logoCont:hover {
   user-select: none;
   display: flex;
   transition: all 0.6s ease-out;
@@ -163,7 +162,7 @@ code {
   font-weight: bold;
 }
 
-.logoCont1:hover > span, .logoCont2:hover > span, .logoCont3:hover > span, .logoCont4:hover > span, .logoCont5:hover > span, .logoCont6:hover > span {
+.logoCont:hover > span {
   user-select: none;
   transition: opacity 0.7s ease-out;
   opacity: 100%;

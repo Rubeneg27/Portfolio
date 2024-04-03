@@ -29,7 +29,7 @@
 .Nav {
   list-style: none;
   padding-inline-start: 0;
-  margin: 2vw 0 0 0;
+  margin: 2rem 1rem;
   justify-self: center;
   transition: all 0.3s ease-in-out;
 }

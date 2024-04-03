@@ -1,21 +1,19 @@
 .about {
   box-sizing: border-box;
-  height: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--primary-light-color, rgb(252, 211, 136));
   font-size: 55%;
 }
 
 .aboutMobile {
   box-sizing: border-box;
   height: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--primary-light-color, rgb(252, 211, 136));
   font-size: 15px;
 }
 
-.about > .toExpButton {
+.toExpButton {
   border: none;
-  margin: -6vw 0 0 51vw;
-  position: absolute;
+  margin: 2vw 0;
   padding: 1vw;
   transition: all 0.3s ease-out;
   color: var(--primary-color);
@@ -34,10 +32,9 @@
   font-size: 3vh;
 }
 
-.about > .toExpButton:hover {
+.toExpButton:hover {
+  cursor: pointer;
   border: none;
-  margin: -6vw 0 0 51vw;
-  position: absolute;
   padding: 1vw;
   transition: all 0.3s ease-out;
   color: var(--primary-color);
@@ -48,10 +45,9 @@
   font-weight: normal;
 }
 
-.about > .toSkillsButton {
+.toSkillsButton {
   border: none;
-  margin: -6vw 0 0 55vw;
-  position: absolute;
+  margin: 2vw 0;
   padding: 1vw;
   transition: all 0.3s ease-out;
   color: var(--primary-color);
@@ -70,10 +66,10 @@
   font-size: 3vh;
 }
 
-.about > .toSkillsButton:hover {
+.toSkillsButton:hover {
   border: none;
-  margin: -6vw 0 0 55vw;
-  position: absolute;
+  cursor: pointer;
+  margin: 2vw 0;
   padding: 1vw;
   transition: all 0.3s ease-out;
   color: var(--primary-color);
@@ -94,7 +90,7 @@
 .resumen {
   transition: all 0.3s ease-in-out;
   border: solid 3px var(--primary-color);
-  background-color: var(--primary-color);
+  background-color: var(--primary-light-color, rgb(252, 211, 136));
   box-shadow: 7px 7px 0px var(--secondary-darkest-color-transparent);
   color: var(--primary-color);
   width: 55vw;

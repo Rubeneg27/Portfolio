@@ -41,25 +41,27 @@ const About = ({showButtons, setShowButtons}) => {
   return (
     <section className={isMobile ? "aboutMobile" : "about"} >
           {hidden ? null : 
-          <div>
-            <section className="button-container">
-              <button  onClick={()=>handleClick("Formación")}>Training</button>
-              <div className="resume">Un resumen de mi formación académica</div>
-            </section>
-            <section className="button-container">
-              <button  onClick={()=>handleClick("Experiencia")}>Experience</button>
-              <div className="resume">Resumen de mi experiencia profesional</div>
-            </section>
+            <div style={{margin: '2rem 0'}}>
+              <section className="button-container">
+                <button  onClick={()=>handleClick("Formación")}>Training</button>
+                <div className="resume">Un resumen de mi formación académica</div>
+              </section>
+              <section className="button-container">
+                <button  onClick={()=>handleClick("Experiencia")}>Experience</button>
+                <div className="resume">Resumen de mi experiencia profesional</div>
+              </section>
+            </div>
+          }
+          <div style={{height: '100%', display: 'flex', justifyContent: 'space-between'}}>
+            {hidden? content : null}
+            <button 
+            hidden={hidden?  false : true} 
+            className={buttonPressed==="skills"? "toExpButton >" : buttonPressed==="exp"? "toSkillsButton >" : ""}
+            onClick={buttonPressed==="skills"? ()=>handleClick("Experiencia") : buttonPressed==="exp"? ()=>handleClick("Formación") : ""}
+            >
+              {buttonPressed==="skills"? ">" : buttonPressed==="exp"? ">" : ""}            </button>
           </div>
-            }
-          {hidden? content : null}
-          <button 
-          hidden={hidden?  false : true} 
-          className={buttonPressed==="skills"? "toExpButton >" : buttonPressed==="exp"? "toSkillsButton >" : ""}
-          onClick={buttonPressed==="skills"? ()=>handleClick("Experiencia") : buttonPressed==="exp"? ()=>handleClick("Formación") : ""}
-          >
-            {buttonPressed==="skills"? "Experiencie >" : buttonPressed==="exp"? "Skills >" : ""}
-          </button>
+
     </section>
   )
   

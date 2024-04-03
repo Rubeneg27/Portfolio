@@ -1,6 +1,6 @@
 .article {
   padding: 0 2vw 0 2vw;
-  background-color: var(--primary-color);
+  background-color: var(--primary-light-color, rgb(252, 211, 136));
   width: 60vw;
   height: 100%;
   transition: all 0.3s ease-in-out;

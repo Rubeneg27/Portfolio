@@ -2,7 +2,7 @@
   color: var(--secondary-color);
   display: flex;
   justify-content: space-between;
-  background-color: var(--primary-color);
+  background-color: var(--primary-light-color, rgb(252, 211, 136));
   height: 100%;
 }
 
@@ -20,17 +20,18 @@
 }
 
 .Home-text {
+  margin: 2rem 0;
   font-weight: bold;
   box-sizing: border-box;
   padding: 1vw;
   background: var(--info-color);
-  height: 100%;
   box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
   text-align: left;
   width: 36vw;
 }
 
 .image-container {
+  margin: 2rem 0;
   box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
   width: 20vw;
   height: 24vw;

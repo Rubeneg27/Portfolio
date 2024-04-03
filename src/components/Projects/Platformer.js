@@ -169,6 +169,7 @@ function Platformer({handleCloseGame, isGameClosed, setProject, setPressed, hand
           y: null,   
           }     
       }, 300)
+      
        if (playerAttack) {
         c.fillStyle = 'orange'
         if (looking.right) {
