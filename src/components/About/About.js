@@ -41,7 +41,7 @@ const About = ({showButtons, setShowButtons}) => {
   return (
     <section className={isMobile ? "aboutMobile" : "about"} >
           {hidden ? null : 
-            <div style={{margin: '2rem 0'}}>
+            <div>
               <section className="button-container">
                 <button  onClick={()=>handleClick("Formación")}>Training</button>
                 <div className="resume">Un resumen de mi formación académica</div>
@@ -52,7 +52,7 @@ const About = ({showButtons, setShowButtons}) => {
               </section>
             </div>
           }
-          <div style={{height: '100%', display: 'flex', justifyContent: 'space-between'}}>
+          <div style={{display: 'flex', justifyContent: 'space-between'}}>
             {hidden? content : null}
             <button 
             hidden={hidden?  false : true} 

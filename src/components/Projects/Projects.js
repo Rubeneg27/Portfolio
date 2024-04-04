@@ -28,7 +28,7 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
     return (
         <section className="projects">
           {pressed ? null : 
-            <div style={{margin: '2rem 0'}}>
+            <div>
               <section className="button-container">
               {pressed ? null : (<button onClick={()=>handleClick("Platformer")}>Platformer</button>)}
               <div className="resume"></div>

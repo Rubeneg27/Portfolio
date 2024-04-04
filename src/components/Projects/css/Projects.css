@@ -1,4 +1,6 @@
 .projects {
+  padding: 2rem 0;
+  box-sizing: border-box;
   font-size: 1.4rem;
   height: 100%;
   width: 100%;

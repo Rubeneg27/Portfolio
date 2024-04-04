@@ -1,9 +1,9 @@
 .skills {
-  margin: 2rem 0;
   padding: 2rem;
   background-color: var(--neutral-light-color);
   box-sizing: border-box;
-  height: 100%;
+  width: 57vw;
+  height: 74vh;
   display: flex;
   justify-content: space-between;
 }
