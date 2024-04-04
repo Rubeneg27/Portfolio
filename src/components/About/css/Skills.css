@@ -22,14 +22,12 @@
   align-content: space-between;
 }
 
-
 .skillsMobile > .skills-a,
 .skillsMobile > .skills-b {
   box-sizing: border-box;
   width: 100%;
   align-content: space-between;
 }
-
 
 .skills-a div{
   overflow: auto;

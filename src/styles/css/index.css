@@ -2,13 +2,13 @@
 
 body {
   margin: 0;
-  font-size: 25px;
+  font-size: 20px;
   font-family: monospace, Retro Gaming, Quicksand
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--neutral-light-color);
-  color: var(--primary-color);
+  color: var(--primary-light-color);
 }
 
 .popUpText {
@@ -16,26 +16,35 @@ body {
   padding: 0.5rem;
   font-weight: bold;
   color: var(--secondary-color);
-  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
   background: var(--primary-light-color);
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
 }
 
-.toExpButton:hover {
-  transition: all 0.3s ease-out;
-  color: var(--primary-color);
-  background-color: var(--info-lighest-color);
+.dashCard {
+  box-sizing: border-box;
+  padding: 1vw;
+  font-weight: bold;
+  text-align: left;
+  height: fit-content;
+  width: fit-content;
+  border-width: medium;
+  border-color: var(--primary-light-color);
+  border-style: dashed;
+  color: var(--primary-lighest-color);
+  background: var(--neutral-light-color);
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
 }
 
 .custombtn {
-  border: none;
   margin: 1rem 0;
   padding: 1vw;
-  transition: all 0.3s ease-out;
-  color: var(--primary-color);
-  background-color: var(--info-dark-color);
+  font-size: 1.4vw;
   width: auto;
   height: auto;
-  font-size: 1.4vw;
+  border: none;
+  color: var(--primary-color);
+  background-color: var(--info-dark-color);
+  transition: all 0.3s ease-out;
 }
 
 .custombtn-mobile {
@@ -48,8 +57,9 @@ body {
 }
 
 .custombtn:hover {
+  cursor: pointer;
   transition: all 0.3s ease-out;
-  color: var(--primary-color);
+  color: var(--neutral-light-color);
   background-color: var(--info-lighest-color);
 }
 

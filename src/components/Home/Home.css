@@ -34,11 +34,13 @@
 }
 
 .image-container {
+  display: flex;
+  justify-content: center;
   background: var(--neutral-light-color);
   padding: 1rem;
   box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
-  width: 20vw;
-  height: 24vw;
+  width: 19vw;
+  height: fit-content;
   border-width: medium;
   border-color: rgb(255 244 236);
   border-style: dashed;
@@ -51,10 +53,11 @@
 }
 
 .image-container > img {
-  width: 100%;
+  width: 15rem;
+  height: 20rem;
 }
 
-.Home > .Home-text > .p-1{
+/* .Home > .Home-text > .p-1{
   padding: 2%;
   color: var(--secondary-color);
   font-weight: bold;
@@ -108,4 +111,4 @@
   font-size: 90%;
   margin-bottom: 4vh;
   margin-top: 3vh;
-}
+} */

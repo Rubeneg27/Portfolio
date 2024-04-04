@@ -44,11 +44,11 @@ const About = ({showButtons, setShowButtons}) => {
             <div>
               <section className="button-container">
                 <button  onClick={()=>handleClick("Formación")}>Training</button>
-                <div className="resume">Un resumen de mi formación académica</div>
+                <div className="resume dashCard">Achademic background<br></br>Certificates<br></br>Skills<br></br>Softskills</div>
               </section>
               <section className="button-container">
                 <button  onClick={()=>handleClick("Experiencia")}>Experience</button>
-                <div className="resume">Resumen de mi experiencia profesional</div>
+                <div className="resume dashCard">Profesional experiencie</div>
               </section>
             </div>
           }

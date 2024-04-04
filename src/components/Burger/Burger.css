@@ -57,9 +57,9 @@ svg > rect {
 }
 
 .dropdown-menu {
+  margin: 0;
   display: grid;
   height: 25vh;
-  margin-top: -7vh;
   width: 31vw;
   padding: 0;
   background-color: var(--secondary-color);
@@ -68,12 +68,13 @@ svg > rect {
   list-style: none;
   position: absolute;
   z-index: 9999;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
   align-content: center;
   overflow: hidden;
 }
 
 .dropdownMenuMobile {
+  margin: 0;
   display: grid;
   height: 25vh;
   margin: 0;
@@ -85,13 +86,14 @@ svg > rect {
   list-style: none;
   position: absolute;
   z-index: 9999;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.5s ease-in-out;
   align-content: center;
   overflow: hidden;
 }
 
 .dropdown-menu-hidden {
-  height: 0;
+  margin: 0;
+  height: 22vh;
   width: 0;
   position: absolute;
   transition: all 0.3s ease-in-out;
