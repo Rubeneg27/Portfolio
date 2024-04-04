@@ -1,11 +1,9 @@
 /*CONTACT*/
 
 .contact {
-  width: 60vw;
-  height: 100%;
-  justify-self: center;
   padding: 2vw;
-  background: var(--primary-light-color);
+  height: 100%;
+  background: var(--info-color);
   border-width: medium;
   border-color: var(--primary-light-color);
   border-style: dashed;
@@ -16,7 +14,7 @@
   padding: 2vw;
   background: var(--primary-light-color);
   border-width: medium;
-  border-color: var(--primary-light-color);
+  border-color: var(--primary-lighest-color);
   border-style: dashed;
   box-sizing: border-box;
   
