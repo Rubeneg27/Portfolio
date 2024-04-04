@@ -20,19 +20,28 @@
 }
 
 .Home-text {
+  color: var(--primary-lighest-color);
   font-weight: bold;
   box-sizing: border-box;
   padding: 1vw;
-  background: var(--info-color);
+  background: var(--neutral-light-color);
   box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
   text-align: left;
   width: 36vw;
+  border-width: medium;
+  border-color: var(--primary-light-color);
+  border-style: dashed;
 }
 
 .image-container {
+  background: var(--neutral-light-color);
+  padding: 1rem;
   box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
   width: 20vw;
   height: 24vw;
+  border-width: medium;
+  border-color: rgb(255 244 236);
+  border-style: dashed;
 }
 
 .HomeMobile > .image-container {

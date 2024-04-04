@@ -59,7 +59,8 @@ const About = ({showButtons, setShowButtons}) => {
             className={buttonPressed==="skills"? "toExpButton >" : buttonPressed==="exp"? "toSkillsButton >" : ""}
             onClick={buttonPressed==="skills"? ()=>handleClick("Experiencia") : buttonPressed==="exp"? ()=>handleClick("Formación") : ""}
             >
-              {buttonPressed==="skills"? ">" : buttonPressed==="exp"? ">" : ""}            </button>
+              {buttonPressed==="skills"? ">" : buttonPressed==="exp"? ">" : ""}
+            </button>
           </div>
 
     </section>

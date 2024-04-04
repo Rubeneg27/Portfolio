@@ -38,16 +38,11 @@ function Main() {
   ///Se llamará al hacer click en los botones del Nav y el DropdownMenu.///
   ///PARÁMETROS///
   ///e: recibirá y pasará a updateContent el content a renderizar.///
-  const handleClick = (e) => {
+  const handleClick = (e, showButton) => {
+    setShowButtons(showButton)
     updateContent(e)
     setisMenuOpen(false)
     setIsCollapsed(false)
-    if (e==="About") {
-      setShowButtons(true)
-      console.log(showButtons)
-    } else {
-      setShowButtons(false)
-    }
   }
 
   ///Cerrará el juego en ejecución y marcará que contenido se deberá renderizar posteriormente en el efecto///
@@ -103,10 +98,10 @@ function Main() {
       <div className={isMobile? "mainSectionMobile" : "main-section"} >
         <Nav 
         isCollapsed={isCollapsed}
-        handleClickHome={()=>{handleClick("Home")}} 
-        handleClickAbout={()=>{handleClick("About")}} 
-        handleClickProjects={()=>{handleClick("Projects")}} 
-        handleClickContact={()=>{handleClick("Contact")}}
+        handleClickHome={()=>{handleClick("Home", false)}} 
+        handleClickAbout={()=>{handleClick("About", true)}} 
+        handleClickProjects={()=>{handleClick("Projects", false)}} 
+        handleClickContact={()=>{handleClick("Contact", false)}}
         />
         <Article 
         content={content} 
