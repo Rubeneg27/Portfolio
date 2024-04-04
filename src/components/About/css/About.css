@@ -2,7 +2,7 @@
   height: 100%;
   box-sizing: border-box;
   background-color: var(--primary-light-color, rgb(252, 211, 136));
-  font-size: 55%;
+  font-size: 1rem;
 }
 
 .aboutMobile {
@@ -11,67 +11,6 @@
   background-color: var(--primary-light-color, rgb(252, 211, 136));
   font-size: 15px;
 }
-
-.toExpButton {
-  border: none;
-  margin: 2rem 0;
-  padding: 1vw;
-  transition: all 0.3s ease-out;
-  color: var(--primary-color);
-  background-color: var(--info-dark-color);
-  width: auto;
-  height: auto;
-  font-size: 1.4vw;
-}
-
-.aboutMobile > .toExpButton {
-  border: none;
-  padding: 1vw;
-  transition: all 0.3s ease-out;
-  color: var(--primary-color);
-  background-color: var(--info-dark-color);
-  font-size: 3vh;
-}
-
-.toExpButton:hover {
-  transition: all 0.3s ease-out;
-  color: var(--primary-color);
-  background-color: var(--info-lighest-color);
-}
-
-.toSkillsButton {
-  border: none;
-  margin: 2rem 0;
-  padding: 1vw;
-  transition: all 0.3s ease-out;
-  color: var(--primary-color);
-  background-color: var(--info-dark-color);
-  width: auto;
-  height: auto;
-  font-size: 1.4vw;
-}
-
-.aboutMobile > .toSkillsButton {
-  border: none;
-  padding: 1vw;
-  transition: all 0.3s ease-out;
-  color: var(--primary-color);
-  background-color: var(--info-dark-color);
-  font-size: 3vh;
-}
-
-.toSkillsButton:hover {
-  transition: all 0.3s ease-out;
-  color: var(--primary-color);
-  background-color: var(--info-lighest-color);
-}
-
-.toExpButton:active, .toSkillsButton:active{
-  transition: none;
-  background-color: var(--secondary-color);
-}
-
-/*Buttons*/
 
 .resumen {
   transition: all 0.3s ease-in-out;

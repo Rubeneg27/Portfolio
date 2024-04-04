@@ -38,7 +38,7 @@
   background-color: var(--neutral-light-color);
   box-sizing: border-box;
   height: 100%;
-  padding: 2vh;
+  padding: 0 2vh;
   border-width: medium;
   border-color: var(--primary-light-color);
   border-style: dashed;

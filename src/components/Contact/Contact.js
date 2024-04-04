@@ -25,7 +25,7 @@ function Contact () {
             <form>
 
                 <li>
-                    <label>Subject</label>
+                    <label className='popUpText'>Subject</label>
                     <input 
                     type="text"
                     placeholder='Subject of the email'
@@ -33,14 +33,14 @@ function Contact () {
                     ></input>
                 </li>
                 <li>
-                    <label>Message</label>
+                    <label className='popUpText'>Message</label>
                     <textarea 
                     className="Message-Box" 
                     placeholder="Write here your message"
                     onChange={(e) => setMessage(encodeURIComponent(e.target.value))}
                     ></textarea>
                 </li>
-                <button onClick={composeEmail}>Send mail</button>
+                <button className="custombtn" onClick={composeEmail}>Send mail</button>
             </form>
         </section>
     )

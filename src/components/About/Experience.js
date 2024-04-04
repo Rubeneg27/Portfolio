@@ -4,7 +4,7 @@ function Experience() {
     return (
             <div className="experiencie">
                 <section>
-                    <h2>Work Experience</h2>
+                    <h2 className='popUpText'>Work Experience</h2>
                     <h3>Company</h3>
     	    	    <p>Destilaciones Bordas S.A</p>
                     <h3>Position</h3>

@@ -1,13 +1,16 @@
 /*CONTACT*/
 
 .contact {
+  color: var(--neutral-color);
   padding: 2vw;
   height: 100%;
-  background: var(--info-color);
+  background: var(--neutral-lighest-color);
   border-width: medium;
   border-color: var(--primary-light-color);
   border-style: dashed;
   box-sizing: border-box;
+  font-weight: bold;
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
 }
 
 .contactMobile {
@@ -21,8 +24,7 @@
 }
 
 .contact form {
-  color: var(--secondary-color);
-  padding: 0% 5% 0% 5%;
+  padding: 0 5%;
 }
 
 .contact li,
@@ -53,42 +55,4 @@
 
 form > li > label {
   margin-bottom: 2vh;
-}
-
-
-.contact > form > button {
-  border: none;
-  padding: 1vw;
-  transition: all 0.3s ease-out;
-  color: var(--primary-color);
-  background-color: var(--info-dark-color);
-  width: auto;
-  height: auto;
-  font-size: 1.4vw;
-  margin-top: 3vh
-}
-
-.contactMobile > form > button {
-  border: none;
-  padding: 1vw;
-  transition: all 0.3s ease-out;
-  color: var(--primary-color);
-  background-color: var(--info-dark-color);
-  font-size: large;
-}
-
-form > button:hover {
-  border: none;
-  padding: 1vw;
-  transition: all 0.3s ease-out;
-  color: var(--primary-color);
-  background-color: var(--info-dark-color);
-  width: auto;
-  height: auto;
-  font-size: 1.4vw;
-}
-
-form > button:active {
-  transition: none;
-  background-color: var(--secondary-color);
 }

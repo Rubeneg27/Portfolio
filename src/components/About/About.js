@@ -56,7 +56,7 @@ const About = ({showButtons, setShowButtons}) => {
             {hidden? content : null}
             <button 
             hidden={hidden?  false : true} 
-            className={buttonPressed==="skills"? "toExpButton >" : buttonPressed==="exp"? "toSkillsButton >" : ""}
+            className="custombtn"
             onClick={buttonPressed==="skills"? ()=>handleClick("Experiencia") : buttonPressed==="exp"? ()=>handleClick("Formación") : ""}
             >
               {buttonPressed==="skills"? ">" : buttonPressed==="exp"? ">" : ""}

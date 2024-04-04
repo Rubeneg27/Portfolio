@@ -24,20 +24,17 @@ function Skills() {
             </div>
             <div className="skills-a">
                 <div>
-                    <h2>Skills</h2>
+                    <h2 className='popUpText' >Skills</h2>
                     <p>HTML5</p>
                     <p>CSS, SASS</p>
-                    <p>Javascript, Typescript</p>
-                    <p>C#</p>
-                    <p>Python</p>
-                    <p>React</p>
-                    <p>Angular</p>
+                    <p>Javascript, Typescript, C#, Python</p>
+                    <p>React, Angular</p>
                     <p>Git, GitHub</p>            
-                    <h2>Academic Background</h2>
+                    <h2 className='popUpText'>Academic Background</h2>
                     <p>Bootcamp: Front-End developer</p>
-                    <p>Certification: <span className="CertificateLink" onClick={()=>handleCertificateImg(true)}>Meta Front-end Developer</span>.</p>
+                    <p>Certification: <span className="customLink" onClick={()=>handleCertificateImg(true)}>Meta Front-end Developer</span>.</p>
 				    <p>Graduated in Chemistry from the University of Seville</p>
-                    <h2>Languages</h2>
+                    <h2 className='popUpText'>Languages</h2>
                     <p>English</p>
                     <p>Certification: B1.</p>
                     <p>Speaking Level: Conversational.</p>
@@ -45,7 +42,7 @@ function Skills() {
             </div>
             <div className="skills-a">
                 <div>
-                    <h2>Soft skills</h2>
+                    <h2 className='popUpText'>Soft skills</h2>
                     <p>Consistent and solution-oriented.</p>
                     <p>Accustomed to teamwork.</p>
                     <p>Always ready to learn, acknowledge my mistakes, and learn from them.</p>

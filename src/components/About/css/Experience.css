@@ -33,13 +33,13 @@
   border-style: dashed;
 }
 
-.CertificateLink{
+.customLink{
   padding: 0.8%;
   font-weight: bold;
-  background-color: var(--info-dark-color);
+  background-color: var(--info-darkest-color);
 }
 
-.CertificateLink:hover{
+.customLink:hover{
   cursor: pointer;
 }
 

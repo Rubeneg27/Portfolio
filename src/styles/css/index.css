@@ -10,3 +10,50 @@ body {
   background-color: var(--neutral-light-color);
   color: var(--primary-color);
 }
+
+.popUpText {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+  background: var(--primary-light-color);
+}
+
+.toExpButton:hover {
+  transition: all 0.3s ease-out;
+  color: var(--primary-color);
+  background-color: var(--info-lighest-color);
+}
+
+.custombtn {
+  border: none;
+  margin: 1rem 0;
+  padding: 1vw;
+  transition: all 0.3s ease-out;
+  color: var(--primary-color);
+  background-color: var(--info-dark-color);
+  width: auto;
+  height: auto;
+  font-size: 1.4vw;
+}
+
+.custombtn-mobile {
+  border: none;
+  padding: 1vw;
+  transition: all 0.3s ease-out;
+  color: var(--primary-color);
+  background-color: var(--info-dark-color);
+  font-size: 3vh;
+}
+
+.custombtn:hover {
+  transition: all 0.3s ease-out;
+  color: var(--primary-color);
+  background-color: var(--info-lighest-color);
+}
+
+.custombtn:active{
+  transition: none;
+  background-color: var(--secondary-color);
+}
