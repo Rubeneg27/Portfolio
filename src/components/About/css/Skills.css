@@ -1,11 +1,12 @@
 .skills {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  height: 74vh;
+  width: 57vw;
   padding: 2rem;
   background-color: var(--neutral-light-color);
-  box-sizing: border-box;
-  width: 57vw;
-  height: 74vh;
-  display: flex;
-  justify-content: space-between;
+  overflow: auto;
 }
 
 .skillsMobile {
@@ -15,55 +16,22 @@
   justify-content: space-between;
 }
 
-.skills > .skills-a,
-.skills > .skills-b {
-  box-sizing: border-box;
-  width: 45%;
-  align-content: space-between;
-}
-
-.skillsMobile > .skills-a,
-.skillsMobile > .skills-b {
-  box-sizing: border-box;
+.imgClose {
+  left: 0;
+  top: 0;
+  height: 100%;
+  position: absolute;
   width: 100%;
+}
+
+.skills > div {
+  box-sizing: border-box;
   align-content: space-between;
 }
 
-.skills-a div{
-  overflow: auto;
-  color: var(--primary-light-color);
-  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
-  background-color: var(--neutral-light-color);
+.skillsMobile > div {
   box-sizing: border-box;
-  height: 100%;
-  padding: 0 2vh;
-  border-width: medium;
-  border-color: var(--primary-light-color);
-  border-style: dashed;
-}
-
-.skills-b div{
-  overflow: auto;
-  background: var(--primary-light-color);
-  height: 100%;
-  margin: 2% 0 0 0;
-  padding: 0 2% 0 2%;
-  border-width: medium;
-  border-color: var(--primary-light-color);
-  border-style: dashed;
-}
-
-.skills-b .div-a{
-  color: var(--primary-light-color);
-  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
-  background-color: var(--neutral-light-color);
-  box-sizing: border-box;
-  height: 44vh;
-  margin: 0;
-  padding: 2vh;
-  border-width: medium;
-  border-color: var(--primary-light-color);
-  border-style: dashed;
+  align-content: space-between;
 }
 
 .skills-img{
@@ -92,3 +60,5 @@
     top: 10px;
     left: 0;
 }
+
+

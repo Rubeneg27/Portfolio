@@ -22,7 +22,7 @@ function Skills() {
             <div className={showCertificateImg ? "CertificateImg" : "CertificateImg_hidden"} >
                 {<img  alt="certificado coursera de front end developer" src={courseraCertificate}></img>}
             </div>
-            <div className="skills-a">
+            <div className="dashCard">
                 <div>
                     <h3 className='popUpText' >Skills</h3>
                     <p>HTML5</p>
@@ -40,7 +40,7 @@ function Skills() {
                     <p>Speaking Level: Conversational.</p>
                 </div>           
             </div>
-            <div className="skills-a">
+            <div className="dashCard">
                 <div>
                     <h3 className='popUpText'>Soft skills</h3>
                     <p>Consistent and solution-oriented.</p>

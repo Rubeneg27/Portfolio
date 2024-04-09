@@ -1,27 +1,15 @@
-.experiencie {
-  padding: 2rem;
-  background-color: var(--neutral-light-color);
-  box-sizing: border-box;
-  width: 57vw;
-  height: 74vh;
+.experience {
   display: flex;
+  padding: 2rem;
+  height: 74vh;
+  width: 57vw;
+  box-sizing: border-box;
   justify-content: space-between;
+  background-color: var(--neutral-light-color);
+  overflow: auto;
 }
 
-.experiencie > section {
-    color: var(--primary-light-color);
-    box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
-    background-color: var(--neutral-light-color);
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    padding: 0 1vw;
-    border-width: medium;
-    border-color: var(--primary-color);
-    border-style: dashed;
-}
-
-.aboutMobile > .experiencie > section {
+.aboutMobile > .experience > section {
   color: var(--primary-light-color);
   box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
   background-color: var(--neutral-light-color);
@@ -80,12 +68,4 @@
 .CertificateImg_hidden > img {
   width: 0vw;
   transition: all 0.3s ease-in-out;
-}
-
-.imgClose {
-  left: 0;
-  top: 0;
-  height: 100%;
-  position: absolute;
-  width: 100%;
 }

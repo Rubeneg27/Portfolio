@@ -1,9 +1,11 @@
 .Home {
-  color: var(--secondary-color);
   display: flex;
-  justify-content: space-between;
-  background-color: var(--primary-light-color, rgb(252, 211, 136));
+  padding: 2rem;
   height: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+  color: var(--secondary-color);
+  background-color: var(--neutral-light-color);
 }
 
 .HomeMobile {
@@ -20,30 +22,14 @@
 }
 
 .Home-text {
-  color: var(--primary-lighest-color);
   font-weight: bold;
-  box-sizing: border-box;
-  padding: 1vw;
-  background: var(--neutral-light-color);
-  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
   text-align: left;
-  width: 36vw;
-  border-width: medium;
-  border-color: var(--primary-light-color);
-  border-style: dashed;
+  width: 35vw;
 }
 
 .image-container {
   display: flex;
   justify-content: center;
-  background: var(--neutral-light-color);
-  padding: 1rem;
-  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
-  width: 19vw;
-  height: fit-content;
-  border-width: medium;
-  border-color: rgb(255 244 236);
-  border-style: dashed;
 }
 
 .HomeMobile > .image-container {
@@ -53,7 +39,7 @@
 }
 
 .image-container > img {
-  width: 15rem;
+  width: 16rem;
   height: 20rem;
 }
 

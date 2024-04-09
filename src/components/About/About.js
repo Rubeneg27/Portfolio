@@ -42,12 +42,12 @@ const About = ({showButtons, setShowButtons}) => {
     <section className={isMobile ? "aboutMobile" : "about"} >
           {hidden ? null : 
             <div>
-              <section className="button-container">
-                <button  onClick={()=>handleClick("Formación")}>Training</button>
+              <section className="button-container" onClick={()=>handleClick("Formación")}>
+                <button>Training</button>
                 <div className="resume dashCard">Achademic background<br></br>Certificates<br></br>Skills<br></br>Softskills</div>
               </section>
-              <section className="button-container">
-                <button  onClick={()=>handleClick("Experiencia")}>Experience</button>
+              <section className="button-container" onClick={()=>handleClick("Experiencia")}>
+                <button>Experience</button>
                 <div className="resume dashCard">Profesional experiencie</div>
               </section>
             </div>
