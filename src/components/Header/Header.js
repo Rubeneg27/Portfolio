@@ -8,7 +8,11 @@ function Header ({updateContent}) {
 
     return (
         <div className={isMobile ? "HeaderMobile" : "Header"}>
-                <div className="title" onClick={() => updateContent("Home")}>Ruben's site</div>
+                <div className="title" onClick={() => updateContent("Home")}>
+                    <div className="titleLogo">
+                        R's
+                    </div>
+                </div>
                 <div className={isMobile ? "decorationMobile" : "decoration"} >
                         <div className="logoCont"><FaJs className="logo" /><span>Javascript</span></div>
                         <div className="logoCont"><FaReact className="logo" /><span>React</span></div>

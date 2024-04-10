@@ -33,14 +33,19 @@ code {
   width: 15vw;
   box-sizing: border-box;
   font-weight: bold;
-  display: inline-flex;
   align-content: center;
   flex-wrap: wrap;
-  padding: 0vw 0vw 0vw 15px;
   margin-right: auto;
+  background-color: var(--primary-light-color);
+  color: var(--secondary-color);
+  font-size: 5rem;
+}
+
+.titleLogo {
+  padding: 1rem;
   background-color: var(--secondary-color);
-  color: var(--primary-color);
-  font-size: 2vw;
+  color: var(--primary-light-color);
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
 }
 
 .title:hover{
@@ -87,7 +92,6 @@ code {
 .decoration {
   align-self: center;
   display: flex;
-  justify-content: flex-end;
   width: 36vw;
   height: 7vh;
   margin: 1vw 4vw 1vw 1vw;

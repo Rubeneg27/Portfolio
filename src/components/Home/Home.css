@@ -8,6 +8,9 @@
   background-color: var(--neutral-light-color);
 }
 
+.mediaContainer {
+}
+
 .HomeMobile {
   display: block;
   background: var(--primary-color);
@@ -22,9 +25,12 @@
 }
 
 .Home-text {
+  flex-wrap: wrap;
+  display: flex;
   font-weight: bold;
   text-align: left;
   width: 35vw;
+  align-content: space-between;
 }
 
 .image-container {

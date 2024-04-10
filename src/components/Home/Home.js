@@ -25,9 +25,11 @@ function Home () {
         <div className="image-container dashCard">
           <img src={img} alt="foto de perfil de Rubén Espinosa con el monte fuji en el fondo"/>
         </div>
-        <div className="dashCard">LinkedIn</div>
-        <div className="dashCard">GitHub</div>
-        <div className="dashCard">Email</div>
+        <div className="mediaContainer">
+          <div className="dashCard">LinkedIn</div>
+          <div className="dashCard">GitHub</div>
+          <div className="dashCard">Email</div>
+        </div>
       </div>
     </section>
     
