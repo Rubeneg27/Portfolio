@@ -5,12 +5,8 @@ import About from "../About/About";
 import Projects from "../Projects/Projects.js";
 import Contact from "../Contact/Contact";
 import Burger from "../Burger/Burger";
-<<<<<<< HEAD
-// import { useDevice } from "../Context/DeviceContext.js";
-=======
 import Header from "../Header/Header";
 import { useDevice } from "../Context/DeviceContext.js";
->>>>>>> second
 
 
 function Article ({content, isCollapsed, handleClick, isMenuOpen, toggleMenu, handleCloseGame, isGameClosed, handleCollapse, showButtons, setShowButtons}) {
