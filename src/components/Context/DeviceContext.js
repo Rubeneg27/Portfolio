@@ -25,7 +25,7 @@ export function DeviceProvider({ children }) {
     return () => {
       mediaQuery.removeListener(checkIfMobile);
     };
-  }, []); 
+  }, [isMobile]); 
 
   return (
     <DeviceContext.Provider value={{ isMobile }}>
