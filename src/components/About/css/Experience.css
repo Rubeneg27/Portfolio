@@ -1,7 +1,7 @@
 .experience {
   display: flex;
   padding: 2rem;
-  height: 74vh;
+  height: fit-content;
   width: 57vw;
   box-sizing: border-box;
   justify-content: space-between;
