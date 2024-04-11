@@ -42,7 +42,7 @@ body {
   height: auto;
   border: none;
   color: var(--primary-color);
-  background-color: var(--info-dark-color);
+  background-color: var(--info-light-color);
   transition: all 0.3s ease-out;
 }
 

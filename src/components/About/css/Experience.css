@@ -2,7 +2,7 @@
   display: flex;
   padding: 2rem;
   height: fit-content;
-  width: 57vw;
+  width: 60vw;
   box-sizing: border-box;
   justify-content: space-between;
   background-color: var(--neutral-light-color);
