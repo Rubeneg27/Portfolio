@@ -94,7 +94,6 @@ function Main() {
  
   return (
     <main className={isMobile ? "mainMobile" : "main"} onClick={handleClickBody}>
-      <Header updateContent={updateContent}></Header>
       <div className={isMobile? "mainSectionMobile" : "main-section"} >
         <Nav 
         isCollapsed={isCollapsed}

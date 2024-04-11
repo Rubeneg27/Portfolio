@@ -3,7 +3,7 @@
   padding: 2rem;
   height: 100%;
   box-sizing: border-box;
-  justify-content: space-between;
+  justify-content: center;
   color: var(--secondary-color);
   background-color: var(--neutral-light-color);
 }

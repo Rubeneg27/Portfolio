@@ -1,9 +1,8 @@
 .main {
-  padding: 1rem;
   background-color: var(--primary-color);
   box-sizing: border-box;
   height: 100vh;
-  margin: 0vw 4vw 0vw 4vw;
+  margin: 0 6vw;
 }
 
 .mainMobile {
@@ -14,10 +13,13 @@
   display: flex;
   margin-left: 5vw;
   margin-right: 5vw;
-  justify-content: space-between;
-  height: 80vh;
+  /* justify-content: space-between; */
+  height: 100vh;
   background: var(--neutral-light-color);
-  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+  /* box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent); */
+  align-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
 .mainSectionMobile {

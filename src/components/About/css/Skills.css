@@ -2,8 +2,8 @@
   display: flex;
   box-sizing: border-box;
   justify-content: space-between;
-  height: 74vh;
-  width: 57vw;
+  height: fit-content;
+  width: 60vw;
   padding: 2rem;
   background-color: var(--neutral-light-color);
   overflow: auto;
