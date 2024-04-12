@@ -28,7 +28,7 @@
 .Nav {
   list-style: none;
   padding-inline-start: 0;
-  margin: 2rem 1rem;
+  margin: 0.5vw;
   justify-self: center;
   transition: all 0.3s ease-in-out;
 }
@@ -49,8 +49,8 @@
   font-weight: bold;
   box-sizing: border-box;
   padding-left: 1vw;
-  background-color: var(--info-light-color);
-  color: var(--primary- color);
+  background-color: var(--info-color);
+  color: var(--primary-light-color);
   box-shadow: 7px 7px 0px var(--secondary-darkest-color-transparent);
   transition: all 0.3s ease-in-out;
   margin-bottom: 1.4vw;

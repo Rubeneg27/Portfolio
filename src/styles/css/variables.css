@@ -20,7 +20,7 @@ html {
   /**/
   --secondary-color: rgb(80 91 100);
   --secondary-complement-color: #6b9e77;
-  --secondary-dark-color: rgb(54, 61, 66);
+  --secondary-dark-color: rgb(74 79 83);
   --secondary-darkest-color: rgb(39, 43, 46);
   --secondary-darkest-color-transparent: rgb(39, 43, 46, 0.5);
   --secondary-light-color: rgb(124, 131, 138);
@@ -40,7 +40,7 @@ html {
   --warning-light-color: #fbf7d4;
   --warning-lighest-color: #fcfae2;
   /**/
-  --info-color: rgb(198 209 189);
+  --info-color: rgb(76, 168, 156);
   --info-complement-color: rgb(125, 101, 105);
   --info-dark-color: rgb(101 125 123);
   --info-darkest-color: rgb(68, 87, 85);

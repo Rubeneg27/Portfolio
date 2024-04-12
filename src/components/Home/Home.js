@@ -1,4 +1,5 @@
 import img from "../../Assets/Perfil.png"
+import {FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import './Home.css'
 import { useDevice } from "../Context/DeviceContext.js";
 
@@ -26,9 +27,30 @@ function Home () {
           <img src={img} alt="foto de perfil de Rubén Espinosa con el monte fuji en el fondo"/>
         </div>
         <div className="mediaContainer">
-          <div className="dashCard">LinkedIn</div>
-          <div className="dashCard">GitHub</div>
-          <div className="dashCard">Email</div>
+        <div className="dashCard">
+            <div style={{display: 'flex'}}>
+              <FaGithub className="logo" />
+                <span style={{alignSelf: 'center', marginLeft: '1vw'}}>
+                  {isMobile ? "" : "https://github.com/Rubeneg27/"}
+                </span>
+            </div>
+          </div>
+          <div className="dashCard">
+            <div style={{display: 'flex'}}>
+              <FaLinkedin className="logo" />
+                <span style={{alignSelf: 'center', marginLeft: '1vw'}}>
+                  {isMobile ? "" : "www.linkedin.com/in/rubeneg27"}
+                </span>
+            </div>
+          </div>
+          <div className="dashCard">
+            <div style={{display: 'flex'}}>
+              <FaEnvelope className="logo" />
+                <span style={{alignSelf: 'center', marginLeft: '1vw'}}>
+                  {isMobile ? "" : "rubeneg27@gmail.com"}
+                </span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

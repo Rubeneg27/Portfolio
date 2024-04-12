@@ -1,5 +1,6 @@
 .article {
   min-height: 679px;
+  margin-right: 1vw;
   padding: 1vw;
   background-color: var(--primary-light-color, rgb(252, 211, 136));
   width: -webkit-fill-available;

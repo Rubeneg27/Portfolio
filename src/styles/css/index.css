@@ -6,7 +6,7 @@ body {
   font-family: monospace, Retro Gaming, Quicksand, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--neutral-light-color);
+  background-color: var(--secondary-dark-color);
   color: var(--primary-light-color);
 }
 
@@ -21,8 +21,8 @@ body {
 
 .dashCard {
   box-sizing: border-box;
-  padding: 0 2rem;
-  margin: 1rem;
+  padding: 0 2vw;
+  margin: 1vw;
   height: fit-content;
   width: -webkit-fill-available;
   border-width: medium;
@@ -41,8 +41,8 @@ body {
   width: auto;
   height: auto;
   border: none;
-  color: var(--primary-color);
-  background-color: var(--info-light-color);
+  color: var(--primary-light-color);
+  background-color: var(--info-color);
   transition: all 0.3s ease-out;
 }
 

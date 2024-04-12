@@ -87,7 +87,7 @@ code {
 .decoration {
   align-self: center;
   display: flex;
-  width: 36vw;
+  width: -webkit-fill-available;
   height: 7vh;
   background-color: var(--neutral-light-color);
 }
@@ -134,7 +134,7 @@ code {
 }
 
 .logoCont {
-  padding: 2%;
+  padding: 0 1vw;
   -webkit-user-select: none;
   user-select: none;
   transition: all 0.6s ease-out;
