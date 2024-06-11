@@ -2,8 +2,6 @@
 
 .contact {
   color: var(--neutral-color);
-  padding: 2vw;
-  height: 100%;
   background: var(--neutral-lighest-color);
   border-width: medium;
   border-color: var(--primary-light-color);
