@@ -9,6 +9,13 @@
   background-color: var(--neutral-light-color);
 }
 
+@media (max-width: 1600px) {
+  .Home {
+    display: block;
+    overflow: scroll;
+  }
+}
+
 .mediaContainer {
 }
 
@@ -30,7 +37,6 @@
   display: flex;
   font-weight: bold;
   text-align: left;
-  width: 35vw;
   align-content: space-between;
 }
 
