@@ -1,3 +1,6 @@
+//PRIORITARIO
+Añadir overflow scroll a partir de altura 900px
+
 ///GENERAL
 Arreglar vista móvil
 Corregir tamaño de fuente para tamaños más pequeños

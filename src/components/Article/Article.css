@@ -1,10 +1,11 @@
 .article {
   box-sizing: border-box;
   height: 77vh;
+  max-height: 900px;
   margin: 0 1vw;
   padding: 1vw;
   background-color: var(--primary-light-color, rgb(252, 211, 136));
-  width: 64vw;
+  width: 61vw;
   transition: all 0.3s ease-in-out;
 }
 
