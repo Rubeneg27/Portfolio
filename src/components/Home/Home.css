@@ -1,7 +1,7 @@
 .Home {
   display: flex;
   padding: 1vw;
-  height: 63vh;
+  height: 65vh;
   max-height: 700px;
   box-sizing: border-box;
   justify-content: center;
@@ -16,7 +16,11 @@
   }
 }
 
-.mediaContainer {
+.Home-photo-media {
+  flex-wrap: wrap;
+  display: flex;
+  align-content: space-between;
+  justify-content: center;
 }
 
 .HomeMobile {
