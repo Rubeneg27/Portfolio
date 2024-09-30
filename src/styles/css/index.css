@@ -10,6 +10,10 @@ body {
   color: var(--primary-light-color);
 }
 
+section {
+  overflow: scroll;
+}
+
 .popUpText {
   margin: 1rem 0;
   padding: 0.5rem;

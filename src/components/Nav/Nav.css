@@ -53,6 +53,7 @@
   transition: all 0.3s ease-in-out;
   margin-bottom: 2vh;
   height: 6vh;
+  min-height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,23 +1,12 @@
 .Home {
-  display: flex;
-  padding: 1vw;
-  height: 69vh;
-  max-height: 700px;
+  max-height: 70vh;
   box-sizing: border-box;
   justify-content: center;
   color: var(--secondary-color);
   background-color: var(--neutral-light-color);
 }
 
-@media (max-width: 1600px) {
-  .Home {
-    display: block;
-    overflow: scroll;
-  }
-}
-
 .Home-photo-media {
-  flex-wrap: wrap;
   display: flex;
   align-content: space-between;
   justify-content: center;
@@ -45,6 +34,7 @@
 }
 
 .image-container {
+  padding: 1vh;
   display: flex;
   justify-content: center;
 }
@@ -56,8 +46,15 @@
 }
 
 .image-container > img {
-  width: 16rem;
-  height: 20rem;
+  width: 11rem;
+  height: 14rem;
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+}
+
+.mediaContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 /* .Home > .Home-text > .p-1{

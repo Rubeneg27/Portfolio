@@ -22,35 +22,35 @@ function Home () {
           <p className="popUpText">I hope you enjoy your visit!</p>
         </div>
       </div>
-      <div className="Home-photo-media">
-        <div className="image-container dashCard">
+      <div className="Home-photo-media dashCard" >
+        <div className="image-container ">
           <img src={img} alt="foto de perfil de Rubén Espinosa con el monte fuji en el fondo"/>
         </div>
         <div className="mediaContainer">
-        <div className="dashCard">
-            <div style={{display: 'flex'}}>
+          <a className="dashCard" href="https://github.com/Rubeneg27/">
+            <div style={{display: 'flex'}} href="https://github.com/Rubeneg27/">
               <FaGithub className="logo" />
                 <span style={{alignSelf: 'center', marginLeft: '1vw'}}>
                   {isMobile ? "" : "https://github.com/Rubeneg27/"}
                 </span>
             </div>
-          </div>
-          <div className="dashCard">
+          </a>
+          <a className="dashCard" href="https://www.linkedin.com/in/rub%C3%A9n-espinosa-gonz%C3%A1lez/">
             <div style={{display: 'flex'}}>
               <FaLinkedin className="logo" />
                 <span style={{alignSelf: 'center', marginLeft: '1vw'}}>
                   {isMobile ? "" : "www.linkedin.com/in/rubeneg27"}
                 </span>
             </div>
-          </div>
-          <div className="dashCard">
+          </a>
+          <a className="dashCard" href="rubeneg27@gmail.com">
             <div style={{display: 'flex'}}>
               <FaEnvelope className="logo" />
                 <span style={{alignSelf: 'center', marginLeft: '1vw'}}>
                   {isMobile ? "" : "rubeneg27@gmail.com"}
                 </span>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </section>
