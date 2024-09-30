@@ -1,11 +1,13 @@
 .skills {
-  display: flex;
+  max-height: 70vh;
   box-sizing: border-box;
   justify-content: space-between;
+  height: -moz-fit-content;
   height: fit-content;
+  width: -webkit-fill-available;
   padding: 1vw;
   background-color: var(--neutral-light-color);
-  overflow: auto;
+  overflow: scroll;
 }
 
 .skillsMobile {
