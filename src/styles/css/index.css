@@ -2,13 +2,19 @@
 
 body {
   margin: 0;
-  font-size: 20px;
+  font-size: 18px;
   font-family: monospace, Retro Gaming, Quicksand, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--secondary-dark-color);
   color: var(--primary-light-color);
+
+  @media (max-width: 1024px) {
+      font-size: 16px;
+  }
 }
+
+
 
 section {
   overflow: scroll;

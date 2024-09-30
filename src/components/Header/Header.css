@@ -128,17 +128,23 @@ code {
   user-select: none;
   display: inline-flex;
   align-items: center;
-  width: 40px;
-  height: 100%;
+  min-width: 30px;
+  min-height: 30px;
   fill: var(--primary-color);
+  
+  @media (max-width: 1250px) {
+    width: 30px;
+    height: 30px;
+  }
 }
+
+
 
 .logoCont {
   padding: 0 1vw;
-  -webkit-user-select: none;
-  user-select: none;
   transition: all 0.6s ease-out;
   display: flex;
+  align-items: center;
   width: 40px;
   background-color: var(--secondary-color);
 }
@@ -153,7 +159,6 @@ code {
   user-select: none;
   display: flex;
   transition: all 0.6s ease-out;
-  padding: 2%;
   width: 100%;
   background-color: var(--secondary-light-color);
   font-weight: bold;

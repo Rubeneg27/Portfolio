@@ -27,27 +27,27 @@ function Home () {
           <img src={img} alt="foto de perfil de Rubén Espinosa con el monte fuji en el fondo"/>
         </div>
         <div className="mediaContainer">
-          <a className="dashCard" href="https://github.com/Rubeneg27/">
-            <div style={{display: 'flex'}} href="https://github.com/Rubeneg27/">
+          <a className="dashCard" href="https://github.com/Rubeneg27/" style={{maxWidth: 'fit-content' }}>
+            <div style={{display: 'flex'}} >
               <FaGithub className="logo" />
-                <span style={{alignSelf: 'center', marginLeft: '1vw'}}>
-                  {isMobile ? "" : "https://github.com/Rubeneg27/"}
+                <span style={{alignSelf: 'center', marginLeft: '1vw', maxWidth: 'fit-content'}}>
+                  {/* {isMobile ? "" : "https://github.com/Rubeneg27/"} */}
                 </span>
             </div>
           </a>
-          <a className="dashCard" href="https://www.linkedin.com/in/rub%C3%A9n-espinosa-gonz%C3%A1lez/">
+          <a className="dashCard" href="https://www.linkedin.com/in/rub%C3%A9n-espinosa-gonz%C3%A1lez/" style={{maxWidth: 'fit-content' }}>
             <div style={{display: 'flex'}}>
               <FaLinkedin className="logo" />
-                <span style={{alignSelf: 'center', marginLeft: '1vw'}}>
-                  {isMobile ? "" : "www.linkedin.com/in/rubeneg27"}
+                <span style={{alignSelf: 'center', marginLeft: '1vw', maxWidth: 'fit-content' }}>
+                  {/* {isMobile ? "" : "www.linkedin.com/in/rubeneg27"} */}
                 </span>
             </div>
           </a>
-          <a className="dashCard" href="rubeneg27@gmail.com">
+          <a className="dashCard" href="rubeneg27@gmail.com" style={{maxWidth: 'fit-content' }}>
             <div style={{display: 'flex'}}>
               <FaEnvelope className="logo" />
-                <span style={{alignSelf: 'center', marginLeft: '1vw'}}>
-                  {isMobile ? "" : "rubeneg27@gmail.com"}
+                <span style={{alignSelf: 'center', marginLeft: '1vw', maxWidth: 'fit-content'}}>
+                  {/* {isMobile ? "" : "rubeneg27@gmail.com"} */}
                 </span>
             </div>
           </a>
