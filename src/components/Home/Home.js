@@ -22,6 +22,7 @@ function Home () {
           <p className="popUpText">I hope you enjoy your visit!</p>
         </div>
       </div>
+{/*       
       <div className="Home-photo-media dashCard" >
         <div className="image-container ">
           <img src={img} alt="foto de perfil de Rubén Espinosa con el monte fuji en el fondo"/>
@@ -31,7 +32,6 @@ function Home () {
             <div style={{display: 'flex'}} >
               <FaGithub className="logo" />
                 <span style={{alignSelf: 'center', marginLeft: '1vw', maxWidth: 'fit-content'}}>
-                  {/* {isMobile ? "" : "https://github.com/Rubeneg27/"} */}
                 </span>
             </div>
           </a>
@@ -39,7 +39,7 @@ function Home () {
             <div style={{display: 'flex'}}>
               <FaLinkedin className="logo" />
                 <span style={{alignSelf: 'center', marginLeft: '1vw', maxWidth: 'fit-content' }}>
-                  {/* {isMobile ? "" : "www.linkedin.com/in/rubeneg27"} */}
+    
                 </span>
             </div>
           </a>
@@ -47,12 +47,13 @@ function Home () {
             <div style={{display: 'flex'}}>
               <FaEnvelope className="logo" />
                 <span style={{alignSelf: 'center', marginLeft: '1vw', maxWidth: 'fit-content'}}>
-                  {/* {isMobile ? "" : "rubeneg27@gmail.com"} */}
+
                 </span>
             </div>
           </a>
         </div>
-      </div>
+      </div> */}
+
     </section>
     
   )

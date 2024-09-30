@@ -2,7 +2,11 @@
   background-color: var(--primary-color);
   box-sizing: border-box;
   height: 100vh;
-  margin: 0 6vw;
+  margin: 0 11vw;
+
+  @media (max-width: 1280px){
+    margin: 0 6vw;
+  }
 }
 
 .mainMobile {

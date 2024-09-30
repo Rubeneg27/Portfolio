@@ -7,6 +7,10 @@
   transition: all 0.3s ease-in-out;
 }
 
+.article::-webkit-scrollbar{
+  display: none;
+}
+
 .article-expanded {
  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
  background-color: var(--primary-color);

@@ -14,10 +14,12 @@ body {
   }
 }
 
-
-
-section {
+section{
   overflow: scroll;
+}
+
+section::-webkit-scrollbar{
+  display: none;
 }
 
 .popUpText {
