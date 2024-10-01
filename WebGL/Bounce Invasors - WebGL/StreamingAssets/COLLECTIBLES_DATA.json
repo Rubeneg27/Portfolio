@@ -1,0 +1,53 @@
+{
+    "collectibles": [
+        {
+            "id": 2,
+            "name": "llavero_medieval",
+            "type": "cosmetic",
+            "isAvailable": false,
+            "isUnlocked": false
+        },
+        {
+            "id": 0,
+            "name": "Cat_smile_basic",
+            "type": "token",
+            "isAvailable": true,
+            "isUnlocked": true
+        },
+        {
+            "id": 0,
+            "name": "Cat_attack_basic",
+            "type": "token",
+            "isAvailable": true,
+            "isUnlocked": false
+        },
+        {
+            "id": 0,
+            "name": "Cat_defeat_basic",
+            "type": "token",
+            "isAvailable": true,
+            "isUnlocked": false
+        },
+        {
+            "id": 0,
+            "name": "Cat_hit_basic",
+            "type": "token",
+            "isAvailable": false,
+            "isUnlocked": false
+        },
+        {
+            "id": 0,
+            "name": "Cat_hat_1",
+            "type": "cosmetic",
+            "isAvailable": false,
+            "isUnlocked": false
+        },
+        {
+            "id": 1,
+            "name": "Bunny_iddle_basic",
+            "type": "token",
+            "isAvailable": true,
+            "isUnlocked": false
+        }
+    ]
+}
