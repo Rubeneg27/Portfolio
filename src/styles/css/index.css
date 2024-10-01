@@ -23,8 +23,8 @@ section::-webkit-scrollbar{
 }
 
 .popUpText {
-  margin: 1rem 0;
-  padding: 0.5rem;
+  margin: 1vh 0;
+  padding: 0.5vh;
   font-weight: bold;
   color: var(--secondary-color);
   background: var(--primary-light-color);

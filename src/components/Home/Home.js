@@ -14,12 +14,15 @@ function Home () {
         <div className="dashCard">
           <p className="popUpText">Hello!</p>
           <p>My name is</p>
-          <p className="popUpText">Rubén Espinosa González</p>
+          <span className="popUpText">Rubén Espinosa González</span>
           <p>Passionate about graphic design, technology and videogames.<br></br></p>
-          <p>On my personal webpage, you can learn more about my skills, explore my projects, and get in touch with me.</p>
         </div>
         <div className="dashCard">
-          <p className="popUpText">I hope you enjoy your visit!</p>
+          <p>Dive into my webpage to know more about my professional career, skills and education.<br></br></p>
+          <p>Here, you will discover some of the games im working on.<br></br></p>
+        </div>
+        <div className="dashCard">
+          <p className="popUpText">Have fun, and I hope you enjoy your visit!</p>
         </div>
       </div>
 {/*       

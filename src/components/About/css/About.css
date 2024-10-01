@@ -55,6 +55,10 @@
   width: 100%;
   z-index: 1;
   background-color: var(--info-dark-color);
+
+  @media (max-width: 1024px){
+    font-size: 35px;
+  }
 }
 
 .button-container > .resume{

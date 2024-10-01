@@ -44,11 +44,18 @@ const About = ({showButtons, setShowButtons}) => {
             <div>
               <section className="button-container" onClick={()=>handleClick("Formación")}>
                 <button>Training</button>
-                <div className="resume dashCard">Achademic background<br></br>Certificates<br></br>Skills<br></br>Softskills</div>
+                <div style={{padding: '0 1vw'}} className="resume dashCard">
+                  <p className="popUpText">Achademic background</p>
+                  <p className="popUpText">Certificates</p>
+                  <p className="popUpText">Skills and Softskills</p>
+                </div>
               </section>
               <section className="button-container" onClick={()=>handleClick("Experiencia")}>
                 <button>Experience</button>
-                <div className="resume dashCard">Profesional experiencie</div>
+                <div style={{padding: '0 1vw'}} className="resume dashCard">
+                  <p className="popUpText">Professional background</p>
+                  <p className="popUpText">Personal projects</p>
+                </div>
               </section>
             </div>
           }
