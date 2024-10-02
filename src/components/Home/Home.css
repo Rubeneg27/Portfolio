@@ -25,16 +25,24 @@
   width: 100%;
 }
 
+.intro-photo {
+  color: var(--primary-light-color);
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
 .Home-text {
   flex-wrap: wrap;
   display: flex;
   font-weight: bold;
   text-align: left;
   align-content: space-between;
+  justify-content: center;
 }
 
 .image-container {
-  padding: 1vh;
+  margin: 1vw 1vw 0 0;
   display: flex;
   justify-content: center;
 }
@@ -46,8 +54,7 @@
 }
 
 .image-container > img {
-  width: 11rem;
-  height: 14rem;
+  height: 16vh;
   box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
 }
 
