@@ -11,19 +11,18 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
 
   const BOUNCE_GAME_URL = "/UnityWebGL/Bounce Invasors - WebGL/index.html";
 
-
   function handleClick (elemento) {
     setPressed(true)
     handleCollapse(true)
     switch(elemento) {
       case "Platformer":
-        setProject(elemento)
+        setProject("platformer")
         break;
-      case "ShootEmUp":
-        setProject(elemento)
-        break;
-      case "BounceInvasors":
-        setProject(elemento)
+        case "ShootEmUp":
+          setProject("shootemup")
+          break;
+          case "BounceInvasors":
+        setProject("BounceInvasors")
       break;
       default:
         setProject("")
