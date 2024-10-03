@@ -6,15 +6,15 @@ import Projects from "../Projects/Projects.js";
 import Contact from "../Contact/Contact";
 import Burger from "../Burger/Burger";
 import Header from "../Header/Header";
-// import { useDevice } from "../Context/DeviceContext.js";
+import { useDevice } from "../Context/DeviceContext.js";
 
 
 function Article ({content, isCollapsed, handleClick, isMenuOpen, toggleMenu, handleCloseGame, isGameClosed, handleCollapse, showButtons, setShowButtons}) {
 
-  // const { isMobile } = useDevice();
+  const { isMobile } = useDevice();
   
   return (
-    <div className={isCollapsed? "article-expanded" : "article"}>
+    <div className={isCollapsed? "article-expanded" : isMobile? "article-mobile" : "article"}>
     <Header></Header>
     <Burger isCollapsed={isCollapsed} isMenuOpen={isMenuOpen} handleClick={handleClick} toggleMenu={toggleMenu}></Burger>
     {content === "Home"? <Home></Home> : null}

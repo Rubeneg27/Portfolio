@@ -16,7 +16,7 @@ function Burger ({isCollapsed, isMenuOpen, handleClick, toggleMenu}) {
             <rect y="20"></rect>
           </svg>
         </div>
-        <ul className={isMenuOpen ? "dropdown-menu" : isMenuOpen && isMobile ? "dropdownMenuMobile": "dropdown-menu-hidden"}>
+        <ul className={isMenuOpen ? isMobile ? "dropdownMenuMobile" : "dropdown-menu" : "dropdown-menu-hidden"}>
           <li onClick={()=>{handleClick("Home")}}>Home</li>
           <li onClick={()=>{handleClick("About")}}>About</li>
           <li onClick={()=>{handleClick("Contact")}}>Contact</li>

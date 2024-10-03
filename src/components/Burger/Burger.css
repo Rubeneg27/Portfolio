@@ -11,11 +11,12 @@
 }
 
 .burgerMobile {
-  margin-top: -7vh;
+  left: 5vw;
+  bottom: 4vw;
   opacity: 100%;
   padding: 0;
   position: absolute;
-  background-color: var(--secondary-color);
+  background-color: var(--info-color);
   height: 60px;
   width: 60px;
   border: none;
@@ -74,19 +75,18 @@ svg > rect {
 }
 
 .dropdownMenuMobile {
-  margin: 0;
+  font-size: xx-large;
+  bottom: 0;
   display: grid;
   height: 25vh;
-  margin: 0;
-  width: 10vw;
-  padding: 0;
+  width: 31vw;
+  padding: 1vw;
   background-color: var(--secondary-color);
   box-shadow: 7px 7px 0px var(--secondary-darkest-color-transparent);
-  color: var(--primary-color);
   list-style: none;
   position: absolute;
   z-index: 9999;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s ease-in-out;
   align-content: center;
   overflow: hidden;
 }
