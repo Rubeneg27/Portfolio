@@ -26,10 +26,11 @@
 }
 
 .intro-photo {
+  padding: 1vw 3vw;
   color: var(--primary-light-color);
   width: 80%;
   display: flex;
-  justify-content: center;
+  justify-content: left;
 }
 
 .Home-text {
@@ -38,7 +39,7 @@
   font-weight: bold;
   text-align: left;
   align-content: space-between;
-  justify-content: center;
+  justify-content: left;
 }
 
 .image-container {

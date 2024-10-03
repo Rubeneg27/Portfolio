@@ -2,6 +2,7 @@ import { useState } from "react";
 import './css/Projects.css'
 import Platformer from "./Platformer.js"
 import ShootEmUp from "./ShootEmUp/ShootEmUp.js";
+//import * from "../../../UnityWebGL/Bounce Invasors - WebGL/index.html"
 /*import TestFPS from "./Projects/Testing.js";*/
 
 
@@ -10,16 +11,22 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
   const [project, setProject] = useState("");
   const [pressed, setPressed] = useState(false);
 
+  const BOUNCE_GAME_URL = "/UnityWebGL/Bounce Invasors - WebGL/index.html";
+
+
   function handleClick (elemento) {
     setPressed(true)
     handleCollapse(true)
     switch(elemento) {
       case "Platformer":
-        setProject("platformer")
+        setProject(elemento)
         break;
-        case "ShootEmUp":
-          setProject("shootemup")
-          break;
+      case "ShootEmUp":
+        setProject(elemento)
+        break;
+      case "BounceInvasors":
+      setProject(elemento)
+      break;
       default:
         setProject("")
     }
@@ -27,6 +34,7 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
 
     return (
         <section className="projects">
+          
           {pressed ? null : 
             <div>
               <section className="button-container">
@@ -37,10 +45,20 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
               {pressed ? null : (<button onClick={()=>handleClick("ShootEmUp")}>ShootEmUp</button>)}
               <div className="resume"></div>
             </section>
+            <section className="button-container">
+              {pressed ? null : (<button onClick={()=>handleClick("BounceInvasors")}>UNITY-Bounce Invasors</button>)}
+              <div className="resume"></div>
+            </section>
             </div>
             }
           {project === "shootemup" ? <ShootEmUp setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></ShootEmUp> : null}
           {project === "platformer" ? <Platformer setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></Platformer> : null}
+          {project === "BounceInvasors" ? <iframe title="Unity Game"
+        src={BOUNCE_GAME_URL}  // Ruta hacia el archivo HTML del juego
+        width="100%"
+        height="100%"
+        allowFullScreen>
+        </iframe> : null}
         </section>
         
     )

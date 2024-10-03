@@ -18,9 +18,9 @@ function Home () {
             <span className="popUpText">Rubén Espinosa González</span>
             <p>Passionate about graphic design, technology and videogames.<br></br></p>
           </div>
-          {/* <div className="image-container ">
-            <img src={img} alt="foto de perfil de Rubén Espinosa con el monte fuji en el fondo"/>
-          </div> */}
+            {/* <div className="image-container dashCard">
+             <img src={img} alt="foto de perfil de Rubén Espinosa con el monte fuji en el fondo"/>
+            </div> */}
         </div>
         <div className="dashCard">
           <p>Dive into my webpage to know more about my professional career, skills and education.<br></br></p>
