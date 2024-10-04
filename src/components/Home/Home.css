@@ -2,8 +2,7 @@
   max-height: 70vh;
   box-sizing: border-box;
   justify-content: center;
-  color: var(--secondary-color);
-  background-color: var(--neutral-light-color);
+  background-color: var(--secondary-color);
 }
 
 .Home-photo-media {
