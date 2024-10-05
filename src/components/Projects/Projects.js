@@ -9,7 +9,8 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
   const [project, setProject] = useState("");
   const [pressed, setPressed] = useState(false);
 
-  const BOUNCE_GAME_URL = "/UnityWebGL/Bounce Invasors - WebGL/index.html";
+  const BOUNCE_GAME_URL = `${process.env.PUBLIC_URL}/UnityWebGL/Bounce Invasors - WebGL/index.html`;
+
 
   function handleClick (elemento) {
     setPressed(true)
