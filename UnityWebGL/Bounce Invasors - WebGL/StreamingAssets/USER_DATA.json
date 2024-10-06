@@ -1,0 +1,153 @@
+{
+  "Videogame": "Bounce-Invasion",
+  "PlayerData":
+    {
+      "PlayerLevel": 0,
+      "Coins": 10
+    },
+  "ActiveLevel": 1,
+  "Levels": [
+    {
+      "id": -1,
+      "name": "Nivel plantilla",
+      "required_level": 1000,
+      "played": false,
+      "enemies": ["Bolagatos", "Gamosferas", "Bombabola"],
+      "firstDialog": {"active": true, "phrases": ["frase 1 firstDialog", "frase 2 firstDialog"]
+      },
+      "goalDialogs": [],
+      "progressionEvents": [{ "eventDescription": "String que se mostrará inGame", "key": "key para scripts", "taskGoal": 0, "taskCurrentScore": 0, "isDone": false }],
+      "optionalEvents": [{ "eventDescription": "String que se mostrará inGame", "key": "key para scripts", "taskGoal": 0, "taskCurrentScore": 0, "isDone": false }]
+    },
+    {
+      "id": 0,
+      "name": "Bolagatos",
+      "required_level": 0,
+      "played": false,
+      "enemies": ["Bolagatos"],
+      "firstDialog": {"active": true, "phrases": ["Apunta a la zona vallada de la derecha para colar Bolgatos", "Si golpeas cerca de ellos sin llegar a darles los harás girar"]
+    },
+      "goalDialogs": [],
+      "progressionEvents": [
+        { "eventDescription": "Encesta Bolagatos en el corral", "key": "Bolagatos_toScore_corral", "taskGoal": 10, "taskCurrentScore": 0, "isDone": false, "initialValue": false },
+        { "eventDescription": "Haz que giren Bolagatos", "key": "Bolagatos_toSpin", "taskGoal": 5, "taskCurrentScore": 0, "isDone": false, "initialValue": false }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Bolagatos, Gamosferas y Bombabolas",
+      "required_level": 0,
+      "played": false,
+      "enemies": ["Bolagatos", "Gamosferas", "Bombabola"],
+      "firstDialog": {"active": true, "phrases": ["Cuidado con los malvados Gamosferas, ¡mandalos a paseo en cuanto salgan!", "Pero ojo, evita golpear a los Bolabombas"]
+    },
+      "goalDialogs": [{"key": "1","phrases": ["frase 1 goal key 1"]}],
+      "progressionEvents": [
+        { "eventDescription": "Derrota Gamosferas", "key": "Gamosferas_toDefeat", "taskGoal": 30, "taskCurrentScore": 0, "isDone": false, "initialValue": false },
+        { "eventDescription": "Supera el nivel sin recibir daño de Bombabola", "key": "Bolabomba_avoid", "taskGoal": 1, "taskCurrentScore": 0,"isDone": false, "initialValue": true }
+      ]
+    },
+    {
+        "id": 2,
+        "name": "El inicio",
+        "required_level": 1,
+        "played": true,
+        "firstDialog": {
+          "key": "OnFirstLevelLoad",
+          "active": false,
+          "phrases": [
+              "Y dale, no se cansan. Sigue mandando a estos bichos a freir espárragos mientras vengan",
+              "De paso, si encuentra materiales o monedas, te los puedes quedar para hacerte algo bonito"
+          ]
+        },
+        "goalDialogs": [
+          {
+            "key": "1",
+            "phrases": [
+                "Mira eso, los vecinos se están dando cuenta de tus hazañas y poco a poco se empiezan a asomar"
+            ]
+        },
+        {
+            "key": "2",
+            "phrases": [
+                "Si golpeas cuando está bajando, el enemigo saldrá disparado a menos altura"
+            ]
+        },
+        {
+          "key": "3",
+          "phrases": [
+              "Frase de prueba"
+          ]
+      }
+        ],
+        "progressionEvents": [
+          { "eventDescription": "Nivel superado", "key": "superaNivel", "isDone": false }
+        ],
+        "optionalEvents": [{
+          "eventDescription": "Derrota"
+        }]
+    },
+    {
+      "id": 3,
+      "name": "Consiguiendo el escudo",
+      "required_level": 5,
+      "played": false,
+      "firstDialog": {
+        "active": true,
+        "phrases": [
+          "Nivel para conseguir el escudo"
+      ]
+      },
+      "progressionEvents": [
+        { "eventDescription": "Se derotado por enemigos imparables", "key": "seDerrotado", "isDone": false },
+        { "eventDescription": "Fabrica el escudo","key": "fabricaEscudo", "isDone": false },
+        { "eventDescription": "Supera el nivel con enemigos imparables","key": "SuperaNivel", "isDone": false }
+      ],
+      "optionalEvents": [
+        { "eventDescription": "Supera un nivel sin recibir daño de enemigos imparables","key": "SuperaSinDaño", "isDone": false }]
+    },
+    {
+      "id": 4,
+      "name": "Bolagatos y Bombabolas",
+      "required_level": 0,
+      "played": false,
+      "enemies": ["Bolagatos", "Bombabolas"],
+      "firstDialog": {"active": true, "phrases": ["Encesta Bolgatos en el corral, parece que se tranquilizan allí dentro", "Y recuerda, cuidado con las bolabombas"]
+    },
+      "goalDialogs": [{"key": "1","phrases": ["frase 1 goal key 1"]}],
+      "progressionEvents": [
+        { "eventDescription": "Encesta 10 bolagatos en el corral", "key": "Bolagatos_toScore_corral", "taskGoal": 10, "taskCurrentScore": 0, "isDone": false, "initialValue": false },
+        { "eventDescription": "Supera el nivel sin recibir daño de Bombabola", "key": "Bolabomba_avoid", "taskGoal": 1, "taskCurrentScore": 0, "isDone": false, "initialValue": true }
+      ]
+    }
+  ],
+  "Objects": [
+        {
+          "id": 0,
+          "name": "Blade",
+          "Available": true,
+          "unlocked": true,
+          "Details": [
+            {
+              "level": 0,
+              "color": "default",
+              "VFX": "default",
+              "SFX": "default"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "name": "Shield",
+          "Available": false,
+          "unlocked": false
+        }
+      ],
+  "Consumable": [
+        {
+          "Wood": 0,
+          "Stone": 0,
+          "Iron": 0
+        }
+      ]
+}
