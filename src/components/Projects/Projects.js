@@ -10,7 +10,7 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
   const [project, setProject] = useState("");
   const [pressed, setPressed] = useState(false);
 
-  const BOUNCE_GAME_URL = `${process.env.PUBLIC_URL}/UnityWebGL/Bounce Invasors - WebGL/index.html`;
+  
 
 
   function handleClick (elemento) {
@@ -32,11 +32,11 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
   }
 
   const { unityProvider } = useUnityContext({
-    loaderUrl: "/UnityWebGL/Bounce Invasors - WebGL/Build/Bounce Invasors - WebGL.loader.js",
-    dataUrl: "/UnityWebGL/Bounce Invasors - WebGL/Build/Bounce Invasors - WebGL.data",
-    frameworkUrl: "/UnityWebGL/Bounce Invasors - WebGL/Build/Bounce Invasors - WebGL.framework.js",
-    codeUrl: "/UnityWebGL/Bounce Invasors - WebGL/Build/Bounce Invasors - WebGL.wasm",
-    streamingAssetsUrl: "/UnityWebGL/Bounce Invasors - WebGL/StreamingAssets"
+    loaderUrl: "https://Rubeneg27.github.io/Portfolio/UnityWebGL/Bounce Invasors - WebGL/Build/Bounce Invasors - WebGL.loader.js",
+    dataUrl: "https://Rubeneg27.github.io/Portfolio/UnityWebGL/Bounce Invasors - WebGL/Build/Bounce Invasors - WebGL.data",
+    frameworkUrl: "https://Rubeneg27.github.io/Portfolio/UnityWebGL/Bounce Invasors - WebGL/Build/Bounce Invasors - WebGL.framework.js",
+    codeUrl: "https://Rubeneg27.github.io/Portfolio/UnityWebGL/Bounce Invasors - WebGL/Build/Bounce Invasors - WebGL.wasm",
+    streamingAssetsUrl: "https://Rubeneg27.github.io/Portfolio/UnityWebGL/Bounce Invasors - WebGL/StreamingAssets"
   });
 
     return (

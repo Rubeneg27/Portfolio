@@ -91,7 +91,7 @@ function Main() {
     console.log(isGameClosed)
   }, [isGameClosed])
   */
- 
+
   return (
     <main className={isMobile ? "mainMobile" : "main"} onClick={handleClickBody}>
       <div className={isMobile? "mainSectionMobile" : "main-section"} >
