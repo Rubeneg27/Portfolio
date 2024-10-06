@@ -36,6 +36,7 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
     dataUrl: "/UnityWebGL/Bounce Invasors - WebGL/Build/Bounce Invasors - WebGL.data",
     frameworkUrl: "/UnityWebGL/Bounce Invasors - WebGL/Build/Bounce Invasors - WebGL.framework.js",
     codeUrl: "/UnityWebGL/Bounce Invasors - WebGL/Build/Bounce Invasors - WebGL.wasm",
+    streamingAssetsUrl: "/UnityWebGL/Bounce Invasors - WebGL/StreamingAssets"
   });
 
     return (
@@ -61,7 +62,7 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
           {project === "platformer" ? 
           <Platformer setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></Platformer> : null}
           {project === "BounceInvasors" ? 
-            <Unity unityProvider={unityProvider}></Unity> : null
+            <Unity className="bounceInvasors" unityProvider={unityProvider}></Unity> : null
           }
         </section>
         
