@@ -2,6 +2,7 @@ import { useState } from "react";
 import './css/Projects.css'
 import Platformer from "./Platformer.js"
 import ShootEmUp from "./ShootEmUp/ShootEmUp.js";
+import { Unity, useUnityContext } from "react-unity-webgl";
 
 
 function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
@@ -9,7 +10,8 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
   const [project, setProject] = useState("");
   const [pressed, setPressed] = useState(false);
 
-  const BOUNCE_GAME_URL = "/UnityWebGL/Bounce Invasors - WebGL/index.html";
+  const BOUNCE_GAME_URL = `${process.env.PUBLIC_URL}/UnityWebGL/Bounce Invasors - WebGL/index.html`;
+
 
   function handleClick (elemento) {
     setPressed(true)
@@ -28,6 +30,13 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
         setProject("")
     }
   }
+
+  const { unityProvider } = useUnityContext({
+    loaderUrl: "/UnityWebGL/Bounce Invasors - WebGL/Build/Bounce Invasors - WebGL.loader.js",
+    dataUrl: "/UnityWebGL/Bounce Invasors - WebGL/Build/Bounce Invasors - WebGL.data",
+    frameworkUrl: "/UnityWebGL/Bounce Invasors - WebGL/Build/Bounce Invasors - WebGL.framework.js",
+    codeUrl: "/UnityWebGL/Bounce Invasors - WebGL/Build/Bounce Invasors - WebGL.wasm",
+  });
 
     return (
         <section className="projects">
@@ -52,12 +61,7 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
           {project === "platformer" ? 
           <Platformer setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></Platformer> : null}
           {project === "BounceInvasors" ? 
-            <iframe title="Unity Game"
-            src={BOUNCE_GAME_URL}
-            width="100%"
-            height="100%"
-            allowFullScreen>
-            </iframe> : null
+            <Unity unityProvider={unityProvider}></Unity> : null
           }
         </section>
         
