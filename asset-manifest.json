@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.0f9d1ea6.css",
+    "main.css": "/Portfolio/static/css/main.7ca777be.css",
     "main.js": "/Portfolio/static/js/main.b087e169.js",
     "static/js/787.1ed0c42c.chunk.js": "/Portfolio/static/js/787.1ed0c42c.chunk.js",
     "static/media/Perfil.png": "/Portfolio/static/media/Perfil.3af2d872e0b7db3cf039.png",
     "static/media/Coursera-Certificado.png": "/Portfolio/static/media/Coursera-Certificado.c506dfdfacf3ab3f9ddd.png",
     "index.html": "/Portfolio/index.html",
-    "main.0f9d1ea6.css.map": "/Portfolio/static/css/main.0f9d1ea6.css.map",
+    "main.7ca777be.css.map": "/Portfolio/static/css/main.7ca777be.css.map",
     "main.b087e169.js.map": "/Portfolio/static/js/main.b087e169.js.map",
     "787.1ed0c42c.chunk.js.map": "/Portfolio/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0f9d1ea6.css",
+    "static/css/main.7ca777be.css",
     "static/js/main.b087e169.js"
   ]
 }
