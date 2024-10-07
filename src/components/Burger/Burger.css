@@ -78,21 +78,20 @@ svg > rect {
 }
 
 .dropdownMenuMobile {
+  margin: 0;
   font-size: xx-large;
   bottom: 0;
   display: grid;
-  height: 25vh;
+  height: 50vh;
   width: 31vw;
-  padding: 1vw;
   background-color: var(--secondary-color);
-  box-shadow: 7px 7px 0px var(--secondary-darkest-color-transparent);
   list-style: none;
-  position: absolute;
+  position: fixed;
   z-index: 9999;
   transition: all 0.2s ease-in-out;
-  align-content: center;
+  align-content: space-evenly;
   overflow: hidden;
-  opacity: 80%;
+  opacity: 90%;
 }
 
 .dropdown-menu-hidden {

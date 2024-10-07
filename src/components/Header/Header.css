@@ -6,17 +6,11 @@
 }
 
 .HeaderMobile {
-  height: 11vh;
-  margin-bottom: 8vh;
+  background-color: var(--primary-light-color);
   color: var(--primary-color);
-  margin-left: 0;
-  margin-right: 0;
-  display: flex;
-  justify-content: space-between;
-  background-color: var(--primary-color);
-  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+  height: 11vh;
+  margin: 2vh 0 0 0;
 }
-
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -93,7 +87,8 @@ code {
 }
 
 .decorationMobile {
-  display: none;
+  display: flex;
+  height: 100%;
 }
 
 /*
@@ -170,7 +165,7 @@ code {
   opacity: 100%;
   border-left: 1.5vw solid var(--secondary-light-color);
   padding-left: 0.8vw;
-  font-size: 1.3vw;
+  font-size: 1rem;
   margin-right: auto;
   display: flex;
   align-items: center;
