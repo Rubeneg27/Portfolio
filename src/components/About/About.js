@@ -59,11 +59,11 @@ const About = ({showButtons, setShowButtons}) => {
               </section>
             </div>
           }
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div style={isMobile ? null : { display: 'flex', justifyContent: 'space-between'}}>
             {hidden? content : null}
             <button 
             hidden={hidden?  false : true} 
-            className="custombtn"
+            className= {isMobile ? "custombtn-mobile" : "custombtn"}
             onClick={buttonPressed==="skills"? ()=>handleClick("Experiencia") : buttonPressed==="exp"? ()=>handleClick("Formación") : ""}
             >
               {buttonPressed==="skills"? ">" : buttonPressed==="exp"? ">" : ""}

@@ -59,12 +59,13 @@ section::-webkit-scrollbar{
 }
 
 .custombtn-mobile {
+  font-size: 2rem;
+  width: 100%;
+  height: 5vh;
   border: none;
-  padding: 1vw;
+  color: var(--primary-light-color);
+  background-color: var(--info-color);
   transition: all 0.3s ease-out;
-  color: var(--primary-color);
-  background-color: var(--info-dark-color);
-  font-size: 3vh;
 }
 
 .custombtn:hover {

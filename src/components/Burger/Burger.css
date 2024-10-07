@@ -11,11 +11,11 @@
 }
 
 .burgerMobile {
+  position: fixed;
   left: 5vw;
-  bottom: 4vw;
+  bottom: 8vw;
   opacity: 100%;
   padding: 0;
-  position: absolute;
   background-color: var(--info-color);
   height: 60px;
   width: 60px;
@@ -41,6 +41,9 @@
   width: 60px;
   border: none;
   z-index: 9999;
+  position: fixed;
+  left: 5vw;
+  bottom: 4vw;
 }
 
 .burger > svg {
@@ -89,9 +92,13 @@ svg > rect {
   transition: all 0.2s ease-in-out;
   align-content: center;
   overflow: hidden;
+  opacity: 80%;
 }
 
 .dropdown-menu-hidden {
+  position: fixed;
+  left: 5vw;
+  bottom: 4vw;
   margin: 0;
   height: 22vh;
   width: 0;

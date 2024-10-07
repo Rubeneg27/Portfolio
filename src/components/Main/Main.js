@@ -2,6 +2,7 @@ import './Main.css'
 
 import Header from '../Header/Header.js';
 import Nav from '../Nav/Nav.js';
+import Burger from '../Burger/Burger.js'
 import Article from "../Article/Article.js";
 import { useDevice } from "../Context/DeviceContext.js";
 
@@ -80,6 +81,10 @@ function Main() {
     setisMenuOpen(!isMenuOpen)
   }
 
+  const HandleClickBurger = () => {
+    setisMenuOpen(true)
+  }
+
   ///Renderizará el contenido correspondiente en el primer renderizado del compomente.///
   useEffect(() => {
     setContent(content)
@@ -95,13 +100,21 @@ function Main() {
   return (
     <main className={isMobile ? "mainMobile" : "main"} onClick={handleClickBody}>
       <div className={isMobile? "mainSectionMobile" : "main-section"} >
+        
+        {isMobile ? 
+        <Burger
+        isCollapsed={isCollapsed} 
+        isMenuOpen={isMenuOpen} 
+        handleClick={handleClick} 
+        toggleMenu={toggleMenu}
+        ></Burger> : 
         <Nav 
         isCollapsed={isCollapsed}
         handleClickHome={()=>{handleClick("Home", false)}} 
         handleClickAbout={()=>{handleClick("About", true)}} 
         handleClickProjects={()=>{handleClick("Projects", false)}} 
         handleClickContact={()=>{handleClick("Contact", false)}}
-        />
+        />}
         <Article 
         content={content} 
         isCollapsed={isCollapsed} 
