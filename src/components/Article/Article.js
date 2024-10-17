@@ -15,12 +15,13 @@ function Article ({content, isCollapsed, handleCloseGame, isGameClosed, handleCo
   
   return (
     <div className={isCollapsed? "article-expanded" : isMobile? "article-mobile" : "article"}>
-    <Header icons={techIcons}></Header>
+      <Header flexDirection = 'row-reverse' icons={socialIcons}></Header>
+    
     {content === "Home"? <Home></Home> : null}
     {content === "Projects"? <Projects handleCloseGame={handleCloseGame} isGameClosed={isGameClosed} handleCollapse={handleCollapse}></Projects> : null}
     {content === "Contact"? <Contact></Contact> : null}
     {content === "About"? <About showButtons={showButtons} setShowButtons={setShowButtons}></About> : null}
-    <Header icons={socialIcons}></Header>
+    <Header icons={techIcons}></Header>
   </div>
   )
 }

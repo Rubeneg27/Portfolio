@@ -1,8 +1,8 @@
 .Header {
-  height: 10vh;
+  /*height: 10vh;*/
   display: flex;
   justify-content: space-between;
-  background-color: var(--primary-light-color, rgb(252, 211, 136));
+  /*background-color: var(--primary-light-color, rgb(252, 211, 136));*/
 }
 
 .HeaderMobile {
@@ -83,7 +83,7 @@ code {
   display: flex;
   width: -webkit-fill-available;
   height: 7vh;
-  background-color: var(--neutral-light-color);
+  background-color: var(--primary-light-color);
 }
 
 .decorationMobile {

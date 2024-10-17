@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0 1vw;
   padding: 1vw;
-  background-color: var(--primary-light-color, rgb(252, 211, 136));
+  background-color: var(--secondary-color, rgb(252, 211, 136));
   width: 61vw;
   transition: all 0.3s ease-in-out;
 }

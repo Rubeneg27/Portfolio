@@ -1,7 +1,7 @@
 import './Header.css'
 import { useDevice } from "../Context/DeviceContext.js";
 
-function Header ({icons}) {
+function Header ({icons, flexDirection}) {
 
     const { isMobile } = useDevice();
 
@@ -13,7 +13,7 @@ function Header ({icons}) {
 
     return (
         <div className={isMobile ? "HeaderMobile" : "Header"}>
-                <div className={isMobile ? "decorationMobile" : "decoration"}>
+                <div className={isMobile ? "decorationMobile" : "decoration"} style={{flexDirection}}>
                     {
                         icons.map((icon, index) => (
                             <div key={index} className="logoCont" onClick={() => handleIconClick(icon.url)} style={{ cursor: icon.url ? 'pointer' : 'default' }}>

@@ -11,8 +11,7 @@ function Home () {
     <section className={isMobile? "HomeMobile" : "Home"} >
 
       <div className="Home-text">
-        <div className="intro-photo">
-          <div>
+          <div className="dashCard">
             <p className="popUpText">Hello!</p>
             <p>My name is</p>
             <span className="popUpText">Rubén Espinosa González</span>
@@ -21,7 +20,6 @@ function Home () {
             {/* <div className="image-container dashCard">
              <img src={img} alt="foto de perfil de Rubén Espinosa con el monte fuji en el fondo"/>
             </div> */}
-        </div>
         <div className="dashCard">
           <p>Dive into my webpage to know more about my professional career, skills and education.<br></br></p>
           <p>Here, you will discover some of the games im working on.<br></br></p>
