@@ -1,6 +1,5 @@
 import './Main.css'
 
-import Header from '../Header/Header.js';
 import Nav from '../Nav/Nav.js';
 import Burger from '../Burger/Burger.js'
 import Article from "../Article/Article.js";
@@ -36,9 +35,6 @@ function Main() {
     setIsGameClosed(e)
   }
 
-  ///Se llamará al hacer click en los botones del Nav y el DropdownMenu.///
-  ///PARÁMETROS///
-  ///e: recibirá y pasará a updateContent el content a renderizar.///
   const handleClick = (e, showButton) => {
     setShowButtons(showButton)
     updateContent(e)
@@ -85,6 +81,16 @@ function Main() {
     setisMenuOpen(true)
   }
 
+    ///Se llamará al hacer click en los botones del Nav y el DropdownMenu.///
+  ///PARÁMETROS///
+  ///element: recibirá y pasará a updateContent el content a renderizar///
+  const HandleClick = (element, showButton) => {
+    setShowButtons(showButton)
+    updateContent(element)
+    setisMenuOpen(false)
+    setIsCollapsed(false)
+  };
+
   ///Renderizará el contenido correspondiente en el primer renderizado del compomente.///
   useEffect(() => {
     setContent(content)
@@ -110,10 +116,7 @@ function Main() {
         ></Burger> : 
         <Nav 
         isCollapsed={isCollapsed}
-        handleClickHome={()=>{handleClick("Home", false)}} 
-        handleClickAbout={()=>{handleClick("About", true)}} 
-        handleClickProjects={()=>{handleClick("Projects", false)}} 
-        handleClickContact={()=>{handleClick("Contact", false)}}
+        NavHandleClick={HandleClick}
         />}
         <Article 
         content={content} 
