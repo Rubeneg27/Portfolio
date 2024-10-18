@@ -1,3 +1,4 @@
 #img_gallery {
-  height: 80vh;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
 }

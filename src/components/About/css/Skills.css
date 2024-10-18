@@ -1,9 +1,7 @@
 .skills {
-  max-height: 70vh;
   box-sizing: border-box;
   justify-content: space-between;
-  height: -moz-fit-content;
-  height: fit-content;
+  height: 82vh;
   width: -webkit-fill-available;
   padding: 1vw;
   background-color: var(--neutral-light-color);

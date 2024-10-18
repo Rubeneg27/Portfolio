@@ -39,7 +39,7 @@ const About = ({showButtons, setShowButtons}) => {
   }
 
   return (
-    <section className={isMobile ? "aboutMobile" : "about"} >
+    <section className={isMobile ? "aboutMobile" : showButtons? "about" : "about-height-100"} >
           {hidden ? null : 
             <div>
               <section className="button-container" onClick={()=>handleClick("Formación")}>

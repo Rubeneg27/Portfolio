@@ -1,8 +1,8 @@
 import './css/Experience.css'
 
-function Experience() {
+function Experience({isHidden}) {
     return (
-        <section className="experience">
+        <section className={isHidden? "experience-hidden" : "experience"}>
             <div className="dashCard">
                 <h3 className='popUpText'>Company</h3>
     	        <p>Destilaciones Bordas S.A</p>

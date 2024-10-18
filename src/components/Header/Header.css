@@ -1,3 +1,7 @@
+.Header {
+  width: 100%;
+}
+
 .HeaderMobile {
   background-color: var(--primary-light-color);
   color: var(--primary-color);

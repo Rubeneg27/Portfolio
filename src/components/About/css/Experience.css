@@ -1,7 +1,8 @@
 .experience {
   display: flex;
   padding: 1vw;
-  height: fit-content;
+  height: 82vh;
+  width: -webkit-fill-available;
   box-sizing: border-box;
   justify-content: space-between;
   background-color: var(--neutral-light-color);
