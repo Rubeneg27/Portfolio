@@ -47,7 +47,6 @@ section::-webkit-scrollbar{
 }
 
 .custombtn {
-  margin: 0 0 0 1rem;
   padding: 1vw;
   font-size: 1.4vw;
   width: auto;
