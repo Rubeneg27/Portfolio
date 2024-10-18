@@ -1,5 +1,4 @@
 import './Main.css'
-
 import Nav from '../Nav/Nav.js';
 import Burger from '../Burger/Burger.js'
 import Article from "../Article/Article.js";

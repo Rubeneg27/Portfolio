@@ -11,8 +11,8 @@ function Nav ({NavHandleClick, isCollapsed}) {
       <ul className={ isCollapsed ? "Nav-collapsed" : "Nav" } >      
         <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={() =>NavHandleClick("Home", false)}>Home</li>
         <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={() =>NavHandleClick("About", true)}>About</li>
-        <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={() =>NavHandleClick("Projects", false)}>Gaming Hub</li>
-        <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={() =>NavHandleClick("ArtGallery", false)}>Art Gallery</li>
+        <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={() =>NavHandleClick("GamingHub", false)}>Gaming Hub</li>
+        <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={() =>NavHandleClick("ImgGallery", false)}>Art Gallery</li>
         <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={() =>NavHandleClick("Contact", false)}>Contact</li>
       </ul>
     </div>

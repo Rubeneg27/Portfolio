@@ -4,6 +4,7 @@ import About from "../About/About";
 import Projects from "../Projects/Projects.js";
 import Contact from "../Contact/Contact";
 import Header from "../Header/Header";
+import ImgGallery from "../ImgGallery/ImgGallery.js"
 import techIcons from "../../Assets/techIcons.js"
 import socialIcons from "../../Assets/socialIcons.js"
 import { useDevice } from "../Context/DeviceContext.js";
@@ -15,13 +16,13 @@ function Article ({content, isCollapsed, handleCloseGame, isGameClosed, handleCo
   
   return (
     <div className={isCollapsed? "article-expanded" : isMobile? "article-mobile" : "article"}>
-      <Header flexDirection = 'row-reverse' icons={socialIcons}></Header>
-    
-    {content === "Home"? <Home></Home> : null}
-    {content === "Projects"? <Projects handleCloseGame={handleCloseGame} isGameClosed={isGameClosed} handleCollapse={handleCollapse}></Projects> : null}
-    {content === "Contact"? <Contact></Contact> : null}
-    {content === "About"? <About showButtons={showButtons} setShowButtons={setShowButtons}></About> : null}
-    <Header icons={techIcons}></Header>
+    <Header  icons={socialIcons}></Header>
+      {content === "Home"? <Home></Home> : null}
+      {content === "GamingHub"? <Projects handleCloseGame={handleCloseGame} isGameClosed={isGameClosed} handleCollapse={handleCollapse}></Projects> : null}
+      {content === "ImgGallery"? <ImgGallery handleCloseGame={handleCloseGame} handleCollapse={handleCollapse}></ImgGallery> : null}
+      {content === "Contact"? <Contact></Contact> : null}
+      {content === "About"? <About showButtons={showButtons} setShowButtons={setShowButtons}></About> : null}
+    <Header flexDirection = 'row-reverse' icons={techIcons}></Header>
   </div>
   )
 }
