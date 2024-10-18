@@ -3,10 +3,19 @@
   box-sizing: border-box;
   height: 100vh;
   margin: 0 11vw;
-
+  transition: all 0.3s ease-in-out;
   @media (max-width: 1280px){
     margin: 0 6vw;
+    transition: all 0.3s ease-in-out;
   }
+}
+
+.main-expanded {
+  background-color: var(--primary-color);
+  box-sizing: border-box;
+  height: 100vh;
+  margin: 0;
+  transition: all 0.3s ease-in-out;
 }
 
 .mainMobile {
@@ -24,6 +33,18 @@
   align-content: center;
   flex-wrap: nowrap;
   align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.main-section-expanded {
+  display: flex;
+  margin: 0;
+  height: 100vh;
+  background: var(--neutral-light-color);
+  align-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .mainSectionMobile {

@@ -100,8 +100,8 @@ function Main() {
   */
 
   return (
-    <main className={isMobile ? "mainMobile" : "main"} onClick={handleClickBody}>
-      <div className={isMobile? "mainSectionMobile" : "main-section"} >
+    <main className={isMobile ? "mainMobile" : isCollapsed ? "main-expanded" : "main"} onClick={handleClickBody}>
+      <div className={isMobile? "mainSectionMobile" : isCollapsed ? "main-section-expanded" : "main-section"} >
         
         {isMobile ? 
         <Burger

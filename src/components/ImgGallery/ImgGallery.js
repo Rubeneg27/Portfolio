@@ -1,7 +1,9 @@
+import './imgGallery.css'
+
 function ImgGallery () {
 
   return (
-    <div>Work in progress</div>
+    <div id="img_gallery">Work in progress</div>
   )
 }
 

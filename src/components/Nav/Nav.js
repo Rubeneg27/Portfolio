@@ -7,13 +7,13 @@ function Nav ({NavHandleClick, isCollapsed}) {
   const { isMobile } = useDevice();
 
   return (
-    <div className={isMobile? "sidebarMobile" : isCollapsed ? "sidebarCollapsed" : "sidebar"}>
-      <ul className={ isCollapsed ? "Nav-collapsed" : "Nav" } >      
-        <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={() =>NavHandleClick("Home", false, false)}>Home</li>
-        <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={() =>NavHandleClick("About", true, false)}>About</li>
-        <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={() =>NavHandleClick("GamingHub", false, false)}>Gaming Hub</li>
-        <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={() =>NavHandleClick("ImgGallery", false, true)}>Art Gallery</li>
-        <li className={ isCollapsed ? "li-collapsed" : "li"} onClick={() =>NavHandleClick("Contact", false, false)}>Contact</li>
+    <div className={isMobile? "sidebarMobile" : "sidebar"}>
+      <ul className="Nav">      
+        <li className="li" onClick={() =>NavHandleClick("Home", false, false)}>Home</li>
+        <li className="li" onClick={() =>NavHandleClick("About", true, false)}>About</li>
+        <li className="li" onClick={() =>NavHandleClick("GamingHub", false, false)}>Gaming Hub</li>
+        <li className="li" onClick={() =>NavHandleClick("ImgGallery", false, true)}>Art Gallery</li>
+        <li className="li" onClick={() =>NavHandleClick("Contact", false, false)}>Contact</li>
       </ul>
     </div>
       
