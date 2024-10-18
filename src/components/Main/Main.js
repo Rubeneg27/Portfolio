@@ -76,24 +76,21 @@ function Main() {
     setisMenuOpen(!isMenuOpen)
   }
 
-  const HandleClickBurger = () => {
-    setisMenuOpen(true)
-  }
-
     ///Se llamará al hacer click en los botones del Nav y el DropdownMenu.///
   ///PARÁMETROS///
   ///element: recibirá y pasará a updateContent el content a renderizar///
-  const HandleClick = (element, showButton) => {
+  const HandleClick = (element, showButton, willCollaps) => {
     setShowButtons(showButton)
-    updateContent(element)
+    setContent(element)
     setisMenuOpen(false)
-    setIsCollapsed(false)
+    setIsCollapsed(willCollaps)
   };
 
   ///Renderizará el contenido correspondiente en el primer renderizado del compomente.///
   useEffect(() => {
     setContent(content)
-  }, [content])
+    setIsCollapsed(isCollapsed)
+  }, [content, isCollapsed])
 
   /*
   ///Comprobará que el juego se cierra correctamente en este componente.///

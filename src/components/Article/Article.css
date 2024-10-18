@@ -21,8 +21,7 @@
 }
 
 .article-expanded {
- box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
- background-color: var(--primary-color);
+ background-color: var(--secondary-color, rgb(252, 211, 136));
  width: 100%;
  height: 100%;
  transition: all 0.3s ease-in-out;;
