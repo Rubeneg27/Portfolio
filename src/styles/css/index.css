@@ -78,3 +78,13 @@ section::-webkit-scrollbar{
   transition: none;
   background-color: var(--secondary-color);
 }
+
+.height-0{
+  height: 0;
+  transition: height 0.3s ease-in-out;
+}
+
+.display-none{
+  display: "none";
+  transition: height 1s ease-in-out;
+}

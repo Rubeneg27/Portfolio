@@ -1,8 +1,14 @@
 .projects {
   box-sizing: border-box;
   font-size: 1.4rem;
-  height: 100%;
+  height: 60vh;
   width: 100%;
+  transition: height 0.3s ease-in-out;
+}
+
+.projects-height-0{
+  height: 0;
+  transition: height 0.3s ease-in-out;
 }
 
 .back-button {

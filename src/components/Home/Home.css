@@ -4,6 +4,8 @@
   box-sizing: border-box;
   justify-content: center;
   background-color: var(--primary-light-color);
+  transition: height 0.3s ease-in-out;
+
 }
 
 .Home-photo-media {

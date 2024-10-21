@@ -1,11 +1,12 @@
 import { useState } from "react";
 import './css/Projects.css'
+import '../../styles/css/index.css'
 import Platformer from "./Platformer.js"
 import ShootEmUp from "./ShootEmUp/ShootEmUp.js";
 import { Unity, useUnityContext } from "react-unity-webgl";
 
 
-function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
+function Projects ({handleCollapse, isGameClosed, handleCloseGame, content}) {
 
   const [project, setProject] = useState("");
   const [pressed, setPressed] = useState(false);
@@ -37,22 +38,22 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
   });
 
     return (
-        <section className="projects">
-          
+        <section className={content === "GamingHub" ? "projects" : "projects-height-0"}>
           {pressed ? null : 
-            <div>
+            <div className="button-groups" style={content==="GamingHub" ? {
+              height:'auto'} : {display:'none'}}>
               <section className="button-container">
-              {pressed ? null : (<button onClick={()=>handleClick("Platformer")}>Platformer</button>)}
-              <div className="resume"></div>
-            </section>
-            <section className="button-container">
-              {pressed ? null : (<button onClick={()=>handleClick("ShootEmUp")}>ShootEmUp</button>)}
-              <div className="resume"></div>
-            </section>
-            <section className="button-container">
-              {pressed ? null : (<button onClick={()=>handleClick("BounceInvasors")}>UNITY-Bounce Invasors</button>)}
-              <div className="resume"></div>
-            </section>
+                {pressed ? null : (<button onClick={()=>handleClick("Platformer")}>Platformer</button>)}
+                <div className="resume"></div>
+              </section>
+              <section className="button-container">
+                {pressed ? null : (<button onClick={()=>handleClick("ShootEmUp")}>ShootEmUp</button>)}
+                <div className="resume"></div>
+              </section>
+              <section className="button-container">
+                {pressed ? null : (<button onClick={()=>handleClick("BounceInvasors")}>UNITY-Bounce Invasors</button>)}
+                <div className="resume"></div>
+              </section>
             </div>
             }
           {project === "shootemup" ? <ShootEmUp setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></ShootEmUp> : null}

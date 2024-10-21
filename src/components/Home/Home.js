@@ -1,15 +1,15 @@
 import img from "../../Assets/Perfil.png"
 import {FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import './Home.css'
+import '../../styles/css/index.css'
 import { useDevice } from "../Context/DeviceContext.js";
 
-function Home () {
+function Home ({content}) {
 
   const { isMobile } = useDevice();
 
   return (
-    <section className={isMobile? "HomeMobile" : "Home"} >
-
+    <section className={isMobile ? "HomeMobile" : content === "Home" ? "Home" : "height-0"} >
       <div className="Home-text">
           <div className="dashCard">
             <p className="popUpText">Hello!</p>
