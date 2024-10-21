@@ -17,10 +17,10 @@
 
 .sidebarMobile {
   position: absolute;
-  width: 20vw;
+  width: 130px;
   /*border-right: solid 10px var(--secondary-dark-color);*/
   padding: 0 1vw;
-  background-color: var(--secondary-color, 75%);
+  background-color: var(--secondary-color/85%);
   height: 100%;
   align-content: center;
   transition: width 0.3s ease-in-out;
