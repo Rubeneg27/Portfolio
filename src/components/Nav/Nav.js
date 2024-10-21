@@ -1,13 +1,14 @@
 
+import { useEffect } from "react";
 import { useDevice } from "../Context/DeviceContext.js";
 import './Nav.css'
 
-function Nav ({NavHandleClick, isCollapsed}) {
+function Nav ({NavHandleClick, isNavHidden}) {
   
   const { isMobile } = useDevice();
-
+  
   return (
-    <div className={isMobile? "sidebarMobile" : "sidebar"}>
+    <div className={isMobile? isNavHidden ? "sidebarMobile hidden" : "sidebarMobile" : "sidebar"}>
       <ul className="Nav">      
         <li className="li" onClick={() =>NavHandleClick("Home", false, false)}>Home</li>
         <li className="li" onClick={() =>NavHandleClick("About", true, false)}>About</li>

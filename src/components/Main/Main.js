@@ -24,6 +24,7 @@ function Main() {
   const [path, setPath] = useState("")
   const [showButtons, setShowButtons] = useState(true)
   const [isCollapsed, setIsCollapsed] = useState(false)
+  const [isNavHidden, setIsNavHidden] = useState(false)
   const [isMenuOpen, setisMenuOpen] = useState(false)
   const [content, setContent] = useState(
     "Home"
@@ -34,11 +35,10 @@ function Main() {
     setIsGameClosed(e)
   }
 
-  const handleClick = (e, showButton) => {
-    setShowButtons(showButton)
-    updateContent(e)
-    setisMenuOpen(false)
-    setIsCollapsed(false)
+  //Muestra el navegador versión mobile
+  const HandleClickBurger = () => {
+    setIsNavHidden(!isNavHidden);
+    console.log(isNavHidden);
   }
 
   ///Cerrará el juego en ejecución y marcará que contenido se deberá renderizar posteriormente en el efecto///
@@ -71,11 +71,6 @@ function Main() {
     setIsCollapsed(e)
   }
 
-  ///Cambiará el estado booleano isMenuOpen.///
-  const toggleMenu = () => {
-    setisMenuOpen(!isMenuOpen)
-  }
-
     ///Se llamará al hacer click en los botones del Nav y el DropdownMenu.///
   ///PARÁMETROS///
   ///element: recibirá y pasará a updateContent el content a renderizar///
@@ -90,7 +85,10 @@ function Main() {
   useEffect(() => {
     setContent(content)
     setIsCollapsed(isCollapsed)
-  }, [content, isCollapsed])
+    if (isMobile) {
+      setIsNavHidden(true)
+    }
+  }, [content, isCollapsed, isMobile])
 
   /*
   ///Comprobará que el juego se cierra correctamente en este componente.///
@@ -105,21 +103,18 @@ function Main() {
         
         {isMobile ? 
         <Burger
-        isCollapsed={isCollapsed} 
-        isMenuOpen={isMenuOpen} 
-        handleClick={handleClick} 
-        toggleMenu={toggleMenu}
+        handleClick={HandleClickBurger}
         ></Burger> : 
+        null
+        }
         <Nav 
-        isCollapsed={isCollapsed}
+        isNavHidden={isNavHidden}
         NavHandleClick={HandleClick}
-        />}
+        />
         <Article 
         content={content} 
-        isCollapsed={isCollapsed} 
-        handleClick={handleClick} 
+        isCollapsed={isCollapsed}
         isMenuOpen={isMenuOpen} 
-        toggleMenu={toggleMenu} 
         handleCloseGame={handleCloseGame} 
         isGameClosed={isGameClosed} 
         handleCollapse={handleCollapse} 

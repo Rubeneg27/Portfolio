@@ -22,7 +22,7 @@ function Article ({content, isCollapsed, handleCloseGame, isGameClosed, handleCo
       {content === "ImgGallery"? <ImgGallery handleCloseGame={handleCloseGame} handleCollapse={handleCollapse}></ImgGallery> : null}
       {content === "Contact"? <Contact></Contact> : null}
       {content === "About"? <About showButtons={showButtons} setShowButtons={setShowButtons}></About> : null}
-      {isCollapsed ? null : <Header flexDirection = 'row-reverse' icons={techIcons}></Header>}
+      {isMobile ? null : isCollapsed ? null : <Header flexDirection = 'row-reverse' icons={techIcons}></Header>}
   </div>
   )
 }
