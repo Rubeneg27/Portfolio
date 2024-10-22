@@ -1,14 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './css/Projects.css'
 import Platformer from "./Platformer.js"
 import ShootEmUp from "./ShootEmUp/ShootEmUp.js";
 import { Unity, useUnityContext } from "react-unity-webgl";
 
 
-function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
+function Projects ({handleCollapse, isGameClosed, handleCloseGame, initGame}) {
 
   const [project, setProject] = useState("");
   const [pressed, setPressed] = useState(false);
+
+  useEffect(()=>{
+    if(isGameClosed){
+      console.log("Cerrando juego")
+      setProject("")
+      setPressed(false)
+    } else {
+      console.log("Abriendo juego")
+    }
+  }, [isGameClosed])
 
   function handleClick (elemento) {
     setPressed(true)
@@ -16,12 +26,15 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
     switch(elemento) {
       case "Platformer":
         setProject("platformer")
+        initGame();
         break;
-        case "ShootEmUp":
-          setProject("shootemup")
-          break;
-          case "BounceInvasors":
+      case "ShootEmUp":
+        setProject("shootemup")
+        initGame();
+        break;
+      case "BounceInvasors":
         setProject("BounceInvasors")
+        initGame();
       break;
       default:
         setProject("")
@@ -55,9 +68,9 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame}) {
             </section>
             </div>
             }
-          {project === "shootemup" ? <ShootEmUp setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></ShootEmUp> : null}
+          {project === "shootemup" ? <ShootEmUp setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} initGame={initGame} handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></ShootEmUp> : null}
           {project === "platformer" ? 
-          <Platformer setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></Platformer> : null}
+          <Platformer setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} handleCloseGame={handleCloseGame} initGame={initGame} isGameClosed={isGameClosed}></Platformer> : null}
           {project === "BounceInvasors" ? 
             <Unity className="bounceInvasors" unityProvider={unityProvider}></Unity> : null
           }

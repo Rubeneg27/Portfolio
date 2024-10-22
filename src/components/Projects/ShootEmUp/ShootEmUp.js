@@ -4,7 +4,7 @@ import {GameManager, Player, EnemyA} from './Clases';
 
 const _GameManager = new GameManager();
 
-function ShootEmUp ({handleCloseGame, isGameClosed, setProject, setPressed, handleCollapse}) {
+function ShootEmUp ({initGame, handleCloseGame, isGameClosed, setProject, setPressed, handleCollapse}) {
 
   useEffect(() => {
     if(isGameClosed) {
@@ -29,14 +29,14 @@ function ShootEmUp ({handleCloseGame, isGameClosed, setProject, setPressed, hand
   }, 1000)
   
   const startGame = () => {
-    handleCloseGame(false)
+    initGame()
     setGameStarted(true)
     isGameClosedRef.current = false;
     isPausedRef.current = false
   }
 
   function handleQuitGame () {
-    handleCloseGame(true)
+    handleCloseGame()
     setProject("")
     setPressed(false)
     handleCollapse(false)

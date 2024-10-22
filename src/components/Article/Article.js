@@ -10,7 +10,7 @@ import socialIcons from "../../Assets/socialIcons.js"
 import { useDevice } from "../Context/DeviceContext.js";
 
 
-function Article ({content, isCollapsed, handleCloseGame, isGameClosed, handleCollapse, showButtons, setShowButtons}) {
+function Article ({initGame, content, isCollapsed, handleCloseGame, isGameClosed, handleCollapse, showButtons, setShowButtons}) {
 
   const { isMobile } = useDevice();
   
@@ -18,7 +18,7 @@ function Article ({content, isCollapsed, handleCloseGame, isGameClosed, handleCo
     <div className={isCollapsed? "article-expanded" : isMobile? "article-mobile" : "article"}>
     <Header  icons={socialIcons}></Header>
       {content === "Home"? <Home></Home> : null}
-      {content === "GamingHub"? <Projects handleCloseGame={handleCloseGame} isGameClosed={isGameClosed} handleCollapse={handleCollapse}></Projects> : null}
+      {content === "GamingHub"? <Projects initGame={initGame} handleCloseGame={handleCloseGame} isGameClosed={isGameClosed} handleCollapse={handleCollapse}></Projects> : null}
       {content === "ImgGallery"? <ImgGallery handleCloseGame={handleCloseGame} handleCollapse={handleCollapse}></ImgGallery> : null}
       {content === "Contact"? <Contact></Contact> : null}
       {content === "About"? <About showButtons={showButtons} setShowButtons={setShowButtons}></About> : null}

@@ -31,8 +31,12 @@ function Main() {
   )
 
   ///Define el estado del booleano isGameClosed para cerrar o no los juegos de "Projects"
-  function handleCloseGame (e) {
-    setIsGameClosed(e)
+  function handleCloseGame () {
+    setIsGameClosed(true)
+  }
+
+  function InitGame() {
+    setIsGameClosed(false)
   }
 
   //Muestra el navegador versión mobile
@@ -75,6 +79,7 @@ function Main() {
   ///PARÁMETROS///
   ///element: recibirá y pasará a updateContent el content a renderizar///
   const HandleClick = (element, showButton, willCollaps) => {
+    setIsGameClosed(true)
     setShowButtons(showButton)
     setContent(element)
     setisMenuOpen(false)
@@ -118,7 +123,8 @@ function Main() {
         handleCloseGame={handleCloseGame} 
         isGameClosed={isGameClosed} 
         handleCollapse={handleCollapse} 
-        showButtons={showButtons} 
+        showButtons={showButtons}
+        initGame={InitGame}
         setShowButtons={setShowButtons}></Article>
       </div>
     </main>
