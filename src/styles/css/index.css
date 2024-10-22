@@ -23,7 +23,7 @@ section::-webkit-scrollbar{
 }
 
 .popUpText {
-  margin: 1vh 0;
+  margin: 1.5vh 0;
   padding: 0.5vh;
   font-weight: bold;
   color: var(--secondary-color);
@@ -33,7 +33,7 @@ section::-webkit-scrollbar{
 
 .dashCard {
   box-sizing: border-box;
-  padding: 0 2vw;
+  padding: 1vh 2vw;
   margin: 1vw;
   height: fit-content;
   width: -webkit-fill-available;
@@ -77,4 +77,62 @@ section::-webkit-scrollbar{
 .custombtn:active{
   transition: none;
   background-color: var(--secondary-color);
+}
+
+.customLink{
+  color: var(--primary-light-color);
+  font-weight: bold;
+  background-color: var(--info-darkest-color);
+}
+
+.customLink:hover{
+  cursor: pointer;
+}
+
+.go-down-button {
+  bottom: 11.5vh;
+  right: 21.5vw;
+  position: absolute;
+  width: 70px;
+  height: 50px; /* Misma altura achatada */
+  background-color: var(--secondary-color);
+  clip-path: polygon(50% 100%, 0% 0%, 100% 0%); /* Triángulo apuntando hacia abajo */
+  border: none;
+  cursor: pointer;
+  animation: moveDownUp 1s ease-in-out infinite; /* Animación de movimiento */
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+}
+
+.go-up-button {
+  top: 11.5vh;
+  right: 21.5vw;
+  position: absolute;
+  width: 70px;
+  height: 50px;
+  background-color: var(--secondary-color);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Forma de triángulo */
+  border: none;
+  cursor: pointer;
+  animation: moveUpDown 1s ease-in-out infinite; /* Animación continua */
+  box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+}
+
+/* Animación de movimiento hacia arriba y abajo */
+@keyframes moveUpDown {
+  0%, 100% {
+    transform: translateY(0); /* Posición inicial */
+  }
+  50% {
+    transform: translateY(-5px); /* Sube ligeramente */
+  }
+}
+
+/* Animación de movimiento hacia arriba y abajo */
+@keyframes moveDownUp {
+  0%, 100% {
+    transform: translateY(0); /* Posición inicial */
+  }
+  50% {
+    transform: translateY(5px); /* Baja ligeramente */
+  }
 }

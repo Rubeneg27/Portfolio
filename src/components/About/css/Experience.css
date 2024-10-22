@@ -4,9 +4,10 @@
   height: 82vh;
   width: -webkit-fill-available;
   box-sizing: border-box;
-  justify-content: space-between;
+  justify-content: flex-start;
   background-color: var(--neutral-light-color);
   overflow: auto;
+  flex-direction: column;
 }
 
 .aboutMobile > .experience > section {
@@ -19,16 +20,6 @@
   border-width: medium;
   border-color: var(--primary-light-color);
   border-style: dashed;
-}
-
-.customLink{
-  padding: 0.8%;
-  font-weight: bold;
-  background-color: var(--info-darkest-color);
-}
-
-.customLink:hover{
-  cursor: pointer;
 }
 
 .CertificateImg {

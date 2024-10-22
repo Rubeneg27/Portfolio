@@ -4,6 +4,8 @@
   display: flex;
   height: fit-content;
   box-sizing: border-box;
+  font-size: 1rem;
+  font-weight: bold;
   /* margin: 0 1vw; */
   padding: 1vw;
   background-color: var(--secondary-color, rgb(252, 211, 136));
