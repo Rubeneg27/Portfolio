@@ -5,7 +5,7 @@ import ShootEmUp from "./ShootEmUp/ShootEmUp.js";
 import { Unity, useUnityContext } from "react-unity-webgl";
 
 
-function Projects ({handleCollapse, isGameClosed, handleCloseGame, initGame}) {
+function Projects ({handleIsGameClosed, handleCollapse, isGameClosed, handleCloseGame, initGame}) {
 
   const [project, setProject] = useState("");
   const [pressed, setPressed] = useState(false);
@@ -26,15 +26,15 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame, initGame}) {
     switch(elemento) {
       case "Platformer":
         setProject("platformer")
-        initGame();
+        handleIsGameClosed(false);
         break;
       case "ShootEmUp":
         setProject("shootemup")
-        initGame();
+        handleIsGameClosed(false);
         break;
       case "BounceInvasors":
         setProject("BounceInvasors")
-        initGame();
+        handleIsGameClosed(false);
       break;
       default:
         setProject("")
@@ -68,9 +68,9 @@ function Projects ({handleCollapse, isGameClosed, handleCloseGame, initGame}) {
             </section>
             </div>
             }
-          {project === "shootemup" ? <ShootEmUp setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} initGame={initGame} handleCloseGame={handleCloseGame} isGameClosed={isGameClosed}></ShootEmUp> : null}
+          {project === "shootemup" ? <ShootEmUp handleIsGameClosed={handleIsGameClosed} setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} isGameClosed={isGameClosed}></ShootEmUp> : null}
           {project === "platformer" ? 
-          <Platformer setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} handleCloseGame={handleCloseGame} initGame={initGame} isGameClosed={isGameClosed}></Platformer> : null}
+          <Platformer handleIsGameClosed={handleIsGameClosed} setProject={setProject} setPressed={setPressed} handleCollapse={handleCollapse} isGameClosed={isGameClosed}></Platformer> : null}
           {project === "BounceInvasors" ? 
             <Unity className="bounceInvasors" unityProvider={unityProvider}></Unity> : null
           }

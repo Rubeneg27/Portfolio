@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './css/Platformer.css'
 
-function Platformer({handleCloseGame, initGame, isGameClosed, setProject, setPressed, handleCollapse}) {
+function Platformer({handleIsGameClosed, isGameClosed, setProject, setPressed, handleCollapse}) {
 
   useEffect(() => {
     if(isGameClosed) {
@@ -17,13 +17,13 @@ function Platformer({handleCloseGame, initGame, isGameClosed, setProject, setPre
 
   const startGame = () => {
     setGameStarted(true)
-    initGame()
+    handleIsGameClosed(false)
     isGameClosedRef.current = false;
     isPausedRef.current = false
   }
 
   function handleQuitGame () {
-    handleCloseGame()
+    handleIsGameClosed(true)
     setProject("")
     setPressed(false)
     handleCollapse(false)

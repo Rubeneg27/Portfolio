@@ -117,14 +117,13 @@ function Main() {
         NavHandleClick={HandleClick}
         />
         <Article 
+        handleIsGameClosed={setIsGameClosed}
         content={content} 
         isCollapsed={isCollapsed}
         isMenuOpen={isMenuOpen} 
-        handleCloseGame={handleCloseGame} 
         isGameClosed={isGameClosed} 
         handleCollapse={handleCollapse} 
         showButtons={showButtons}
-        initGame={InitGame}
         setShowButtons={setShowButtons}></Article>
       </div>
     </main>
