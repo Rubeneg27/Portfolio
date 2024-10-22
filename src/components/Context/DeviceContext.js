@@ -16,7 +16,7 @@ export function DeviceProvider({ children }) {
       setIsMobile(e.matches);
       console.log(`movil: ${isMobile}`)
     }
-    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    const mediaQuery = window.matchMedia("(max-width: 950px)");
 
     checkIfMobile(mediaQuery);
 
