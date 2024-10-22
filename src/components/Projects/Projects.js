@@ -5,7 +5,7 @@ import ShootEmUp from "./ShootEmUp/ShootEmUp.js";
 import { Unity, useUnityContext } from "react-unity-webgl";
 
 
-function Projects ({handleIsGameClosed, handleCollapse, isGameClosed, handleCloseGame, initGame}) {
+function Projects ({handleIsGameClosed, handleCollapse, isGameClosed}) {
 
   const [project, setProject] = useState("");
   const [pressed, setPressed] = useState(false);

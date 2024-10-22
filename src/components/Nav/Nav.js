@@ -1,5 +1,4 @@
 
-import { useEffect } from "react";
 import { useDevice } from "../Context/DeviceContext.js";
 import './Nav.css'
 
