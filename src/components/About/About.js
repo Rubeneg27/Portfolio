@@ -11,6 +11,7 @@ const About = ({showButtons, setShowButtons}) => {
   const [content, setContent] = useState("");
   const [buttonPressed, setButtonPressed] = useState("")
   const [hidden, setHidden] = useState(false)
+  
 
   useEffect(()=> {
     if (showButtons) {
@@ -60,14 +61,19 @@ const About = ({showButtons, setShowButtons}) => {
             </div>
           }
           <div style={isMobile ? null : { display: 'flex', justifyContent: 'space-between'}}>
+          
             {hidden? content : null}
-            <button 
-            hidden={hidden?  false : true} 
-            className= {isMobile ? "custombtn-mobile" : "custombtn"}
-            onClick={buttonPressed==="skills"? ()=>handleClick("Experiencia") : buttonPressed==="exp"? ()=>handleClick("Formación") : ""}
-            >
-              {buttonPressed==="skills"? ">" : buttonPressed==="exp"? ">" : ""}
-            </button>
+            <div>
+              <button className="go-up-button" ></button>
+              <button 
+              hidden={hidden?  false : true} 
+              className= {isMobile ? "custombtn-mobile" : "custombtn"}
+              onClick={buttonPressed==="skills"? ()=>handleClick("Experiencia") : buttonPressed==="exp"? ()=>handleClick("Formación") : ""}
+              >
+                {buttonPressed==="skills"? ">" : buttonPressed==="exp"? ">" : ""}
+              </button>
+              <button className="go-down-button" ></button>
+            </div>
           </div>
 
     </section>
