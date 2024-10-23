@@ -92,6 +92,7 @@
 }
 
 .about-content-buttons-container{
+  padding: 4vh 0 4vh 1vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

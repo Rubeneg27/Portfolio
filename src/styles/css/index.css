@@ -50,7 +50,7 @@ section::-webkit-scrollbar{
   padding: 1vw;
   font-size: 1.4vw;
   width: auto;
-  height: auto;
+  height: 40vh;
   border: none;
   color: var(--primary-light-color);
   background-color: var(--info-color);
