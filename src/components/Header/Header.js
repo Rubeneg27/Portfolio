@@ -1,4 +1,5 @@
 import './Header.css'
+
 import { useDevice } from "../Context/DeviceContext.js";
 
 function Header ({icons, flexDirection}) {
