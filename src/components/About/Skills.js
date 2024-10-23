@@ -1,57 +1,28 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef, useImperativeHandle, forwardRef, useState } from "react";
 import './css/Skills.css';
 import courseraCertificate from "../../Assets/Coursera-Certificado.png";
 import { useDevice } from "../Context/DeviceContext.js";
 
-function Skills({ isHidden }) {
-    const { isMobile } = useDevice();
+const Skills = forwardRef(({ isHidden }, ref) => {
     const [showCertificateImg, setShowCertificateImg] = useState(false);
-    const [showUpButton, setShowUpButton] = useState(false);
-    const [showDownButton, setShowDownButton] = useState(false);
-
+    const { isMobile } = useDevice();
     const skillsRef = useRef(null);
 
-    const handleScrollDown = () => {
-        if (skillsRef.current) {
-            skillsRef.current.scrollBy({ top: 300, behavior: 'smooth' });
+    // Permitir al padre controlar el scroll
+    useImperativeHandle(ref, () => ({
+        scrollBy: (scrollOptions) => {
+            if (skillsRef.current) {
+                skillsRef.current.scrollBy(scrollOptions);
+            }
         }
-    };
-
-    const handleScrollTop = () => {
-        if (skillsRef.current) {
-            skillsRef.current.scrollBy({ top: -300, behavior: 'smooth' });
-        }
-    };
+    }));
 
     function handleCertificateImg(e) {
         setShowCertificateImg(e);
     }
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (skillsRef.current) {
-                const { scrollTop, scrollHeight, clientHeight } = skillsRef.current;
-                setShowUpButton(scrollTop > 0); // Muestra el botón de "ir arriba" si no está en la parte superior
-                setShowDownButton(scrollTop + clientHeight < scrollHeight); // Muestra el botón de "ir abajo" si no está en la parte inferior
-            }
-        };
-
-        const refCurrent = skillsRef.current;
-        if (refCurrent) {
-            refCurrent.addEventListener('scroll', handleScroll);
-            handleScroll(); // Llama a la función inicialmente para establecer el estado de los botones
-        }
-
-        return () => {
-            if (refCurrent) {
-                refCurrent.removeEventListener('scroll', handleScroll);
-            }
-        };
-    }, []);
-
     return (
         <section ref={skillsRef} className={isMobile ? "skillsMobile" : isHidden ? "skills-hidden" : "skills"}>
-            {showUpButton && <button className="go-up-button" onClick={handleScrollTop}></button>}
             <a hidden={!showCertificateImg} href="https://www.coursera.org/account/accomplishments/professional-cert/N6SAE74TJBAN" target="blank"></a>
             <div className={showCertificateImg ? "CertificateImg" : "CertificateImg_hidden"}>
                 {<img alt="certificado coursera de front end developer" src={courseraCertificate}></img>}
@@ -90,9 +61,8 @@ function Skills({ isHidden }) {
                 </div>
             </div>
             {showCertificateImg ? <div className="imgClose" onClick={() => handleCertificateImg(false)}></div> : null}
-            {showDownButton && <button className="go-down-button" onClick={handleScrollDown}></button>}
         </section>
     );
-}
+});
 
 export default Skills;

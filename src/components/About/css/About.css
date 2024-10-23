@@ -90,3 +90,9 @@
   height: 21vh;
   width: 56%;
 }
+
+.about-content-buttons-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

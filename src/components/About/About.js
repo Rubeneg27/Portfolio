@@ -1,7 +1,7 @@
 import Skills from "./Skills.js"
 import Experience from "./Experience.js"
 import './css/About.css'
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDevice } from "../Context/DeviceContext.js";
 
 const About = ({showButtons, setShowButtons}) => {
@@ -11,7 +11,11 @@ const About = ({showButtons, setShowButtons}) => {
   const [content, setContent] = useState("");
   const [buttonPressed, setButtonPressed] = useState("")
   const [hidden, setHidden] = useState(false)
-  
+
+  // Refs para los componentes hijos
+  const skillsRef = useRef(null);
+  const experienceRef = useRef(null);
+
 
   useEffect(()=> {
     if (showButtons) {
@@ -22,22 +26,38 @@ const About = ({showButtons, setShowButtons}) => {
     }
   }, [showButtons])
 
-  function handleClick (e) {
-    setHidden(true)
-    setShowButtons(false)
+  function handleClick(e) {
+    setHidden(true);
+    setShowButtons(false);
     switch (e) {
-      case "Formación":
-        setContent(<Skills></Skills>);
-        setButtonPressed("skills")
-        break;
-      case "Experiencia":
-        setContent(<Experience></Experience>);
-        setButtonPressed("exp")
-        break;
-      default:
-        setContent("")
+        case "Formación":
+            setContent(<Skills ref={skillsRef} isHidden={hidden} />);
+            setButtonPressed("skills");
+            break;
+        case "Experiencia":
+            setContent(<Experience ref={experienceRef} isHidden={hidden} />);
+            setButtonPressed("exp");
+            break;
+        default:
+            setContent("");
     }
   }
+
+  const handleScrollDown = () => {
+    if (buttonPressed === "skills" && skillsRef.current) {
+        skillsRef.current.scrollBy({ top: 300, behavior: 'smooth' });
+    } else if (buttonPressed === "exp" && experienceRef.current) {
+        experienceRef.current.scrollBy({ top: 300, behavior: 'smooth' });
+    }
+  };
+
+  const handleScrollTop = () => {
+    if (buttonPressed === "skills" && skillsRef.current) {
+        skillsRef.current.scrollBy({ top: -300, behavior: 'smooth' });
+    } else if (buttonPressed === "exp" && experienceRef.current) {
+        experienceRef.current.scrollBy({ top: -300, behavior: 'smooth' });
+    }
+  };
 
   return (
     <section className={isMobile ? "aboutMobile" : showButtons? "about" : "about-height-100"} >
@@ -63,8 +83,8 @@ const About = ({showButtons, setShowButtons}) => {
           <div style={isMobile ? null : { display: 'flex', justifyContent: 'space-between'}}>
           
             {hidden? content : null}
-            <div>
-              <button className="go-up-button" ></button>
+            <div className="about-content-buttons-container">
+              <button className="go-up-button" onClick={handleScrollTop}></button>
               <button 
               hidden={hidden?  false : true} 
               className= {isMobile ? "custombtn-mobile" : "custombtn"}
@@ -72,7 +92,7 @@ const About = ({showButtons, setShowButtons}) => {
               >
                 {buttonPressed==="skills"? ">" : buttonPressed==="exp"? ">" : ""}
               </button>
-              <button className="go-down-button" ></button>
+              <button className="go-down-button" onClick={handleScrollDown}></button>
             </div>
           </div>
 

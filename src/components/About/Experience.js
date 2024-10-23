@@ -1,52 +1,24 @@
 import './css/Experience.css';
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useImperativeHandle, forwardRef } from "react";
 
-function Experience({ isHidden }) {
+const Experience = forwardRef(({ isHidden }, ref) => {
     // Ref para el contenedor de experiencia
     const experienceRef = useRef(null);
-    const [showUpButton, setShowUpButton] = useState(false);
-    const [showDownButton, setShowDownButton] = useState(false);
 
-    const handleScrollDown = () => {
-        if (experienceRef.current) {
-            experienceRef.current.scrollBy({ top: 300, behavior: 'smooth' });
-        }
-    };
-
-    const handleScrollTop = () => {
-        if (experienceRef.current) {
-            experienceRef.current.scrollBy({ top: -300, behavior: 'smooth' });
-        }
-    };
-
-    useEffect(() => {
-        const handleScroll = () => {
+    // Permitir al padre controlar el scroll
+    useImperativeHandle(ref, () => ({
+        scrollBy: (scrollOptions) => {
             if (experienceRef.current) {
-                const { scrollTop, scrollHeight, clientHeight } = experienceRef.current;
-                setShowUpButton(scrollTop > 0); // Muestra el botón de "ir arriba" si no está en la parte superior
-                setShowDownButton(scrollTop + clientHeight < scrollHeight); // Muestra el botón de "ir abajo" si no está en la parte inferior
+                experienceRef.current.scrollBy(scrollOptions);
             }
-        };
-
-        const refCurrent = experienceRef.current;
-        if (refCurrent) {
-            refCurrent.addEventListener('scroll', handleScroll);
-            handleScroll(); // Llama a la función inicialmente para establecer el estado de los botones
         }
-
-        return () => {
-            if (refCurrent) {
-                refCurrent.removeEventListener('scroll', handleScroll);
-            }
-        };
-    }, []);
+    }));
 
     return (
         <section 
             ref={experienceRef} // Añade la referencia al contenedor principal
             className={isHidden ? "experience-hidden" : "experience"}
         >
-            {showUpButton && <button className="go-up-button" onClick={handleScrollTop}></button>}
             <div className='popUpText'>
                 <div className="dashCard">2022 - Present</div>
                 <div className="dashCard">
@@ -83,9 +55,8 @@ function Experience({ isHidden }) {
                     </p>
                 </div>
             </div>
-            {showDownButton && <button className="go-down-button" onClick={handleScrollDown}></button>}
         </section>
     )
-}
+});
 
 export default Experience;

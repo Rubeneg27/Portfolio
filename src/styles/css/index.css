@@ -90,12 +90,9 @@ section::-webkit-scrollbar{
 }
 
 .go-down-button {
-  bottom: 11.5vh;
-  right: 21.5vw;
-  position: absolute;
   width: 70px;
   height: 50px; /* Misma altura achatada */
-  background-color: var(--secondary-color);
+  background-color: var(--info-color);
   clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
   border: none;
   cursor: pointer;
@@ -104,12 +101,9 @@ section::-webkit-scrollbar{
 }
 
 .go-up-button {
-  top: 11.5vh;
-  right: 21.5vw;
-  position: absolute;
   width: 70px;
   height: 50px;
-  background-color: var(--secondary-color);
+  background-color: var(--info-color);
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Forma de triángulo */
   border: none;
   cursor: pointer;
