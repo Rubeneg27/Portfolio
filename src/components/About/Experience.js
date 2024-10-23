@@ -1,7 +1,7 @@
 import './css/Experience.css';
 import { useRef, useState, useImperativeHandle, forwardRef } from "react";
 
-const Experience = forwardRef(({ isHidden }, ref) => {
+const Experience = forwardRef(({}, ref) => {
     // Ref para el contenedor de experiencia
     const experienceRef = useRef(null);
 
@@ -17,7 +17,7 @@ const Experience = forwardRef(({ isHidden }, ref) => {
     return (
         <section 
             ref={experienceRef} // Añade la referencia al contenedor principal
-            className={isHidden ? "experience-hidden" : "experience"}
+            className="experience"
         >
             <div className='popUpText'>
                 <div className="dashCard">2022 - Present</div>

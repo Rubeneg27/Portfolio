@@ -11,6 +11,7 @@ const About = ({showButtons, setShowButtons}) => {
   const [content, setContent] = useState("");
   const [buttonPressed, setButtonPressed] = useState("")
   const [hidden, setHidden] = useState(false)
+  const [pressed, setPressed] = useState(false);
 
   // Refs para los componentes hijos
   const skillsRef = useRef(null);
@@ -26,16 +27,20 @@ const About = ({showButtons, setShowButtons}) => {
     }
   }, [showButtons])
 
+
+  useEffect(()=>{setPressed(!showButtons)}, [showButtons])
+
   function handleClick(e) {
+    setPressed(true)
     setHidden(true);
     setShowButtons(false);
     switch (e) {
         case "Formación":
-            setContent(<Skills ref={skillsRef} isHidden={hidden} />);
+            setContent(<Skills ref={skillsRef}/>);
             setButtonPressed("skills");
             break;
         case "Experiencia":
-            setContent(<Experience ref={experienceRef} isHidden={hidden} />);
+            setContent(<Experience ref={experienceRef}/>);
             setButtonPressed("exp");
             break;
         default:

@@ -3,7 +3,7 @@ import './css/Skills.css';
 import courseraCertificate from "../../Assets/Coursera-Certificado.png";
 import { useDevice } from "../Context/DeviceContext.js";
 
-const Skills = forwardRef(({ isHidden }, ref) => {
+const Skills = forwardRef(({}, ref) => {
     const [showCertificateImg, setShowCertificateImg] = useState(false);
     const { isMobile } = useDevice();
     const skillsRef = useRef(null);
@@ -22,7 +22,7 @@ const Skills = forwardRef(({ isHidden }, ref) => {
     }
 
     return (
-        <section ref={skillsRef} className={isMobile ? "skillsMobile" : isHidden ? "skills-hidden" : "skills"}>
+        <section ref={skillsRef} className={isMobile ? "skillsMobile" : "skills"}>
             <a hidden={!showCertificateImg} href="https://www.coursera.org/account/accomplishments/professional-cert/N6SAE74TJBAN" target="blank"></a>
             <div className={showCertificateImg ? "CertificateImg" : "CertificateImg_hidden"}>
                 {<img alt="certificado coursera de front end developer" src={courseraCertificate}></img>}
