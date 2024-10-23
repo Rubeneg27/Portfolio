@@ -1,6 +1,6 @@
 .sidebar {
     width: 10vw;
-    /*border-right: solid 10px var(--secondary-dark-color);*/
+    border-right: solid 10px var(--secondary-dark-color);
     padding: 0 1vw;
     background-color: var(--secondary-color);
     height: 100%;
@@ -42,6 +42,7 @@
 }
 
 .Nav {
+  width: -webkit-fill-available;
   list-style: none;
   padding-inline-start: 0;
   justify-self: center;
