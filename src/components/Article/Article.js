@@ -13,16 +13,20 @@ import { useDevice } from "../Context/DeviceContext.js";
 function Article ({handleIsGameClosed, content, isCollapsed, isGameClosed, handleCollapse, showButtons, setShowButtons}) {
 
   const { isMobile } = useDevice();
+
+  const contentMap = {
+    "Home": <Home />,
+    "GamingHub": <Projects handleIsGameClosed={handleIsGameClosed} isGameClosed={isGameClosed} handleCollapse={handleCollapse} />,
+    "ImgGallery": <ImgGallery handleIsGameClosed={handleIsGameClosed} handleCollapse={handleCollapse} />,
+    "Contact": <Contact />,
+    "About": <About showButtons={showButtons} setShowButtons={setShowButtons} />
+  };
   
   return (
     <div className={isCollapsed? "article-expanded" : isMobile? "article-mobile" : "article"}>
     <Header  icons={socialIcons}></Header>
-      {content === "Home"? <Home></Home> : null}
-      {content === "GamingHub"? <Projects handleIsGameClosed={handleIsGameClosed} isGameClosed={isGameClosed} handleCollapse={handleCollapse}></Projects> : null}
-      {content === "ImgGallery"? <ImgGallery handleIsGameClosed={handleIsGameClosed} handleCollapse={handleCollapse}></ImgGallery> : null}
-      {content === "Contact"? <Contact></Contact> : null}
-      {content === "About"? <About showButtons={showButtons} setShowButtons={setShowButtons}></About> : null}
-      {isMobile ? null : isCollapsed ? null : <Header flexDirection = 'row-reverse' icons={techIcons}></Header>}
+    {contentMap[content] || null}
+    {isMobile ? null : isCollapsed ? null : <Header flexDirection = 'row-reverse' icons={techIcons}></Header>}
   </div>
   )
 }
