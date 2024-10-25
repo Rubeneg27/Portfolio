@@ -80,8 +80,8 @@
 .Nav li:hover {
   cursor: pointer;
   font-weight: bold;
-  background-color: var(--secondary-lighest-color);
-  color: var(--primary-light-color);
+  color: var(--neutral-light-color);
+  background-color: var(--info-lighest-color);
 }
 
 .Nav li:active {

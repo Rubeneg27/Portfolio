@@ -67,18 +67,6 @@ section::-webkit-scrollbar{
   transition: all 0.3s ease-out;
 }
 
-.custombtn:hover {
-  cursor: pointer;
-  transition: all 0.3s ease-out;
-  color: var(--neutral-light-color);
-  background-color: var(--info-lighest-color);
-}
-
-.custombtn:active{
-  transition: none;
-  background-color: var(--secondary-color);
-}
-
 .customLink{
   color: var(--primary-light-color);
   font-weight: bold;
@@ -98,6 +86,20 @@ section::-webkit-scrollbar{
   cursor: pointer;
   animation: moveDownUp 1s ease-in-out infinite; /* Animación de movimiento */
   box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
+}
+
+.go-down-button:active, .go-up-button:active, .custombtn:active {
+  background-color: var(--secondary-lighest-color);
+  color: var(--primary-light-color);
+  animation: none;
+}
+
+.go-down-button:hover, .go-up-button:hover, .custombtn:hover{
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  color: var(--neutral-light-color);
+  background-color: var(--info-lighest-color);
+  animation: none;
 }
 
 .go-up-button {
