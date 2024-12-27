@@ -27,7 +27,7 @@ function ImgGallery() {
             key={index}
             image={`${process.env.PUBLIC_URL+image}`}
             index={index}
-            onSelect={() => setSelectedImage(image)}
+            onSelect={() => setSelectedImage(`${process.env.PUBLIC_URL+image}`)}
           />
         ))}
       </div>
