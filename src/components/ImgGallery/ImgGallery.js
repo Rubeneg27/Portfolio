@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { GalleryItem } from './GalleryItem.js';
 import { Modal } from '../Modal/Modal.js';
 import images from './images.js';
-import testimg from '../../Assets/imgs/Jojos Jesus y nader.png'
 
 function ImgGallery() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -11,10 +10,10 @@ function ImgGallery() {
 
   // Imágenes que se muestran mientras se cargan las definitivas
   const imageItems = [
-    '../../Assets/imgs/Jojos Jesus y nader.png',
+    '/imgs/Jojos Jesus y nader.png',
     '/imgs/Raziel.png',
-    '/gallery/image3.jpg',
-    '/gallery/image4.jpg',
+    '/imgs/salon.png',
+    '/imgs/greed lin 2.png',
     '/gallery/image5.jpg',
     '/gallery/image6.jpg',
   ];
@@ -22,11 +21,11 @@ function ImgGallery() {
   return (
     <div className="gallery">
       <div className="gallery-grid">
-        <img src="/imgs/Raziel.png"></img>
+        {/* <img src={`${process.env.PUBLIC_URL}/imgs/Raziel.png`}></img> */}
         {(imageItems || []).map((image, index) => (
           <GalleryItem
             key={index}
-            image={testimg}
+            image={`${process.env.PUBLIC_URL+image}`}
             index={index}
             onSelect={() => setSelectedImage(image)}
           />
