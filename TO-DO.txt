@@ -1,5 +1,6 @@
 //PRIORITARIO
-Añadir overflow scroll a partir de altura 900px
+Optimizar carga de imágenes en galería de imágenesa
+Añadir soporte para fbx en galería de imágenes
 
 ///GENERAL
 Arreglar vista móvil
