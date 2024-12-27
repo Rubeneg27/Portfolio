@@ -4,6 +4,7 @@
   max-width: 60vw;
   margin: 0 auto;
   padding: 20px;
+  overflow: scroll;
 }
 
 .gallery-grid {
