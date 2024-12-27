@@ -22,7 +22,7 @@ function ImgGallery() {
   return (
     <div className="gallery">
       <div className="gallery-grid">
-        <img src="/Raziel.png"></img>
+        <img src="/imgs/Raziel.png"></img>
         {(imageItems || []).map((image, index) => (
           <GalleryItem
             key={index}
