@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/Portfolio/static/css/main.5f2596fc.css",
-    "main.js": "/Portfolio/static/js/main.5b19d34d.js",
+    "main.js": "/Portfolio/static/js/main.a7b7f7e8.js",
     "static/js/787.7da95b79.chunk.js": "/Portfolio/static/js/787.7da95b79.chunk.js",
     "static/media/Jojos Jesus y nader.png": "/Portfolio/static/media/Jojos Jesus y nader.0fb5d7d0a90138dc6660.png",
     "static/media/Perfil.png": "/Portfolio/static/media/Perfil.3af2d872e0b7db3cf039.png",
     "static/media/Coursera-Certificado.png": "/Portfolio/static/media/Coursera-Certificado.c506dfdfacf3ab3f9ddd.png",
     "index.html": "/Portfolio/index.html",
     "main.5f2596fc.css.map": "/Portfolio/static/css/main.5f2596fc.css.map",
-    "main.5b19d34d.js.map": "/Portfolio/static/js/main.5b19d34d.js.map",
+    "main.a7b7f7e8.js.map": "/Portfolio/static/js/main.a7b7f7e8.js.map",
     "787.7da95b79.chunk.js.map": "/Portfolio/static/js/787.7da95b79.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5f2596fc.css",
-    "static/js/main.5b19d34d.js"
+    "static/js/main.a7b7f7e8.js"
   ]
 }
