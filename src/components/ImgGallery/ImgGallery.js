@@ -1,26 +1,29 @@
-import './imgGallery.css'
-import { useState } from 'react';
-import { GalleryItem } from './GalleryItem.js'
+import './imgGallery.css';
+import { useEffect, useState } from 'react';
+import { GalleryItem } from './GalleryItem.js';
 import { Modal } from '../Modal/Modal.js';
+import images from './images.js';
+import testimg from '../../Assets/imgs/Jojos Jesus y nader.png'
 
-function ImgGallery () {
-
+function ImgGallery() {
   const [selectedImage, setSelectedImage] = useState(null);
+  // const [imageItems, setImageItems] = useState(null);
 
-  // In a real app, you would fetch this from an API or props
-  const images = [
-    '/gallery/image1.jpg',
-    '/gallery/image2.jpg',
+  // Imágenes que se muestran mientras se cargan las definitivas
+  const imageItems = [
+    '../../Assets/imgs/Jojos Jesus y nader.png',
+    '/imgs/Raziel.png',
     '/gallery/image3.jpg',
     '/gallery/image4.jpg',
     '/gallery/image5.jpg',
-    '/gallery/image6.jpg'
+    '/gallery/image6.jpg',
   ];
 
   return (
     <div className="gallery">
       <div className="gallery-grid">
-        {images.map((image, index) => (
+        <img src="/imgs/Raziel.png"></img>
+        {(imageItems || []).map((image, index) => (
           <GalleryItem
             key={index}
             image={image}
@@ -30,15 +33,17 @@ function ImgGallery () {
         ))}
       </div>
 
-      <Modal 
-        isOpen={!!selectedImage} 
+      <Modal
+        isOpen={!!selectedImage}
         onClose={() => setSelectedImage(null)}
       >
-        <img 
-          src={selectedImage} 
-          alt="Selected gallery item" 
-          className="modal-image"
-        />
+        {selectedImage && (
+          <img
+            src={selectedImage}
+            alt="Selected gallery item"
+            className="modal-image"
+          />
+        )}
       </Modal>
     </div>
   );
