@@ -5,6 +5,7 @@
   margin: 0 auto;
   padding: 20px;
   overflow: scroll;
+  scrollbar-width: none;
 }
 
 .gallery-grid {

@@ -1,5 +1,6 @@
 import './imgGallery.css';
 import { useEffect, useState } from 'react';
+import Image from 'react-image-webp';
 import { GalleryItem } from './GalleryItem.js';
 import { Modal } from '../Modal/Modal.js';
 import images from './images.js';
@@ -10,24 +11,26 @@ function ImgGallery() {
 
   // Imágenes que se muestran mientras se cargan las definitivas
   const imageItems = [
-    '/imgs/Jojos Jesus y nader.png',
-    '/imgs/Raziel.png',
-    '/imgs/salon.png',
-    '/imgs/greed lin 2.png',
-    '/gallery/image5.jpg',
-    '/gallery/image6.jpg',
+    'https://ik.imagekit.io/rubeneg27/Raziel.png?updatedAt=1735383820945',
+    'https://ik.imagekit.io/rubeneg27/Jojos%20Jesus%20y%20nader.png?updatedAt=1735383851718',
+    'https://ik.imagekit.io/rubeneg27/amy.png?updatedAt=1735383894429',
+    'https://ik.imagekit.io/rubeneg27/Personajes-1.png?updatedAt=1735385830702',
+    'https://ik.imagekit.io/rubeneg27/char-sombras.png?updatedAt=1735385988674',
+    'https://ik.imagekit.io/rubeneg27/escenario%20vampiro.png?updatedAt=1735386279855',
+    'https://ik.imagekit.io/rubeneg27/escenario%20moco.png?updatedAt=1735386279808',
+    'https://ik.imagekit.io/rubeneg27/bosque%20lejos.png?updatedAt=1735386273864',
   ];
 
   return (
     <div className="gallery">
       <div className="gallery-grid">
-        {/* <img src={`${process.env.PUBLIC_URL}/imgs/Raziel.png`}></img> */}
         {(imageItems || []).map((image, index) => (
           <GalleryItem
             key={index}
-            image={`${process.env.PUBLIC_URL+image}`}
+            // image={`${process.env.PUBLIC_URL+image}`}
+            image={image}
             index={index}
-            onSelect={() => setSelectedImage(`${process.env.PUBLIC_URL+image}`)}
+            onSelect={() => setSelectedImage(image)}
           />
         ))}
       </div>
