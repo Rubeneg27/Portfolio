@@ -15,14 +15,14 @@ function Home () {
             <p className="popUpText">Hello!</p>
             <p>My name is</p>
             <span className="popUpText">Rubén Espinosa González</span>
-            <p>Passionate about graphic design, technology and videogames.<br></br></p>
+            <p>Passionate about art, technology and videogames.<br></br></p>
           </div>
             {/* <div className="image-container dashCard">
              <img src={img} alt="foto de perfil de Rubén Espinosa con el monte fuji en el fondo"/>
             </div> */}
         <div className="dashCard">
-          <p>Dive into my webpage to know more about my professional career, skills and education.<br></br></p>
-          <p>Here, you will discover some of the games im working on.<br></br></p>
+          <p>Explore my website to learn more about my professional journey, skills, and education.<br></br></p>
+          <p>You’ll also get a glimpse into my world, including the video games I’m developing and some of the illustrations and sketches I’ve created.<br></br></p>
         </div>
         <div className="dashCard">
           <p className="popUpText">Have fun, and I hope you enjoy your visit!</p>

@@ -1,5 +1,5 @@
 //PRIORITARIO
-Optimizar carga de imágenes en galería de imágenesa
+Cerrar correctamente los juegos iniciados
 Añadir soporte para fbx en galería de imágenes
 
 ///GENERAL

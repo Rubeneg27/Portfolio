@@ -1,9 +1,10 @@
 import './imgGallery.css';
-import { useEffect, useState } from 'react';
-import Image from 'react-image-webp';
+import { useEffect, useState, Suspense } from 'react';
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 import { GalleryItem } from './GalleryItem.js';
 import { Modal } from '../Modal/Modal.js';
-import images from './images.js';
+import Sword from "./Sword.jsx";
 
 function ImgGallery() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -34,7 +35,23 @@ function ImgGallery() {
           />
         ))}
       </div>
-
+      <Canvas
+      camera={{ position: [3, 20, 14.25], fov: 8 }}
+      style={{
+        backgroundColor: "#111a21",
+        width: "30vw",
+        height: "30vh"
+      }}
+    >
+      <ambientLight intensity={1.25} />
+      <ambientLight intensity={0.1} />
+      <directionalLight intensity={0.4} />
+      <Suspense fallback={null}>
+        <Sword position={[0, 0, 0]} />
+      </Suspense>
+      {/* <OrbitControls autoRotate /> */}
+      <OrbitControls></OrbitControls>
+    </Canvas>
       <Modal
         isOpen={!!selectedImage}
         onClose={() => setSelectedImage(null)}
