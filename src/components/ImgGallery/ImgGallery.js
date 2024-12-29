@@ -1,121 +1,66 @@
 import './imgGallery.css';
 import { useEffect, useState, Suspense } from 'react';
-import { Canvas } from "@react-three/fiber";
-import { Cloud, OrbitControls } from "@react-three/drei";
 import { GalleryItem } from './GalleryItem.js';
+import { OrbitControls } from "@react-three/drei";
 import { Modal } from '../Modal/Modal.js';
+import { Canvas } from "@react-three/fiber";
 import Sword from "./Sword.jsx";
-import  CloudSword  from './Cloud-sword.jsx';
+import CloudSword  from './Cloud-sword.jsx';
 import SwordColor from './Cloud-sword-color.jsx';
 import SwordNormals from './Sword-normals.jsx';
 
 function ImgGallery() {
-  const [selectedImage, setSelectedImage] = useState(null);
-  // const [imageItems, setImageItems] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
 
-  // Imágenes que se muestran mientras se cargan las definitivas
+  // Elementos de la galería
   const imageItems = [
-    'https://ik.imagekit.io/rubeneg27/Raziel.png?updatedAt=1735383820945',
-    'https://ik.imagekit.io/rubeneg27/Jojos%20Jesus%20y%20nader.png?updatedAt=1735383851718',
-    'https://ik.imagekit.io/rubeneg27/amy.png?updatedAt=1735383894429',
-    'https://ik.imagekit.io/rubeneg27/Personajes-1.png?updatedAt=1735385830702',
-    'https://ik.imagekit.io/rubeneg27/char-sombras.png?updatedAt=1735385988674',
-    'https://ik.imagekit.io/rubeneg27/escenario%20vampiro.png?updatedAt=1735386279855',
-    'https://ik.imagekit.io/rubeneg27/escenario%20moco.png?updatedAt=1735386279808',
-    'https://ik.imagekit.io/rubeneg27/bosque%20lejos.png?updatedAt=1735386273864',
+    { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/Raziel.png?updatedAt=1735383820945' },
+    { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/Jojos%20Jesus%20y%20nader.png?updatedAt=1735383851718' },
+    { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/amy.png?updatedAt=1735383894429' },
+    { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/Personajes-1.png?updatedAt=1735385830702' },
+    { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/char-sombras.png?updatedAt=1735385988674' },
+    { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/escenario%20vampiro.png?updatedAt=1735386279855' },
+    { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/escenario%20moco.png?updatedAt=1735386279808' },
+    { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/bosque%20lejos.png?updatedAt=1735386273864' },
+    { type: '3Dmodel', model: <SwordNormals /> },
   ];
 
   return (
     <div className="gallery">
       <div className="gallery-grid">
-        {(imageItems || []).map((image, index) => (
+        {imageItems.map((item, index) => (
           <GalleryItem
             key={index}
-            // image={`${process.env.PUBLIC_URL+image}`}
-            image={image}
+            type={item.type}
+            url={item.url}
+            model={item.model}
             index={index}
-            onSelect={() => setSelectedImage(image)}
+            onSelect={() => setSelectedItem(item)}
           />
         ))}
       </div>
-      <Canvas
-      camera={{ position: [3, 20, 14.25], fov: 8 }}
-      style={{
-        backgroundColor: "#111a21",
-        width: "30vw",
-        height: "30vh"
-      }}
-    >
-      <ambientLight intensity={1.25} />
-      <ambientLight intensity={0.1} />
-      <directionalLight intensity={0.4} />
-      <Suspense fallback={null}>
-        <Sword position={[0, 0, 0]} />
-      </Suspense>
-      {/* <OrbitControls autoRotate /> */}
-      <OrbitControls></OrbitControls>
-    </Canvas>
-    <Canvas
-      camera={{ position: [3, 20, 14.25], fov: 8 }}
-      style={{
-        backgroundColor: "#111a21",
-        width: "30vw",
-        height: "30vh"
-      }}
-    >
-      <ambientLight intensity={1.25} />
-      <ambientLight intensity={0.1} />
-      <directionalLight intensity={0.4} />
-      <Suspense fallback={null}>
-        <CloudSword position={[0, 0, 0]} />
-      </Suspense>
-      {/* <OrbitControls autoRotate /> */}
-      <OrbitControls></OrbitControls>
-    </Canvas>
-    <Canvas
-      camera={{ position: [3, 20, 14.25], fov: 8 }}
-      style={{
-        backgroundColor: "#111a21",
-        width: "30vw",
-        height: "30vh"
-      }}
-    >
-      <ambientLight intensity={1.25} />
-      <ambientLight intensity={0.1} />
-      <directionalLight intensity={0.4} />
-      <Suspense fallback={null}>
-        <SwordColor position={[0, 0, 0]} />
-      </Suspense>
-      {/* <OrbitControls autoRotate /> */}
-      <OrbitControls></OrbitControls>
-    </Canvas>
-    <Canvas
-      camera={{ position: [3, 20, 14.25], fov: 8 }}
-      style={{
-        backgroundColor: "#111a21",
-        width: "30vw",
-        height: "30vh"
-      }}
-    >
-      <ambientLight intensity={1.25} />
-      <ambientLight intensity={0.1} />
-      <directionalLight intensity={0.4} />
-      <Suspense fallback={null}>
-        <SwordNormals position={[0, 0, 0]} />
-      </Suspense>
-      {/* <OrbitControls autoRotate /> */}
-      <OrbitControls></OrbitControls>
-    </Canvas>
-      <Modal
-        isOpen={!!selectedImage}
-        onClose={() => setSelectedImage(null)}
-      >
-        {selectedImage && (
+      <Modal isOpen={!!selectedItem} onClose={() => setSelectedItem(null)}>
+        {selectedItem && selectedItem.type === 'img' && (
           <img
-            src={selectedImage}
+            src={selectedItem.url}
             alt="Selected gallery item"
             className="modal-image"
           />
+        )}
+        {selectedItem && selectedItem.type === '3Dmodel' && (
+          <div className="modal-3d">
+            <Canvas
+              camera={{ position: [3, 20, 14.25], fov: 8 }}
+              style={{ width: '40vw', height: '50vh', backgroundColor: '#111a21' }}
+            >
+              <ambientLight intensity={1.25} />
+              <directionalLight intensity={0.4} />
+              <Suspense fallback={null}>
+                {selectedItem.model}
+              </Suspense>
+              <OrbitControls />
+            </Canvas>
+          </div>
         )}
       </Modal>
     </div>
