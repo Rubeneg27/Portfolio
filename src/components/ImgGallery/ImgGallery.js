@@ -1,10 +1,13 @@
 import './imgGallery.css';
 import { useEffect, useState, Suspense } from 'react';
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { Cloud, OrbitControls } from "@react-three/drei";
 import { GalleryItem } from './GalleryItem.js';
 import { Modal } from '../Modal/Modal.js';
 import Sword from "./Sword.jsx";
+import  CloudSword  from './Cloud-sword.jsx';
+import SwordColor from './Cloud-sword-color.jsx';
+import SwordNormals from './Sword-normals.jsx';
 
 function ImgGallery() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -48,6 +51,57 @@ function ImgGallery() {
       <directionalLight intensity={0.4} />
       <Suspense fallback={null}>
         <Sword position={[0, 0, 0]} />
+      </Suspense>
+      {/* <OrbitControls autoRotate /> */}
+      <OrbitControls></OrbitControls>
+    </Canvas>
+    <Canvas
+      camera={{ position: [3, 20, 14.25], fov: 8 }}
+      style={{
+        backgroundColor: "#111a21",
+        width: "30vw",
+        height: "30vh"
+      }}
+    >
+      <ambientLight intensity={1.25} />
+      <ambientLight intensity={0.1} />
+      <directionalLight intensity={0.4} />
+      <Suspense fallback={null}>
+        <CloudSword position={[0, 0, 0]} />
+      </Suspense>
+      {/* <OrbitControls autoRotate /> */}
+      <OrbitControls></OrbitControls>
+    </Canvas>
+    <Canvas
+      camera={{ position: [3, 20, 14.25], fov: 8 }}
+      style={{
+        backgroundColor: "#111a21",
+        width: "30vw",
+        height: "30vh"
+      }}
+    >
+      <ambientLight intensity={1.25} />
+      <ambientLight intensity={0.1} />
+      <directionalLight intensity={0.4} />
+      <Suspense fallback={null}>
+        <SwordColor position={[0, 0, 0]} />
+      </Suspense>
+      {/* <OrbitControls autoRotate /> */}
+      <OrbitControls></OrbitControls>
+    </Canvas>
+    <Canvas
+      camera={{ position: [3, 20, 14.25], fov: 8 }}
+      style={{
+        backgroundColor: "#111a21",
+        width: "30vw",
+        height: "30vh"
+      }}
+    >
+      <ambientLight intensity={1.25} />
+      <ambientLight intensity={0.1} />
+      <directionalLight intensity={0.4} />
+      <Suspense fallback={null}>
+        <SwordNormals position={[0, 0, 0]} />
       </Suspense>
       {/* <OrbitControls autoRotate /> */}
       <OrbitControls></OrbitControls>
