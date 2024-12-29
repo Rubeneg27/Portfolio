@@ -1,12 +1,9 @@
 import './imgGallery.css';
-import { useEffect, useState, Suspense } from 'react';
+import { useState, Suspense } from 'react';
 import { GalleryItem } from './GalleryItem.js';
 import { OrbitControls } from "@react-three/drei";
 import { Modal } from '../Modal/Modal.js';
 import { Canvas } from "@react-three/fiber";
-import Sword from "./Sword.jsx";
-import CloudSword  from './Cloud-sword.jsx';
-import SwordColor from './Cloud-sword-color.jsx';
 import SwordNormals from './Sword-normals.jsx';
 
 function ImgGallery() {
@@ -22,7 +19,7 @@ function ImgGallery() {
     { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/escenario%20vampiro.png?updatedAt=1735386279855' },
     { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/escenario%20moco.png?updatedAt=1735386279808' },
     { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/bosque%20lejos.png?updatedAt=1735386273864' },
-    { type: '3Dmodel', model: <SwordNormals /> },
+    { type: '3Dmodel', model: <SwordNormals />, url: 'https://ik.imagekit.io/rubeneg27/sword-thumbnail.png?updatedAt=1735514996944' },
   ];
 
   return (
