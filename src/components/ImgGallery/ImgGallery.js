@@ -1,4 +1,5 @@
 import './imgGallery.css';
+import { useDevice } from "../Context/DeviceContext.js";
 import { useState, Suspense } from 'react';
 import { GalleryItem } from './GalleryItem.js';
 import { OrbitControls } from "@react-three/drei";
@@ -8,6 +9,7 @@ import SwordNormals from './Sword-normals.jsx';
 
 function ImgGallery() {
   const [selectedItem, setSelectedItem] = useState(null);
+  const { isMobile } = useDevice();
 
   // Elementos de la galería
   const imageItems = [
@@ -24,7 +26,7 @@ function ImgGallery() {
 
   return (
     <div className="gallery">
-      <div className="gallery-grid">
+      <div className={isMobile? "gallery-grid-mobile" : "gallery-grid" }>
         {imageItems.map((item, index) => (
           <GalleryItem
             key={index}
