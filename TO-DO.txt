@@ -1,6 +1,6 @@
 //PRIORITARIO
 Cerrar correctamente los juegos iniciados
-Añadir soporte para fbx en galería de imágenes
+OPTIMIZAR MODELOS 3D. Entregar al usuario mediante imageKit y no en la carpeta public.
 
 ///GENERAL
 Arreglar vista móvil

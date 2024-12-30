@@ -6,6 +6,7 @@ import { OrbitControls } from "@react-three/drei";
 import { Modal } from '../Modal/Modal.js';
 import { Canvas } from "@react-three/fiber";
 import SwordNormals from './Sword-normals.jsx';
+import AldeanoAnciano from './Aldeano_Anciano.jsx';
 
 function ImgGallery() {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -22,6 +23,7 @@ function ImgGallery() {
     { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/escenario%20moco.png?updatedAt=1735386279808' },
     { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/bosque%20lejos.png?updatedAt=1735386273864' },
     { type: '3Dmodel', model: <SwordNormals />, url: 'https://ik.imagekit.io/rubeneg27/sword-thumbnail.png?updatedAt=1735514996944' },
+    { type: '3Dmodel', model: <AldeanoAnciano />, url: 'https://ik.imagekit.io/rubeneg27/aldeano-anciano-thumb.png?updatedAt=1735554532748' },
   ];
 
   return (
