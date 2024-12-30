@@ -51,7 +51,7 @@ function ImgGallery() {
         {selectedItem && selectedItem.type === '3Dmodel' && (
           <div className="modal-3d">
             <Canvas
-              camera={{ position: [3, 20, 14.25], fov: 8 }}
+              camera={{ position: [3, 60, 14.25], fov: 8 }}
               style={
                 isMobile ?
                 { width: '80vw', height: '80vw', backgroundColor: '#111a21' } 
@@ -60,7 +60,7 @@ function ImgGallery() {
               }
             >
               <ambientLight intensity={1.25} />
-              <directionalLight intensity={0.4} />
+              <directionalLight intensity={4.0} />
               <Suspense fallback={null}>
                 {selectedItem.model}
               </Suspense>

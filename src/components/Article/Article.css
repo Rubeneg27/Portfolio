@@ -1,5 +1,5 @@
 .article {
-  min-height: 64vh;
+  /* min-height: 64vh; */
   max-height: 100vh;
   display: flex;
   height: fit-content;

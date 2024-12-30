@@ -16,7 +16,7 @@
 }
 
 .sidebarMobile {
-  position: absolute;
+  position: fixed;
   width: 130px;
   /*border-right: solid 10px var(--secondary-dark-color);*/
   padding: 0 1vw;
@@ -28,7 +28,7 @@
 }
 
 .hidden {
-  position: absolute;
+  position: fixed;
   padding: 0;
   width: 0;
   transition: width 0.3s ease-in-out;

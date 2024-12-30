@@ -24,9 +24,9 @@ function Article ({handleIsGameClosed, content, isCollapsed, isGameClosed, handl
   
   return (
     <div className={isCollapsed? "article-expanded" : isMobile? "article-mobile" : "article"}>
-    <Header  icons={socialIcons}></Header>
+    {content === "Home" ? <Header  icons={socialIcons}></Header> : null}
     {contentMap[content] || null}
-    {isMobile ? null : isCollapsed ? null : <Header flexDirection = 'row-reverse' icons={techIcons}></Header>}
+    {content === "Home" ? isMobile ? null : isCollapsed ? null : <Header flexDirection = 'row-reverse' icons={techIcons}></Header> : null}
   </div>
   )
 }
