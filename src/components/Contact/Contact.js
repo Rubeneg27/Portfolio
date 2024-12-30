@@ -40,7 +40,7 @@ function Contact () {
                     onChange={(e) => setMessage(encodeURIComponent(e.target.value))}
                     ></textarea>
                 </li>
-                <button className="custombtn" onClick={composeEmail}>Send mail</button>
+                <button onClick={composeEmail}>Send mail</button>
             </form>
         </section>
     )

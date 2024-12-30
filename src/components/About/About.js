@@ -86,7 +86,6 @@ const About = ({showButtons, setShowButtons}) => {
             </div>
           }
           <div style={isMobile ? null : { display: 'flex', justifyContent: 'space-between'}}>
-          
             {hidden? content : null}
             {isMobile ?  <button 
               hidden={hidden?  false : true} 
@@ -107,7 +106,6 @@ const About = ({showButtons, setShowButtons}) => {
               <button className="go-down-button" onClick={handleScrollDown}></button>
             </div>
             }
-
           </div>
 
     </section>
