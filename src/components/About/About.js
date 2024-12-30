@@ -88,7 +88,14 @@ const About = ({showButtons, setShowButtons}) => {
           <div style={isMobile ? null : { display: 'flex', justifyContent: 'space-between'}}>
           
             {hidden? content : null}
-            <div className="about-content-buttons-container">
+            {isMobile ?  <button 
+              hidden={hidden?  false : true} 
+              className= {isMobile ? "custombtn-mobile" : "custombtn"}
+              onClick={buttonPressed==="skills"? ()=>handleClick("Experiencia") : buttonPressed==="exp"? ()=>handleClick("Formación") : ""}
+              >
+                {buttonPressed==="skills"? ">" : buttonPressed==="exp"? ">" : ""}
+              </button> :
+              <div className="about-content-buttons-container">
               <button className="go-up-button" onClick={handleScrollTop}></button>
               <button 
               hidden={hidden?  false : true} 
@@ -99,6 +106,8 @@ const About = ({showButtons, setShowButtons}) => {
               </button>
               <button className="go-down-button" onClick={handleScrollDown}></button>
             </div>
+            }
+
           </div>
 
     </section>
