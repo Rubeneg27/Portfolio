@@ -27,7 +27,7 @@ function ImgGallery() {
   ];
 
   return (
-    <div className="gallery">
+    <div className={isMobile ? "gallery_mobile" : "gallery"}>
       <div className={isMobile? "gallery-grid-mobile" : "gallery-grid" }>
         {imageItems.map((item, index) => (
           <GalleryItem
@@ -52,7 +52,12 @@ function ImgGallery() {
           <div className="modal-3d">
             <Canvas
               camera={{ position: [3, 20, 14.25], fov: 8 }}
-              style={{ width: '40vw', height: '50vh', backgroundColor: '#111a21' }}
+              style={
+                isMobile ?
+                { width: '80vw', height: '80vw', backgroundColor: '#111a21' } 
+                :
+                { width: '40vw', height: '40vw', backgroundColor: '#111a21' }
+              }
             >
               <ambientLight intensity={1.25} />
               <directionalLight intensity={0.4} />
