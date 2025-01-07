@@ -10,6 +10,9 @@
   flex-direction: column;
 }
 
+.experience-mobile {
+  
+}
 .aboutMobile > .experience > section {
   color: var(--primary-light-color);
   box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);

@@ -14,7 +14,6 @@
 .aboutMobile {
   box-sizing: border-box;
   height: 100%;
-  background-color: var(--primary-light-color, rgb(252, 211, 136));
   font-size: 15px;
 }
 

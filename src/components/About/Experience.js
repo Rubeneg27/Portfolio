@@ -1,8 +1,11 @@
 import './css/Experience.css';
 import { useRef, useImperativeHandle, forwardRef } from "react";
+import { useDevice } from "../Context/DeviceContext.js";
+
 
 const Experience = forwardRef(({}, ref) => {
     // Ref para el contenedor de experiencia
+    const { isMobile } = useDevice();
     const experienceRef = useRef(null);
 
     // Permitir al padre controlar el scroll
@@ -44,7 +47,7 @@ const Experience = forwardRef(({}, ref) => {
     return (
         <section 
             ref={experienceRef} // Añade la referencia al contenedor principal
-            className="experience"
+            className={isMobile ?  "experience-mobile" :  "experience"}
         >
             {professional_experiencies.map((experience, index) => (
                 <div key={index} className='popUpText'>
