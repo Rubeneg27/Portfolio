@@ -5,26 +5,11 @@ import { GalleryItem } from './GalleryItem.js';
 import { OrbitControls } from "@react-three/drei";
 import { Modal } from '../Modal/Modal.js';
 import { Canvas } from "@react-three/fiber";
-import SwordNormals from './Sword-normals.jsx';
-import AldeanoAnciano from './Aldeano_Anciano.jsx';
+import imageItems from '../../Assets/galleryItems/galleryItems.js';
 
 function ImgGallery() {
   const [selectedItem, setSelectedItem] = useState(null);
   const { isMobile } = useDevice();
-
-  // Elementos de la galería
-  const imageItems = [
-    { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/Raziel.png?updatedAt=1735383820945' },
-    { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/Jojos%20Jesus%20y%20nader.png?updatedAt=1735383851718' },
-    { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/amy.png?updatedAt=1735383894429' },
-    { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/Personajes-1.png?updatedAt=1735385830702' },
-    { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/char-sombras.png?updatedAt=1735385988674' },
-    { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/escenario%20vampiro.png?updatedAt=1735386279855' },
-    { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/escenario%20moco.png?updatedAt=1735386279808' },
-    { type: 'img', url: 'https://ik.imagekit.io/rubeneg27/bosque%20lejos.png?updatedAt=1735386273864' },
-    { type: '3Dmodel', model: <SwordNormals />, url: 'https://ik.imagekit.io/rubeneg27/sword-thumbnail.png?updatedAt=1735514996944' },
-    { type: '3Dmodel', model: <AldeanoAnciano />, url: 'https://ik.imagekit.io/rubeneg27/aldeano-anciano-thumb.png?updatedAt=1735554532748' },
-  ];
 
   return (
     <div className={isMobile ? "gallery_mobile" : "gallery"}>
