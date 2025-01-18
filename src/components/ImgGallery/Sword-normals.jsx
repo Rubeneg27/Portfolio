@@ -7,12 +7,10 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export default function SwordNormals(props) {
-  const { nodes, materials } = useGLTF(`${process.env.PUBLIC_URL+'/sword-normals.glb'}`)
+  const { nodes, materials } = useGLTF("https://ik.imagekit.io/rubeneg27/3D%20Models/sword-normals.glb?updatedAt=1737240104759")
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Handler001.geometry} material={materials.Sword} position={[-0.321, 2.665, 0.549]} />
     </group>
   )
 }
-
-useGLTF.preload(`${process.env.PUBLIC_URL+'/sword-normals.glb'}`)

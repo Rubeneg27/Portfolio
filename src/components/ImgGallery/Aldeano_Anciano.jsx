@@ -29,5 +29,3 @@ export default function AldeanoAnciano(props) {
     </group>
   )
 }
-
-useGLTF.preload(`${process.env.PUBLIC_URL+'/Aldeano_Anciano.glb'}`)
