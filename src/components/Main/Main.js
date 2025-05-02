@@ -1,5 +1,6 @@
 import './Main.css'
 import Nav from '../Nav/Nav.js';
+import ChCard from '../chCard/ChCard.js'
 import Burger from '../Burger/Burger.js'
 import Article from "../Article/Article.js";
 import { useDevice } from "../Context/DeviceContext.js";
@@ -61,14 +62,18 @@ function Main() {
         isNavHidden={isNavHidden}
         NavHandleClick={HandleClick}
         />
-        <Article 
+        <section>
+          <ChCard></ChCard>
+        </section>
+        
+        {/* <Article 
         handleIsGameClosed={setIsGameClosed}
         content={content} 
         isCollapsed={isCollapsed} 
         isGameClosed={isGameClosed} 
         handleCollapse={setIsCollapsed} 
         showButtons={showButtons}
-        setShowButtons={setShowButtons}></Article>
+        setShowButtons={setShowButtons}></Article> */}
       </div>
     </main>
   )

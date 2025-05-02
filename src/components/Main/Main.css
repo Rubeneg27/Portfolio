@@ -51,3 +51,20 @@
   margin-left: 0;
   margin-right: 0;
 }
+
+section {
+  /* min-height: 64vh; */
+  max-height: 100vh;
+  display: flex;
+  height: fit-content;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-weight: bold;
+  /* margin: 0 1vw; */
+  padding: 1vw;
+  background-color: var(--secondary-color, rgb(252, 211, 136));
+  width: 65vw;
+  transition: all 0.3s ease-in-out;
+  flex-direction: column;
+  justify-content: space-between;
+}
