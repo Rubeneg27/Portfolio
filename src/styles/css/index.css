@@ -35,10 +35,16 @@ section::-webkit-scrollbar{
   box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
 }
 
+.dash-card-container{
+  padding: 1vw;
+  background-color: var(--primary-light-color);
+}
 .dashCard {
+  display: flex;
+  justify-content: space-between;
   box-sizing: border-box;
   padding: 1vh 2vw;
-  margin: 1vw;
+  margin: 0.5vw;
   height: fit-content;
   width: -webkit-fill-available;
   border-width: medium;
@@ -47,7 +53,6 @@ section::-webkit-scrollbar{
   background-color: var(--secondary-light-color);
   border-color: var(--primary-light-color);
   box-shadow: 6px 6px 0px var(--secondary-darkest-color-transparent);
-
 }
 
 .custombtn {

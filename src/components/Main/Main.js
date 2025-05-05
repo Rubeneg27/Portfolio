@@ -1,6 +1,6 @@
 import './Main.css'
 import Nav from '../Nav/Nav.js';
-import ChCard from '../chCard/ChCard.js'
+import InfoScreen from '../InfoScreen/InfoScreen.js'
 import Burger from '../Burger/Burger.js'
 import Article from "../Article/Article.js";
 import { useDevice } from "../Context/DeviceContext.js";
@@ -63,7 +63,7 @@ function Main() {
         NavHandleClick={HandleClick}
         />
         <section>
-          <ChCard></ChCard>
+          <InfoScreen></InfoScreen>
         </section>
         
         {/* <Article 

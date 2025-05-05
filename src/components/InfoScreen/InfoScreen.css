@@ -1,0 +1,22 @@
+.ch-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1vw;
+  padding: 1vw;
+  background-color: var(--secondary-light-color);
+  border-color: var(--primary-light-color);
+  border-style: dashed;
+  border-width: medium;
+  width: -webkit-fill-available;
+}
+
+.info-screen {
+  display: flex;
+  padding: 1vw;
+  background-color: var(--neutral-light-color);
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  justify-content: center;
+  flex-direction: column;
+}
