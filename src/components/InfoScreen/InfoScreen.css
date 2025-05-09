@@ -20,3 +20,12 @@
   justify-content: center;
   flex-direction: column;
 }
+
+.ch-stats-container{
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--primary-light-color);
+  color: var(--secondary-color);
+  font-weight: bolder;
+  padding: 2vw 6vw;
+}

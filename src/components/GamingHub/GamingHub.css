@@ -1,0 +1,9 @@
+.gaming-hub {
+  
+  padding: 1vw;
+  margin-top: 1vw;
+  background-color: var(--neutral-light-color);
+  width: -webkit-fill-available;
+  height: 100%;
+  box-sizing: border-box;
+}

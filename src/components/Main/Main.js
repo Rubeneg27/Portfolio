@@ -1,8 +1,9 @@
 import './Main.css'
 import Nav from '../Nav/Nav.js';
 import InfoScreen from '../InfoScreen/InfoScreen.js'
+import GamingHub from '../GamingHub/GamingHub.js';
+import ImgGallery from '../ImgGallery/ImgGallery.js';
 import Burger from '../Burger/Burger.js'
-import Article from "../Article/Article.js";
 import { useDevice } from "../Context/DeviceContext.js";
 
 import { useEffect, useState } from "react";
@@ -64,6 +65,8 @@ function Main() {
         />
         <section>
           <InfoScreen></InfoScreen>
+          <GamingHub></GamingHub>
+          <ImgGallery></ImgGallery>
         </section>
         
         {/* <Article 
