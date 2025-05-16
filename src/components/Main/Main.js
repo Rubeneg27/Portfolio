@@ -3,10 +3,11 @@ import Nav from '../Nav/Nav.js';
 import InfoScreen from '../InfoScreen/InfoScreen.js'
 import GamingHub from '../GamingHub/GamingHub.js';
 import ImgGallery from '../ImgGallery/ImgGallery.js';
+import GamesCollection from '../GamesCollection/GamesCollection.js';
 import Burger from '../Burger/Burger.js'
 import { useDevice } from "../Context/DeviceContext.js";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 function Main() {
 
@@ -33,21 +34,22 @@ function Main() {
   ///Se llamará al hacer click en los botones del Nav y el DropdownMenu.///
   ///PARÁMETROS///
   ///element: recibirá y pasará a updateContent el content a renderizar///
-  const HandleClick = (element, showButton, willCollaps) => {
-    setIsGameClosed(true)
-    setShowButtons(showButton)
-    setContent(element)
-    setIsCollapsed(willCollaps)
-  };
+const HandleClick = (element, showButton, willCollaps) => {
+  setIsGameClosed(true);
+  setShowButtons(showButton);
+  setIsCollapsed(willCollaps);
+  setContent(element);
 
-  ///Renderizará el contenido correspondiente en el primer renderizado del compomente.///
-  useEffect(() => {
-    setContent(content)
-    setIsCollapsed(isCollapsed)
-    if (isMobile) {
-      setIsNavHidden(true)
-    }
-  }, [content, isCollapsed, isMobile])
+  
+  // const refs = {
+  //   Home: infoRef,
+  //   Projects: hubRef,
+  //   Gallery: galleryRef,
+  // };
+
+  // scrollToSection(refs[element]);
+};
+
 
   return (
     <main className={isMobile ? "mainMobile" : isCollapsed ? "main-expanded" : "main"}>
@@ -63,11 +65,12 @@ function Main() {
         isNavHidden={isNavHidden}
         NavHandleClick={HandleClick}
         />
-        <section>
-          <InfoScreen></InfoScreen>
-          <GamingHub></GamingHub>
-          <ImgGallery></ImgGallery>
-        </section>
+      <section className="scrollable-content">
+        <div><InfoScreen /></div>
+        <div><GamesCollection /></div>
+        <div><GamingHub /></div>
+        <div><ImgGallery /></div>
+      </section>
         
         {/* <Article 
         handleIsGameClosed={setIsGameClosed}
